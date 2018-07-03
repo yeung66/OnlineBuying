@@ -183,7 +183,8 @@
 					'password' : $("#login_password").val(),
 					'method' : 'login'
 				},
-				url : 'LoginServlet',//servlet
+				url : 'login',//servlet
+				type:'post',
 				success : function(data) {
 					if (data.toString() == 'fail') {
 						alert('登陆失败');

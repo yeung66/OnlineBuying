@@ -18,21 +18,21 @@ import java.sql.Statement;
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String username = request.getParameter("id");
         String password = request.getParameter("password");
         String type = request.getParameter("type");
         Database db = new Database();
-        String sql = "select * from users where id="+username+" and pwd="+password+" and rights="+type;
+        String sql = "select * from users where id="+username+" and pwd="+password;
         if(db.checkExist(sql)){
-            response.getWriter().print("Login Sucess!");
+            response.getWriter().print("success");
         }else {
-            response.getWriter().print("Login Failed!");
+            response.getWriter().print("fail");
         }
 
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request,response);
     }
 }
