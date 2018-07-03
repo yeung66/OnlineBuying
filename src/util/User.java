@@ -1,10 +1,9 @@
 package util;
 
 public class User {	
-	private String id, pwd, info, add;
-	private int tel, sex, right;
+	private String id, pwd, info, add, tel, sex, right;
 	
-	public User(String id, String pwd, String info, String add, int tel, int sex, int right) {
+	public User(String id, String pwd, String info, String add, String tel, String sex, String right) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -47,27 +46,27 @@ public class User {
 		this.add = add;
 	}
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 
-	public int getRight() {
+	public String getRight() {
 		return right;
 	}
 
-	public void setRight(int right) {
+	public void setRight(String right) {
 		this.right = right;
 	}
 
