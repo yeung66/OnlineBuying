@@ -9,100 +9,107 @@
 <link rel="stylesheet" href="css/login.css" />
 
 <script src="bootstrap/js/bootstrap.min.js"></script>
- <script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
-			$(document).ready(function() {
-				//打开会员登录 
-				$("#Login_start_").click(function() {
-					$("#alert-list").hide();
-					$("#regist_container").hide();
-					$("#_close").show();
-					$("#_start").animate({
-						left: '350px',
-						height: '520px',
-						width: '400px'
-					}, 500, function() {
-						$("#login_container").show(500);
-						$("#_close").animate({
-							height: '40px',
-							width: '40px'
-						}, 500);
-					});
-				});
-				//打开会员注册
-				$("#Regist_start_").click(function() {
-					$("#login_container").hide();
-					$("#_close").show();
-					$("#_start").animate({
-						left: '350px',
-						height: '520px',
-						width: '400px'
-					}, 500, function() {
-						$("#regist_container").show(500);
-						$("#_close").animate({
-							height: '40px',
-							width: '40px'
-						}, 500);
-					});
-				});
-				//关闭
-				$("#_close").click(function() {
-					
-					$("#_close").animate({
-						height: '0px',
-						width: '0px'
-					}, 500, function() {
-						$("#_close").hide(500);
-						$("#login_container").hide(500);
-						$("#regist_container").hide(500);
-						$("#_start").animate({
-							left: '0px',
-							height: '0px',
-							width: '0px'
-						}, 500);
-					});
-				});
-				//去 注册
-				$("#toRegist").click(function(){
-					$("#login_container").hide(500);
-					$("#regist_container").show(500);
-				});
-				//去 登录
-				$("#toLogin").click(function(){
-					$("#alert-list").hide();
-					$("#regist_container").hide(500);
-					$("#login_container").show(500);
-				});
+	$(document).ready(function() {
+		//打开会员登录 
+		$("#Login_start_").click(function() {
+			$("#alert-list").hide();
+			$("#regist_container").hide();
+			$("#_close").show();
+			$("#_start").animate({
+				left : '350px',
+				height : '520px',
+				width : '400px'
+			}, 500, function() {
+				$("#login_container").show(500);
+				$("#_close").animate({
+					height : '40px',
+					width : '40px'
+				}, 500);
 			});
-		</script>
+		});
+		//打开会员注册
+		$("#Regist_start_").click(function() {
+			$("#login_container").hide();
+			$("#_close").show();
+			$("#_start").animate({
+				left : '350px',
+				height : '520px',
+				width : '400px'
+			}, 500, function() {
+				$("#regist_container").show(500);
+				$("#_close").animate({
+					height : '40px',
+					width : '40px'
+				}, 500);
+			});
+		});
+		//关闭
+		$("#_close").click(function() {
+
+			$("#_close").animate({
+				height : '0px',
+				width : '0px'
+			}, 500, function() {
+				$("#_close").hide(500);
+				$("#login_container").hide(500);
+				$("#regist_container").hide(500);
+				$("#_start").animate({
+					left : '0px',
+					height : '0px',
+					width : '0px'
+				}, 500);
+			});
+		});
+		//去 注册
+		$("#toRegist").click(function() {
+			$("#login_container").hide(500);
+			$("#regist_container").show(500);
+		});
+		//去 登录
+		$("#toLogin").click(function() {
+			$("#alert-list").hide();
+			$("#regist_container").hide(500);
+			$("#login_container").show(500);
+		});
+	});
+</script>
 
 </head>
-<body background="img/back2.jpg" style="background-repeat:no-repeat;background-size:15000px 34500px;">
+<body background="img/back2.jpg"
+	style="background-repeat: no-repeat; background-size: 15000px 34500px;">
 
-<nav id="daohanglan" >
-    <span id="dengluzhuce">
-        <ul class="top ">
-            <li><a id="Login_start_" class="btn btn-danger" style="width:100px;height:40px;border-radius:10px;">登陆</a></li>
-            <li> <a id="Regist_start_" class="btn btn-success" style="width:100px;height:40px;border-radius:10px;">注册</a></li>
-        </ul>
-    </span>
-	
-    <form  style="display:inline;position:relative;left:140px;">
-        <input type="text" id="s" placeholder="search" class="swap_value" style="width:150px;height:30px"/>
-        <input type="button" value="搜索" style="width:60px;height:30px" id="go" alt="Search" title="Search" />
-    </form>
-	
-</nav>
+	<nav id="daohanglan">
+		<span id="dengluzhuce">
+			<ul class="top ">
+				<li><a id="Login_start_" class="btn btn-danger"
+					style="width: 100px; height: 40px; border-radius: 10px;">登陆</a></li>
+				<li><a id="Regist_start_" class="btn btn-success"
+					style="width: 100px; height: 40px; border-radius: 10px;">注册</a></li>
+			</ul>
+		</span>
+
+		<form style="display: inline; position: relative; left: 140px;">
+			<input type="text" id="s" placeholder="search" class="swap_value"
+				style="width: 150px; height: 30px" /> <input type="button"
+				value="搜索" style="width: 60px; height: 30px" id="go" alt="Search"
+				title="Search" />
+		</form>
+
+	</nav>
 
 
-<!-- 会员登录  -->
-<!--<div id='Login_start' style="position: absolute;" >-->
-<div id='_start' >
-    <div id='_close' style="display: none;"> <span class="glyphicon glyphicon-remove"></span> </div>
-    <br />
-    <!--登录框-->
+	<!-- 会员登录  -->
+	<!--<div id='Login_start' style="position: absolute;" >-->
+	<div id='_start'>
+		<div id='_close' style="display: none;">
+			<span class="glyphicon glyphicon-remove"></span>
+		</div>
+		<br />
+		<!--登录框-->
 		<form action="LoginServlet?method=login" method="post">
 			<div id="login_container" style="background-color: #FFFFFF">
 				<div id="lab1">
@@ -116,14 +123,14 @@
 				</div>
 				<div id="form_container1">
 					<br /> <input type="text" class="form-control" placeholder="用户名"
-						id="login_number" name="id" /> 
-						<input type="password"
-						class="form-control" placeholder="密码" id="login_password" name="password" /> 
-						<input type="button"  class="btn btn-success" value="登录" id="login_btn" onclick="login()"/>
-				</div>   
+						id="login_number" name="id" /> <input type="password"
+						class="form-control" placeholder="密码" id="login_password"
+						name="password" /> <input type="button" class="btn btn-success"
+						value="登录" id="login_btn" onclick="login()" />
+				</div>
 			</div>
-		<!-- 会员注册 -->  
-		</form>	
+			<!-- 会员注册 -->
+		</form>
 		<form action="LoginServlet?method=register" method="post"
 			name="register">
 			<div id='regist_container'
@@ -156,73 +163,44 @@
 
 			</div>
 			<div class="row">
-            <div  id="alert-list"  class="alert alert-warning" style="display: none;margin-left: 10px;margin-right: 10px;text-align: left;color:red">
-                <ul>
-                    <li id="for-uid-illegal" style="display: none">用户名长度应为3-12位</li>
-                    <li id="for-uid-dup" style="display: none">用户名或账号已被占用</li>
-                    <li id="for-pwd" style="display: none">密码长度应为3-12位</li>
-                </ul>
-            </div>
-        </div>
+				<div id="alert-list" class="alert alert-warning"
+					style="display: none; margin-left: 10px; margin-right: 10px; text-align: left; color: red">
+					<ul>
+						<li id="for-uid-illegal" style="display: none">用户名长度应为3-12位</li>
+						<li id="for-uid-dup" style="display: none">用户名或账号已被占用</li>
+						<li id="for-pwd" style="display: none">密码长度应为3-12位</li>
+					</ul>
+				</div>
+			</div>
 		</form>
 	</div>
-<script type="text/javascript">
+	<script type="text/javascript">
+		function login() {
 
+			$.ajax({
+				data : {
+					'id' : $("#login_number").val(),
+					'password' : $("#login_password").val(),
+					'method' : 'login'
+				},
+				url : 'LoginServlet',//servlet
+				success : function(data) {
+					if (data.toString() == 'fail') {
+						alert('登陆失败');
+						window.location.reload();
+					} else if (data.toString() == 'success') {
+						window.location = 'Welcome.jsp';
+					}
 
-		function login(){  
-	
-		    $.ajax({ 	  
-		        data:{
-		            'id':$("#login_number").val(),
-		            'password':$("#login_password").val(),
-		            'method':'login'
-		        },
-		        url:'LoginServlet',//servlet
-		        success:function(data){
-		            if(data.toString()=='fail_2'){
-		                alert('账号未注册');
-		                window.location.reload(); 
-		            }else if(data.toString()=='success_0'){
-		            	window.location='Welcome.jsp';
-		            }else if(data.toString()=='fail_1'){
-		            	alert('账号未激活');
-		            	window.location.reload();
-		            }
-		            
-		        },error:function () {
-		            alert('请重试！');
-		            window.location.reload(); 
-		        }
-		    })
+				},
+				error : function() {
+					alert('请重试！');
+					window.location.reload();
+				}
+			})
 		}
-</script>
-<script type="text/javascript">
-
-function register1(){ 
-			
-		    $.ajax({ 	  
-		        data:{
-		        	'uid':$("#regist_id").val(),
-		            'account':$("#regist_account").val(),	
-		            'password':$("#regist_password").val(),
-		            'email':$("#regist_email").val(),
-		            'method':'register'
-		        },
-		        url:'LoginServlet',//servlet
-		        success:function(data){
-		            if(data.toString()=='fail_3'){
-		                alert('fail');
-		            }else if(data.toString()=='success_1'){
-		            	alert('成功');
-		            }
-		        },error:function () {  
-		            alert('请重试！');
-		        }
-		    })
-		} 
-
 	</script>
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function registe() {
 
 			$.ajax({
@@ -236,16 +214,13 @@ function register1(){
 
 					'method' : 'registe'
 				},
-				url : 'LoginServlet',//servlet
+				url : 'RegisterServlet',//servlet
 				success : function(data) {
-					if (data.toString() == 'fail_2') {
-						alert('账号未注册');
+					if (data.toString() == 'fail') {
+						alert('注册失败');
 						window.location.reload();
-					} else if (data.toString() == 'success_0') {
+					} else if (data.toString() == 'success') {
 						window.location = 'Welcome.jsp';
-					} else if (data.toString() == 'fail_1') {
-						alert('账号未激活');
-						window.location.reload();
 					}
 
 				},
@@ -257,45 +232,44 @@ function register1(){
 		}
 	</script>
 	<script>
-	 function testUid(){
-	        var aim_test=$("input[name='uid']").val();
-	        if(aim_test.length>12 || aim_test.length<3){
-	            $("#alert-list").show();
-	            $("#for-uid-illegal").show();
-	        }else{
-	            $("#for-uid-illegal").hide();
-	            $("#alert-list").hide();
-	        }
-	        $.ajax({
-	            url:'checkUid',
-	            data:{'uid':$("input[name='uid']").val(),
-	            	'name':$("input[name='name']").val(),
-	            	
-	
-	            },
-	            success:function(data){
-	                if(data.toString()=='fail_4'){
-	                    $("#alert-list").show();
-	                    $("#for-uid-dup").show();
-	                }else if(data.toString()=='success_2'){
-	                    $("#for-uid-dup").hide();
-	                    $("#alert-list").hide();
-	            } 
-	        }}) 
-	    }  
-	 function testpwd(){
-	        var aim_test=$("#regist_password").val();
-	        if(aim_test.length>12 || aim_test.length<3){
-	            $("#alert-list").show();
-	            $("#for-pwd").show();
-	        }else{ 
-	        	$("#alert-list").hide();
-	            $("#for-pwd").hide();
-	            
-	        }
-	 }
+		function testUid() {
+			var aim_test = $("input[name='uid']").val();
+			if (aim_test.length > 12 || aim_test.length < 3) {
+				$("#alert-list").show();
+				$("#for-uid-illegal").show();
+			} else {
+				$("#for-uid-illegal").hide();
+				$("#alert-list").hide();
+			}
+			$.ajax({
+				url : 'checkUid',
+				data : {
+					'uid' : $("input[name='uid']").val(),
+					'name' : $("input[name='name']").val(),
 
+				},
+				success : function(data) {
+					if (data.toString() == 'fail_4') {
+						$("#alert-list").show();
+						$("#for-uid-dup").show();
+					} else if (data.toString() == 'success_2') {
+						$("#for-uid-dup").hide();
+						$("#alert-list").hide();
+					}
+				}
+			})
+		}
+		function testpwd() {
+			var aim_test = $("#regist_password").val();
+			if (aim_test.length > 12 || aim_test.length < 3) {
+				$("#alert-list").show();
+				$("#for-pwd").show();
+			} else {
+				$("#alert-list").hide();
+				$("#for-pwd").hide();
 
+			}
+		}
 	</script>
 </body>
 
