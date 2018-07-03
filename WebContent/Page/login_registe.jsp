@@ -146,14 +146,14 @@
 						id="regist_id" name="uid" onkeyup="testUid()" /> <input
 						type="text" class="form-control" placeholder="手机号" id="regist_tel"
 						name="tel" onkeyup="testname()" /> <input type="text"
-						class="form-control" placeholder="地址" id="regist_add" name="tel"
+						class="form-control" placeholder="地址" id="regist_add" name="add"
 						onkeyup="testname()" /> 
 						<input type="password" class="form-control" placeholder="密码"
 						id="regist_password" name="password" onkeyup="testpwd()" />
 						<div style="color: black; margin-left: 0px">
 						性别：<select name="sex" id="regist_sex">
-							<option value="m" selected="selected">男</option>
-							<option value="f">女</option>
+							<option value="1" selected="selected">男</option>
+							<option value="0">女</option>
 						</select>
 					</div>
 					<div style="color: black; margin-left: 0px">
