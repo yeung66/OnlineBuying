@@ -147,10 +147,15 @@
 						type="text" class="form-control" placeholder="手机号" id="regist_tel"
 						name="tel" onkeyup="testname()" /> <input type="text"
 						class="form-control" placeholder="地址" id="regist_add" name="tel"
-						onkeyup="testname()" /> <input type="text" class="form-control"
-						placeholder="性别" id="regist_sex" name="tel" /> <input
-						type="password" class="form-control" placeholder="密码"
+						onkeyup="testname()" /> 
+						<input type="password" class="form-control" placeholder="密码"
 						id="regist_password" name="password" onkeyup="testpwd()" />
+						<div style="color: black; margin-left: 0px">
+						性别：<select name="sex" id="regist_sex">
+							<option value="m" selected="selected">男</option>
+							<option value="f">女</option>
+						</select>
+					</div>
 					<div style="color: black; margin-left: 0px">
 						账户类型：<select name="staus" id="regist_right">
 							<option value="0" selected="selected">普通用户</option>
