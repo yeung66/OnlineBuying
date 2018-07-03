@@ -124,7 +124,8 @@
 			</div>
 		<!-- 会员注册 -->  
 		</form>	
-		<form action="LoginServlet?method=register" method="post" name="register">
+		<form action="LoginServlet?method=register" method="post"
+			name="register">
 			<div id='regist_container'
 				style="display: none; background-color: #FFFFFF">
 				<div id="lab1">
@@ -135,18 +136,24 @@
 				</div>
 				<div id="form_container2" style="padding-top: 25px;">
 					<input type="text" class="form-control" placeholder="账号"
-						id="regist_id" name="uid" onkeyup="testUid()"/> 
-					<input type="text"class="form-control" placeholder="用户名" 
-						id="regist_account" name="name" onkeyup="testname()"/> 
-					<input type="password" class="form-control" placeholder="密码" 
-						id="regist_password" name="password" onkeyup="testpwd()"/>
-
-					<input type="text" class="form-control" placeholder="邮箱"
-						id="regist_email" name="email" />
-						<input type="button"   onclick="register1()" value="注册" class="btn btn-success"
-					id="regist_btn" />
+						id="regist_id" name="uid" onkeyup="testUid()" /> <input
+						type="text" class="form-control" placeholder="手机号" id="regist_tel"
+						name="tel" onkeyup="testname()" /> <input type="text"
+						class="form-control" placeholder="地址" id="regist_add" name="tel"
+						onkeyup="testname()" /> <input type="text" class="form-control"
+						placeholder="性别" id="regist_sex" name="tel" /> <input
+						type="password" class="form-control" placeholder="密码"
+						id="regist_password" name="password" onkeyup="testpwd()" />
+					<div style="color: black; margin-left: 0px">
+						账户类型：<select name="staus" id="regist_right">
+							<option value="0" selected="selected">普通用户</option>
+							<option value="1">商家</option>
+						</select>
+					</div>
+					<input type="button" onclick="register1()" value="注册"
+						class="btn btn-success" id="regist_btn" />
 				</div>
-				
+
 			</div>
 			<div class="row">
             <div  id="alert-list"  class="alert alert-warning" style="display: none;margin-left: 10px;margin-right: 10px;text-align: left;color:red">
@@ -214,6 +221,40 @@ function register1(){
 		    })
 		} 
 
+	</script>
+		<script type="text/javascript">
+		function registe() {
+
+			$.ajax({
+				data : {
+					'id' : $("#regist_id").val(),
+					'password' : $("#login_password").val(),
+					'tel' : $("#regist_tel").val(),
+					'add' : $("#regist_add").val(),
+					'sex' : $("#regist_sex").val(),
+					'right' : $("#regist_right").val(),
+
+					'method' : 'registe'
+				},
+				url : 'LoginServlet',//servlet
+				success : function(data) {
+					if (data.toString() == 'fail_2') {
+						alert('账号未注册');
+						window.location.reload();
+					} else if (data.toString() == 'success_0') {
+						window.location = 'Welcome.jsp';
+					} else if (data.toString() == 'fail_1') {
+						alert('账号未激活');
+						window.location.reload();
+					}
+
+				},
+				error : function() {
+					alert('请重试！');
+					window.location.reload();
+				}
+			})
+		}
 	</script>
 	<script>
 	 function testUid(){
