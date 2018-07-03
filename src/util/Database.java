@@ -5,7 +5,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * @ author: 杨浩麟
@@ -27,5 +29,16 @@ public class Database {
 
     public Connection getConnect() {
         return connect;
+    }
+
+    public boolean checkExist(String sql){
+        try {
+            Statement st = connect.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs.next();
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }
