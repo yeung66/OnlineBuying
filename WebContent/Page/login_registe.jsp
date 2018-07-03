@@ -14,7 +14,7 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
 	$(document).ready(function() {
-		//打开会员登录 
+		//打开会员登录  
 		$("#Login_start_").click(function() {
 			$("#alert-list").hide();
 			$("#regist_container").hide();
@@ -90,7 +90,7 @@
 				<li><a id="Regist_start_" class="btn btn-success"
 					style="width: 100px; height: 40px; border-radius: 10px;">注册</a></li>
 			</ul>
-		</span>
+		</span> 
 
 		<form style="display: inline; position: relative; left: 140px;">
 			<input type="text" id="s" placeholder="search" class="swap_value"
@@ -186,7 +186,7 @@
 				data : {
 					'id' : $("#login_number").val(),
 					'password' : $("#login_password").val(),
-					'method' : 'login'
+					'method' : 'login'					
 				},
 				url : 'LoginServlet',//servlet
 				success : function(data) {
