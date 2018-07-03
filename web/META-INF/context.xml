@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--这是数据连接池的配置文件，只有name可以自己定义 -->
+    <Context reloadable="true">
+        <Resource name="jdbc/orcl"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  maxTotal="100"
+                  maxIdle="30"
+                  maxWaitMillis="10000"
+                  maxActive="10"
+                  username="yeung"
+                  password="123456"
+                  driverClassName="com.mysql.jdbc.Driver"
+                  url="jdbc:mysql://120.78.150.152:3306/shixun?useUnicode=true&amp;characterEncoding=UTF-8"
+        />
+    </Context>
+    
