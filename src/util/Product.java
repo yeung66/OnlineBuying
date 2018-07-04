@@ -90,17 +90,17 @@ public class Product {
 	public static void insertProduct(Product p){
 		Connection conn = Database.getConnect();
 		try{
-			PreparedStatement pst = conn.prepareStatement("INSERT INTO `shixun`.`product` (`id`, `price`, `num`, `name`, `owner`, `path`, `score`,comnum) " +
+			PreparedStatement pst = conn.prepareStatement("INSERT INTO `shixun`.`product` ( `price`, `num`, `name`, `owner`, `path`, `score`,comnum) " +
 					"VALUES (?,?,?,?,?,?,?,?);");
 
-				pst.setInt(1,p.getId());
-				pst.setDouble(2,p.getPrice());
-				pst.setInt(3,p.getNum());
-				pst.setString(4,p.getName());
-				pst.setString(5,p.getOwner());
-				pst.setString(6,p.getPath());
-				pst.setDouble(7,p.getScore());
-				pst.setInt(8,p.getComnum());
+				//pst.setInt(1,p.getId());
+				pst.setDouble(1,p.getPrice());
+				pst.setInt(2,p.getNum());
+				pst.setString(3,p.getName());
+				pst.setString(4,p.getOwner());
+				pst.setString(5,p.getPath());
+				pst.setDouble(6,p.getScore());
+				pst.setInt(7,p.getComnum());
 				pst.executeUpdate();
 
 		}catch (SQLException e){

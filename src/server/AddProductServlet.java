@@ -22,9 +22,9 @@ public class AddProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String owner = (String)request.getSession().getAttribute("uid");
-        double price = (double)request.getSession().getAttribute("price");
+        double price = Double.valueOf(request.getParameter("price"));
         String path = request.getParameter("path");
         String num = request.getParameter("num");
-        //Product.insertProduct(new Product());
+        Product.insertProduct(new Product(0,price,Integer.valueOf(num),0,0,name,owner,path));
     }
 }
