@@ -42,6 +42,17 @@ public class Database {
         }
     }
 
+    public static int update(String sql) {
+        Connection connect=getConnect();
+        try {
+            Statement st = connect.createStatement();
+            int rs = st.executeUpdate(sql);
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
     /**
      * @ author: 叶晟柯
      * @ date: 2018/7/3 16.24

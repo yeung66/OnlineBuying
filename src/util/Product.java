@@ -1,11 +1,17 @@
 package util;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
 public class Product {
-	private int id, price, num, score, comnum;
+	private int id,  num,  comnum;
+	private double score,price;
 	private String name, path;
 	private String owner;
 	
-	public Product(int id, int price, int num, int score, int comnum, String name, String owner, String path) {
+	public Product(int id, double price, int num, double score, int comnum, String name, String owner, String path) {
 		super();
 		this.id = id;
 		this.price = price;
@@ -25,7 +31,7 @@ public class Product {
 		this.id = id;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
@@ -41,7 +47,7 @@ public class Product {
 		this.num = num;
 	}
 
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
 
@@ -79,6 +85,30 @@ public class Product {
 
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+
+	public static void insertProduct(Product p){
+		Connection conn = Database.getConnect();
+		try{
+			PreparedStatement pst = conn.prepareStatement("INSERT INTO `shixun`.`product` (`id`, `price`, `num`, `name`, `owner`, `path`, `score`,comnum) " +
+					"VALUES (?,?,?,?,?,?,?,?);");
+
+				pst.setInt(1,p.getId());
+				pst.setDouble(2,p.getPrice());
+				pst.setInt(3,p.getNum());
+				pst.setString(4,p.getName());
+				pst.setString(5,p.getOwner());
+				pst.setString(6,p.getPath());
+				pst.setDouble(7,p.getScore());
+				pst.setInt(8,p.getComnum());
+				pst.executeUpdate();
+
+		}catch (SQLException e){
+			e.printStackTrace();
+
+		}
+
+
 	}
 
 }
