@@ -206,7 +206,7 @@
 		}
 	</script>
 	<script type="text/javascript">
-		function registe() {
+		function register() {
 
 			$.ajax({
 				data : {
