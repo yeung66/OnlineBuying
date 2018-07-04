@@ -14,9 +14,12 @@ import segmenter.*;
  * @ date: 2018/7/3 11:16
  */
 public class Database {
-    private Connection connect;
+    //private Connection connect;
 
-    public Database() {
+
+
+    public static Connection getConnect() {
+        Connection connect=null;
         try {
             Context ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/orcl");
@@ -24,14 +27,11 @@ public class Database {
         } catch (NamingException | SQLException e) {
             e.printStackTrace();
         }
-
-    }
-
-    public Connection getConnect() {
         return connect;
     }
 
-    public boolean checkExist(String sql) {
+    public static boolean checkExist(String sql) {
+        Connection connect=getConnect();
         try {
             Statement st = connect.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -46,7 +46,8 @@ public class Database {
      * @ author: 叶晟柯
      * @ date: 2018/7/3 16.24
      */
-    public List<Product> searchProduct(String s) {
+    public static List<Product> searchProduct(String s) {
+        Connection connect=getConnect();
         segmenter segmt = new segmenter();
         List<String> nouns = segmt.seg(s);
         String sql = "select * from product where name like '";

@@ -21,9 +21,8 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("id");
         String password = request.getParameter("password");
         String type = request.getParameter("type");
-        Database db = new Database();
         String sql = "select * from users where id="+username+" and pwd="+password;
-        if(db.checkExist(sql)){
+        if(Database.checkExist(sql)){
             response.getWriter().print("success");
         }else {
             response.getWriter().print("fail");
@@ -33,6 +32,6 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        //doPost(request,response);
     }
 }

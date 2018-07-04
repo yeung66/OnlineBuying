@@ -162,7 +162,7 @@
 							<option value="1">商家</option>
 						</select>
 					</div>
-					<input type="button" onclick="register1()" value="注册"
+					<input type="button" onclick="register()" value="注册"
 						class="btn btn-success" id="regist_btn" />
 				</div>
 
@@ -207,7 +207,7 @@
 		}
 	</script>
 	<script type="text/javascript">
-		function registe() {
+		function register() {
 
 			$.ajax({
 				data : {

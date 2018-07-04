@@ -15,7 +15,7 @@ import util.User;
 /**
  * Servlet implementation class SignUp
  */
-@WebServlet("/RegisterServlet")
+	@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
