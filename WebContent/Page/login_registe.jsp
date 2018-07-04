@@ -145,9 +145,8 @@
 					<input type="text" class="form-control" placeholder="账号"
 						id="regist_id" name="uid" onkeyup="testUid()" /> <input
 						type="text" class="form-control" placeholder="手机号" id="regist_tel"
-						name="tel" onkeyup="testname()" /> <input type="text"
-						class="form-control" placeholder="地址" id="regist_add" name="add"
-						onkeyup="testname()" /> 
+						name="tel" onkeyup="testTel()" /> <input type="text"
+						class="form-control" placeholder="地址" id="regist_add" name="add"/> 
 						<input type="password" class="form-control" placeholder="密码"
 						id="regist_password" name="password" onkeyup="testpwd()" />
 						<div style="color: black; margin-left: 0px">
@@ -174,6 +173,7 @@
 						<li id="for-uid-illegal" style="display: none">用户名长度应为3-12位</li>
 						<li id="for-uid-dup" style="display: none">用户名或账号已被占用</li>
 						<li id="for-pwd" style="display: none">密码长度应为3-12位</li>
+						<li id="for-tel" style="display: none">请输入合法电话号码</li>
 					</ul>
 				</div>
 			</div>
@@ -274,6 +274,17 @@
 				$("#alert-list").hide();
 				$("#for-pwd").hide();
 
+			}
+		}
+		function testTel() {
+			var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+			var aim_test = $("#regist_tel").val();
+			if (!myreg.test(aim_test)) {
+				$("#alert-list").show();
+				$("#for-tel").show();
+			} else {
+				$("#alert-list").hide();
+				$("#for-tel").hide();
 			}
 		}
 	</script>
