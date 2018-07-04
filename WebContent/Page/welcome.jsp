@@ -8,9 +8,9 @@
 
 </head>
 <body>
-<form>
+<form action="" method="post">
 			<input type="text" id="search" placeholder="search" 
-				style="width: 150px; height: 30px" /> <input type="button" onclick="showGood()"
+				style="width: 150px; height: 30px" /> <input type="submit" 
 				value="搜索" style="width: 60px; height: 30px" id="go" alt="Search"
 				title="Search" />
 				<br/>
