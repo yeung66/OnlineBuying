@@ -14,7 +14,7 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
 	$(document).ready(function() {
-		//打开会员登录 
+		//打开会员登录  
 		$("#Login_start_").click(function() {
 			$("#alert-list").hide();
 			$("#regist_container").hide();
@@ -90,7 +90,7 @@
 				<li><a id="Regist_start_" class="btn btn-success"
 					style="width: 100px; height: 40px; border-radius: 10px;">注册</a></li>
 			</ul>
-		</span>
+		</span> 
 
 		<form style="display: inline; position: relative; left: 140px;">
 			<input type="text" id="s" placeholder="search" class="swap_value"
@@ -146,11 +146,16 @@
 						id="regist_id" name="uid" onkeyup="testUid()" /> <input
 						type="text" class="form-control" placeholder="手机号" id="regist_tel"
 						name="tel" onkeyup="testname()" /> <input type="text"
-						class="form-control" placeholder="地址" id="regist_add" name="tel"
-						onkeyup="testname()" /> <input type="text" class="form-control"
-						placeholder="性别" id="regist_sex" name="tel" /> <input
-						type="password" class="form-control" placeholder="密码"
+						class="form-control" placeholder="地址" id="regist_add" name="add"
+						onkeyup="testname()" /> 
+						<input type="password" class="form-control" placeholder="密码"
 						id="regist_password" name="password" onkeyup="testpwd()" />
+						<div style="color: black; margin-left: 0px">
+						性别：<select name="sex" id="regist_sex">
+							<option value="1" selected="selected">男</option>
+							<option value="0">女</option>
+						</select>
+					</div>
 					<div style="color: black; margin-left: 0px">
 						账户类型：<select name="staus" id="regist_right">
 							<option value="0" selected="selected">普通用户</option>
@@ -181,7 +186,7 @@
 				data : {
 					'id' : $("#login_number").val(),
 					'password' : $("#login_password").val(),
-					'method' : 'login'
+					'method' : 'login'					
 				},
 				url : 'login',//servlet
 				type:'post',
