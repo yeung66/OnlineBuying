@@ -234,18 +234,6 @@
 					window.location.reload();
 				}
 			})
-		}
-	</script>
-	<script>
-		function testUid() {
-			var aim_test = $("input[name='uid']").val();
-			if (aim_test.length > 12 || aim_test.length < 3) {
-				$("#alert-list").show();
-				$("#for-uid-illegal").show();
-			} else {
-				$("#for-uid-illegal").hide();
-				$("#alert-list").hide();
-			}
 			$.ajax({
 				url : 'checkUid',
 				data : {
@@ -263,6 +251,19 @@
 					}
 				}
 			})
+		}
+	</script>
+	<script>
+		function testUid() {
+			var aim_test = $("input[name='uid']").val();
+			if (aim_test.length > 12 || aim_test.length < 3) {
+				$("#alert-list").show();
+				$("#for-uid-illegal").show();
+			} else {
+				$("#for-uid-illegal").hide();
+				$("#alert-list").hide();
+			}
+			
 		}
 		function testpwd() {
 			var aim_test = $("#regist_password").val();
