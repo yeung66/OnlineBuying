@@ -68,12 +68,14 @@
 					<div class="col-md-3 col-md2">
 						<div class="col-md1 simpleCart_shelfItem">
 
+
 							<%
 								List<Product> goodsList=Product.getAllGoodList();
 								for(int i=0;i<goodsList.size();i++){
 							%>
 							<!--<a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>" target="_blank">-->
                     <img class="img-responsive" src=<%=goodsList.get(i).getPath()%> alt="图片" />
+
 							</a>
 							<h3>
 								<a

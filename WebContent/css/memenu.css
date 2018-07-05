@@ -1,3 +1,10 @@
+.img4index{
+  display: block;
+  width: 250px;
+  height:300px;
+}
+
+
 .memenu
 {margin:0;padding:0;width:100%;list-style:none;display:inline-block;position:relative;font-family:Calibri,Arial;font-size:15px}
 .memenu li{display:inline-block;}
