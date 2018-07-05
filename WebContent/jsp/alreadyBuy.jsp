@@ -23,17 +23,17 @@
 -->
 
 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="../css/another_style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="../css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/cartTable.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/responsiveslides.min.js"></script>
+<script type="text/javascript" src="../js/memenu.js"></script>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css"
-		  media="all" />
-	<link href="../css/another_style.css" rel="stylesheet" type="text/css"
-		  media="all" />
-	<link href="../css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="../css/cartTable.css" rel="stylesheet" type="text/css" media="all" />
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
-	<script type="text/javascript" src="../js/responsiveslides.min.js"></script>
-	<script type="text/javascript" src="../js/memenu.js"></script>
 </head>
 <body>
 	<!--插入head-->
@@ -66,6 +66,7 @@
                -->
                
 				<tr>
+
 					<td><img src="<%=p.getPath()%>"
 						width="70px" height="70px"></td>
 					<td><%=p.getName()%></td>
@@ -74,6 +75,7 @@
 					<td><%=p.getPrice()*o.getQuantity()%></td>
 					<td><%=o.getStartTime()%></td>
 					<td><a href="jsp/alreadyBuy.jsp?"><%=o.getStates()%></a></td>
+
 					<!--需要代码根据order的id是否已签收和是否已进行过评价判断，如果状态是已签收+未评价才能进行跳转到comment.jsp-->
 					<%--暂未实现--%>
 					<td><a
