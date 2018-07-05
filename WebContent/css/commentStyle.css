@@ -1,0 +1,81 @@
+.commentTable{
+		font:15px "Helvetica Neue",Arial, Helvetica, sans-serif;
+		color: #555; 
+		width:425px;
+		margin: auto;
+		padding-left: 30%;
+		padding-right:30% ;
+}
+.commentTable tr{
+	height:30px;
+}
+.comA{
+	width:25%;
+	float: left;
+	text-align: left;
+}
+.comB{
+	width: 75%;
+	float:left;
+}
+
+.buttons{
+  padding: 0.5em 1em;
+  color: #FFF;
+  background: #52D0C4;
+  margin: 0.5em 0 0;
+  font-size: 1em;
+  display: inline-block;
+  line-height: 1.6em;
+  text-align: center;
+  text-decoration: none;
+  margin-left:20px ;
+  margin-right: 20px;
+  border:none;
+}
+.buttons:hover{
+  background: #000;
+}
+
+
+textarea{
+	margin-top:30px ;
+	width: 400px;
+	max-width: 400px;
+	height: 80px;
+	max-height: 80px;
+	resize: none;
+}
+ .rating >input {
+        position: absolute;
+        clip: rect(0 0 0 0);
+    }
+     .rating {
+        font-size: 0;
+        display: table;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    .rating > label:before {
+        padding-right: 5px;
+        font-size: 24px;
+        line-height: 1em;
+        display: inline-block;
+        content: "★";
+    }
+
+    .rating > input:checked ~ label,
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+        color: #FFD700;
+    }
+
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label,
+    .rating > input:checked ~ label:hover ~ label {
+        opacity: 0.5;
+    }
