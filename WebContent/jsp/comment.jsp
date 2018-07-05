@@ -3,7 +3,13 @@
 -->
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-
+<%@page import="util.*" %>
+<% 
+	int oid = Integer.parseInt(request.getParameter("oid")); 
+	String pname = request.getParameter("pname");
+	String path = request.getParameter("path");
+	int pid = Integer.parseInt(request.getParameter("pid")); 
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +37,7 @@
         -->
 	    <form class="commentForm" action="comment" method="get" >
 	        <div class="leftControl">
-	            <!--显示信息的表格，需要把订单号、商品名、图片链接传输过来，然后在td里面添加代码<%=xxx.get(i).getyyy%>-->
+	            <!--显示信息的表格，需要把订单号、商品名、图片链接传输过来，然后在td里面添加代码-->
 		        <table class="commentTable">
 			        <tr>
 			            <th class="comA"></th>
@@ -39,15 +45,15 @@
 			        </tr>
 			        <tr>
 				        <td class="comA">订单号</td>
-				        <td class="comB">xxx</td>
+				        <td class="comB"><%=oid %></td>
 			        </tr>
 			        <tr>
 			            <td class="comA">商品名</td>
-			            <td class="comB">xxxx</td>
+			            <td class="comB"><%=pname %></td>
 			        </tr>
 			        <tr>
 			            <td class="comA">图片</td>
-			            <td class="comB"><img width="50px" height="50px" src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/f8795a43541669.57f38b1b5e4ac.jpg"
+			            <td class="comB"><img width="50px" height="50px" src=<%=path %>
 						></td>
 			        </tr>
 			        <tr>
@@ -68,8 +74,12 @@
 			        </tr>
 		        </table>
 	            <center>
+	            	<input type="hidden" value="<%=oid %>" name="oid"></input>
+	            	<input type="hidden" value="<%=pname %>" name="pname"></input>
+	            	<input type="hidden" value="<%=path%>" name="path"></input>
+	            	<input type="hidden" value="<%=pid %>" name="pid"></input>
 	                <!--textarea里面输入评论，可以给它添加name进行使用-->
-                    <textarea cols="50" rows="6" placeholder="在这里输入评价……" maxlength="200"></textarea><br>
+                    <textarea cols="50" rows="6" placeholder="在这里输入评价……" maxlength="200" name="content" ></textarea><br>
                     <input type="submit" class="buttons" value="确定"  name="submit" />
                     <input type="reset" class="buttons" value="重置"  name="reset" />
                 </center>
