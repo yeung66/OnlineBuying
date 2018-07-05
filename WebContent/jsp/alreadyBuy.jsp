@@ -32,7 +32,6 @@
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/memenu.js"></script>
-<script type="text/javascript" src="../js/simpleCart.min.js"></script>
 
 </head>
 <body>
@@ -58,6 +57,7 @@
 					这个是项目原本的代码
 				<%
 					List<Order> orderList = Order.getOrderList((String)request.getSession().getAttribute("uid"));
+					if(orderList!=null){
 					for(Order o:orderList){
 					    Product p =Product.getProductInfo(o.getProduct());
 
@@ -66,7 +66,7 @@
                
 				<tr>
 					<td><img src="<%=p.getPath()%>"
-						class="img-responsive" alt=""></td>
+							 width="70px" height="70px"></td>
 					<td><%=p.getName()%></td>
 					<td><%=o.getQuantity()%></td>
 					<td><%=p.getPrice()%></td>
@@ -76,10 +76,12 @@
 					<!--需要代码根据order的id是否已签收和是否已进行过评价判断，如果状态是已签收+未评价才能进行跳转到comment.jsp-->
 					<%--暂未实现--%>
 					<td><a
-						href="jsp/alreadyBuy.jsp?oid=<%=o.getId() %>&pname=<%=p.getName() %>&path=<%p.getPath() %>&pid=<%p.getId() %>"
-						onclick="return confirmComment()" disabled="true">评价</a></td>
+						href="jsp/comment.jsp?oid=<%=o.getId() %>&pname=<%=p.getName() %>&path=<%=p.getPath() %>&pid=<%=p.getId() %>"
+						onclick="return confirmComment()" >评价</a></td>
 				</tr>
-				<%}%>
+				<%}}else {
+
+				}%>
 			</table>
 	</div></center>
 </body>
