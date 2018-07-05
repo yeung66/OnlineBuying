@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="java.util.List"%>
+<%@ page import="util.Product" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -67,19 +68,23 @@
 					<div class="col-md-3 col-md2">
 						<div class="col-md1 simpleCart_shelfItem">
 
-							<!--<a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getGid()%>" target="_blank">-->
-                    <img class="img-responsive" src=<%=photoPath%> alt="图片" />
+							<%
+								List<Product> goodsList=Product.getAllGoodList();
+								for(int i=0;i<goodsList.size();i++){
+							%>
+							<!--<a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>" target="_blank">-->
+                    <img class="img-responsive" src=<%=goodsList.get(i).getPath()%> alt="图片" />
 							</a>
 							<h3>
 								<a
-									href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getGid()%>"
-									target="_blank"><%=goodsList.get(i).getGname()%></a>
+									href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>"
+									target="_blank"><%=goodsList.get(i).getName()%></a>
 							</h3>
 							<div class="price">
 								<h5 class="item_price"><%=goodsList.get(i).getPrice()%>元
 								</h5>
 								<a
-									href="jsp/addToCart.jsp?gid=<%=goodsList.get(i).getGid()%>&buyNumber=1"
+									href="jsp/addToCart.jsp?gid=<%=goodsList.get(i).getId()%>&buyNumber=1"
 									class="item_add">加入购物车</a>
 								<div class="clearfix"></div>
 							</div>
@@ -92,6 +97,7 @@
 				</div>
 				<%
 
+					}
 					}
 				%>
 			</div>

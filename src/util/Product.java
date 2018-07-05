@@ -1,8 +1,7 @@
 package util;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
@@ -10,7 +9,8 @@ public class Product {
 	private double score,price;
 	private String name, path;
 	private String owner;
-	
+
+	public Product(){}
 	public Product(int id, double price, int num, double score, int comnum, String name, String owner, String path) {
 		super();
 		this.id = id;
@@ -35,7 +35,7 @@ public class Product {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -109,6 +109,27 @@ public class Product {
 		}
 
 
+
 	}
 
+	public static List<Product> getAllGoodList(){
+		Connection conn = Database.getConnect();
+		try{
+			Statement st = conn.createStatement();
+			ResultSet rs= st.executeQuery("SELECT id,price,name,path from product");
+			List<Product> result =new ArrayList<>();
+			while (rs.next()){
+				Product p = new Product();
+				p.setId(rs.getInt("id"));
+				p.setPrice(rs.getDouble("price"));
+				p.setName(rs.getString("name"));
+				p.setPath(rs.getString("path"));
+				result.add(p);
+			}
+			return result;
+		}catch (SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
