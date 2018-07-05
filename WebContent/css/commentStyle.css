@@ -1,18 +1,21 @@
 .commentTable{
 		font:15px "Helvetica Neue",Arial, Helvetica, sans-serif;
 		color: #555; 
-		margin-left: 37%;
+		width:425px;
+		margin: auto;
+		padding-left: 30%;
+		padding-right:30% ;
 }
 .commentTable tr{
 	height:30px;
 }
 .comA{
-	width:100px;
+	width:25%;
 	float: left;
 	text-align: left;
 }
 .comB{
-	width: 300px;
+	width: 75%;
 	float:left;
 }
 
@@ -36,6 +39,7 @@
 
 
 textarea{
+	margin-top:30px ;
 	width: 400px;
 	max-width: 400px;
 	height: 80px;

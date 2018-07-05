@@ -20,7 +20,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("id");
         String password = request.getParameter("password");
-        String type = request.getParameter("type");
         String sql = "select * from users where id="+username+" and pwd="+password;
         if(Database.checkExist(sql)){
             request.getSession().setAttribute("uid",username);

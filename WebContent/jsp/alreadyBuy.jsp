@@ -22,18 +22,18 @@
 	<base href="<%=basePath%>">
 -->
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="../css/bootstrap.css" rel="stylesheet" type="text/css"
-	media="all" />
-<link href="../css/another_style.css" rel="stylesheet" type="text/css"
-	media="all" />
-<link href="../css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../css/cartTable.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/responsiveslides.min.js"></script>
-<script type="text/javascript" src="../js/memenu.js"></script>
-<script type="text/javascript" src="../js/simpleCart.min.js"></script>
 
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css"
+		  media="all" />
+	<link href="../css/another_style.css" rel="stylesheet" type="text/css"
+		  media="all" />
+	<link href="../css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/cartTable.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/responsiveslides.min.js"></script>
+	<script type="text/javascript" src="../js/memenu.js"></script>
 </head>
 <body>
 	<!--插入head-->
@@ -58,6 +58,7 @@
 					这个是项目原本的代码
 				<%
 					List<Order> orderList = Order.getOrderList((String)request.getSession().getAttribute("uid"));
+					if(orderList!=null){
 					for(Order o:orderList){
 					    Product p =Product.getProductInfo(o.getProduct());
 
@@ -66,7 +67,7 @@
                
 				<tr>
 					<td><img src="<%=p.getPath()%>"
-						class="img-responsive" alt=""></td>
+						width="70px" height="70px"></td>
 					<td><%=p.getName()%></td>
 					<td><%=o.getQuantity()%></td>
 					<td><%=p.getPrice()%></td>
@@ -79,7 +80,12 @@
 						href="jsp/alreadyBuy.jsp?oid="
 						onclick="return confirmComment()" disabled="true">评价</a></td>
 				</tr>
-				<%}%>
+				<%
+					}}else {
+
+					}
+
+				%>
 			</table>
 	</div></center>
 </body>

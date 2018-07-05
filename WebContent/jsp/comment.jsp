@@ -47,7 +47,7 @@
 			        </tr>
 			        <tr>
 			            <td class="comA">图片</td>
-			            <td class="comB"><img width="100px" height="100px" src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/f8795a43541669.57f38b1b5e4ac.jpg"
+			            <td class="comB"><img width="50px" height="50px" src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/f8795a43541669.57f38b1b5e4ac.jpg"
 						></td>
 			        </tr>
 			        <tr>
