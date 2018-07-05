@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
         String type = request.getParameter("type");
         String sql = "select * from users where id="+username+" and pwd="+password;
         if(Database.checkExist(sql)){
-            request.getSession().setAttribute("id",username);
+            request.getSession().setAttribute("uid",username);
             response.getWriter().print("success");
         }else {
             response.getWriter().print("fail");

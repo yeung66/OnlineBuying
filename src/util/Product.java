@@ -132,4 +132,22 @@ public class Product {
 			return null;
 		}
 	}
+
+	public static Product getProductInfo(int productID){
+		Connection conn = Database.getConnect();
+		try{
+			Statement st=conn.createStatement();
+			ResultSet rs =  st.executeQuery("select * from product where id="+productID);
+			if(rs.next()){
+				Product p = new Product(rs.getInt("id"),rs.getDouble("price"),rs.getInt("num"),
+						rs.getDouble("score"),rs.getInt("comnum"),rs.getString("name"),
+						rs.getString("owner"),rs.getString("path"));
+				return p;
+			}
+		}catch (SQLException e){
+			e.printStackTrace();
+
+		}
+		return null;
+	}
 }

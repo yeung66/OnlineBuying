@@ -1,13 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="util.Order" %>
+<%@ page import="util.Product" %>
 <!--
-<%@page import="com.czy.bean.AlreadyBuy"%>
-<%@page import="com.czy.dao.AlreadyBuyDao"%>
-<%@page import="com.czy.bean.Goods"%>
-<%@page import="com.czy.dao.GoodsDao"%>
-<%@page import="com.czy.service.GoodsService"%>
-<%@page import="com.czy.bean.ShoppingCart"%>
-<%@page import="java.util.List"%>
-<%@page import="com.czy.factory.DAOFactory"%>
-<%@page import="com.czy.dao.ShoppingCartDao"%>
+
 <%@ page language="java" pageEncoding="utf-8"%>
 
 下面这段代码是用来统一路径的，使用后要改下面的link和script引用包的地址，把每个路径前面的../去掉
@@ -62,49 +57,29 @@
 				<!--
 					这个是项目原本的代码
 				<%
-					String strUid = (String) session.getAttribute("uid");
-					int uid = 0;
-					if (strUid != null) {
-						uid = Integer.parseInt(strUid);
-					}
-					AlreadyBuyDao dao = DAOFactory.getAlreadyBuyServiceInstance();
-					List<AlreadyBuy> abList = dao.getAllBuyGoods(uid);
-					if (abList != null & abList.size() > 0) {
-						GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-						Goods goods;
-						AlreadyBuy ab;
-						int gid;
-						int number;
-						String buyTime;
-						String photoPath;
-						float price;
-						float totalPrice;
-						for (int i = 0; i < abList.size(); i++) {
-							ab = abList.get(i);
-							gid = ab.getGid();
-							number = ab.getNumber();
-							buyTime = ab.getBuyTime();
-							goods = goodsDao.queryById(gid);
-							photoPath = "images/" + goods.getPhoto().split("&")[0];
-							price = goods.getPrice();
-							totalPrice = number * price + goods.getCarriage();
+					List<Order> orderList = Order.getOrderList((String)request.getSession().getAttribute("uid"));
+					for(Order o:orderList){
+					    Product p =Product.getProductInfo(o.getProduct());
+
 				%>
                -->
                
 				<tr>
-					<td><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/f8795a43541669.57f38b1b5e4ac.jpg"
+					<td><img src="<%=p.getPath()%>"
 						class="img-responsive" alt=""></td>
-					<td>linear lamp</td>
-					<td>1</td>
-					<td>100元</td>
-					<td>100元</td>
-					<td>2018/7/3 15:34</td>
-					<td><a href="jsp/alreadyBuy.jsp?">例：未发货</td>
+					<td><%=p.getName()%></td>
+					<td><%=o.getQuantity()%></td>
+					<td><%=p.getPrice()%></td>
+					<td><%=p.getPrice()*o.getQuantity()%></td>
+					<td><%=o.getStartTime()%></td>
+					<td><a href="jsp/alreadyBuy.jsp?"><%=o.getStates()%></a></td>
 					<!--需要代码根据order的id是否已签收和是否已进行过评价判断，如果状态是已签收+未评价才能进行跳转到comment.jsp-->
+					<%--暂未实现--%>
 					<td><a
-						href="jsp/alreadyBuy.jsp?oid=<%=oid%>
-						onclick="return confirmComment()">评价</a></td>
+						href="jsp/alreadyBuy.jsp?oid="
+						onclick="return confirmComment()" disabled="true">评价</a></td>
 				</tr>
+				<%}%>
 			</table>
 	</div></center>
 </body>

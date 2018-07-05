@@ -1,12 +1,15 @@
 package util;
 
-import java.sql.Date;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 	private int id, product, quantity;
 	private String purchaser, states;
 	private Date startTime;
-	
+
+	public Order(){}
 	public Order(int id, int product, int quantity, String purchaser, String states, Date startTime) {
 		super();
 		this.id = id;
@@ -53,5 +56,29 @@ public class Order {
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
-	
+
+	public static List<Order> getOrderList(String buyerID){
+		Connection conn = Database.getConnect();
+		try{
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("select * from orders where purchaser="+buyerID);
+			List<Order> result = new ArrayList<>();
+			while(rs.next()){
+
+				Order o = new Order();
+				o.setId(rs.getInt("id"));
+				o.setProduct(rs.getInt("product"));
+				o.setQuantity(rs.getInt("quantity"));
+				o.setPurchaser(rs.getString("purchaser"));
+				o.setStates(rs.getString("states"));
+				o.setStartTime(rs.getDate("startTime"));
+				result.add(o);
+			}
+			return result;
+		}catch (SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 }
