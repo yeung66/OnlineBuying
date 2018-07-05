@@ -68,7 +68,7 @@
 						<div class="col-md1 simpleCart_shelfItem">
 
 							<!--<a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getGid()%>" target="_blank">-->
-                    <img class="img-responsive" src=<%=photoPath%> alt="图片" />
+                    <img class="img4index" src=<%=photoPath%> alt="图片" />
 							</a>
 							<h3>
 								<a
