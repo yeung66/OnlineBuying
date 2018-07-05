@@ -1,6 +1,11 @@
 package server;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +49,22 @@ public class CommentServlet extends HttpServlet {
 		int product = (int) request.getSession().getAttribute("orderId");
 		String purchaser = request.getSession().getAttribute("purchaser").toString();
 		String sql = "INSERT INTO comment (id, content, product, purchaser, score) VALUES (, '" + content + "', '"
-				+ product + "', '" + purchaser + "', '"+score+"');" ;
+				+ product + "', '" + purchaser + "', '" + score + "');";
+		Database.update(sql);
+		sql = "SELECT comnum, score FROM product WHERE id = '" + product + "';";
+		int comnum, oldscore;
+		Connection connect = Database.getConnect();
+		try {
+			Statement st = connect.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			comnum = rs.getInt("comnum") + 1;
+			oldscore = rs.getInt("oldscore");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return;
+		}
+		score = (oldscore * (comnum - 1) + score) / comnum;
+		sql = "UPDATE product SET score=" + comnum + "', comnum='" + oldscore + "'WHERE id='" + product + "';";
 		Database.update(sql);
 	}
 
