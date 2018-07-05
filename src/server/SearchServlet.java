@@ -1,5 +1,6 @@
 package server;
 
+import com.alibaba.fastjson.JSON;
 import util.Database;
 import util.Product;
 
@@ -22,13 +23,15 @@ public class SearchServlet extends HttpServlet {
         String search = request.getParameter("search");
         List<Product> list= Database.searchProduct(search);
         HttpSession session=request.getSession();
-        if (list != null) {
+      /*  if (list != null) {
               session.setAttribute("search",list);
               request.getRequestDispatcher("search.jsp").forward(request,response);
         }
         else {
             session.setAttribute("search", "failed");
-        }
+        }*/
+        String Jsonproduct = JSON.toJSONString(list);
+        response.getWriter().print(Jsonproduct);
     }
 
 
