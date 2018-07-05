@@ -40,8 +40,7 @@
 	            <!--显示信息的表格，需要把订单号、商品名、图片链接传输过来，然后在td里面添加代码-->
 		        <table class="commentTable">
 			        <tr>
-			            <th class="comA"></th>
-			            <th class="comB"></th>
+						<th colspan="2"><b><center>商品评分</center></b></th>
 			        </tr>
 			        <tr>
 				        <td class="comA">订单号</td>

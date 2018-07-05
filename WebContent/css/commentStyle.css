@@ -1,21 +1,38 @@
-.commentTable{
+
+.leftControl{
 		font:15px "Helvetica Neue",Arial, Helvetica, sans-serif;
 		color: #555; 
-		width:425px;
-		margin: auto;
-		padding-left: 30%;
-		padding-right:30% ;
+		width:400px;
+		margin-top:30px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-bottom:30px;
+		border:1px solid #d3d3d3;
+		background:#fefefe;
+		-moz-border-radius:5px; /* FF1+ */
+		-webkit-border-radius:5px; /* Saf3-4 */
+		border-radius:5px;
+		-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+		-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+.commentTable{
+	width: 250px;
+	margin-top: 20px;
+	margin-left:60px;
+	margin-right: 20%;
 }
 .commentTable tr{
 	height:30px;
 }
-.comA{
-	width:25%;
+	
+.comA {
+	width:30%;
 	float: left;
-	text-align: left;
+	text-align:left;
 }
+
 .comB{
-	width: 75%;
+	width:70%;
 	float:left;
 }
 
@@ -39,9 +56,8 @@
 
 
 textarea{
-	margin-top:30px ;
-	width: 400px;
-	max-width: 400px;
+	width: 300px;
+	max-width: 300px;
 	height: 80px;
 	max-height: 80px;
 	resize: none;
