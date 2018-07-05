@@ -7,8 +7,9 @@
                   maxTotal="50"
                   maxIdle="10"
                   maxWaitMillis="3000"
-                  maxActive="10"
-                  removeAbandoned="true"
+
+                  removeAbandonedOnMaintenance="true"
+                  removeAbandonedOnBorrow="true"
                   username="yeung"
                   password="123456"
                   driverClassName="com.mysql.jdbc.Driver"

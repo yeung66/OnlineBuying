@@ -69,5 +69,5 @@ public class AlterOrderServlet extends HttpServlet {
 				+ states + "', quantuty = '" + quantity + "', starttime = '" + starttime + "' WHERE id = "+ id +";";
 		Database.update(sql);
 	}
-	
+
 }
