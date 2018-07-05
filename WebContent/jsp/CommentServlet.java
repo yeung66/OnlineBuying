@@ -47,7 +47,7 @@ public class CommentServlet extends HttpServlet {
 		int score = Integer.parseInt(request.getParameter("rating"));
 		String content = request.getParameter("content");
 		int product = Integer.parseInt(request.getParameter("pid"));
-		String purchaser = request.getSession().getAttribute("purchaser").toString();
+		String purchaser = request.getSession().getAttribute("uid").toString();
 		String sql = "INSERT INTO comment (id, content, product, purchaser, score) VALUES (, '" + content + "', '"
 				+ product + "', '" + purchaser + "', '" + score + "');";
 		Database.update(sql);
