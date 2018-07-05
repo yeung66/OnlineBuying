@@ -65,14 +65,15 @@
 		<div class="container">
 			<div class="content-top">
 				<div class="content-top1">
+					<%
+						List<Product> goodsList=Product.getAllGoodList();
+						for(int i=0;i<goodsList.size();i++){
+					%>
 					<div class="col-md-3 col-md2">
 						<div class="col-md1 simpleCart_shelfItem">
 
 
-							<%
-								List<Product> goodsList=Product.getAllGoodList();
-								for(int i=0;i<goodsList.size();i++){
-							%>
+
 							<!--<a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>" target="_blank">-->
                     <img class="img-responsive" src=<%=goodsList.get(i).getPath()%> alt="图片" />
 
@@ -96,12 +97,13 @@
 						if (i % 4 == 3) {
 					%>
 					<div class="clearfix"></div>
-				</div>
+
 				<%
 
 					}
 					}
 				%>
+				</div>
 			</div>
 		</div>
 	</div>
