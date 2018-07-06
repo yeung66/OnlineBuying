@@ -10,12 +10,41 @@
 		outline: medium;
 		border: none;
 	}
+	#addGoodsbtn{
+		position: relative;
+		left:50px;
+		top:40px;
+	}
+.btn{
+	outline: medium;
+cursor:pointer!important;
+cursor:hand;
+background:url(bg_btn.gif); 
+background-position:bottom;
+background-color:#E1F1D4; 
+text-align:center; 
+height:30px; font-size:12px;
+width:100px;
+padding:0px!important;
+border:1px solid #54A9DF; 
+color:#005500}
+#addGoods{
+	position: absolute;
+	left:850px;
+	top:150px;
+	width:400px;
+	height:300px;
+	background-color: lightyellow;
+	display: none;
+}
 </style>
 </head>
 <jsp:include page="head.jsp"/>
 <body>
-<br /><br />		
-<div align="center">
+<br /><br />
+<div>
+	<div id="addGoodsbtn"><button class="btn" onclick="showAdd()">添加商品</button></div>
+<div align="center">	
 	<div style="color: green;font-family:'STXingkai';"><h1>我的信息</h1></div>
 	<div id="update" style="width:350px;font-size: larger;">
 		<form id="update" action="updateInfo" method="post">
@@ -27,7 +56,25 @@
 					name="tel" type="text" value="" /><br/>
       <label for="sex">性别：&nbsp;&nbsp;&nbsp; </label> <input id="sex"
 					name="sex" type="text" value=""/><br/>
-			<input  type="submit" value="确认修改" onclick="updateInfo()"/>
+			<input  type="button" value="确认修改" onclick="updateInfo()"/>
+		</form>
+	</div>
+</div>
+</div>
+<div align="center" id="addGoods">	
+	<br />
+	<div style="color: green;font-family:'STXingkai';"><h1>添加商品</h1></div>
+	<div id="update" style="width:350px;font-size: larger;">
+		<form  action="AddProductServlet" method="post">
+				<label for="name">商品名：</label> 
+				<input id="name" name="name" type="text" value="" /><br/>
+				<label for="price">价格：&nbsp;&nbsp;&nbsp;
+				</label> <input id="price" name="price" type="text" value="" /><br/>
+				<label for="num">数量：&nbsp;&nbsp;&nbsp; </label> <input id="num"
+					name="num" type="text" value="" /><br/>
+      <label for="sex">选择商品图片：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label> <input 
+					name="img" type="file" /><br/>
+			<input  type="submit" value="确认添加" onclick="shutAdd()"/>
 		</form>
 	</div>
 </div>
@@ -58,6 +105,12 @@
 				}
 			})
 		}
+	function showAdd(){
+		$("#addGoods").show(500);
+	}
+	function shutAdd(){
+		$("#addGoods").hide(500);
+	}
 </script>
 </body>
 </html>
