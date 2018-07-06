@@ -16,23 +16,25 @@
         }
         table td, table th
         {
-            border: 1px solid #cad9ea;
+            
             color: #666;
             height: 30px;
             color: black;
         }
         table thead th
         {
-            background-color: #CCE8EB;
+            background-color: greenyellow;
             width: 100px;
         }
         table tr:nth-child(odd)
         {
             background: #fff;
+            
         }
         table tr:nth-child(even)
         {
-            background: #F5FAFA;
+            background:ivory;
+            
         }
     </style>
 
@@ -69,8 +71,9 @@
             var element=document.getElementById("goodsTab");
             element.appendChild(para0);
             var para0=document.createElement("td");
-            var node0=document.createTextNode(result[i].path);
-            para0.appendChild(node0);
+            var img=new Image();
+            img.src="result[i].path";
+            para0.appendChild(img);
             var element=document.getElementById("goodsTab");
             element.appendChild(para0);
             var para0=document.createElement("td");
@@ -84,10 +87,10 @@
         }
     }
 </script>
-<table align="center" width="600" border="1" height="180" id="goodsTab"
+<table align="center" width="600" border="0" height="180" id="goodsTab"
          cellpadding="1" cellspacing="1">
     <tr bgcolor="white" >
-        <td align="center" colspan="7" style="color: red;">
+        <td align="center" colspan="7" style="color: green;">
             <h2>商品信息</h2>
         </td>
     </tr>
@@ -100,14 +103,6 @@
         <td style="color: green;"><b>评分</b></td>
 
     </tr>
-
-
-
-
-
-
-
-
 </table> 
 </body>
 </html>
