@@ -1,4 +1,4 @@
-<%@ page language="java" 
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -98,7 +98,7 @@
 				value="搜索" style="width: 60px; height: 30px" id="go" alt="Search"
 				title="Search" />
 		</form>
- 
+
 	</nav>
 
 
@@ -145,9 +145,8 @@
 					<input type="text" class="form-control" placeholder="账号"
 						id="regist_id" name="uid" onkeyup="testUid()" /> <input
 						type="text" class="form-control" placeholder="手机号" id="regist_tel"
-						name="tel"  /> <input type="text"
-						class="form-control" placeholder="地址" id="regist_add" name="add"
-						 /> 
+						name="tel" onkeyup="testTel()" /> <input type="text"
+						class="form-control" placeholder="地址" id="regist_add" name="add"/> 
 						<input type="password" class="form-control" placeholder="密码"
 						id="regist_password" name="password" onkeyup="testpwd()" />
 						<div style="color: black; margin-left: 0px">
@@ -174,6 +173,7 @@
 						<li id="for-uid-illegal" style="display: none">用户名长度应为3-12位</li>
 						<li id="for-uid-dup" style="display: none">用户名或账号已被占用</li>
 						<li id="for-pwd" style="display: none">密码长度应为3-12位</li>
+						<li id="for-tel" style="display: none">请输入合法电话号码</li>
 					</ul>
 				</div>
 			</div>
@@ -188,8 +188,8 @@
 					'password' : $("#login_password").val(),
 					'method' : 'login'					
 				},
-				type:'post',
 				url : 'login',//servlet
+				type:'post',
 				success : function(data) {
 					if (data.toString() == 'fail') {
 						alert('登陆失败');
@@ -212,13 +212,13 @@
 			$.ajax({
 				data : {
 					'id' : $("#regist_id").val(),
-					'password' : $("#login_password").val(),
+					'password' : $("#regist_password").val(),
 					'tel' : $("#regist_tel").val(),
 					'add' : $("#regist_add").val(),
 					'sex' : $("#regist_sex").val(),
 					'right' : $("#regist_right").val(),
 
-					'method' : 'register1'
+					'method' : 'registe'
 				},
 				url : 'RegisterServlet',//servlet
 				success : function(data) {
@@ -235,6 +235,18 @@
 					window.location.reload();
 				}
 			})
+		}
+	</script>
+	<script>
+		function testUid() {
+			var aim_test = $("input[name='uid']").val();
+			if (aim_test.length > 12 || aim_test.length < 3) {
+				$("#alert-list").show();
+				$("#for-uid-illegal").show();
+			} else {
+				$("#for-uid-illegal").hide();
+				$("#alert-list").hide();
+			}
 			$.ajax({
 				url : 'checkUid',
 				data : {
@@ -253,19 +265,6 @@
 				}
 			})
 		}
-	</script>
-	<script>
-		function testUid() {
-			var aim_test = $("input[name='uid']").val();
-			if (aim_test.length > 12 || aim_test.length < 3) {
-				$("#alert-list").show();
-				$("#for-uid-illegal").show();
-			} else {
-				$("#for-uid-illegal").hide();
-				$("#alert-list").hide();
-			}
-			
-		}
 		function testpwd() {
 			var aim_test = $("#regist_password").val();
 			if (aim_test.length > 12 || aim_test.length < 3) {
@@ -275,6 +274,17 @@
 				$("#alert-list").hide();
 				$("#for-pwd").hide();
 
+			}
+		}
+		function testTel() {
+			var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+			var aim_test = $("#regist_tel").val();
+			if (!myreg.test(aim_test)) {
+				$("#alert-list").show();
+				$("#for-tel").show();
+			} else {
+				$("#alert-list").hide();
+				$("#for-tel").hide();
 			}
 		}
 	</script>
