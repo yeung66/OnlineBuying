@@ -15,7 +15,7 @@
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+<link href="css/bootstrap.css" rel="stylesheet " type="text/css"
 	media="all" />
 <link href="css/another_style.css" rel="stylesheet" type="text/css"
 	media="all" />
@@ -82,10 +82,15 @@
 		<div class="head-top">
 			<div class="col-sm-8 h_menu4">
 				<ul class="memenu skyblue" id="menu">
+					<%if(uid==null){%>
 					<li class=" grid"><a href="index.jsp">首页</a></li>
-					<li><a href="shoppingCart.jsp">商品</a></li>
+					<li><a href="search.jsp">搜索</a></li>
+					<%}else{%>
+						<li class=" grid"><a href="index.jsp">首页</a></li>
+					<li><a href="search.jsp">搜索</a></li>
 					<li><a href="shoppingCart.jsp">购物车</a></li>
 					<li><a href="alreadyBuy.jsp">已购买</a></li>
+					<%}%>
 				</ul>
 			</div>
 		</div>
