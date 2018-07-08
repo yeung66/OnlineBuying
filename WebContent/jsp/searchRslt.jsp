@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -72,7 +72,12 @@
             element.appendChild(para0);
             var para0=document.createElement("td");
             var img=new Image();
+
             img.src=result[i].path;
+
+            img.width=200;
+            img.height=100;
+
             para0.appendChild(img);
             var element=document.getElementById("goodsTab");
             element.appendChild(para0);
