@@ -25,15 +25,8 @@ public class ChangeUserServlet extends HttpServlet {
 		String tel = request.getParameter("tel");
 		String add = request.getParameter("add");
 		String sex = request.getParameter("sex");
-		String id = request.getParameter("id");
-		String uid = (String) request.getSession().getAttribute("uid");
-		String sql = "SELECT * FROM users WHERE id = '" + id + "';";
-		if(Database.checkExist(sql)) {
-			response.getWriter().write("fail");
-			return;
-		}
-		int i = Database.update("update user set id =\"" + id + "\" " + "where id = \"" + uid + "\"");
-		i = Database.update("update user set pwd =\"" + pwd + "\" " + "where id = \"" + id + "\"");
+		String id = (String) request.getSession().getAttribute("uid");
+		int i = Database.update("update user set pwd =\"" + pwd + "\" " + "where id = \"" + id + "\"");
 		i = Database.update("update user set info =\"" + info + "\" " + "where id = \"" + id + "\"");
 		i = Database.update("update user set tel =\"" + tel + "\" " + "where id = \"" + id + "\"");
 		i = Database.update("update user set add =\"" + add + "\" " + "where id = \"" + id + "\"");
