@@ -150,4 +150,17 @@ public class Product {
 		}
 		return null;
 	}
+	public static boolean deleteProduct(String pID){
+		Connection conn = Database.getConnect();
+		try{
+			PreparedStatement pstmt = conn.prepareStatement("delete from product where id = "+pID);
+			pstmt.execute();
+			return true;
+		}catch (SQLException e){
+			e.printStackTrace();
+
+		}
+		return false;
+	}
+
 }
