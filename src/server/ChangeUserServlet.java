@@ -26,16 +26,16 @@ public class ChangeUserServlet extends HttpServlet {
 		String add = request.getParameter("add");
 		String sex = request.getParameter("sex");
 		String id = (String) request.getSession().getAttribute("uid");
-		int i = Database.update("update user set pwd =\"" + pwd + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update user set info =\"" + info + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update user set tel =\"" + tel + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update user set add =\"" + add + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update user set sex =\"" + sex + "\" " + "where id = \"" + id + "\"");
+		int i = Database.update("update users set pwd =\"" + pwd + "\" " + "where id = \"" + id + "\"");
+		i = Database.update("update users set info =\"" + info + "\" " + "where id = \"" + id + "\"");
+		i = Database.update("update users set tel =\"" + tel + "\" " + "where id = \"" + id + "\"");
+		i = Database.update("update users set add =\"" + add + "\" " + "where id = \"" + id + "\"");
+		i = Database.update("update users set sex =\"" + sex + "\" " + "where id = \"" + id + "\"");
 		response.getWriter().write("success");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			doGet(request, response);
+			doPost(request, response);
 	}
 }
