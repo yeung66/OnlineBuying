@@ -122,7 +122,7 @@ public class Product {
 		try {
 			PreparedStatement pst = conn.prepareStatement(
 					"INSERT INTO `shixun`.`product` ( `price`, `num`, `name`, `owner`, `path`, `score`,comnum,information) "
-							+ "VALUES (?,?,?,?,?,?,?,?,?);");
+							+ "VALUES (?,?,?,?,?,?,?,?);");
 
 			// pst.setInt(1,p.getId());
 			pst.setDouble(1, p.getPrice());
