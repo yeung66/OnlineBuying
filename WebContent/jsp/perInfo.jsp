@@ -57,17 +57,15 @@
 			</div>
 			<div id="update" style="width: 350px; font-size: larger;">
 				<form id="update" action="updateInfo" method="post">
-					<label for="id">用户名：</label> <input id="id" name="id" type="text"
-						value="" /><br /> <label for="pwd">密码：</label> <input id="pwd"
-						name="pwd" type="password" value="" /><br /> <label for="add">地址：&nbsp;&nbsp;&nbsp;
+					<label for="pwd">密码：</label> <input id="pwd" name="pwd"
+						type="password" value="" /><br /> <label for="add">地址：&nbsp;&nbsp;&nbsp;
 					</label> <input id="add" name="add" type="text" value="" /><br /> <label
 						for="tel">手机号： </label> <input id="tel" name="tel" type="text"
 						value="" /><br /> <label for="sex">性别：&nbsp;&nbsp;&nbsp;
-					</label> <input id="sex" name="sex" type="text" value="" /><br /> 
-					<label for="info">个人信息：</label> <input id="info" name="info" type="text"
-						value="" /><br />
-					<input
-						type="button" value="确认修改" onclick="updateInfo()" />
+					</label> <input id="sex" name="sex" type="text" value="" /><br /> <label
+						for="info">个人信息：</label> <input id="info" name="info" type="text"
+						value="" /><br /> <input type="button" value="确认修改"
+						onclick="updateInfo()" />
 				</form>
 			</div>
 		</div>
