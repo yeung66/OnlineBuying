@@ -22,6 +22,7 @@
 	String right = u.getRight();
 	Double money = u.getMoney();
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,6 +30,7 @@
 <title>Insert title here</title>
 <style>
 #update input {
+
 	outline: medium;
 	border: none;
 }
@@ -41,6 +43,7 @@
 
 .btn {
 	outline: medium;
+>>>>>>> website
 	cursor: pointer !important;
 	cursor: hand;
 	background: url(bg_btn.gif);
@@ -73,6 +76,8 @@
 	<div>
 		<div id="addGoodsbtn">
 			<button class="btn" onclick="showAdd()">添加商品</button>
+
+			<button class="btn" id="showG">显示商品</button>
 		</div>
 		<div align="center">
 			<div style="color: green; font-family: 'STXingkai';">
@@ -100,17 +105,22 @@
 						type="text" value="<%=money %>" readonly /><br />
 						<input type="button" value="确认修改"
 						onclick="updateInfo()" />
+
 				</form>
 			</div>
 		</div>
 	</div>
 	<div align="center" id="addGoods">
+
+		<img src="images/close.png" style="float: right;width: 30px;height: 30px;cursor: pointer;" id="closeAdd"/>
 		<br />
+		
 		<div style="color: green; font-family: 'STXingkai';">
 			<h1>添加商品</h1>
 		</div>
 		<div id="update" style="width: 350px; font-size: larger;">
 			<form action="AddProductServlet" method="post" enctype="multipart/form-data">
+
 				<label for="name">商品名：</label> <input id="name" name="name"
 					type="text" value="" /><br /> <label for="price">价格：&nbsp;&nbsp;&nbsp;
 				</label> <input id="price" name="price" type="text" value="" /><br /> <label
@@ -118,6 +128,7 @@
 					type="text" value="" /><br /> <label for="path">选择商品图片：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</label> <input name="path" type="file" /><br /> <input type="button"
 					value="确认添加"  onclick="shutAdd()"/>
+
 			</form>
 		</div>
 	</div>
@@ -132,6 +143,7 @@
 					'sex' : $("#sex").val(),
 					'pwd' : $("#pwd").val(),
 					'info' : $("#info").val(),
+
 				},
 				url : 'ChangeUserServlet',
 				success : function(data) {
@@ -150,6 +162,10 @@
 				}
 			})
 		}
+		function showAdd() {
+			$("#addGoods").show(500);
+		}
+
 		function showAdd() {
 			$("#addGoods").show(500);
 		}
@@ -177,6 +193,12 @@
 				}
 			})
 		}
+		$("#closeAdd").click(function(){
+			$("#addGoods").hide(500);
+		})
+		$("#showG").click(function(){
+			window.location.href="table_list_img.jsp";
+		})
 	</script>
 </body>
 </html>

@@ -225,7 +225,7 @@
 						window.location.reload();
 					} else if (data.toString() == 'success') {
 					    alert('注册成功');
-						window.location = 'Welcome.jsp';
+						window.location.reload();
 					}
 
 				},

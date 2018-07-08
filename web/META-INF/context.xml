@@ -4,7 +4,7 @@
         <Resource name="jdbc/orcl"
                   auth="Container"
                   type="javax.sql.DataSource"
-                  maxTotal="50"
+                  maxTotal="100"
                   maxIdle="10"
                   maxWaitMillis="3000"
 
