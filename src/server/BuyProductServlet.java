@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import util.Database;
+import util.Product;
 
 /**
  * Servlet implementation class BuyProductServlet
@@ -41,9 +42,10 @@ public class BuyProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int money;
-		int product = (int) request.getSession().getAttribute("product");
-		int quantity = (int) request.getSession().getAttribute("quantity");
-		String purchaser = (String) request.getSession().getAttribute("purchaser");
+		int product = Integer.parseInt(request.getParameter("pid"));
+		Double price = Product.getProductInfo(product).getPrice();
+		int quantity = Integer.parseInt(request.getParameter("num"));
+		String purchaser = (String) request.getSession().getAttribute("uid");
 		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
 		Connection connect=Database.getConnect();
         try {
@@ -54,29 +56,16 @@ public class BuyProductServlet extends HttpServlet {
             e.printStackTrace();
             return;
         }
-        if(money > product * quantity) {
+        if(money < price * quantity) {
         	return;
         }else {
-        	money -= product * quantity;
+        	money -= price * quantity;
         	sql = "UPDATE user SET money = " + money + "WHERE id = '" + purchaser + "';";
         	Database.update(sql);
         }
-		sql = "SELET MAX(id) FROM orders;";
-		int id = 0;
-		if(Database.checkExist(sql)) {
-			connect=Database.getConnect();
-	        try {
-	            Statement st = connect.createStatement();
-	            ResultSet rs = st.executeQuery(sql);
-	            id  = rs.getInt(0) + 1;
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	            return;
-	        }
-		}
 		String states = "new";
 		Date starttime = new Date(System.currentTimeMillis());
-		sql = "INSERT INTO orders (id, purchaser, product, states, quantity, starttime) VALUES ('" + id + "','" + purchaser + "','" + product + "','" 
+		sql = "INSERT INTO orders (purchaser, product, states, quantity, starttime) VALUES ('" + purchaser + "','" + product + "','" 
 				+ states + "','" + quantity + "','" + starttime + "');";
 		Database.update(sql);
 	}
