@@ -22,10 +22,12 @@ public class User {
 	}
 	
 	public static User getUser(String id) {
+		String sql = "select * from users where id='"+id+"';";
 		Connection conn = Database.getConnect();
 		try{
 			Statement st=conn.createStatement();
-			ResultSet rs =  st.executeQuery("select * from users where id="+id);
+			System.out.println(sql);
+			ResultSet rs =  st.executeQuery(sql);
 			if(rs.next()){
 				User u = new User(rs.getString("id"),rs.getString("pwd"),rs.getString("info"),
 						rs.getString("add"),rs.getString("tel"),rs.getString("sex"),
