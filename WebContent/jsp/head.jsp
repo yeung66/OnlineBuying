@@ -60,7 +60,7 @@
 <%if(uid==null){%>
 <a href="login_registe.jsp">登陆/注册</a>
 <%}else{%>
-					<a href="perInfo.jsp" target="_blank">个人信息</a>
+					<a href="jsp/perInfo.jsp" target="_blank">个人信息</a>
 					<a href="login" onClick="key()">退出 </a>
 
 <%}%>
@@ -84,7 +84,7 @@
 				<ul class="memenu skyblue" id="menu">
 					<%if(uid==null){%>
 					<li class=" grid"><a href="index.jsp">首页</a></li>
-					<li><a href="search.jsp">搜索</a></li>
+					<li><a href="jsp/search.jsp">搜索</a></li>
 					<%}else{%>
 						<li class=" grid"><a href="index.jsp">首页</a></li>
 					<li><a href="jsp/search.jsp">搜索</a></li>

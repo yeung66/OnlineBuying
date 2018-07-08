@@ -12,7 +12,7 @@
 	String described = p.getInformation();
 	String producer = p.getOwner();
 	Double price = p.getPrice();
-
+	int num = (int)request.getAttribute("buyNumber");
 %>
 
 <!DOCTYPE html>
@@ -125,7 +125,8 @@
 					<!--a id="carthref"
 						href="../jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
 						class="cart item_add" onclick="return editHref()">加入购物车</a-->
-					<input type="button" onclick="buyProduct()" value="购买"/>
+					<!-- input type="button" onclick="buyProduct()" value="购买"/-->
+					<a href="/BuyProductServlet?num=<%=num%>&pid=<%=gid %>">购买</a>
 				</div>
 			</div>
 		</div>

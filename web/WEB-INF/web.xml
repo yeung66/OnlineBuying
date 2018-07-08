@@ -10,15 +10,14 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <url-pattern>login</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>loginRegisterServ</servlet-name>
-        <jsp-file>/Page/login_registe.jsp</jsp-file>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>server.SearchServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>loginRegisterServ</servlet-name>
-        <url-pattern>/login_register.jsp</url-pattern>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
     </servlet-mapping>
 </web-app>
