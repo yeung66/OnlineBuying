@@ -91,7 +91,7 @@
 					<select name="sex" id="sex">
 							<option value="<%=sex %>" selected="selected"><%=sex_str1 %></option>
 							<option value="<%=sex2%>"><%=sex_str2 %></option>
-						</select> <label
+						</select><br/> <label
 						for="info">个人信息：</label> <input id="info" name="info" type="text"
 						value="<%=info %>" /><br /> 
 						<label for="money">账户余额：</label> <input id="money" name="money"
