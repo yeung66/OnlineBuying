@@ -162,6 +162,28 @@ public class Product {
 			return null;
 		}
 	}
+	
+	public static List<Product> getProductList(String uid) {
+		Connection conn = Database.getConnect();
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("SELECT price,name,path,score,num from product where owner='"+uid+"';");
+			List<Product> result = new ArrayList<>();
+			while (rs.next()) {
+				Product p = new Product();
+				p.setPrice(rs.getDouble("price"));
+				p.setName(rs.getString("name"));
+				p.setPath(rs.getString("path"));
+				p.setNum(rs.getInt("num"));
+				p.setScore(rs.getDouble("score"));
+				result.add(p);
+			}
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public static Product getProductInfo(int productID) {
 		Connection conn = Database.getConnect();
