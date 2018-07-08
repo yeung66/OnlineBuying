@@ -7,6 +7,9 @@ import org.ansj.splitWord.analysis.ToAnalysis;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    MADE BY :叶晟柯
+ */
 public class segmenter {
     public List<String> seg(String s){
         Result result = ToAnalysis.parse(s);
