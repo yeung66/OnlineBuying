@@ -32,6 +32,8 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //doPost(request,response);
+        request.getSession().removeAttribute("uid");
+        request.getSession().invalidate();
+        response.sendRedirect("index.jsp");
     }
 }

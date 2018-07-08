@@ -1,4 +1,4 @@
-<%@page import="java.util.List"%>
+﻿<%@page import="java.util.List"%>
 <%@ page language="java" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
@@ -6,10 +6,10 @@
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
 %>
-<%--<%--%>
+
 	<%--String uname = (String) session.getAttribute("uname");--%>
-	<%--String uid = String.valueOf(session.getAttribute("uid"));--%>
-<%--%>--%>
+	<%String uid =(String)session.getAttribute("uid"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,14 +57,14 @@
 			</div>
 			<div class="col-sm-4 header-left">
 				<p class="log">
+<%if(uid==null){%>
+<a href="login_registe.jsp">登陆/注册</a>
+<%}else{%>
+					<a href="perInfo.jsp" target="_blank">个人信息</a>
+					<a href="login" onClick="key()">退出 </a>
 
-
-					<a href=\"jsp/showMessage.jsp\" target=\"_blank\">个人信息</a>
-					<a href=\"servlet/LogoutServlet\" onClick=\"return key()\">退出 </a>
-
-					<a href=\"jsp/login.jsp\">登录</a>
-
-					<a href=\"jsp/register.jsp\">注册</a>
+<%}%>
+					
 
 
 
@@ -83,9 +83,9 @@
 			<div class="col-sm-8 h_menu4">
 				<ul class="memenu skyblue" id="menu">
 					<li class=" grid"><a href="index.jsp">首页</a></li>
-					<li><a href="jsp/shoppingCart.jsp">商品</a></li>
-					<li><a href="jsp/shoppingCart.jsp">购物车</a></li>
-					<li><a href="jsp/alreadyBuy.jsp">已购买</a></li>
+					<li><a href="shoppingCart.jsp">商品</a></li>
+					<li><a href="shoppingCart.jsp">购物车</a></li>
+					<li><a href="alreadyBuy.jsp">已购买</a></li>
 				</ul>
 			</div>
 		</div>
