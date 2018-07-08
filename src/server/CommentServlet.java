@@ -52,20 +52,23 @@ public class CommentServlet extends HttpServlet {
 				+ product + "', '" + purchaser + "', '" + score + "');";
 		Database.update(sql);
 		sql = "SELECT comnum, score FROM product WHERE id = '" + product + "';";
-		int comnum, oldscore;
+		int comnum = 0, oldscore = 0;
 		Connection connect = Database.getConnect();
 		try {
 			Statement st = connect.createStatement();
 			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
 			comnum = rs.getInt("comnum") + 1;
 			oldscore = rs.getInt("oldscore");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return;
 		}
 		score = (oldscore * (comnum - 1) + score) / comnum;
-		sql = "UPDATE product SET score=" + comnum + "', comnum='" + oldscore + "'WHERE id='" + product + "';";
+		sql = "UPDATE product SET score='" + comnum + "', comnum='" + oldscore + "' WHERE id='" + product + "';";
 		Database.update(sql);
+
 	}
 
 }
