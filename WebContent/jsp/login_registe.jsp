@@ -92,12 +92,7 @@
 			</ul>
 		</span> 
 
-		<form style="display: inline; position: relative; left: 140px;">
-			<input type="text" id="s" placeholder="search" class="swap_value"
-				style="width: 150px; height: 30px" /> <input type="button"
-				value="搜索" style="width: 60px; height: 30px" id="go" alt="Search"
-				title="Search" />
-		</form>
+		
 
 	</nav>
 
@@ -195,7 +190,7 @@
 						alert('登陆失败');
 						window.location.reload();
 					} else if (data.toString() == 'success') {
-						window.location = 'Welcome.jsp';
+						window.location = 'index.jsp';
 					}
 
 				},
