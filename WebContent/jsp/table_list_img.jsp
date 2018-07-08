@@ -227,12 +227,12 @@
         </div>
     </div>
     </div>
-    <script src="assets/js/amazeui.min.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="../js/amazeui.min.js"></script>
+    <script src="../js/app.js"></script>
 
 </body>
 
-=======
+
 
 <!DOCTYPE html>
 <html lang="en">
