@@ -1,4 +1,27 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page import="util.*" %>
+<% 
+	String uid = (String)session.getAttribute("uid");
+	User u = User.getUser(uid);
+	String pwd = u.getPwd();
+	String info = u.getInfo();
+	String add = u.getAdd();
+	String tel = u.getTel();
+	String sex = u.getSex();
+	String sex_str1, sex_str2, sex2;
+	if(sex.equals("1")){
+		sex_str1 = "男";
+		sex_str2 = "女";
+		sex2 = "0";
+	}
+	else{
+		sex_str1 = "女";
+		sex_str2 = "男";
+		sex2 = "1";
+	}
+	String right = u.getRight();
+	Double money = u.getMoney();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,14 +80,23 @@
 			</div>
 			<div id="update" style="width: 350px; font-size: larger;">
 				<form id="update" action="updateInfo" method="post">
+				<label for="uid">用户名：</label> <input id="uid" name="uid"
+						type="text" value="<%=uid %>" readonly /><br />
 					<label for="pwd">密码：</label> <input id="pwd" name="pwd"
-						type="password" value="" /><br /> <label for="add">地址：&nbsp;&nbsp;&nbsp;
-					</label> <input id="add" name="add" type="text" value="" /><br /> <label
+						type="password" value="<%=pwd %>" /><br /> <label for="add">地址：&nbsp;&nbsp;&nbsp;
+					</label> <input id="add" name="add" type="text" value="<%=add %>" /><br /> <label
 						for="tel">手机号： </label> <input id="tel" name="tel" type="text"
-						value="" /><br /> <label for="sex">性别：&nbsp;&nbsp;&nbsp;
-					</label> <input id="sex" name="sex" type="text" value="" /><br /> <label
+						value="<%=tel %>" /><br /> <label for="sex">性别：&nbsp;&nbsp;&nbsp;
+					</label> 
+					<select name="sex" id="sex">
+							<option value="<%=sex %>" selected="selected"><%=sex_str1 %></option>
+							<option value="<%=sex2%>"><%=sex_str2 %></option>
+						</select> <label
 						for="info">个人信息：</label> <input id="info" name="info" type="text"
-						value="" /><br /> <input type="button" value="确认修改"
+						value="<%=info %>" /><br /> 
+						<label for="money">账户余额：</label> <input id="money" name="money"
+						type="text" value="<%=money %>" readonly /><br />
+						<input type="button" value="确认修改"
 						onclick="updateInfo()" />
 				</form>
 			</div>
