@@ -12,17 +12,29 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.List;
+import segmenter.*;
 
-
+/*
+    MADE BY :叶晟柯
+ */
 @WebServlet(name = "SearchServlet",  urlPatterns = "/SearchServlet")
 public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      //  System.out.println("1");
+
         String search = request.getParameter("search");
-        List<Product> list= Database.searchProduct(search);
+        String str = new String(search.getBytes("ISO-8859-1"),"UTF-8");
+     // System.out.print(str);
+    //  segmenter se = new segmenter();
+      //List<String> list_=se.seg(str);
+     List<Product> list= Database.searchProduct(str);
         HttpSession session=request.getSession();
+
+
       /*  if (list != null) {
               session.setAttribute("search",list);
               request.getRequestDispatcher("search.jsp").forward(request,response);
@@ -31,7 +43,14 @@ public class SearchServlet extends HttpServlet {
             session.setAttribute("search", "failed");
         }*/
         String Jsonproduct = JSON.toJSONString(list);
-        response.getWriter().print(Jsonproduct);
+    //  System.out.print(Jsonproduct);
+    //  Jsonproduct =JSON.toJSONString(list_);
+     //   System.out.print(Jsonproduct);
+    //   response.getWriter().print(Jsonproduct);
+    //    str = new String(search.getBytes("UTF-8"),"ISO-8859-1");
+        session.setAttribute("search",Jsonproduct);
+
+        request.getRequestDispatcher("test.jsp").forward(request,response);
     }
 
 
