@@ -16,6 +16,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import segmenter.*;
 
 /*
@@ -31,7 +34,8 @@ public class SearchServlet extends HttpServlet {
      // System.out.print(str);
     //  segmenter se = new segmenter();
       //List<String> list_=se.seg(str);
-     List<Product> list= Database.searchProduct(str);
+
+            List<Product> list = Database.searchProduct(str);
         HttpSession session=request.getSession();
 
 
