@@ -5,12 +5,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
-	private int id,  num,  comnum;
-	private double score,price;
-	private String name, path;
-	private String owner;
 
-	public Product(){}
+	private int id, num, comnum;
+	private double score, price;
+	private String name, path;
+	private String owner, information;
+
+	public Product() {
+	}
+
+	public Product(int id, double price, int num, double score, int comnum, String name, String owner, String path,
+			String information) {
+		super();
+		this.id = id;
+		this.price = price;
+		this.num = num;
+		this.score = score;
+		this.comnum = comnum;
+		this.name = name;
+		this.owner = owner;
+		this.path = path;
+		this.information = information;
+	}
+	
 	public Product(int id, double price, int num, double score, int comnum, String name, String owner, String path) {
 		super();
 		this.id = id;
@@ -21,8 +38,21 @@ public class Product {
 		this.name = name;
 		this.owner = owner;
 		this.path = path;
+		this.information = "";
 	}
-	
+
+	public String getInformation() {
+		return information;
+	}
+
+	public void setInformation(String information) {
+		this.information = information;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -87,38 +117,38 @@ public class Product {
 		this.owner = owner;
 	}
 
-	public static void insertProduct(Product p){
+	public static void insertProduct(Product p) {
 		Connection conn = Database.getConnect();
-		try{
-			PreparedStatement pst = conn.prepareStatement("INSERT INTO `shixun`.`product` ( `price`, `num`, `name`, `owner`, `path`, `score`,comnum) " +
-					"VALUES (?,?,?,?,?,?,?,?);");
+		try {
+			PreparedStatement pst = conn.prepareStatement(
+					"INSERT INTO `shixun`.`product` ( `price`, `num`, `name`, `owner`, `path`, `score`,comnum,information) "
+							+ "VALUES (?,?,?,?,?,?,?,?,?);");
 
-				//pst.setInt(1,p.getId());
-				pst.setDouble(1,p.getPrice());
-				pst.setInt(2,p.getNum());
-				pst.setString(3,p.getName());
-				pst.setString(4,p.getOwner());
-				pst.setString(5,p.getPath());
-				pst.setDouble(6,p.getScore());
-				pst.setInt(7,p.getComnum());
-				pst.executeUpdate();
+			// pst.setInt(1,p.getId());
+			pst.setDouble(1, p.getPrice());
+			pst.setInt(2, p.getNum());
+			pst.setString(3, p.getName());
+			pst.setString(4, p.getOwner());
+			pst.setString(5, p.getPath());
+			pst.setDouble(6, p.getScore());
+			pst.setInt(7, p.getComnum());
+			pst.setString(8, p.getInformation());
+			pst.executeUpdate();
 
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
 
-
-
 	}
 
-	public static List<Product> getAllGoodList(){
+	public static List<Product> getAllGoodList() {
 		Connection conn = Database.getConnect();
-		try{
+		try {
 			Statement st = conn.createStatement();
-			ResultSet rs= st.executeQuery("SELECT id,price,name,path from product");
-			List<Product> result =new ArrayList<>();
-			while (rs.next()){
+			ResultSet rs = st.executeQuery("SELECT id,price,name,path from product");
+			List<Product> result = new ArrayList<>();
+			while (rs.next()) {
 				Product p = new Product();
 				p.setId(rs.getInt("id"));
 				p.setPrice(rs.getDouble("price"));
@@ -127,24 +157,24 @@ public class Product {
 				result.add(p);
 			}
 			return result;
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public static Product getProductInfo(int productID){
+	public static Product getProductInfo(int productID) {
 		Connection conn = Database.getConnect();
-		try{
-			Statement st=conn.createStatement();
-			ResultSet rs =  st.executeQuery("select * from product where id="+productID);
-			if(rs.next()){
-				Product p = new Product(rs.getInt("id"),rs.getDouble("price"),rs.getInt("num"),
-						rs.getDouble("score"),rs.getInt("comnum"),rs.getString("name"),
-						rs.getString("owner"),rs.getString("path"));
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("select * from product where id=" + productID);
+			if (rs.next()) {
+				Product p = new Product(rs.getInt("id"), rs.getDouble("price"), rs.getInt("num"), rs.getDouble("score"),
+						rs.getInt("comnum"), rs.getString("name"), rs.getString("owner"), rs.getString("path"),
+						rs.getString("information"));
 				return p;
 			}
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
