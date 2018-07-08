@@ -254,7 +254,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	left: 45%;
 }
 .banner{
-	border-bottom:1px solid #bcbcbc;
+	border-bottom:1px /*solid #bcbcbc;*/
 
     
 	
@@ -303,7 +303,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   text-decoration: none;
 }
 .content-top {
-  padding: 4em 0;
+  padding: 0;
 }
 .content-top1 {
   padding: 2em 0;

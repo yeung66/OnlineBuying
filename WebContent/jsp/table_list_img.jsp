@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>商家商品管理界面</title>
-    <meta name="description" content="这是一个 index 页面">
+    <meta name="description" content="这是一个 商品管理页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -14,15 +14,15 @@
     <link rel="icon" type="image/png" href="i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="css/amazeui.min.css" />
-    <link rel="stylesheet" href="css/amazeui.datatables.min.css" />
-    <link rel="stylesheet" href="css/app.css">
-    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/amazeui.min.css" />
+    <link rel="stylesheet" href="../css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="../css/app.css">
+    <script src="../js/jquery.min.js"></script>
 
 </head>
 
 <body data-type="widgets">
-    <script src="js/theme.js"></script>
+    <script src="../js/theme.js"></script>
     <div class="am-g tpl-g">
         <!-- 头部 -->
         <header>
@@ -137,14 +137,15 @@
 
                                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
                                     <div class="am-form-group">
-                                        <div class="am-btn-toolbar">
+                                        <!--<div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
                                                 <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
-                                                <!--<button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
                                                 <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button>
-                                                <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>-->
+                                                <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
                                             </div>
                                         </div>
+                                        -->
                                     </div>
                                 </div>
                         
@@ -156,6 +157,7 @@
                                             <tr>
                                                 <th>商品图片</th>
                                                 <th>商品名称</th>
+                                                <th>商品价格</th>
                                                 <th>商品库存</th>
                                                 <th>上架时间</th>
                                                 <th>操作</th>
@@ -164,10 +166,11 @@
                                         <tbody>
                                             <tr class="gradeX">
                                                 <td>
-                                                    <img src="img/商品1.JPG" class="tpl-table-line-img" alt="">
+                                                    <img src="../images/商品1.JPG" class="tpl-table-line-img" alt="">
                                                 </td>
-                                                <td class="am-text-middle">Amaze UI 模式窗口</td>
-                                                <td class="am-text-middle">20</td>
+                                                <td class="am-text-middle">我是商品名称</td>
+                                                <td class="am-text-middle">50元</td>
+                                                <td class="am-text-middle">我是库存啦啦啦</td>
                                                 <td class="am-text-middle">2016-09-26</td>
                                                 <td class="am-text-middle">
                                                    <div class="tpl-table-black-operation">
@@ -182,10 +185,11 @@
                                             </tr>
                                             <tr class="even gradeC">
                                                 <td>
-                                                    <img src="img/商品2.JPG" class="tpl-table-line-img" alt="">
+                                                    <img src="../images/商品2.JPG" class="tpl-table-line-img" alt="">
                                                 </td>
-                                                <td class="am-text-middle">有适配微信小程序的计划吗</td>
-                                                <td class="am-text-middle">天纵之人</td>
+                                                <td class="am-text-middle">日系手账本 这里是商品名称啦啦啦</td>
+                                                <td class="am-text-middle">80元</td>
+                                                <td class="am-text-middle">我是库存</td>
                                                 <td class="am-text-middle">2016-09-26</td>
                                                 <td class="am-text-middle">
                                                     <div class="tpl-table-black-operation">
@@ -227,8 +231,8 @@
         </div>
     </div>
     </div>
-    <script src="assets/js/amazeui.min.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="../js/amazeui.min.js"></script>
+    <script src="../js/app.js"></script>
 
 </body>
 
