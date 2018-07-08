@@ -51,8 +51,11 @@
             var str=JSON.stringify(s);
             var result= JSON.parse(str+"");
             var para0=document.createElement("td");
+            var para2=document.createElement("a");
+            para2.href="jsp/goodsDescribed.jsp?gid="+result[i].id;
             var node0=document.createTextNode(result[i].name);
-            para0.appendChild(node0);
+            para2.appendChild(node0);
+            para0.appendChild(para2);
             var element=document.getElementById("goodsTab");
             element.appendChild(para0);
             var para0=document.createElement("td");

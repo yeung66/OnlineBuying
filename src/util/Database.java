@@ -74,9 +74,9 @@ public class Database {
         List<Product> list = new ArrayList<>();
         if (!Chinese.equals("")) {
             segmenter segmt = new segmenter();
-            List<String> nouns = segmt.seg(s);
+            List<String> nouns = segmt.seg(Chinese);
 
-            if ((nouns!=null)&&(!list.isEmpty())) {
+            if ((nouns!=null)&&(!nouns.isEmpty())) {
                 String sql = "select * from product where name like '";
                 sql = sql + "%" + nouns.get(0) + "%'";
                 for (int i = 1; i < nouns.size(); i++) {

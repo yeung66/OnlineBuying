@@ -41,33 +41,41 @@ public class BuyProductServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int money;
+		System.out.print("123");
+		Double money=0.0;
 		int product = Integer.parseInt(request.getParameter("pid"));
 		Double price = Product.getProductInfo(product).getPrice();
-		int quantity = Integer.parseInt(request.getParameter("num"));
+		int quantity = Integer.parseInt(request.getParameter("buyNumber"));
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
 		Connection connect=Database.getConnect();
+		System.out.print("234");
         try {
             Statement st = connect.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            money  = rs.getInt("money");
+            while (rs.next()) {
+				money = rs.getDouble("money");
+			}
         } catch (SQLException e) {
             e.printStackTrace();
             return;
         }
+		System.out.print("345");
         if(money < price * quantity) {
+			response.getWriter().print("failed");
         	return;
         }else {
         	money -= price * quantity;
         	sql = "UPDATE user SET money = " + money + "WHERE id = '" + purchaser + "';";
         	Database.update(sql);
         }
+		System.out.print("456");
 		String states = "new";
 		Date starttime = new Date(System.currentTimeMillis());
 		sql = "INSERT INTO orders (purchaser, product, states, quantity, starttime) VALUES ('" + purchaser + "','" + product + "','" 
 				+ states + "','" + quantity + "','" + starttime + "');";
 		Database.update(sql);
+		response.getWriter().print("s");
 	}
 
 }
