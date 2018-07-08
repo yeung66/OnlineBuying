@@ -1,6 +1,11 @@
 package util;
 
-public class User {	
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class User {
 	private String id, pwd, info, add, tel, sex, right;
 	
 	public User(String id, String pwd, String info, String add, String tel, String sex, String right) {
@@ -69,5 +74,6 @@ public class User {
 	public void setRight(String right) {
 		this.right = right;
 	}
+
 
 }

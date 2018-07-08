@@ -195,7 +195,8 @@
 						alert('登陆失败');
 						window.location.reload();
 					} else if (data.toString() == 'success') {
-						window.location = 'Welcome.jsp';
+					    alert('登录成功')
+						window.location = 'index.jsp';
 					}
 
 				},
@@ -226,6 +227,7 @@
 						alert('注册失败');
 						window.location.reload();
 					} else if (data.toString() == 'success') {
+					    alert('注册成功');
 						window.location = 'Welcome.jsp';
 					}
 

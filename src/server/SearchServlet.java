@@ -50,7 +50,7 @@ public class SearchServlet extends HttpServlet {
     //    str = new String(search.getBytes("UTF-8"),"ISO-8859-1");
         session.setAttribute("search",Jsonproduct);
 
-        request.getRequestDispatcher("test.jsp").forward(request,response);
+        request.getRequestDispatcher("jsp/searchRslt.jsp").forward(request,response);
     }
 
 

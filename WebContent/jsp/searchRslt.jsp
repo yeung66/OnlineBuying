@@ -72,7 +72,7 @@
             element.appendChild(para0);
             var para0=document.createElement("td");
             var img=new Image();
-            img.src="result[i].path";
+            img.src=result[i].path;
             para0.appendChild(img);
             var element=document.getElementById("goodsTab");
             element.appendChild(para0);
