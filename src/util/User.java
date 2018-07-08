@@ -25,7 +25,7 @@ public class User {
 		Connection conn = Database.getConnect();
 		try{
 			Statement st=conn.createStatement();
-			ResultSet rs =  st.executeQuery("select * from user where id="+id);
+			ResultSet rs =  st.executeQuery("select * from users where id="+id);
 			if(rs.next()){
 				User u = new User(rs.getString("id"),rs.getString("pwd"),rs.getString("info"),
 						rs.getString("add"),rs.getString("tel"),rs.getString("sex"),
