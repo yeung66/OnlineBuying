@@ -13,17 +13,17 @@
 <title>商品详情页面</title>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
-<link href="css/another_style.css" rel="stylesheet" type="text/css"
+<link href="../css/another_style.css" rel="stylesheet" type="text/css"
 	media="all" />
-<link rel="stylesheet" href="css/flexslider.css" type="text/css"
+<link rel="stylesheet" href="../css/flexslider.css" type="text/css"
 	media="screen" />
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/imagezoom.js"></script>
-<script type="text/javascript" src="js/memenu.js"></script>
-<script defer src="js/jquery.flexslider.js"></script>
+<link href="../css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/imagezoom.js"></script>
+<script type="text/javascript" src="../js/memenu.js"></script>
+<script defer src="../js/jquery.flexslider.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".memenu").memenu();
@@ -85,7 +85,7 @@
                     	时间：2018-07-05
                     	描述：商品图片加在这里
                     -->
-									<img src="images/商品5.JPG" data-imagezoom="true"
+									<img src="../images/商品5.JPG" data-imagezoom="true"
 										class="img-responsive">
 								</div>
 							
@@ -111,7 +111,7 @@
 							<input name="buyNumber" type="number" min="1" max=<%=number%>
 								value="1" id="buyNumber">
 						</div>
-						<a id="carthref" href="jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
+						<a id="carthref" href="../jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
 							class="cart item_add" onclick="return editHref()">加入购物车</a>
 					</div>
 				</div>
