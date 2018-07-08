@@ -6,6 +6,8 @@ import org.ansj.splitWord.analysis.ToAnalysis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
     MADE BY :叶晟柯
@@ -20,6 +22,15 @@ public class segmenter {
             if (terms.get(i).getNatureStr().equals("n"))
                 st.add(word);
         }
+        return st;
+    }
+    public String[] engSeg(String s)
+    {
+        String w= "";
+        Pattern p = Pattern.compile("\\s+");
+        Matcher m = p.matcher(s);
+        w= m.replaceAll(" ");
+        String[] st = w.split(" ");
         return st;
     }
 }
