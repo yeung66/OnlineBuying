@@ -75,7 +75,7 @@
 
 
 							<!--<a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>" target="_blank">-->
-                    <img class="img-responsive" src=<%=goodsList.get(i).getPath()%> alt="图片" />
+                    <img class="img4index" src=<%=goodsList.get(i).getPath()%> alt="图片" />
 
 							</a>
 							<h3>

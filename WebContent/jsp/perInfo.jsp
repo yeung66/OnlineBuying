@@ -110,14 +110,14 @@
 			<h1>添加商品</h1>
 		</div>
 		<div id="update" style="width: 350px; font-size: larger;">
-			<form action="AddProductServlet" method="post">
+			<form action="AddProductServlet" method="post" enctype="multipart/form-data">
 				<label for="name">商品名：</label> <input id="name" name="name"
 					type="text" value="" /><br /> <label for="price">价格：&nbsp;&nbsp;&nbsp;
 				</label> <input id="price" name="price" type="text" value="" /><br /> <label
 					for="num">数量：&nbsp;&nbsp;&nbsp; </label> <input id="num" name="num"
 					type="text" value="" /><br /> <label for="path">选择商品图片：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				</label> <input name="path" type="file" /><br /> <input type="submit"
-					value="确认添加" onclick="shutAdd()" />
+				</label> <input name="path" type="file" /><br /> <input type="button"
+					value="确认添加"  onclick="shutAdd()"/>
 			</form>
 		</div>
 	</div>
@@ -156,13 +156,11 @@
 		function shutAdd() {
 			$("#addGoods").hide(500);
 			$.ajax({
-				data : {
-					'name' : $("#name").val(),
-					'price' : $("#price").val(),
-					'num' : $("#num").val(),
-					'path' : $("#path").val(),
-				},
+				data : new FormData($("form[action='AddProductServlet']")[0]),
 				url : 'addProduct',
+                processData: false,
+                contentType: false,
+				method:'post',
 				success : function(data) {
 					if (data.toString() == 'fail') {
 						alert('修改失败');
