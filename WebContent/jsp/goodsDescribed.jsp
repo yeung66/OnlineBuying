@@ -134,12 +134,15 @@
 						<input type="submit" value="购买">
 						<input type="button" value="查看评价" onclick="javascript:window.location.href='jsp/itemReview.jsp?pid=<%=gid%>'">
 
+<input type="button" value="查看商家" onclick="viewStore()"></input>
+
 					</form>
 				</div>
 			</div>
 		</div>
 
 		<div class="clearfix"></div>
+
 	</div>
 	</div>
 	<script type="text/javascript">
@@ -150,6 +153,14 @@
 					'pid' :<%=gid%>
 		},
 				url : 'BuyProductServlet'
+			})
+		}
+		function viewStore() {
+			$.ajax({
+				data : {
+					'pid' :<%=gid%>
+		},
+				url : ''
 			})
 		}
 	</script>
