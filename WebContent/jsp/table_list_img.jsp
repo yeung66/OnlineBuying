@@ -4,7 +4,7 @@
 <%@ page import="vo.Product" %>
 <%
 	String uid = (String) session.getAttribute("uid");
-	List<Product> plist = Product.getProductList(uid, "pass");
+	List<Product> plist = Product.getProductList(uid);
 	int i = 0;
 %>
 
