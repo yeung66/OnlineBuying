@@ -113,7 +113,7 @@
                 			</div>
                 		</td>
                 		<td>
-                			<a href="jsp/deleteGoods.jsp?gid=<%=gid%>&number=<%=number%>" onclick="return confirmDelete()">删除</a>
+                			<a href="/DeleteCartServlet?gid=<%=gid%>&number=<%=number%>" onclick="return confirmDelete()">删除</a>
                 		</td>
                 	</tr>
 				<%
