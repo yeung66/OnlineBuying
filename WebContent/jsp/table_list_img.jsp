@@ -174,12 +174,13 @@
 											</tr>
 										</thead>
 										<tbody>
-											<%for(Product p: plist){ 
-													if(i % 2 == 0)%>
+											<%for(Product p: plist){
+													if(i % 2 == 0){%>
 													<tr class="gradeX">
-													<%else %>
+													<%}else{ %>
 													<tr class="even gradeC">
-												<td><img src="<%=p.getPath() %>" class="tpl-table-line-img"
+												<%}%>
+												<td><img src="../<%=p.getPath() %>" class="tpl-table-line-img"
 													alt=""></td>
 												<td class="am-text-middle"><%=p.getName() %></td>
 												<td class="am-text-middle"><%=p.getPrice() %></td>
@@ -189,7 +190,7 @@
 													<div class="tpl-table-black-operation">
 														<a href="javascript:;"> <i class="am-icon-pencil"></i>
 															编辑
-														</a> <a href="perInfo.jsp"
+														</a> <a href="../DeleteProductServlet?id=<%=p.getId()%>"
 															class="tpl-table-black-operation-del"> <i
 															class="am-icon-trash"></i> 删除
 														</a>

@@ -26,11 +26,11 @@ public class User {
 		Connection conn = Database.getConnect();
 		try{
 			Statement st=conn.createStatement();
-			System.out.println(sql);
+			//System.out.println(sql);
 			ResultSet rs =  st.executeQuery(sql);
 			if(rs.next()){
 				User u = new User(rs.getString("id"),rs.getString("pwd"),rs.getString("info"),
-						rs.getString("add"),rs.getString("tel"),rs.getString("sex"),
+						rs.getString("addr"),rs.getString("tel"),rs.getString("sex"),
 						rs.getString("rights"),rs.getDouble("money"));
 				return u;
 			}

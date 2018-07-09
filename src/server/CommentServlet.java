@@ -59,7 +59,7 @@ public class CommentServlet extends HttpServlet {
 			ResultSet rs = st.executeQuery(sql);
 			while(rs.next()) {
 			comnum = rs.getInt("comnum") + 1;
-			oldscore = rs.getInt("oldscore");
+			oldscore = rs.getInt("score");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

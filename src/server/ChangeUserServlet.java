@@ -29,7 +29,7 @@ public class ChangeUserServlet extends HttpServlet {
 		int i = Database.update("update users set pwd =\"" + pwd + "\" " + "where id = \"" + id + "\"");
 		i = Database.update("update users set info =\"" + info + "\" " + "where id = \"" + id + "\"");
 		i = Database.update("update users set tel =\"" + tel + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update users set add =\"" + add + "\" " + "where id = \"" + id + "\"");
+		i = Database.update("update users set addr =\"" + add + "\" " + "where id = \"" + id + "\"");
 		i = Database.update("update users set sex =\"" + sex + "\" " + "where id = \"" + id + "\"");
 		response.getWriter().write("success");
 	}

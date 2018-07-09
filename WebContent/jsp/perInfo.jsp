@@ -197,7 +197,7 @@
 			$("#addGoods").hide(500);
 		})
 		$("#showG").click(function(){
-			window.location.href="table_list_img.jsp";
+			window.location.href="jsp/table_list_img.jsp";
 		})
 	</script>
 </body>
