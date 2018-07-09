@@ -3,7 +3,7 @@
 <%@page import="vo.*"%>
 <%@page import="java.util.*"%>
 <%
-	int pid = (int) request.getAttribute("pid");
+	int pid = Integer.valueOf( request.getParameter("pid"));
 	List<Comment> comlist = Comment.getCommentList(pid);
 	Product p = Product.getProductInfo(pid);
 	int i = 1;
@@ -55,7 +55,7 @@
 							o = Order.getOrderDetail(pid, com.getPurchaser());
 					%>
 					<li class="score" onclick="javascript:openDetails('detail-<%=i%>')">
-					<img class="level" src="../images/score-<%=com.getScore()%>">
+					<img class="level" src="images/score-<%=com.getScore()%>.jpg">
 						<div class="bubble">
 							<h2>
 								<strong><%=com.getScore()%>分</strong>
@@ -82,16 +82,17 @@
                 	改的时候去掉一个重复的，然后使用循环，修改detail-x
                 -->
 			<%
+				i = 1;
 				for (Comment com : comlist) {
 					o = Order.getOrderDetail(pid, com.getPurchaser());
-					i = 1;
+
 			%>
 			<div class="chatright" id="detail-<%=i%>">
 				<div class="top">
 					<span class="close close-button"
 						onclick="javascript:closeDetails('detail-<%=i%>')">&times</span>
 					<div class="user">
-						<img class="level" src="../images/score-<%=com.getScore()%>">
+						<img class="level" src="images/score-<%=com.getScore()%>.jpg">
 						<div class="details">
 							<h2>
 								<strong>评价详情</strong>
@@ -112,7 +113,7 @@
 				</div>
 			</div>
 			<%
-				i++;
+				i=i+1;
 				}
 			%>
 		</div>

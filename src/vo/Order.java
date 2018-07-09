@@ -87,7 +87,8 @@ public class Order {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from orders where product=" + pid + "and purchaser='" + purchaser + "';");
+			String sql = "select * from orders where product=" + pid + " and purchaser='" + purchaser + "';";
+			ResultSet rs = st.executeQuery(sql);
 			Order o = null;
 			if (rs.next()) {
 				o = new Order();

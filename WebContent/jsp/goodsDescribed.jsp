@@ -132,7 +132,7 @@
 						class="cart item_add" onclick="return editHref()">购买</a-->
 						<input type="hidden" name="pid" value=<%=gid %> >
 						<input type="submit" value="购买">
-						<input type="button" value="查看评价" onclick="javascript:window.location.href='itemReview.jsp?pid=<%=gid%>'">
+						<input type="button" value="查看评价" onclick="javascript:window.location.href='jsp/itemReview.jsp?pid=<%=gid%>'">
 
 					</form>
 				</div>

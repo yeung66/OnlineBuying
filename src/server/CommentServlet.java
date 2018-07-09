@@ -45,7 +45,7 @@ public class CommentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int score = Integer.parseInt(request.getParameter("rating"));
+		double score = Double.parseDouble(request.getParameter("rating"));
 		String content = request.getParameter("content");
 		int product = Integer.parseInt(request.getParameter("pid"));
 		String purchaser = request.getSession().getAttribute("uid").toString();
@@ -54,14 +54,15 @@ public class CommentServlet extends HttpServlet {
 				+ product + "', '" + purchaser + "', '" + score + "','" + comDate + "');";
 		Database.update(sql);
 		sql = "SELECT comnum, score FROM product WHERE id = '" + product + "';";
-		int comnum = 0, oldscore = 0;
+		int comnum = 0;
+		double oldscore = 0;
 		Connection connect = Database.getConnect();
 		try {
 			Statement st = connect.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			while(rs.next()) {
 			comnum = rs.getInt("comnum") + 1;
-			oldscore = rs.getInt("score");
+			oldscore = rs.getDouble("score");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

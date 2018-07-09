@@ -78,7 +78,8 @@ public class BuyProductServlet extends HttpServlet {
 		sql = "INSERT INTO orders (purchaser, product, states, quantity, starttime) VALUES ('" + purchaser + "','" + product + "','" 
 				+ states + "','" + quantity + "','" + starttime + "');";
 		Database.update(sql);
-		sql = "UPDATE product SET num=" + (Product.getProductInfo(product).getNum() - 1) + "WHERE id=" + product;
+		sql = "UPDATE product SET num=" + (Product.getProductInfo(product).getNum() - 1) + " WHERE id=" + product;
+		Database.update(sql);
 		out.print("<script>");
 		out.print("alert('购买成功!');");
 		out.print("window.location.href='perInfo.jsp'");
