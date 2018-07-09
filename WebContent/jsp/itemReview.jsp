@@ -54,9 +54,8 @@
 						for (Comment com : comlist) {
 							o = Order.getOrderDetail(pid, com.getPurchaser());
 					%>
-					<li class="score" onclick="javascript:openDetails('detail-<%=i%>')"><img
-						class="level"
-						src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/cebec057174185.59cb88804182b.jpg">
+					<li class="score" onclick="javascript:openDetails('detail-<%=i%>')">
+					<img class="level" src="../images/score-<%=com.getScore()%>">
 						<div class="bubble">
 							<h2>
 								<strong><%=com.getScore()%>分</strong>
@@ -92,8 +91,7 @@
 					<span class="close close-button"
 						onclick="javascript:closeDetails('detail-<%=i%>')">&times</span>
 					<div class="user">
-						<img class="level"
-							src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/cebec057174185.59cb88804182b.jpg">
+						<img class="level" src="../images/score-<%=com.getScore()%>">
 						<div class="details">
 							<h2>
 								<strong>评价详情</strong>
