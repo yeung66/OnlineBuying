@@ -85,6 +85,7 @@
 			<%
 				for (Comment com : comlist) {
 					o = Order.getOrderDetail(pid, com.getPurchaser());
+					i = 1;
 			%>
 			<div class="chatright" id="detail-<%=i%>">
 				<div class="top">
