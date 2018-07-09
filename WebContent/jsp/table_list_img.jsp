@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
 <%@ page import="util.*"%>
+<%@ page import="vo.Product" %>
 <%
 	String uid = (String) session.getAttribute("uid");
 	List<Product> plist = Product.getProductList(uid);

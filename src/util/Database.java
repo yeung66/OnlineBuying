@@ -4,15 +4,14 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import javax.swing.text.Segment;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.alibaba.fastjson.JSON;
 import segmenter.*;
+import vo.Product;
 
 /**
  * @ author: 杨浩麟

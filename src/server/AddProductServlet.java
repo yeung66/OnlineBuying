@@ -1,6 +1,6 @@
 package server;
 
-import util.Product;
+import vo.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;

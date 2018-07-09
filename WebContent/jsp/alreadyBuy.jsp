@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="util.Order" %>
-<%@ page import="util.Product" %>
+<%@ page import="vo.Order" %>
+<%@ page import="vo.Product" %>
 <!--
 
 <%@ page language="java" pageEncoding="utf-8"%>

@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ page import="util.*"%>
+<%@ page import="vo.Product" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()

@@ -1,11 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page import="util.*" %>
+<%@ page import="vo.User" %>
 <% 
 	String uid = (String)session.getAttribute("uid");
 	User u = User.getUser(uid);
 	String pwd = u.getPwd();
 	String info = u.getInfo();
-	String add = u.getAdd();
+	String add = u.getAddr();
 	String tel = u.getTel();
 	String sex = u.getSex();
 	String sex_str1, sex_str2, sex2;

@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="java.util.List"%>
-<%@ page import="util.Product" %>
+<%@ page import="vo.Product" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"

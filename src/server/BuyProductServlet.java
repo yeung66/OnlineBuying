@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import util.Database;
-import util.Product;
+import vo.Product;
 
 /**
  * Servlet implementation class BuyProductServlet
