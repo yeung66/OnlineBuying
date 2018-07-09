@@ -1,6 +1,8 @@
 package util;
 
 import util.Database;
+import vo.Product;
+import vo.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ import java.util.List;
  */
 public class ShoppingCart {
     private User user;
-    private  Product product;
+    private Product product;
     private int num;
     private Date startTime;
 
@@ -107,4 +109,16 @@ public class ShoppingCart {
         catch (Exception e){e.printStackTrace();}
         return list;
     }
+    public static boolean deleteCart(String uid,String pid){
+        Connection conn = Database.getConnect();
+        try{
+            PreparedStatement pstmt = conn.prepareStatement("delete from shoppingcart where uid = "+uid+" and pid = "+pid);
+            pstmt.execute();
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+
+        }
+        return false;
+          }
 }

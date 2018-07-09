@@ -88,7 +88,7 @@
 					<%}else{%>
 						<li class=" grid"><a href="index.jsp">首页</a></li>
 					<li><a href="jsp/search.jsp">搜索</a></li>
-					<li><a href="shoppingCart.jsp">购物车</a></li>
+					<li><a href="jsp/shoppingCart.jsp">购物车</a></li>
 					<li><a href="jsp/alreadyBuy.jsp">已购买</a></li>
 					<%}%>
 				</ul>

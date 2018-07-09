@@ -1,10 +1,10 @@
 package server;
 
 import com.alibaba.fastjson.JSON;
-import util.Comment;
-import util.Product;
+import vo.Comment;
+import vo.Product;
 import util.ShoppingCart;
-import util.User;
+import vo.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

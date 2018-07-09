@@ -106,7 +106,7 @@
 			<div class="col-md-7 single-top-in">
 				<div class="single-para simpleCart_shelfItem">
 
-					<form action="BuyProductServlet" method="post">
+					<form id = "goods" action="BuyProductServlet" method="post">
 						<!--产品名称-->
 						<h1><%=name%></h1>
 						<!--商品描述-->
@@ -136,7 +136,22 @@
 
 <input type="button" value="查看商家" onclick="viewStore()"></input>
 
+                        <br><br><input type="button" value="加入购物车" onclick="cart()">
+						
+						<script type="text/javascript">
+                            function cart(){
+                                document.forms.goods.action="AddCartServlet";
+                                document.forms.goods.submit();
+                            }
+						</script>
 					</form>
+			<!--		<div>
+					   <br>
+						<form action="AddCartServlet" method="post">
+							<input type="hidden" name="gid" value=<%=gid%>  >
+							<input type="hidden" name="buyNumber" value=<%=number%>  >
+							<input type="submit" value="加入购物车" name="commit">
+					</div>-->
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 package server;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -71,7 +72,12 @@ public class CommentServlet extends HttpServlet {
 		score = (oldscore * (comnum - 1) + score) / comnum;
 		sql = "UPDATE product SET score='" + score + "', comnum='" + comnum + "' WHERE id='" + product + "';";
 		Database.update(sql);
-
+		PrintWriter out = response.getWriter();
+		out.print("<script>");
+		out.print("alert('评论成功');");
+		out.print("window.location.href='jsp/alreadyBuy.jsp'");
+		out.print("</script>");
+		out.close();
 	}
 
 }

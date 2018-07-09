@@ -16,13 +16,13 @@
 <title>购物车</title>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../css/another_style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../css/cartTable.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/responsiveslides.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/another_style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/cartTable.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/responsiveslides.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	function confirmBuy() {
 		return confirm("确定支付吗？");
@@ -113,7 +113,7 @@
                 			</div>
                 		</td>
                 		<td>
-                			<a href="jsp/deleteGoods.jsp?gid=<%=gid%>&number=<%=number%>" onclick="return confirmDelete()">删除</a>
+                			<a href="DeleteCartServlet?gid=<%=gid%>&number=<%=number%>" onclick="return confirmDelete()">删除</a>
                 		</td>
                 	</tr>
 				<%
