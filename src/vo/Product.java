@@ -174,11 +174,11 @@ public class Product {
 		}
 	}
 
-	public static List<Product> getProductList(String uid,String status) {
+	public static List<Product> getProductList(String uid) {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id,price,name,path,score,num from product where owner='"+uid+"' and status='"+status+"'");
+			ResultSet rs = st.executeQuery("SELECT id,price,name,path,score,num from product where owner='"+uid+"'");
 
 			List<Product> result = new ArrayList<>();
 			while (rs.next()) {
