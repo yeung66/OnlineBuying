@@ -1,8 +1,14 @@
-<%
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8" import="java.util.*"%>
+<%@ page import="util.ShoppingCart" %>
+<%@ page import="java.util.List" %><%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
+    String uid = (String)request.getSession().getAttribute("uid");
+	List<ShoppingCart> list = ShoppingCart.searchFromSQL(uid);
+	double total=0.0;
  %>
 <!DOCTYPE html>
 <html>
@@ -87,39 +93,36 @@
 					</tr>
 				</thead>
                 <tbody>
+				    <%
+						for (ShoppingCart cart : list){
+						    int gid = cart.getProduct().getId();
+						    int number = cart.getProduct().getNum();
+						    total+= cart.getNum()*cart.getProduct().getPrice();
+					%>
                 	<tr>
                 		<td><img width="70px" height="70px" 
                 			src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/35dfe830251251.561b6b94f2125.jpg"></td>
                 		<!--点击名字跳转到商品详情页，在a里面添加链接-->
-                		<td class="cartName"><a>senator原子笔</a></td>
-                		<td class="cartAmount">1</td>
-                		<td class="cartSingle">2元</td>
-                		<td class="cartTotal">2元</td>
+                		<td class="cartName"><a><%=cart.getProduct().getName()%></a></td>
+                		<td class="cartAmount"><%=cart.getNum()%></td>
+                		<td class="cartSingle"><%=cart.getProduct().getPrice()%></td>
+                		<td class="cartTotal"><%=cart.getNum()*cart.getProduct().getPrice()%></td>
                 		<td>
                 			<div class="cartTime">
-                				<p>2018/07/04 10:27</p>
+                				<p><%=cart.getStartTime()%></p>
                 			</div>
                 		</td>
                 		<td>
                 			<a href="jsp/deleteGoods.jsp?gid=<%=gid%>&number=<%=number%>" onclick="return confirmDelete()">删除</a>
                 		</td>
                 	</tr>
-                	<tr>
-                		<td><img width="70px" height="70px" 
-                			src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/b4725163537421.5ab3b9e1ba6b8.jpg" width="50px"></td>
-                		<td class="cartName"><a>cosmetic mockup</a></td>
-                		<td class="cartAmount">1</td>
-                		<td class="cartSingle">50元</td>
-                		<td class="cartTotal">50元</td>
-                		<td><div class="cartTime"><p>2018/07/03 16:13</p></div></td>
-                		<td>
-                			<a href="jsp/deleteGoods.jsp?gid=<%=gid%>&number=<%=number%>" onclick="return confirmDelete()">删除</a>
-                		</td>
-                	</tr>
+				<%
+					}
+				%>
                 </tbody>
 			</table></center>
 			<!--进行计算-->
-		<div class="payForCart"><a>总计：52元</a>
+		<div class="payForCart"><a><%=total%></a>
 			<a href="jsp/buyGoods.jsp" class="to-buy"
 				onclick="return confirmBuy()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
 	    </div>	
