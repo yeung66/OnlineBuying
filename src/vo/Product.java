@@ -30,7 +30,7 @@ public class Product {
 		this.path = path;
 		this.information = information;
 	}
-	
+
 	public Product(int id, double price, int num, double score, int comnum, String name, String owner, String path) {
 		super();
 		this.id = id;
@@ -44,9 +44,13 @@ public class Product {
 		this.information = "";
 	}
 
-	public String getStatus(){return status;}
+	public String getStatus() {
+		return status;
+	}
 
-	public void setStatus(String status){this.status=status;}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getInformation() {
 		return information;
@@ -169,12 +173,13 @@ public class Product {
 			return null;
 		}
 	}
-	
+
 	public static List<Product> getProductList(String uid,String status) {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("SELECT id,price,name,path,score,num from product where owner='"+uid+"' and status='"+status+"'");
+
 			List<Product> result = new ArrayList<>();
 			while (rs.next()) {
 				Product p = new Product();
@@ -210,13 +215,14 @@ public class Product {
 		}
 		return null;
 	}
-	public static boolean deleteProduct(String pID){
+
+	public static boolean deleteProduct(String pID) {
 		Connection conn = Database.getConnect();
-		try{
-			PreparedStatement pstmt = conn.prepareStatement("delete from product where id = "+pID);
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("delete from product where id = " + pID);
 			pstmt.execute();
 			return true;
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
@@ -247,16 +253,22 @@ public class Product {
 
 	}
 
-	public static boolean confirmProduct(int id,String status){
+	public static boolean confirmProduct(int id,String status) {
 		Connection conn = Database.getConnect();
-		try{
+		try {
 			Statement st = conn.createStatement();
-			st.executeUpdate("update product set status='"+status+"' where id='"+id+"'");
+			st.executeUpdate("update product set status='" + status + "' where id='" + id + "'");
 			return true;
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	public static int alterProduct(int pid, String name, String owner, double price, String path, int num,
+			String info) {
+		String sql = "UPDATE product SET name='" + name + "',owner='" + owner + "',price=" + price + ",path='" + path
+				+ "',num=" + num + ",information='" + info + "' WHERE id=" + pid + ";";
+		return Database.update(sql);
 	}
 
 }

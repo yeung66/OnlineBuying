@@ -82,5 +82,24 @@ public class Order {
 			return null;
 		}
 	}
+	
+	public static Order getOrderDetail(int pid, String purchaser) {
+		Connection conn = Database.getConnect();
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("select * from orders where product=" + pid + "and purchaser='" + purchaser + "';");
+			Order o = null;
+			if (rs.next()) {
+				o = new Order();
+				o.setId(rs.getInt("id"));
+				o.setQuantity(rs.getInt("quantity"));
+			}
+			return o;
+		} catch (SQLException e) {
+			e.printStackTrace();
 
+		}
+		return null;
+	}
+	
 }
