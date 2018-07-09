@@ -137,7 +137,7 @@
 <input type="button" value="查看商家" onclick="viewStore()"></input>
 
                         <br><br><input type="button" value="加入购物车" onclick="cart()">
-						
+
 						<script type="text/javascript">
                             function cart(){
                                 document.forms.goods.action="AddCartServlet";

@@ -1,7 +1,7 @@
 package server;
 
 import vo.Product;
-import util.ShoppingCart;
+import vo.ShoppingCart;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

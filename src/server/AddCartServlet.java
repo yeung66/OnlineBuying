@@ -3,7 +3,7 @@ package server;
 import com.alibaba.fastjson.JSON;
 import vo.Comment;
 import vo.Product;
-import util.ShoppingCart;
+import vo.ShoppingCart;
 import vo.User;
 
 import javax.servlet.ServletException;

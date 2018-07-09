@@ -1,4 +1,4 @@
-package util;
+package vo;
 
 import util.Database;
 import vo.Product;
