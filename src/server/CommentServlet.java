@@ -2,6 +2,7 @@ package server;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -48,8 +49,9 @@ public class CommentServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		int product = Integer.parseInt(request.getParameter("pid"));
 		String purchaser = request.getSession().getAttribute("uid").toString();
-		String sql = "INSERT INTO comment (content, product, purchaser, score) VALUES ('" + content + "', '"
-				+ product + "', '" + purchaser + "', '" + score + "');";
+		Date comDate = new Date(System.currentTimeMillis());
+		String sql = "INSERT INTO comment (content, product, purchaser, score, commentDate) VALUES ('" + content + "', '"
+				+ product + "', '" + purchaser + "', '" + score + "','" + comDate + "');";
 		Database.update(sql);
 		sql = "SELECT comnum, score FROM product WHERE id = '" + product + "';";
 		int comnum = 0, oldscore = 0;
