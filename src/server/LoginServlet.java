@@ -1,6 +1,7 @@
 package server;
 
 import util.Database;
+import vo.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +22,10 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("id");
         String password = request.getParameter("password");
         String sql = "select * from users where id='"+username+"' and pwd="+password;
-        if(Database.checkExist(sql)){
+        String rights = User.getRight(username);
+        if(rights!=null){
             request.getSession().setAttribute("uid",username);
+            request.getSession().setAttribute("type",rights);
             response.getWriter().print("success");
         }else {
             response.getWriter().print("fail");

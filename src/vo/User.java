@@ -106,5 +106,16 @@ public class User {
 		this.right = right;
 	}
 
+	public static String getRight(String id){
+		Connection conn = Database.getConnect();
+		try{
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("select rights from users where id='"+id+"'");
+			if(rs.next()) return rs.getString("rights");
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

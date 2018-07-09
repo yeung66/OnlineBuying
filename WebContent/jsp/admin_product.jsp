@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
 <%@ page import="util.*"%>
+<%@ page import="vo.Product" %>
 <%
 	String uid = (String) session.getAttribute("uid");
-	List<Product> plist = Product.getProductList(uid);
+	String rights = (String) session.getAttribute("type");
+	if(uid==null || !rights.equals("2")){
+	    response.setCharacterEncoding("utf-8");
+	    response.getWriter().write("请以管理员身份登录再操作！");
+	    return;
+	}
+	List<Product> plist = Product.getNotExamineProducts();
 	int i = 0;
 %>
 
@@ -127,7 +134,7 @@
 												<th>商品名称</th>
 												<th>商品价格</th>
 												<th>商品库存</th>
-												<th>商品评分</th>
+												<th>商家名称</th>
 												<th>操作</th>
 											</tr>
 										</thead>
@@ -147,12 +154,12 @@
 												<td class="am-text-middle">
 													<div class="tpl-table-black-operation">
 														
-														<select>
+														<select name="status">
                                                        	<option value ="pass">通过</option>
                                                        	<option value ="fail">不通过</option>
                                                        </select>
                                                        
-														</a> <a href="../DeleteProductServlet?id=<%=p.getId()%>"
+														<a id="<%=p.getId()%>" type="confirmLink"
 															class="tpl-table-black-operation-del"> <i
 															></i> 提交
 														</a>
@@ -189,6 +196,28 @@
 	</div>
 	<script src="../js/amazeui.min.js"></script>
 	<script src="../js/app.js"></script>
+	<script>
+		var links = document.querySelectorAll('[type="confirmLink"]')
+		links.forEach(function (link) {
+		    link.onclick=function () {
+				$.ajax({
+					data:{
+					    status:link.previousElementSibling.value,
+					    id:link.id,
+					},
+					url:'../adminProduct',
+					success:function (data) {
+						if(data=='success'){
+						    alert('审核成功');
+						}else {
+						    alert('审核失败');
+						}
+						window.location.reload();
+                    }
+				})
+            }
+		})
+	</script>
 
 </body>
 </html>

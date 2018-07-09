@@ -170,11 +170,11 @@ public class Product {
 		}
 	}
 	
-	public static List<Product> getProductList(String uid) {
+	public static List<Product> getProductList(String uid,String status) {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id,price,name,path,score,num from product where owner='"+uid+"';");
+			ResultSet rs = st.executeQuery("SELECT id,price,name,path,score,num from product where owner='"+uid+"' and status='"+status+"'");
 			List<Product> result = new ArrayList<>();
 			while (rs.next()) {
 				Product p = new Product();
@@ -221,6 +221,42 @@ public class Product {
 
 		}
 		return false;
+	}
+
+	public static List<Product> getNotExamineProducts(){
+		Connection conn = Database.getConnect();
+		try{
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("select * from product where status='0'");
+			List<Product> result = new ArrayList<>();
+			while(rs.next()){
+				Product p = new Product();
+				p.setId(rs.getInt("id"));
+				p.setPrice(rs.getDouble("price"));
+				p.setName(rs.getString("name"));
+				p.setPath(rs.getString("path"));
+				p.setNum(rs.getInt("num"));
+				p.setScore(rs.getDouble("score"));
+				result.add(p);
+			}
+			return result;
+		}catch (SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public static boolean confirmProduct(int id,String status){
+		Connection conn = Database.getConnect();
+		try{
+			Statement st = conn.createStatement();
+			st.executeUpdate("update product set status='"+status+"' where id='"+id+"'");
+			return true;
+		}catch (SQLException e){
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
