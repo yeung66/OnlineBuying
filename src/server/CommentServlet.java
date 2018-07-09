@@ -66,7 +66,7 @@ public class CommentServlet extends HttpServlet {
 			return;
 		}
 		score = (oldscore * (comnum - 1) + score) / comnum;
-		sql = "UPDATE product SET score='" + comnum + "', comnum='" + oldscore + "' WHERE id='" + product + "';";
+		sql = "UPDATE product SET score='" + score + "', comnum='" + comnum + "' WHERE id='" + product + "';";
 		Database.update(sql);
 
 	}
