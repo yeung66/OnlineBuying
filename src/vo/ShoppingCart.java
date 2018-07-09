@@ -1,12 +1,11 @@
-package vo;
+package util;
 
 import util.Database;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ author: 杨浩麟
@@ -80,5 +79,32 @@ public class ShoppingCart {
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
+    }
+
+    public static boolean AddinSQL(ShoppingCart cart){
+        String sql = "INSERT INTO `shixun`.`shoppingcart` (`uid`, `pid`, `num`, `starttime`) VALUES ('"+cart.user.getId()+"' , '"+cart.product.getId()+"' ,'"
+                +cart.num+"' ,'"+cart.startTime+"')";
+        if (Database.update(sql)!=-1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static List<ShoppingCart> searchFromSQL(String uid) {
+        Connection conn = Database.getConnect();
+        List<ShoppingCart> list = new ArrayList<>();
+        String sql = "select * from shoppingcart where uid = '"+uid+"'";
+        try{
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet rs =statement.executeQuery();
+            while (rs.next()){
+                ShoppingCart cart = new ShoppingCart(rs.getString(1),rs.getString(2),
+                        rs.getInt(3),rs.getDate(4));
+                list.add(cart);
+            }
+        }
+        catch (Exception e){e.printStackTrace();}
+        return list;
     }
 }
