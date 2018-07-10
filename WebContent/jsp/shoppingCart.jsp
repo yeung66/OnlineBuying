@@ -62,10 +62,6 @@
 					/*阻止向上冒泡，以防再次触发点击操作*/
 					event.stopPropagation();
 				});
-				/*点击每一行时也触发该行的选中操作*/
-				$tbr.click(function(){
-					$(this).find('input').click();
-				});
 			}
 			initTableCheckbox();
 		});
