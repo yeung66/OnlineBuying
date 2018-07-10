@@ -127,7 +127,7 @@
 													
 													<!--放入购物车中的商品-->
 													<div class="cart-image">
-														<a href="product-details.html"><img src="images/product/cart-1.jpg" alt=""></a>
+														<a href="product-details.html"><img src="images/product/1.jpg" alt=""></a>
 													</div>
 													<div class="cart-info">
 														<h5><a href="product-details.html">椅子</a></h5>
@@ -240,7 +240,7 @@
 					}
 				});
 			</script>
-		
+
 			
  	</body>
 </html>

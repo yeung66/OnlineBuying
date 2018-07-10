@@ -10,7 +10,7 @@
 <%@ page import="util.*"%>
 <%@ page import="com.alipay.api.*"%>
 <%@ page import="com.alipay.api.internal.util.*"%>
-<%@ page import="java.sql.*;" %>
+<%@ page import="java.sql.*" %>
 <%
 /* *
  * 功能：支付宝服务器同步通知页面

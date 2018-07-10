@@ -42,7 +42,7 @@
 	</head>
 
 	<body>
-		
+
 <jsp:include page="jsp/head.jsp"></jsp:include>
 		<!-- Body main wrapper start -->
 		<div class="wrapper">
@@ -128,10 +128,8 @@
 							</div>
 						</div>
 						<!-- Product Item End -->
-						<%
-							}
-						%>
-				
+
+				<%}%>
 
 					</div>
 
