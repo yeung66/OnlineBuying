@@ -1,13 +1,18 @@
 
 	
-	a {color:#666;}
+	a {
+		color:#666;
+		font-size: 12px;
+		}
     
 	.payForCart{
 		margin-top: 2%;
 		float: right;
 	}
 	.payForCart a{
-		margin-left:15px;
+		margin-left:12px;
+		margin-right:5px ;
+		font-size: 12px;
 	}
 	
 	.note{
@@ -22,52 +27,50 @@
 		padding-right:20%;
 		padding-top:80px;
 		}
-	/*
-	Pretty Table Styling
-	CSS Tricks also has a nice writeup: http://css-tricks.com/feature-table-design/
-	*/
-	
-	table {
+
+	.content table {
 		overflow:hidden;
 		border:1px solid #d3d3d3;
 		background:#fefefe;
 		-moz-border-radius:5px; /* FF1+ */
 		-webkit-border-radius:5px; /* Saf3-4 */
-		border-radius:5px;
+		border-radius:10px;
 		-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 		-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 	}
 	
-	th, td {
+	.content th, td {
 		min-width:100px;
-		padding:5px 5px 5px 5px; 
 		text-align:center; 
 		}
 	
-	th {
-		padding-top:10px; 
-		text-shadow: 1px 1px 1px #fff; 
+	.content th {
+		padding-top:15px;
+		padding-bottom: 15px; 
 		background:#e8eaeb;
-		font-size: 14px;
+		font-size: 13px;
 		}
 	
-	td {
+	.content td {
 		border-top:1px solid #e0e0e0; 
 		border-right:1px solid #e0e0e0;
 		font-size: 12px;
 		}
-	tr:hover{
+	.content td a{
+		font-family: "Times New Roman",Times,serif;
+		color: #666;
+	}
+	.content tr:hover{
 		background-color: #F0F0F0;
 	}
 
-	td {
+	.content td {
 		background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
 		background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f9f9f9), to(#fefefe));
 	}
 
-	th {
-		background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
-		background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
+	.content th {
+		background: #F0F0F0;
 	}
 
 	
