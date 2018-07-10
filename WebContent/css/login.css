@@ -32,6 +32,7 @@ float:right;
 	color: white;
 	text-align: center;
 	line-height: 40px;
+	
 }
 
 #_close {
@@ -52,15 +53,16 @@ float:right;
 	text-align: center;
 	display: none;
 	margin-top: 30px;
-	<!--position:absolute;
-	z-index:999;-->
+	position:relative;
+	margin-left: 100px;
+	z-index:999;
 }
 
 #lab1 {
 	width: 330px;
 	border-bottom: 1px solid #000000;
 	text-align: left;
-	font-family: 'Î¢ÈíÑÅºÚ';
+	font-family: 'Î¢ï¿½ï¿½ï¿½Åºï¿½';
 }
 
 #lab_login {
@@ -90,7 +92,7 @@ float:right;
 	margin-top: 10px;
 }
 
-/* ×¢²á±íµ¥ ¿ªÊ¼ */
+/* ×¢ï¿½ï¿½? ï¿½ï¿½Ê¼ */
 #regist_account,
 #regist_password1,
 #regist_password2,
@@ -106,9 +108,9 @@ float:right;
 	display: inline-block;
 	float: left;
 }
-/* ×¢²á±íµ¥ ½áÊø */
+/* ×¢ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ */
 
-/*»ñÈ¡ÑéÖ¤Âë*/
+/*ï¿½ï¿½È¡ï¿½ï¿½Ö¤ï¿½ï¿½*/
 #getVCode{
 	width:125px;
 	height: 40px;
@@ -116,7 +118,7 @@ float:right;
 	margin-top: 6px;
 	float: right;
 }
-/*µÇÂ½°´Å¥*/
+/*ï¿½ï¿½Â½ï¿½ï¿½Å¥*/
 #login_btn {
 	float: left;
 	width: 100px;
@@ -124,14 +126,14 @@ float:right;
 	border-radius: 0;
 	margin-top: 20px;
 }
-/*×¢²á°´Å¥*/
+/*×¢ï¿½á°´Å¥*/
 #regist_btn{
 	width: 330px;
 	height: 40px;
 	border-radius: 0;
 	margin-top: 20px;
 }
-/*¼Ç×¡ÃÜÂë£¬ÕÒ»ØÃÜÂë*/
+/*ï¿½ï¿½×¡ï¿½ï¿½ï¿½ë£¬ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½*/
 #rememberOrfindPwd {
 	display: inline-block;
 	height: 40px;
@@ -139,27 +141,27 @@ float:right;
 	margin-top: 15px;
 	float: right;
 }
-/*QQµÇÂ½ÑùÊ½*/
+/*QQï¿½ï¿½Â½ï¿½ï¿½Ê½*/
 #login_QQ {
 	width: 150px;
 	height: 40px;
 	float: left;
 	border-radius: 0;
 }
-/*Î¢²©µÇÂ½ÑùÊ½*/
+/*Î¢ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½Ê½*/
 #login_WB {
 	width: 150px;
 	height: 40px;
 	float: right;
 	border-radius: 0;
 }
-/*µÇÂ½±íµ¥ÈÝÆ÷*/
+/*ï¿½ï¿½Â½ï¿½?ï¿½ï¿½ï¿½ï¿½*/
 #form_container1 {
 	width: 330px;
 	height: 240px;
 	border-bottom: 1px solid #FFFFFF;
 }
-/*×¢²á±íµ¥ÈÝÆ÷*/
+/*×¢ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½*/
 #form_container2 {
 	width: 330px;
 	height: 300px;
