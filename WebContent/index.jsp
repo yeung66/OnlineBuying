@@ -1,12 +1,25 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="vo.Product" %>
+<%@ page import="util.Database" %>
+<%@ page import="java.util.Random" %>
 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
+	List<Product> Products= Product.getAllGoodList();
+	Random ran = new Random();
+	int k = ran.nextInt(Products.size());
+	int j = ran.nextInt(Products.size());
+	while (j==k){
+		j = ran.nextInt(Products.size());
+	}
+	int x=1;
+	int num = 8;
+	if (request.getParameter("num")!=null) num = Integer.parseInt(request.getParameter("num"));
+	boolean bool = true;
 %>
 <!DOCTYPE html>
 
@@ -61,8 +74,8 @@
 					<div class="container">
 						<div class="row">
 							<div class="hero-slider-content col-sm-8 col-xs-12">
-								<h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">Livework-10 PEN</h1>
-								<p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">粉嫩马卡龙缤纷色彩斜笔头设计,书写笔划可粗可细,一笔多用好方便。 多功能创意设计使用起来好方便,书写/标记/涂鸦,让你灵感创作多多, 好写笔芯让书写多了更多乐趣,让灵感及时被留住。 还可以这样玩→粗笔端那头萤光笔,一样可以碰色,玩双层色书写, 等把碰色颜色写完,又恢复成原本笔自身颜色。
+								<h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s"><%=Products.get(k).getName()%></h1>
+								<p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s"><%=Products.get(k).getInformation()%>
 								</p>
 								<a href="product-details.html" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">shop now</a>
 							</div>
@@ -74,8 +87,8 @@
 					<div class="container">
 						<div class="row">
 							<div class="hero-slider-content col-sm-8 col-xs-12">
-								<h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">Livework-10 PEN</h1>
-								<p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, </p>
+								<h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s"><%=Products.get(j).getName()%></h1>
+								<p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s"><%=Products.get(j).getInformation()%> </p>
 								<a href="product-details.html" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">shop now</a>
 							</div>
 						</div>
@@ -92,7 +105,8 @@
 						<!-- Product Item Start -->
 						<%
 						List<Product> goodsList=Product.getAllGoodList();
-						for(int i=0;i<goodsList.size();i++){
+						if (num<goodsList.size()){
+						for(int i=0;i<num;i++){
 					    %>
 						<div class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50">
 							<div class="product-item text-center">
@@ -105,8 +119,8 @@
 									<!--<a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>-->
 									<!-- Action Button -->
 									<div class="action-btn fix">
-										<a href="#" title="Buy"><i class="pe-7s-like"></i>购买</a>
-										<a href="jsp/addToCart.jsp?gid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
+										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
+										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
 									</div>
 								</div>
 								<!-- Portfolio Info -->
@@ -129,14 +143,60 @@
 						</div>
 						<!-- Product Item End -->
 
-				<%}%>
+						<%
+							}
+							}else{ for(int i=0;i<goodsList.size();i++){
+						%>
+						<div class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50">
+							<div class="product-item text-center">
+								<!-- Product Image -->
+								<div class="product-img">
+									<!-- Image -->
+									<a class="image" href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>">
+										<img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
+									<!-- Wishlist Button -->
+									<!--<a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>-->
+									<!-- Action Button -->
+									<div class="action-btn fix">
+										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
+										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
+									</div>
+								</div>
+								<!-- Portfolio Info -->
+								<div class="product-info text-left">
+									<!-- Title -->
+									<h5 class="title"><a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
+									<!-- Price Ratting -->
+									<div class="price-ratting fix">
+										<span class="price float-left"><span class="new">RMB <%=goodsList.get(i).getPrice()%></span></span>
+										<span class="ratting float-right">
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                            </span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Product Item End -->
+						<%
+							}bool=false;
+                            }
+						%>
+				
 
 					</div>
 
 					<div class="row">
+						<%
+							if (bool){
+						%>
             <div class="text-center col-xs-12 mt-30">
-                <a href="#" class="btn load-more-product">load more</a>
+                <a href="index.jsp?num=<%=num+8%>" class="btn load-more-product">load more</a>
             </div>
+						<%}%>
         </div>
 
 				</div>
