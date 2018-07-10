@@ -1,6 +1,8 @@
 package vo;
 
-import java.sql.Date;
+import util.Database;
+
+import java.sql.*;
 
 
 /**
@@ -9,8 +11,8 @@ import java.sql.Date;
  */
 public class Message {
     private int id;
-    private String from;
-    private String to;
+    private String send;
+    private String receive;
     private String content;
     private int state;
     private Date time;
@@ -31,20 +33,20 @@ public class Message {
         return state;
     }
 
-    public String getFrom() {
-        return from;
+    public String getSend() {
+        return send;
     }
 
-    public String getTo() {
-        return to;
+    public String getReceive() {
+        return receive;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setSend(String from) {
+        this.send = from;
     }
 
     public void setId(int id) {
@@ -59,7 +61,21 @@ public class Message {
         this.time = time;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setReceive(String to) {
+        this.receive = to;
+    }
+
+    public static void insertMessage(String from,String to,String content,int state){
+        Connection conn = Database.getConnect();
+        try{
+            PreparedStatement st = conn.prepareStatement("insert into message (send,receive,content,state) VALUES (?,?,?,?)");
+            st.setString(1,from);
+            st.setString(2,to);
+            st.setString(3,content);
+            st.setInt(4,state);
+            st.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }

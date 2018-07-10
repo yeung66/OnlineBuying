@@ -12,8 +12,10 @@ content:<input class="content"><button class="submit">submit</button>
 <div class="container"></div>
 <script>
     var ws;
+    var uid;
     document.querySelector('#submit').onclick=function () {
         var id = document.querySelector('.id').value
+        uid=id
         ws = new WebSocket('ws://localhost:8080/shixun/websocket/'+id)
 
         ws.onerror = function () {
@@ -27,7 +29,9 @@ content:<input class="content"><button class="submit">submit</button>
 
         //接收到消息的回调方法
         ws.onmessage = function (data) {
-            document.querySelector('.container').innerHTML+= ('<br>'+data.data)
+            data = data.data
+            data = JSON.parse(data)
+            document.querySelector('.container').innerHTML+= ('<br>'+data.from+': '+data.content)
         }
 
         //连接关闭的回调方法
@@ -41,6 +45,7 @@ content:<input class="content"><button class="submit">submit</button>
         }
     }
     document.querySelector('.submit').onclick=function () {
+        document.querySelector('.container').innerHTML += ('<br>'+uid+": "+document.querySelector('.content').value)
         var r={}
         r.to=document.querySelector('.to').value
         r.content=document.querySelector('.content').value

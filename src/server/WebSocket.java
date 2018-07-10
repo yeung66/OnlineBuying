@@ -2,6 +2,7 @@ package server;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import vo.Message;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -10,6 +11,8 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -41,16 +44,32 @@ public class WebSocket {
     public void onMeassage(String mes){
         JSONObject data = JSON.parseObject(mes);
         WebSocket toWebsocket = websocketMap.get(data.getString("to"));
-        toWebsocket.sendMessage(data.getString("content"));
+        if(toWebsocket!=null){
+            toWebsocket.sendMessage(data.getString("content"),uid);
+        }
+        Message.insertMessage(uid,data.getString("to"),data.getString("content"),0);
+
     }
 
-    public void sendMessage(String mes){
+    public void sendMessage(String mes,String from){
         try {
-            this.session.getBasicRemote().sendText(mes);
+            Map<String,String> map = new HashMap<>();
+            map.put("from",from);
+            map.put("content",mes);
+            String m = JSON.toJSONString(map);
+            this.session.getBasicRemote().sendText(m);
         }catch (IOException e){
             e.printStackTrace();
         }
 
+    }
+
+    public static void sendSystemMessage(String mes,String to){
+        WebSocket toWebsocket = websocketMap.get(to);
+        if(toWebsocket!=null){
+            toWebsocket.sendMessage(mes,"System");
+        }
+        Message.insertMessage("System",to,mes,0);
     }
 
 
