@@ -6,6 +6,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%String uid =(String)session.getAttribute("uid"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,6 +31,25 @@
 		<script src="js/plugins.js"></script>
 		<!-- Main js -->
 		<script src="js/main.js"></script>
+		<style>#sachCon {
+	margin-left: 100px;
+}
+
+#search {
+	border: none;
+	background-color: lightgoldenrodyellow;
+	position: relative;
+	top: -17px;
+	left: 0px;
+	outline: medium;
+}
+
+#searchbtn {
+	position: relative;
+	top: -6px;
+	left: 0px;
+	outline: medium;
+}</style>
     </head>
     <body>
     	
@@ -38,29 +58,38 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12">
+							
 							<!-- 左上角logo -->
 							<div class="header-logo float-left">
 								<a href="index.jsp"><img src="images/logo.png" alt="main logo"></a>
-							</div>
+							</div >
+							<div class="header-logo float-left" id="sachCon" style="display: none;position: relative;
+								margin-top: 20px;">
+											<form action="SearchServlet" method="post" style="display:inline;">
+			<input type="text" id="search" name="search" placeholder="搜索你感兴趣的" 
+				style="width: 250px; height: 40px" /> 
+				<input type="image" src="images/search.jpg" id="searchbtn"
+				 style="width: 35px; height: 35px" id="go" 
+				title="Search" />
+</form>
+										</div>
+
 							<!-- header-search & total-cart -->
+							
 							<div class="float-right">
 								<div class="header-option-btns float-right">
 									<!-- header-搜索 -->
 									<div class="header-search float-left">
-										<button class="search-toggle" data-toggle="dropdown"><i class="pe-7s-search"></i></button>
-										<div class="dropdown-menu header-search-form">
-											<form action="#">
-												<input type="text" placeholder="Search">
-												<button><i class="fa fa-long-arrow-right"></i></button>
-											</form>
-										</div>
+										<button id="searchBtn1" class="search-toggle" data-toggle="dropdown"><i class="pe-7s-search"></i></button>
+										
 									</div>
+									<%if(!(uid==null)){%>
 									<!-- header 讯息 -->
 									<div class="header-account float-left">
 										<ul>
 											<li>
 												<a href="#" data-toggle="dropdown"><i class="pe-7s-mail"></i></a>
-												<ul class="dropdown-menu">
+												<!--<ul class="dropdown-menu">
 													<li>
 														<a href="login.html">Log in</a>
 													</li>
@@ -76,7 +105,7 @@
 													<li>
 														<a href="checkout.html">Checkout</a>
 													</li>
-												</ul>
+												</ul>-->
 											</li>
 										</ul>
 									</div>
@@ -118,13 +147,53 @@
 											</div>
 										</div>
 									</div>
+								<%}%>
 								</div>
 								<nav class="main-menu menu-right float-right">
 									<ul>
+										<%if(uid==null){%>
+											<li class="active">
+                                        <a href="login_registe.jsp">登陆/注册</a>
+                                        </li>
+                                        <%}else if(uid=="0"){%>
 										<li class="active">
 											<a href="index.jsp">首页</a>
 						
 										</li>
+										<li class="active">
+											<a href="perInfo.jsp">个人信息</a>
+						
+										</li>
+										<li class="active">
+											<a href="#">查询订单</a>
+						
+										</li>
+										<%}else{%>
+											<li class="active">
+											<a href="index.jsp">首页</a>
+						
+										</li>
+										<li class="active">
+											<a href="perInfo.jsp">个人信息</a>
+						
+										</li>
+										<li class="active">
+											<a href="#">查询订单</a>
+						
+										</li>
+										<li class="active">
+											<a href="#">查看商品</a>
+						
+										</li>
+										<li class="active">
+											<a href="#">添加商品</a>
+						
+										</li>
+										<li class="active">
+											<a href="#">修改订单</a>
+						
+										</li>
+										<%}%>
 										
 										<!--sub-menu在这里-->
 										<!--<li>
@@ -155,10 +224,22 @@
 							<div class="mobile-menu"></div>
 						</div>
 					</div>
+					
 				</div>
+			
 			</header>
 			<!-- END HEADER SECTION -->
-			
+			<script>
+				$("#searchBtn1").click(function(){
+					if(document.getElementById("sachCon").style.display=="none")
+					{
+					$("#sachCon").show(5);
+					}
+					else{
+						$("#sachCon").hide(5);
+					}
+				});
+			</script>
 		
 			
  	</body>

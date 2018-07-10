@@ -33,7 +33,7 @@
 	/*checkbox全选*/
 		$(function(){
 			function initTableCheckbox() {
-				var $thr = $('table thead tr');
+				var $thr = $('table thead tr').not(".tableHead");
 				var $checkAllTh = $('<th><input type="checkbox" id="checkAll" name="checkAll" /></th>');
 				/*将全选/反选复选框添加到表头最前，即增加一列*/
 				$thr.prepend($checkAllTh);
@@ -68,10 +68,6 @@
 					/*阻止向上冒泡，以防再次触发点击操作*/
 					event.stopPropagation();
 				});
-				/*点击每一行时也触发该行的选中操作*/
-				$tbr.click(function(){
-					$(this).find('input').click();
-				});
 			}
 			initTableCheckbox();
 		});
@@ -82,6 +78,9 @@
 	<div class="content">
 			<center><table cellspacing="0" >
 				<thead>
+					<tr class="tableHead">
+						<th style="padding:20px;font-size: 14px;font-weight: 600;" colspan="8">购物车</th>
+					</tr>
 					<tr>
 						<th>商品图片</th>
 						<th>商品名</th>

@@ -58,6 +58,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 /* start menu */
 .h_menu4 {
   margin: 7px 0 0px;
+  
 }
 .h_nav h4{
 	border-bottom:1px solid rgb(236, 236, 236);
@@ -112,24 +113,18 @@ select.in-drop1{
 p.log{
 	float:left;
 	font-size: 1em;
-	width: 100%;
+	width: 50%;
 	margin-top: 4%;
-	display: inline-block;
 }
 p.log a{
 	color:#52d0c4;
 	text-decoration:none;
 	margin: 0 5%;
-	display: inline;
+	display: inline-block;
 }
 p.log a:hover{
-	/*color:#000;*/
-	color:yellow;
-	
+	color:#000;
 }
-
-	
-
 .search {
   text-align: right;
     margin-top: 1%;
@@ -181,9 +176,13 @@ a.item_add {
 .box_1 h3 img{
 	margin-left: 5px;
 }
+
 .box_1 p a{
   color: #B5B3B3;
   font-size: 0.77em;
+}
+.box_1.note{
+	color:#000000;
 }
 .total {
   display: inline-block;
@@ -192,11 +191,10 @@ a.item_add {
 	float: right;
 	margin-top: 2px;
 }
+
 /*--- slider-css --*/
 .slider {
 	position: relative;
-	margin-left:300;
-	margin-right:10;
 }
 .rslides {
   position: relative;
@@ -217,7 +215,7 @@ a.item_add {
 .rslides li:first-child {
   position: relative;
   display: block;
-  float:left;
+  float: left;
   }
 .rslides img {
   display: block;
@@ -254,11 +252,8 @@ ul.callbacks_tabs.callbacks1_tabs {
 	left: 45%;
 }
 .banner{
-	border-bottom:1px /*solid #bcbcbc;*/
-
-    
-	
-	
+	border-bottom:1px solid #bcbcbc;
+	padding: 1em 0;
 }
 .banner-mat{
 	padding:0;
@@ -303,7 +298,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   text-decoration: none;
 }
 .content-top {
-  padding: 0;
+  padding: 4em 0;
 }
 .content-top1 {
   padding: 2em 0;
@@ -926,21 +921,22 @@ a.cart:hover{
 }
 table{
 	width:100%;
-	  margin: 0em 0 2em;
+	margin: 0em 0 2em;
 }
 th{
-	color: #52D0C4;
+	color: black;
   	font-size: 1.2em;
- 	font-family: 'OleoScript-Regular';
-    font-weight: 400;	
+ 	font-family: "Times New Roman",Times,serif;
+    font-weight: 500;	
 }
 th, td {
     padding: 10px;
 }
 td{
 	color:#b2b2b2;
-  font-size: 1em;
+    font-size: 1em;
 }
+
 a.at-in {
   float: left;
     width: 20%;
@@ -983,18 +979,27 @@ a.at-in {
   text-align: center;
 }
 a.to-buy{
-	padding: 0.3em 0.7em;
-  color: #FFF;
-  background: #52D0C4;
-  margin: 0.5em 0 0;
-  font-size: 1em;
-  display: inline-block;
-  line-height: 1.6em;
-  text-align: center;
-  text-decoration: none;
+	border-radius:2px;
+	padding: 0.4em 0.7em;
+	background-color: black;
+	border: 1px solid #414141;
+	color: #fff;
+	font-family: "Lato",
+	sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	height: 35px;
+	letter-spacing: 0.5px;
+	line-height: 15px;
+    margin: 0.5em 0 20px;
+    font-size: 1em;
+    display: inline-block;
+    line-height: 1.6em;
+    text-align: center;
+    text-decoration: none;
 }
 a.to-buy:hover{
-  background: #000;
+  background: #414141;
 }
 /*--//checkout--*/
 /*--typo--*/
