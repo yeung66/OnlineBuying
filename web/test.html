@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+id:<input class="id" value="">
+<button id="submit">connect</button><br>
+to:<input class="to">
+content:<input class="content"><button class="submit">submit</button>
+<div class="container"></div>
+<script>
+    var ws;
+    document.querySelector('#submit').onclick=function () {
+        var id = document.querySelector('.id').value
+        ws = new WebSocket('ws://localhost:8080/shixun/websocket/'+id)
+
+        ws.onerror = function () {
+            alert("WebSocket连接发生错误");
+        };
+
+        //连接成功建立的回调方法
+        ws.onopen = function () {
+            alert("WebSocket连接发生成功");
+        }
+
+        //接收到消息的回调方法
+        ws.onmessage = function (data) {
+            document.querySelector('.container').innerHTML+= ('<br>'+data.data)
+        }
+
+        //连接关闭的回调方法
+        ws.onclose = function () {
+            alert("WebSocket连接关闭");
+        }
+
+        //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+        window.onbeforeunload = function () {
+            ws.close()
+        }
+    }
+    document.querySelector('.submit').onclick=function () {
+        var r={}
+        r.to=document.querySelector('.to').value
+        r.content=document.querySelector('.content').value
+        r = JSON.stringify(r)
+        ws.send(r)
+    }
+
+</script>
+</body>
+</html>
