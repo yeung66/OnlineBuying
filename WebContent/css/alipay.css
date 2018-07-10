@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+body {
+	font-family: "Times New Roman",Times,serif;
+}
+
+h2 {
+	float: left;
+	text-align: center;
+	font-size: 16px;
+}
+
+.center{
+	width:40%;
+	min-width:550px;
+	margin:30px auto 0px auto;
+	border-radius:10px;
+	border:1px solid #d3d3d3;
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.selected {
+	width:100%;
+	color: black;
+	background-color: #f0f0f0;
+	padding-top:15px;
+	padding-bottom:15px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.show {
+	clear: left;
+	display: block;
+
+}
+
+.hidden {
+	display: none;
+}
+
+.new-btn-login-sp {
+	padding: 1px;
+	display: inline-block;
+	width: 75%;
+}
+
+.new-btn-login {
+	margin-left:15%;
+	background-color: black;
+	border: 1px solid #414141;
+	border-radius:2px;
+	color: #FFFFFF;
+	font-family: "Lato",sans-serif;
+	font-weight: 400;
+	width: 70%;
+	height: 35px;
+	letter-spacing: 0.5px;
+	line-height: 15px;
+	font-size: 16px;
+	text-align:center;
+	display: inline-block;
+}
+.new-btn-login:hover{
+	background: #414141;
+}
+
+#main {
+	width:100%;
+	font-size: 14px;
+}
+
+.content {
+	margin-top: 10px;
+	padding-top:10px;
+}
+
+.content dt {
+	width: 100px;
+	display: inline-block;
+	float: left;
+	margin-left: 20px;
+	color: #666;
+	font-size: 13px;
+	margin-top: 8px;
+}
+
+.content dd {
+	margin-left: 120px;
+	margin-top:5px;
+	margin-bottom: 5px;
+}
+
+.content dd input {
+	width: 85%;
+	height: 28px;
+	border: 0;
+	-webkit-border-radius: 0;
+	-webkit-appearance: none;
+}
+
+
+#foot {
+	position:absolute;
+	bottom:30px;
+	width: 100%;
+}
+
+.foot-ul {
+	width: 100%;
+}
+
+.foot-ul li {
+	width: 100%;
+	text-align: center;
+	color: #666;
+}
+
+.note-help {
+	color: #999999;
+	font-family: "Lato",sans-serif;
+	font-size: 10px;
+	line-height: 100%;
+	margin-top:8px;
+	width: 75%;
+	text-align:center;
+	display: block;
+}
+
+
+.one_line {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #eeeeee;
+	width: 80%;
+	margin-left: 10%;
+}
+
+
