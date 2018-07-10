@@ -33,7 +33,7 @@
 						<div class="col-xs-12">
 							<!-- 左上角logo -->
 							<div class="header-logo float-left">
-								<a href="index.jsp"><img src="img/logo.png" alt="main logo"></a>
+								<a href="index.jsp"><img src="images/logo.png" alt="main logo"></a>
 							</div>
 							<!-- header-search & total-cart -->
 							<div class="float-right">
@@ -91,7 +91,7 @@
 													
 													<!--放入购物车中的商品-->
 													<div class="cart-image">
-														<a href="product-details.html"><img src="img/product/cart-1.jpg" alt=""></a>
+														<a href="product-details.html"><img src="images/product/cart-1.jpg" alt=""></a>
 													</div>
 													<div class="cart-info">
 														<h5><a href="product-details.html">椅子</a></h5>
