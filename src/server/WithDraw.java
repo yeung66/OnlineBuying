@@ -41,6 +41,7 @@ public class WithDraw extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		PrintWriter  out = response.getWriter();
 		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");
 		AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id,
@@ -50,6 +51,27 @@ public class WithDraw extends HttpServlet {
 		String payee_account = request.getParameter("WIDaccount");
 		Double amount = Double.valueOf(request.getParameter("WIDtotal_amount"));
 		String payee_real_name = request.getParameter("WIDreal_name");
+		String uid = (String)request.getSession().getAttribute("uid");
+		String sql = "SELECT money FROM users WHERE id = '" + uid + "';";
+		Double money = 0.0;
+		Connection connect=Database.getConnect();
+		try {
+			Statement st = connect.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				money = rs.getDouble("money");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return;
+		}
+		if(money < amount){
+			out.print("<script>");
+			out.print("alert('账户余额不足!');");
+			out.print("</script>");
+			out.close();
+			return;
+		}
 		alireq.setBizContent("{" + "\"out_biz_no\":\""+out_biz_no+"\"," + "\"payee_type\":\"ALIPAY_LOGONID\","
 				+ "\"payee_account\":\""+payee_account+"\"," + "\"amount\":\""+amount+"\"," + "\"payer_show_name\":\"珞珈商城\","
 				+ "\"payee_real_name\":\""+payee_real_name+"\"," + "\"remark\":\"提现\"" + "}");
@@ -57,20 +79,6 @@ public class WithDraw extends HttpServlet {
 		try {
 			alires = alipayClient.execute(alireq);
 			if (alires.isSuccess()) {
-				String uid = (String)request.getSession().getAttribute("uid");
-				String sql = "SELECT money FROM users WHERE id = '" + uid + "';";
-				Double money = 0.0;
-				Connection connect=Database.getConnect();
-		        try {
-		            Statement st = connect.createStatement();
-		            ResultSet rs = st.executeQuery(sql);
-		            while (rs.next()) {
-						money = rs.getDouble("money");
-					}
-		        } catch (SQLException e) {
-		            e.printStackTrace();
-		            return;
-		        }
 		        money -= amount;
 				sql = "UPDATE users SET money=" + money + " WHERE id='" + uid + "';";
 				Database.update(sql);
