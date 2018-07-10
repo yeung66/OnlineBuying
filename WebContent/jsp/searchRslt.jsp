@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,7 +23,7 @@
         }
         table thead th
         {
-            background-color: greenyellow;
+            background-color: gainsboro;
             width: 100px;
         }
         table tr:nth-child(odd)
@@ -33,7 +33,7 @@
         }
         table tr:nth-child(even)
         {
-            background:ivory;
+            background:gainsboro;
             
         }
     </style>
@@ -41,6 +41,7 @@
 </head>
 <body>
 <jsp:include page="head.jsp"/>
+<div style="height:200px"></div>
 <script type = "text/javascript">
     window.onload = function()
     {
@@ -51,8 +52,11 @@
             var str=JSON.stringify(s);
             var result= JSON.parse(str+"");
             var para0=document.createElement("td");
+            var para2=document.createElement("a");
+            para2.href="goodsDescribed.jsp?gid="+result[i].id;
             var node0=document.createTextNode(result[i].name);
-            para0.appendChild(node0);
+            para2.appendChild(node0);
+            para0.appendChild(para2); 
             var element=document.getElementById("goodsTab");
             element.appendChild(para0);
             var para0=document.createElement("td");
@@ -89,7 +93,7 @@
         }
     }
 </script>
-<table align="center" width="600" border="0" height="180" id="goodsTab"
+<table align="center" width="100%" border="0" height="180" id="goodsTab"
          cellpadding="1" cellspacing="1">
     <tr bgcolor="white" >
         <td align="center" colspan="7" style="color: green;">
@@ -97,12 +101,12 @@
         </td>
     </tr>
     <tr align="center" >
-        <td style="color: green;"><b>商品名</b></td>
-        <td style="color: green;"><b>商家</b></td>
-        <td style="color: green;"><b>价格</b></td>
-        <td style="color: green;"><b>剩余数量</b></td>
-        <td style="color: green;"><b>图片</b></td>
-        <td style="color: green;"><b>评分</b></td>
+        <td style="color: black;"><b>商品名</b></td>
+        <td style="color: black;"><b>商家</b></td>
+        <td style="color: black;"><b>价格</b></td>
+        <td style="color: black;"><b>剩余数量</b></td>
+        <td style="color: black;"><b>图片</b></td>
+        <td style="color: black;"><b>评分</b></td>
 
     </tr>
 </table> 
