@@ -11,7 +11,7 @@
 	<div id="main">
 	<div class="center">
 			<h2 id="tab1" class="selected">提  现</h2>
-		<form name=alipayment action=WithDraw method=post
+		<form name=alipayment action=../WithDraw method=post
 			target="_blank">
 			<div id="body1" class="show" name="divcontent">
 				<dl class="content">
