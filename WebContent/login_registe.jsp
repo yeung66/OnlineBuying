@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登陆页面</title>
+<title>登陆注册</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/login.css" />
 
@@ -15,6 +15,20 @@
 <script>
 	$(document).ready(function() {
 		//打开会员登录  
+			$("#alert-list").hide();
+			$("#regist_container").hide();
+			$("#_close").show();
+			$("#_start").animate({
+				left : '350px',
+				height : '520px',
+				width : '400px'
+			}, 500, function() {
+				$("#login_container").show(500);
+				$("#_close").animate({
+					height : '40px',
+					width : '40px'
+				}, 500);
+			});
 		$("#Login_start_").click(function() {
 			$("#alert-list").hide();
 			$("#regist_container").hide();
@@ -64,12 +78,12 @@
 				}, 500);
 			});
 		});
-		//去 注册
+		//去注册
 		$("#toRegist").click(function() {
 			$("#login_container").hide(500);
 			$("#regist_container").show(500);
 		});
-		//去 登录
+		//去登录
 		$("#toLogin").click(function() {
 			$("#alert-list").hide();
 			$("#regist_container").hide(500);
@@ -79,34 +93,31 @@
 </script>
 
 </head>
-<body background="images/back2.jpg"
-	style="background-repeat: no-repeat; background-size: 15000px 34500px;">
+<body >
 
-	<nav id="daohanglan">
-		<span id="dengluzhuce">
-			<ul class="top ">
-				<li><a id="Login_start_" class="btn btn-danger"
-					style="width: 100px; height: 40px; border-radius: 10px;">登陆</a></li>
-				<li><a id="Regist_start_" class="btn btn-success"
-					style="width: 100px; height: 40px; border-radius: 10px;">注册</a></li>
-			</ul>
-		</span> 
+	
+				<a id="Login_start_" class="btn btn-danger"
+					style="width: 100px; height: 40px; border-radius: 10px;float: right;">登陆</a>
+				<a id="Regist_start_" class="btn btn-success"
+					style="width: 100px; height: 40px; border-radius: 10px;float: right;">注册</a>
+	
 
-		
-
-	</nav>
-
-
+<div style="width: 100%;height:130px"></div>
 	<!-- 会员登录  -->
 	<!--<div id='Login_start' style="position: absolute;" >-->
-	<div id='_start'>
+	
+	<div style="background-image:url(images/login_bac4.jpg) ;width:100%;height:850px;background-size: 100%;">
+		
+		<br /><br /><br /><br /><br /><br /><br />
+		<div id='_start' style="position:relative;
+	margin-left:-150px;">
 		<div id='_close' style="display: none;">
 			<span class="glyphicon glyphicon-remove"></span>
 		</div>
 		<br />
 		<!--登录框-->
 		<form action="LoginServlet?method=login" method="post">
-			<div id="login_container" style="background-color: #FFFFFF">
+			<div id="login_container" style="background-color: #FFFFFF;">
 				<div id="lab1">
 					<span id="lab_login">用户登录</span> <span id="lab_toRegist">
 						&emsp;还没有账号&nbsp; <span id='toRegist'
@@ -129,7 +140,7 @@
 		<form action="LoginServlet?method=register" method="post"
 			name="register">
 			<div id='regist_container'
-				style="display: none; background-color: #FFFFFF">
+				style=" background-color: #FFFFFF">
 				<div id="lab1">
 					<span id="lab_login">用户注册</span> <span id="lab_toLogin">
 						&emsp;已有账号&nbsp; <span id='toLogin'
@@ -173,6 +184,7 @@
 				</div>
 			</div>
 		</form>
+	</div>
 	</div>
 	<script type="text/javascript">
 		function login() {
