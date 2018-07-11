@@ -95,22 +95,25 @@
 </head>
 <body >
 
-	
-				<a id="Login_start_" class="btn btn-danger"
-					style="width: 100px; height: 40px; border-radius: 10px;float: right;">登陆</a>
-				<a id="Regist_start_" class="btn btn-success"
-					style="width: 100px; height: 40px; border-radius: 10px;float: right;">注册</a>
+<jsp:include page="head.jsp"/>
 	
 
 <div style="width: 100%;height:130px"></div>
 	<!-- 会员登录  -->
 	<!--<div id='Login_start' style="position: absolute;" >-->
 	
-	<div style="background-image:url(images/login_bac4.jpg) ;width:100%;height:850px;background-size: 100%;">
+	<div style="background-image:url(images/login_bac5.jpg) ;width:100%;height:850px;background-size: 100%;">
 		
 		<br /><br /><br /><br /><br /><br /><br />
+		<div style="position: relative;margin-left: 200px;">
+			<span style="font-family:华文行楷;font-size: 48px;"><br /><br /><br /><br /><br /><br />
+				<p style="font-size: larger;">专注服务于</p>
+				<br />
+				<p style="font-size: larger;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一位顾客</p>
+			</span>
+		</div>
 		<div id='_start' style="position:relative;
-	margin-left:-150px;">
+	margin-left:1050px;background-color: gray;margin-top: -250px;">
 		<div id='_close' style="display: none;">
 			<span class="glyphicon glyphicon-remove"></span>
 		</div>
@@ -131,7 +134,7 @@
 					<br /> <input type="text" class="form-control" placeholder="用户名"
 						id="login_number" name="id" /> <input type="password"
 						class="form-control" placeholder="密码" id="login_password"
-						name="password" /> <input type="button" class="btn btn-success"
+						name="password" /> <input type="button" style="width:330px" class="btn"
 						value="登录" id="login_btn" onclick="login()" />
 				</div>
 			</div>
@@ -168,7 +171,7 @@
 						</select>
 					</div>
 					<input type="button" onclick="register1()" value="注册"
-						class="btn btn-success" id="regist_btn" />
+						class="btn" id="regist_btn" style="position: relative;margin-top: 6px;"/>
 				</div>
 
 			</div>
@@ -206,6 +209,7 @@
 					    alert('登录成功')
 
 						window.location = 'index.jsp';
+
 					}
 
 				},
