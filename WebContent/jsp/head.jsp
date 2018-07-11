@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="vo.ShoppingCart" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%
@@ -6,8 +8,11 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%String uid =(String)session.getAttribute("uid"); %>
-<%String type =(String)session.getAttribute("type"); %>
+<%
+	String uid =(String)session.getAttribute("uid");
+	String type =(String)session.getAttribute("type");
+	List<ShoppingCart> list = ShoppingCart.searchFromSQL(uid);
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +30,7 @@
 		<!-- Modernizr JS -->
 		<script src="js/modernizr-2.8.3.min.js"></script>
 			<!-- jQuery latest version -->
-        <%--<script src="js/jquery-3.1.1.min.js"></script>--%>
+
 		<!-- Bootstrap js -->
 		<script src="js/bootstrap.min.js"></script>
 		<!-- Plugins js -->
@@ -36,21 +41,7 @@
 	margin-left: 100px;
 }
 
-#search {
-	border: none;
-	background-color: lightgoldenrodyellow;
-	position: relative;
-	top: -17px;
-	left: 0px;
-	outline: medium;
-}
-
-#searchbtn {
-	position: relative;
-	top: -6px;
-	left: 0px;
-	outline: medium;
-}</style>
+</style>
     </head>
     <body>
     	
@@ -64,7 +55,7 @@
 							<div class="header-logo float-left">
 								<a href="index.jsp"><img src="images/logo.png" alt="main logo"></a>
 							</div >
-							
+
 
 							<!-- header-search & total-cart -->
 							
@@ -72,7 +63,13 @@
 								<div class="header-option-btns float-right">
 									<!-- header-搜索 -->
 									<div class="header-search float-left">
-										<button id="searchBtn1" class="search-toggle" data-toggle="dropdown"><i class="pe-7s-search"></i></button>
+										<button class="search-toggle"  type="button" data-toggle="dropdown"><i class="pe-7s-search"></i></button>
+										<div class="dropdown-menu header-search-form">
+											<form action="SearchServlet">
+												<input type="text" placeholder="Search" name="search">
+												<button><i class="fa fa-long-arrow-right"></i></button>
+											</form>
+										</div>
 										
 									</div>
 									<%if(!(uid==null)){%>
@@ -109,33 +106,41 @@
 											<!--
                                             	显示购物车里有多少个商品
                                             -->
-											<span>2</span>
+											<span><%=list.size()%></span>
 										</a>
 										<!-- Mini Cart Brief -->
 										<div class="mini-cart-brief dropdown-menu text-left">
+
 											<!-- Cart Products -->
 											<div class="all-cart-product clearfix">
+												<%
+													double total = 0.0;
+												    for (int i=0;i<list.size();i++){
+											    %>
 												<div class="single-cart clearfix">
 													
 													<!--放入购物车中的商品-->
 													<div class="cart-image">
-														<a href="product-details.html"><img src="images/product/1.jpg" alt=""></a>
+														<a href="jsp/goodsDescribed.jsp?gid=<%=list.get(i).getProduct().getId()%>"><img src="<%=list.get(i).getProduct().getPath()%>" alt=""></a>
 													</div>
 													<div class="cart-info">
-														<h5><a href="product-details.html">椅子</a></h5>
-														<p>1 x RMB 50.0</p>
+														<h5><a href="jsp/goodsDescribed.jsp?gid=<%=list.get(i).getProduct().getId()%>"><%=list.get(i).getProduct().getName()%></a></h5>
+														<p><%=list.get(i).getNum()%> x RMB <%=list.get(i).getProduct().getPrice()%></p>
 														<!--<a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>-->
 													</div>
 												</div>
-												
+												<%
+													total = total + list.get(i).getNum()*list.get(i).getProduct().getPrice();
+													}
+												%>
 											</div>
 											<!-- 购物车总价 -->
 											<div class="cart-totals">
-												<h5>Total <span>RMB 50.0</span></h5>
+												<h5>Total <span><%=total%></span></h5>
 											</div>
 											<!-- Cart Button -->
 											<div class="cart-bottom  clearfix">
-												<a href="shoppingCart.jsp">查看购物车</a>
+												<a href="jsp/shoppingCart.jsp">查看购物车</a>
 											</div>
 										</div>
 									</div>
@@ -161,8 +166,8 @@
 						
 										</li>
 										<li class="active">
-											<a href="login">退出</a>
-						
+											<a href="login">退出登录</a>
+
 										</li>
 										<%}else{%>
 											<li class="active">
@@ -174,24 +179,20 @@
 						
 										</li>
 										<li class="active">
-											<a href="jsp/ordersForShop.jsp">查询订单</a>
+											<a href="jsp/alreadyBuy.jsp">查询订单</a>
 						
 										</li>
 										<li class="active">
 											<a href="jsp/table_list_img.jsp">查看商品</a>
-						
-										</li>
-										<li class="active">
-											<a href="#">添加商品</a>
-						
+
 										</li>
 										<li class="active">
 											<a href="jsp/ordersForShop.jsp">修改订单</a>
 						
 										</li>
 										<li class="active">
-											<a href="login">退出</a>
-						
+											<a href="login">退出登录</a>
+
 										</li>
 										<%}%>
 										
@@ -224,16 +225,7 @@
 							<div class="mobile-menu"></div>
 						</div>
 					</div>
-					<div class="header-logo float-left row" id="sachCon" style="display: none;position: relative;
-								margin-left: 80%;">
-											<form action="SearchServlet" method="post" style="display:inline;">
-			<input type="text" id="search" name="search" placeholder="搜索你感兴趣的" 
-				style="width: 250px; height: 40px" /> 
-				<input type="image" src="images/search.jpg" id="searchbtn"
-				 style="width: 35px; height: 35px" id="go" 
-				title="Search" />
-</form>
-										</div>
+					
 				</div>
 			
 			</header>
