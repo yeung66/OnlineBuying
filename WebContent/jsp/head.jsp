@@ -24,7 +24,7 @@
 		<!-- Modernizr JS -->
 		<script src="js/modernizr-2.8.3.min.js"></script>
 			<!-- jQuery latest version -->
-		<script src="js/jquery-3.1.1.min.js"></script>
+
 		<!-- Bootstrap js -->
 		<script src="js/bootstrap.min.js"></script>
 		<!-- Plugins js -->
@@ -161,11 +161,11 @@
 						
 										</li>
 										<li class="active">
-											<a href="perInfo.jsp">个人信息</a>
+											<a href="jsp/perInfo.jsp">个人信息</a>
 						
 										</li>
 										<li class="active">
-											<a href="#">查询订单</a>
+											<a href="jsp/alreadyBuy.jsp">查询订单</a>
 						
 										</li>
 										<%}else{%>
@@ -174,7 +174,7 @@
 						
 										</li>
 										<li class="active">
-											<a href="perInfo.jsp">个人信息</a>
+											<a href="jsp/perInfo.jsp">个人信息</a>
 						
 										</li>
 										<li class="active">
@@ -182,7 +182,7 @@
 						
 										</li>
 										<li class="active">
-											<a href="#">查看商品</a>
+											<a href="jsp/table_list_img.jsp">查看商品</a>
 						
 										</li>
 										<li class="active">
@@ -190,7 +190,7 @@
 						
 										</li>
 										<li class="active">
-											<a href="#">修改订单</a>
+											<a href="jsp/ordersForShop.jsp">修改订单</a>
 						
 										</li>
 										<%}%>
