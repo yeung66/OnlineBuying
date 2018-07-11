@@ -86,7 +86,7 @@
 					<td><%=price%></td>
 					<td><%=num * price%></td>
 					<td><%=date%></td>
-					<td><a href="#popup?status=<%=status%>" class="stateButton"><%=status%></td>
+					<td><a href="jsp/ordersForShop.jsp#popup?status=<%=status%>" class="stateButton"><%=status%></td>
 				</tr>
 				<%
 					}
@@ -126,7 +126,7 @@
 					</div>
 				</div>
 			</div>
-			<a class="popup__close" href="#">X</a>
+			<a class="popup__close" href="jsp/ordersForShop.jsp#">X</a>
 			<div class="submitChoice">
 				<!--没有写form，可以改成form然后type=“submit”-->
 				<form action="/MerchantAlterOrder" name="form1">
