@@ -1,6 +1,8 @@
 package server;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,22 +32,33 @@ public class MerchantAlterOrder extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String states = request.getParameter("states");
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter  out = response.getWriter();
+		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");   
 		String operation = request.getParameter("operation");
 		int id = Integer.parseInt(request.getParameter("id"));
 		String sql;
-		if (states.equals("0") && operation.equals("qv")) {
+		if (operation.equals("qv")) {
 			sql = "DELETE FROM orders WHERE id= " + id + ";";
 			Database.update(sql);
-		} else if (states.equals("0") && operation.equals("fa")) {
-			states = "1";
-			sql = "UPDATE orders SET states = '" + states + "' WHERE id = " + id + ";";
+		} else if (operation.equals("fa")) {
+			sql = "UPDATE orders SET states = '" + 1 + "' WHERE id = " + id + ";";
 			Database.update(sql);
-		} else if (states.equals("2") && operation.equals("yi")) {
-			states = "3";
-			sql = "UPDATE orders SET states = '" + states + "' WHERE id = " + id + ";";
+		} else if (operation.equals("yi")) {
+			sql = "UPDATE orders SET states = '" + 3 + "' WHERE id = " + id + ";";
 			Database.update(sql);
+		} else {
+			out.print("<script>");
+    		out.print("alert('失败!');");
+    		out.print("</script>");
+    		out.close();
+        	return;
 		}
+		out.print("<script>");
+		out.print("alert('成功!');");
+		out.print("window.location.href='jsp/ordersForShop.jsp'");
+		out.print("</script>");
+		out.close();
 	}
 
 	/**

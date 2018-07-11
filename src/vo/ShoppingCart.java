@@ -84,12 +84,34 @@ public class ShoppingCart {
     }
 
     public static boolean AddinSQL(ShoppingCart cart){
-        String sql = "INSERT INTO `shixun`.`shoppingcart` (`uid`, `pid`, `num`, `starttime`) VALUES ('"+cart.user.getId()+"' , '"+cart.product.getId()+"' ,'"
-                +cart.num+"' ,'"+cart.startTime+"')";
-        if (Database.update(sql)!=-1){
-            return true;
-        }else{
-            return false;
+        String sql = "SELECT num FROM shoppingcart where uid = '"+cart.user.getId()+"' and pid ="+cart.product.getId();
+        if (Database.checkExist(sql)){
+            Connection connect=Database.getConnect();
+            int num = 0;
+            try {
+                Statement st = connect.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()){
+                    num  = rs.getInt(1);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+            sql = "update shoppingcart set num ="+Integer.toString(num + cart.num)+" where uid = '"+cart.user.getId()+"' and pid ="+cart.product.getId();
+            if (Database.update(sql) != -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }else {
+            sql = "INSERT INTO `shixun`.`shoppingcart` (`uid`, `pid`, `num`, `starttime`) VALUES ('" + cart.user.getId() + "' , '" + cart.product.getId() + "' ,'"
+                    + cart.num + "' ,'" + cart.startTime + "')";
+            if (Database.update(sql) != -1) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
