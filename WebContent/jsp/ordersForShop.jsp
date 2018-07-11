@@ -137,11 +137,11 @@
 		</div>
 	</div>
 	<script>
-				function tijiao() {
-					var operation = $('input:radio[name="op"]:checked').val();
-					$("#operation").val(operation);
-					document.form1.submit();
-				}
-			</script>
+		function tijiao() {
+			var operation = $('input:radio[name="op"]:checked').val();
+			$("#operation").val(operation);
+			document.form1.submit();
+		}
+	</script>
 </body>
 </html>
