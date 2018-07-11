@@ -86,7 +86,7 @@
 					<td><%=price%></td>
 					<td><%=num * price%></td>
 					<td><%=date%></td>
-					<td><a href="jsp/ordersForShop.jsp#popup?status=<%=status%>" class="stateButton"><%=status%></td>
+					<td><a href="jsp/ordersForShop.jsp#popup?status=<%=status%>&id=<%=o.getId()%>" class="stateButton"><%=status%></a></td>
 				</tr>
 				<%
 					}
@@ -128,11 +128,7 @@
 			</div>
 			<a class="popup__close" href="jsp/ordersForShop.jsp#">X</a>
 			<div class="submitChoice">
-				<!--没有写form，可以改成form然后type=“submit”-->
-				<form action="/MerchantAlterOrder" name="form1">
-				<input type="hidden" name="operation" value="" id="operation">
 				<input type="button" value="提交修改" class="blackButton" onclick="tijiao()"></input>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -140,7 +136,7 @@
 		function tijiao() {
 			var operation = $('input:radio[name="op"]:checked').val();
 			$("#operation").val(operation);
-			document.form1.submit();
+			window.location.href="../MerchantAlterOrder?operation="+operation+"&"+window.location.search;
 		}
 	</script>
 </body>
