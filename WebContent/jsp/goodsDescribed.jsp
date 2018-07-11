@@ -1,4 +1,4 @@
-<0%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ page import="util.*"%>
 <%@ page import="vo.Product" %>
@@ -135,7 +135,7 @@
 					
 						
                        
-                        <a href="itemReview.jsp"><button class="add-to-cart">查看评论</button></a>
+                        <a href="jsp/itemReview.jsp?pid=<%=p.getId()%>"><button class="add-to-cart">查看评论</button></a>
                    
                     </div>
                     

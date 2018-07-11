@@ -25,7 +25,7 @@
 		<!-- Modernizr JS -->
 		<script src="js/modernizr-2.8.3.min.js"></script>
 			<!-- jQuery latest version -->
-
+        <%--<script src="js/jquery-3.1.1.min.js"></script>--%>
 		<!-- Bootstrap js -->
 		<script src="js/bootstrap.min.js"></script>
 		<!-- Plugins js -->
