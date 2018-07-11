@@ -1,10 +1,22 @@
+<%@ page import="java.util.Set" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vo.Message" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<%
+	List<String> contacter = Message.getRelatedUser((String)session.getAttribute("uid"));
+%>
 <!DOCTYPE html>
 <html>
 
 	<head>
+		<base href="<%=basePath%>">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="format-detection" content="telephone=no">
@@ -66,29 +78,36 @@
                     </div>
                     <div class="chat03_content">
                         <ul>
-                            <li>
+							<%
+
+								for(String c: contacter){
+							%>
+                            <li name="contacter" id="<%=c%>">
                              
                                 <a href="javascript:;">
-                                    <img src="images/4.jpg"></a><a href="javascript:;" class="chat03_name">刘秀</a>
+                                    <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name"><%=c%></a>
                             </li>
-                            
-                            <li class="choosed">
-                                
-                                <a href="javascript:;">
-                                    <img src="images/1.JPG"></a><a href="javascript:;" class="chat03_name">客服1号</a>
-                            </li>
-                            
-                            <li>
-                                
-                                <a href="javascript:;">
-                                    <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name">吴敬</a>
-                            </li>
-                            
-                            <li>
-                                
-                                <a href="javascript:;">
-                                    <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name">张珊珊</a>
-                            </li>
+
+							<%
+								}
+							%>
+                            <%--<li class="choosed">--%>
+                                <%----%>
+                                <%--<a href="javascript:;">--%>
+                                    <%--<img src="images/1.jpg"></a><a href="javascript:;" class="chat03_name">客服1号</a>--%>
+                            <%--</li>--%>
+                            <%----%>
+                            <%--<li>--%>
+                                <%----%>
+                                <%--<a href="javascript:;">--%>
+                                    <%--<img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name">吴敬</a>--%>
+                            <%--</li>--%>
+                            <%----%>
+                            <%--<li>--%>
+                                <%----%>
+                                <%--<a href="javascript:;">--%>
+                                    <%--<img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name">张珊珊</a>--%>
+                            <%--</li>--%>
                             
                            
                         </ul>
@@ -99,6 +118,25 @@
 				</div>
 			</div>
 		</div>
+	<script>
+		var contacterList = document.querySelector('.chat03_content > ul')
+		window.onload=function () {
+            var chooseCont = contacterList.firstElementChild
+            chooseCont.class = 'choosed'
+            var http = new XMLHttpRequest()
+            http.onreadystatechange = function (data) {
+                if (http.readyState == 4) {// 4 = "loaded"
+                    if (http.status == 200) {// 200 = OK
+                        // ...our code here...
+						var data = JSON.parse(http.responseText)
+						console.log(1)
+                    }
+                }
+            }
+            http.open('get', 'message'+'from=' + chooseCont.id + '&type=0')
+            http.send()
+        }
+	</script>
 	</body>
 
 </html>

@@ -7,7 +7,7 @@
                   maxTotal="100"
                   maxIdle="10"
                   maxWaitMillis="3000"
-
+                  removeAbandonedTimeout="60"
                   removeAbandonedOnMaintenance="true"
                   removeAbandonedOnBorrow="true"
                   username="yeung"

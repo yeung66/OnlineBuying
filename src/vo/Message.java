@@ -3,6 +3,10 @@ package vo;
 import util.Database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -76,6 +80,50 @@ public class Message {
             st.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
+        }
+    }
+
+    public static List<Message> getUncheckedMessage(String from,String to){
+        Connection conn = Database.getConnect();
+        try{
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select * from message where receive='"+to+"' and send='"+from+"' and state='0' ORDER by time");
+            List<Message> result=new ArrayList<>();
+            while (rs.next()){
+                Message m = new Message();
+                m.setContent(rs.getString("content"));
+                m.setSend(rs.getString("send"));
+                m.setId(rs.getInt("id"));
+                result.add(m);
+            }
+            for(Message m:result){
+                st.executeUpdate("update message set state='1' where id="+m.getId());
+            }
+            return result;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static List<String> getRelatedUser(String id){
+        Connection conn = Database.getConnect();
+        try{
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select send from message where receive='"+id+"' ORDER BY state");
+            List<String> result=new ArrayList<>();
+            while (rs.next()){
+                if(!result.contains(rs.getString("send"))) result.add(rs.getString("send"));
+            }
+            rs = st.executeQuery("select receive from message where send='"+id+"'");
+            while (rs.next()){
+                if(!result.contains(rs.getString("receive"))) result.add(rs.getString("receive"));
+            }
+
+            return result;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
         }
     }
 }

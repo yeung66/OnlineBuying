@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!--
 下面这段代码是用来统一路径的，使用后要改下面的link和script引用包的地址，把每个路径前面的../去掉
 <%
@@ -62,7 +63,7 @@
 					<td>100元</td>
 					<td>100元</td>
 					<td>2018/7/3 15:34</td>
-					<td><a href="#popup" class="stateButton">例：未发货</td>
+					<td><a href="jsp/ordersForShop.jsp#popup" class="stateButton">例：未发货</td>
 					<!--需要代码根据order的id是否已签收和是否已进行过评价判断，如果状态是已签收+未评价才能进行跳转到comment.jsp-->
 				</tr>
 			</table>
@@ -96,8 +97,8 @@
 					</div>
 				</div>
 			</div>
-			<a class="popup__close" href="#">X</a>
-			<div class"submitChoice">
+			<a class="popup__close" href="jsp/ordersForShop.jsp#">X</a>
+			<div class="submitChoice">
 				<!--没有写form，可以改成form然后type=“submit”-->
 				<input type="button" value="提交修改" class="blackButton" onclick=""></input>
 			</div>
