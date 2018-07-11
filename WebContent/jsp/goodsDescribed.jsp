@@ -134,12 +134,12 @@
 			<script>
 				var pay = document.querySelector('form[name=product_form]')
 				function shoppingCart() {
-					pay.action = "AddCartServlet";
-					pay.submit();
+					document.product_form.action = "AddCartServlet";
+					document.product_form.submit();
 				}
 				function buy() {
-					pay.action = "BuyProductServlet";
-					pay.submit();
+					document.product_form.action = "BuyProductServlet";
+					document.product_form.submit();
 				}
 			</script>
 			<!-- jQuery latest version -->
