@@ -1,6 +1,7 @@
 package server;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -45,29 +46,33 @@ public class CustomerAlterOrderServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String states = request.getParameter("states");
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter  out = response.getWriter();
+		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");   
 		String operation = request.getParameter("operation");
 		int id = Integer.parseInt(request.getParameter("id"));
 		String sql;
-		if (states.equals("0") && operation.equals("qv")) {
+		if (operation.equals("qv")) {
 			sql = "DELETE FROM orders WHERE id= " + id + ";";
 			Database.update(sql);
-		} else if (states.equals("1") && operation.equals("tui")) {
-			states = "2";
-			sql = "UPDATE orders SET states = '" + states + "' WHERE id = " + id + ";";
+		} else if (operation.equals("tui")) {
+			sql = "UPDATE orders SET states = '" + 2 + "' WHERE id = " + id + ";";
 			Database.update(sql);
-		} else if (states.equals("1") && operation.equals("shou")) {
-			states = "4";
-			sql = "UPDATE orders SET states = '" + states + "' WHERE id = " + id + ";";
+		} else if (operation.equals("shou")) {
+			sql = "UPDATE orders SET states = '" + 4 + "' WHERE id = " + id + ";";
 			Database.update(sql);
-		} else if (states.equals("4") && operation.equals("ping")) {
-			states = "5";
-			sql = "UPDATE orders SET states = '" + states + "' WHERE id = " + id + ";";
-			Database.update(sql);
-			request.getRequestDispatcher("../jsp/comment.jsp").forward(request, response);
+		} else {
+			out.print("<script>");
+    		out.print("alert('失败!');");
+    		out.print("</script>");
+    		out.close();
+        	return;
 		}
-		
+		out.print("<script>");
+		out.print("alert('成功!');");
+		out.print("window.location.href='jsp/alreadyBuy.jsp'");
+		out.print("</script>");
+		out.close();
 	}
 
 }
