@@ -47,21 +47,13 @@
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.8.3.min.js"></script>
 
-
 </head>
 
 <body>
-
-
-
-
-
 	<!-- Body main wrapper start -->
 	<div class="wrapper">
 
 		<jsp:include page="head.jsp"></jsp:include>
-
-
 
 		<!-- PAGE SECTION START -->
 		<div class="page-section section pt-120 pb-120">
@@ -113,12 +105,6 @@
 
 								</p>
 								<a herf="#">商家:<%=producer%></a><br>库存:<%=number%>
-
-
-
-
-
-
 							</div>
 
 							<!-- Quantity Cart -->
@@ -129,37 +115,20 @@
 										<input type="text" value="0" name="buyNumber">
 
 									</div>
-
 									<input type="hidden" name="pid" value=<%=gid%>> <input
 										type="button" class="add-to-cart" value="加入购物车"
 										onclick="shoppingCart()"> <input type="button"
 										class="add-to-cart" value="购买" onclick="buy()">
 								</form>
 
-
 								<a href="itemReview.jsp?pid=<%=gid%>"><button class="add-to-cart">查看评论</button></a>
 
 							</div>
-
-
-
-
-
-
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
-
-
 			</div>
 			<!-- Body main wrapper end -->
-
 
 			<!-- Placed JS at the end of the document so the pages load faster -->
 			<script>
@@ -167,7 +136,7 @@
 					document.pay.action = "../AddCartServlet";
 					document.pay.submit();
 				}
-				function zhi() {
+				function buy() {
 					document.pay.action = "../BuyProductServlet";
 					document.pay.submit();
 				}
