@@ -72,7 +72,7 @@
 						String imgPath = p.getPath();
 						String name = p.getName();
 						String purchaser = o.getPurchaser();
-						int num = p.getNum();
+						int num = o.getQuantity();
 						Double price = p.getPrice();
 						Date date = o.getStartTime();
 						String status = o.getStatus();
