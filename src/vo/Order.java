@@ -59,7 +59,7 @@ public class Order {
 	public String getStates() {
 		return states;
 	}
-
+	
 	public void setStates(String states) {
 		this.states = states;
 	}
@@ -141,6 +141,23 @@ public class Order {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public String getStatus() {
+		if(states.equals("0"))
+			return "未发货";
+		else if(states.equals("1"))
+			return "已发货";
+		else if(states.equals("2"))
+			return "退货中";
+		else if(states.equals("3"))
+			return "已退货";
+		else if(states.equals("4"))
+			return "已签收";
+		else if(states.equals("5"))
+			return "已评价";
+		else
+			return "";
 	}
 
 }
