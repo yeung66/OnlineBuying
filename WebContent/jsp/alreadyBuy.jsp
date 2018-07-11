@@ -33,6 +33,7 @@
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/memenu.js"></script>
+	<script src="../js/jquery-3.1.1.min.js">
 <script>
 	
 </script>
@@ -57,28 +58,35 @@
 					<th>操作</th>
 				</tr>
 
-               
+				<%
+					List<Order> orderList = Order.getOrderList((String)request.getSession().getAttribute("uid"));
+					if(orderList!=null){
+						for(Order o:orderList){
+							Product p =Product.getProductInfo(o.getProduct());
+
+				%>
 				<tr>
-					<td><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/f8795a43541669.57f38b1b5e4ac.jpg"
-						width="70px" height="70px"></td>
-					<!--这里添加一下商品详情页的链接 href-->
-					<td><a href="">linear lamp</a></td>
-					<td>1</td>
-					<td>100元</td>
-					<td>100元</td>
-					<td>2018/7/3 15:34</td>
-					<td><a href="#popup" class="stateButton">例：未发货</td>
+					<td><img src="<%=p.getPath()%>"
+							 width="70px" height="70px"></td>
+					<td><a href="jsp/goodsDescribe.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
+					<td><%=o.getQuantity()%></td>
+					<td><%=p.getPrice()%></td>
+					<td><%=p.getPrice()*o.getQuantity()%></td>
+					<td><%=o.getStartTime()%></td>
+					<td><a href="jsp/alreadyBuy.jsp#popup" class="stateButton"><%=o.getStates()%></a></td>
 					<!--需要代码根据order的id是否已签收和是否已进行过评价判断，如果状态是已签收+未评价才能进行跳转到comment.jsp-->
 					<%--暂未实现--%>
 					<td><a
 
-						href="jsp/alreadyBuy.jsp?oid=<%=oid%>">评价</a></td>
+						href="jsp/comment.jsp?oid=<%=o.getId() %>&pname=<%=p.getName() %>&path=<%=p.getPath() %>&pid=<%=p.getId() %>">评价</a></td>
 					<!--
 						判断，如果不能评价：
 						<td>无可进行的操作</td>
                     -->
 				</tr>
+				<%}}else {
 
+				}%>
 			</table>
 	</div></center>
 	<div class="popup" id="popup">
@@ -110,10 +118,10 @@
 					</div>
 				</div>
 			</div>
-			<a class="popup__close" href="#">X</a>
-			<div class"submitChoice">
+			<a class="popup__close" href="jsp/alreadyBuy.jsp#">X</a>
+			<div class="submitChoice">
 				<!--没有写form，可以改成form然后type=“submit”-->
-				<input type="button" value="提交修改" class="blackButton" onclick=""></input>
+				<input type="button" value="提交修改" class="blackButton" onclick=""/>
 			</div>
 			
 		</div>

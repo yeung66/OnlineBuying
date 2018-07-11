@@ -147,7 +147,7 @@
 											<li class="active">
                                         <a href="login_registe.jsp">登陆/注册</a>
                                         </li>
-                                        <%}else if(type=="0"){%>
+                                        <%}else if(type.equals("0")){%>
 										<li class="active">
 											<a href="index.jsp">首页</a>
 						
@@ -174,7 +174,7 @@
 						
 										</li>
 										<li class="active">
-											<a href="#">查询订单</a>
+											<a href="jsp/ordersForShop.jsp">查询订单</a>
 						
 										</li>
 										<li class="active">
@@ -190,7 +190,7 @@
 						
 										</li>
 										<li class="active">
-											<a href="#">退出</a>
+											<a href="login">退出</a>
 						
 										</li>
 										<%}%>

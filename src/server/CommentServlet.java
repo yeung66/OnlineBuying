@@ -72,6 +72,7 @@ public class CommentServlet extends HttpServlet {
 		score = (oldscore * (comnum - 1) + score) / comnum;
 		sql = "UPDATE product SET score='" + score + "', comnum='" + comnum + "' WHERE id='" + product + "';";
 		Database.update(sql);
+		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		out.print("<script>");
 		out.print("alert('评论成功');");
