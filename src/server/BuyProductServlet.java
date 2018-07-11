@@ -82,7 +82,7 @@ public class BuyProductServlet extends HttpServlet {
 		Database.update(sql);
 		out.print("<script>");
 		out.print("alert('购买成功!');");
-		out.print("window.location.href='perInfo.jsp'");
+		out.print("window.location.href='jsp/alreadyBuy.jsp'");
 		out.print("</script>");
 		out.close();
 	}
