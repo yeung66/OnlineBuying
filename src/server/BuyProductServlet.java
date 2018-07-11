@@ -73,7 +73,7 @@ public class BuyProductServlet extends HttpServlet {
         	sql = "UPDATE users SET money = '" + money + "' WHERE id = '" + purchaser + "';";
         	Database.update(sql);
         }
-		String states = "new";
+		String states = "0";
 		Date starttime = new Date(System.currentTimeMillis());
 		sql = "INSERT INTO orders (purchaser, product, states, quantity, starttime) VALUES ('" + purchaser + "','" + product + "','" 
 				+ states + "','" + quantity + "','" + starttime + "');";
