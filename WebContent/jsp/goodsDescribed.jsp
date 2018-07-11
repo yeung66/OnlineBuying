@@ -133,12 +133,12 @@
 			<!-- Placed JS at the end of the document so the pages load faster -->
 			<script>
 				function shoppingCart() {
-					document.pay.action = "AddCartServlet";
-					document.pay.submit();
+					document.product_form.action = "../AddCartServlet";
+					document.product_form.submit();
 				}
 				function buy() {
-					document.pay.action = "BuyProductServlet";
-					document.pay.submit();
+					document.product_form.action = "../BuyProductServlet";
+					document.product_form.submit();
 				}
 			</script>
 			<!-- jQuery latest version -->
