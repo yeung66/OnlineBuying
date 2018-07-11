@@ -24,11 +24,11 @@
         	document.getElementById(obj).style.display="block";
         }
     </script>
-    <body class="box">
+    <body >
     	<!--插入head-->
     	<jsp:include page="head.jsp"></jsp:include>
     	<!--查看评价-->
-    	<div class="container">
+    	<div class="containerRe">
     		<div class="chatbox">
     			<div class="chatleft">
     				<div class="top">
