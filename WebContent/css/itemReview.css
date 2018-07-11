@@ -1,26 +1,21 @@
-body {
-	padding: 0px;
-	margin: 0px;
-}
 
-li {
+
+.containerRe .chatleft li {
 	list-style: none;
 }
 
-input {
-	border-radius: 5px;
-}
 
-.container {
+
+.containerRe {
 	height: 100%;
 	width: 100%;
 	background:white;
 	display: flex;
-	margin: 0;
+	margin: 150px auto 0px auto;
 }
 
-.chatbox {
-	margin: auto;
+.containerRe .chatbox {
+	margin:100px auto 0px auto;
 	height: 70%;
 	min-height: 400px;
 	width: 80%;
@@ -30,7 +25,7 @@ input {
 	
 }
 
-.chatleft {	 
+.containerRe .chatbox .chatleft {	 
 	border:1px solid #d3d3d3;
 	background:#fefefe;
 	-moz-border-radius:5px;
@@ -47,7 +42,7 @@ input {
 	padding: 0px;
 }
 
-.chatleft .top {
+.containerRe .chatbox .chatleft .top {
 	height: 10%;
 	background: white;
 	align-items: center;
@@ -74,6 +69,7 @@ input {
 	padding-left:10px;
 	padding-right: 10px;
 	margin-top: 5%;
+	margin-bottom: 0px;
 	overflow-y: scroll;
 	height: 85%;
 	min-height: 340px;
@@ -82,14 +78,14 @@ input {
     -webkit-margin-after: 0em;
 }
 
-.score{
+.containerRe .chatbox .score{
 	height: 80px;
 	width: 80px;
 	float: left;
 	clear: left;
 	position: relative;
 }
-.chatleft .level{
+.containerRe .chatbox .chatleft .level{
 	width:70px;
 	height:70px;
 	border-radius: 40px;
@@ -107,7 +103,9 @@ input {
 	background: white;
 	border-radius: 10px;
 }
-.bubble h2 {
+ .bubble h2 {
+ 	font-family: "微软雅黑";
+ 	line-height: 16px;
   font-size: 13px;
   font-weight: 1600;
   display: inline-block;
@@ -116,29 +114,33 @@ input {
   margin: 8px 0px 0px 10px;
   padding-top: 0px;
 }
-.bubble h3 {
+ .bubble h3 {
+ 	font-family: "微软雅黑";
+ 	line-height: 9px;
   font-size: 6px;
   font-weight: 800;
-  margin: 6px 0px 6px 10px;
+  margin: 8px 0px 6px 10px;
   text-transform: uppercase;
   color: #B2B2B2;
 }
-.bubble h4 {
+ .bubble h4 {
+ 	font-family: "微软雅黑";
+ 	line-height: 14px;
   font-size: 11px;
   font-weight: 600;
   margin: 0px 0px 6px 10px;
   color: #919191;
 }
-.score div:hover {
+.containerRe .chatbox .score div:hover {
 	background:#F1F1F1;
 }
-.score div:visited{
+.containerRe .chatbox .score div:visited{
 	background:#F1F1F1;
 }
 
 
 
-.chatright {
+.containerRe .chatbox .chatright {
 	display:none;
 	background-color: #ffffff;
 	margin-left: 2%;
@@ -155,14 +157,14 @@ input {
 	
 }
 
-.chatright .top {
+.containerRe .chatbox .chatright .top {
 	position: relative;
 	float: left;
 	width: 100%;
 	height: 30%;
 	border-bottom: 1px solid #ececec;
 }
-.chatright .top span{
+.containerRe .chatbox .chatright .top span{
 	font-weight:800;
 	position:relative;
 	top: 0px;
@@ -173,7 +175,7 @@ input {
 	height: 20%;
 }
 
-.chatright .top .user {
+.containerRe .chatbox .chatright .top .user {
   height: 80%;
   display: flex;
   float: left;
@@ -187,6 +189,8 @@ input {
   margin-left: 20px;
 }
 .chatright .top .user .details h2 {
+	font-family: "微软雅黑";
+ 	line-height: 19px;
   font-size: 16px;
   display: inline-block;
   color: #515151;
@@ -196,6 +200,8 @@ input {
   padding-top: 0px;
 }
 .chatright .top .user .details h3 {
+	font-family: "微软雅黑";
+ 	line-height: 13px;
   font-size: 10px;
   font-weight: 500;
   margin: 15px 0px 10px 0px;
@@ -203,6 +209,8 @@ input {
   color: #B2B2B2;
 }
 .chatright .top .user .details h4 {
+	font-family: "微软雅黑";
+ 	line-height: 11px;
   font-size: 8px;
   font-weight: 600;
   margin: 0;
@@ -243,7 +251,7 @@ input {
 }
 
 
-.close {
+.containerRe .chatbox .close {
   width: 20px;
   height: 20px;
   z-index: 3;

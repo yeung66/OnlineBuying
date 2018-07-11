@@ -17,44 +17,40 @@
 %>
 <!DOCTYPE html>
 <html>
-<head>
-	<base href="<%=basePath%>">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>查看商品评价</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="css/itemReview.css" rel="stylesheet">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-	crossorigin="anonymous">
-</head>
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src='js/jquery.min.js'></script>
-<script>
-	document.getElementsByTagName('body').height = window.innerHeight;
-	function closeDetails(obj) {
-		document.getElementById(obj).style.display = "none";
-	}
-	function openDetails(obj) {
-		var details = document.getElementsByClassName("chatright");
-		for (var i = 0; i < details.length; i++) {
-			details[i].style.display = "none";
-		}
-		document.getElementById(obj).style.display = "block";
-	}
-</script>
-<body class="box">
-	<!--插入head-->
-	<jsp:include page="head.jsp"></jsp:include>
-	<!--查看评价-->
-	<div class="container">
-		<div class="chatbox">
-			<div class="chatleft">
-				<div class="top">
-					<h1>查看评价</h1>
-				</div>
-				<ul>
-					<!--
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>查看商品评价</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../css/itemReview.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+            crossorigin="anonymous">
+    </head>
+    <script src='js/jquery.min.js'></script>
+    <script>
+        document.getElementsByTagName('body').height=window.innerHeight;
+        function closeDetails(obj){
+        	document.getElementById(obj).style.display="none";
+        }
+        function openDetails(obj){
+        	var details=document.getElementsByClassName("chatright");
+        	for(var i=0;i<details.length;i++){
+        		details[i].style.display="none";
+        	}
+        	document.getElementById(obj).style.display="block";
+        }
+    </script>
+    <body >
+    	<!--插入head-->
+    	<jsp:include page="head.jsp"></jsp:include>
+    	<!--查看评价-->
+    	<div class="containerRe">
+    		<div class="chatbox">
+    			<div class="chatleft">
+    				<div class="top">
+    					<h1>查看评价</h1>
+    				</div>
+    				<ul>
+    					<!--
     					        改的时候去掉一个重复的，用循环，图片用Q版分数图片（吧），定下来图片之后改地址
     					        按照循环修改detail-x的数值
     					-->
