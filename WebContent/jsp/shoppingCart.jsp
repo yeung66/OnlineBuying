@@ -68,7 +68,9 @@
 </script>
 </head>
 <body>
-
+	<!--插入head-->
+	<jsp:include page="head.jsp"></jsp:include>
+	<!--购物车-->
 	<div class="content">
 			<center><table cellspacing="0" >
 				<thead>
