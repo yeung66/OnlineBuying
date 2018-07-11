@@ -1,9 +1,8 @@
-
 .leftControl{
 		font:15px "Helvetica Neue",Arial, Helvetica, sans-serif;
 		color: #555; 
 		width:400px;
-		margin-top:30px;
+		margin-top:150px;
 		margin-left: auto;
 		margin-right: auto;
 		padding-bottom:30px;
@@ -39,7 +38,7 @@
 .buttons{
   padding: 0.5em 1em;
   color: #FFF;
-  background: #52D0C4;
+  background: #000;
   margin: 0.5em 0 0;
   font-size: 1em;
   display: inline-block;
@@ -51,7 +50,7 @@
   border:none;
 }
 .buttons:hover{
-  background: #000;
+  background: #414141;
 }
 
 

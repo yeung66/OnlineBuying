@@ -121,7 +121,7 @@
 										class="add-to-cart" value="购买" onclick="buy()">
 								</form>
 
-								<a href="itemReview.jsp?pid=<%=gid%>"><button class="add-to-cart">查看评论</button></a>
+								<a href="jsp/itemReview.jsp?pid=<%=gid%>"><button class="add-to-cart">查看评论</button></a>
 
 							</div>
 						</div>
@@ -132,13 +132,14 @@
 
 			<!-- Placed JS at the end of the document so the pages load faster -->
 			<script>
+				var pay = document.querySelector('form[name=product_form]')
 				function shoppingCart() {
-					document.pay.action = "AddCartServlet";
-					document.pay.submit();
+					pay.action = "AddCartServlet";
+					pay.submit();
 				}
 				function buy() {
-					document.pay.action = "BuyProductServlet";
-					document.pay.submit();
+					pay.action = "BuyProductServlet";
+					pay.submit();
 				}
 			</script>
 			<!-- jQuery latest version -->

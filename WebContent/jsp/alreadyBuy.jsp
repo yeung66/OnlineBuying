@@ -34,7 +34,7 @@
 <script type="text/javascript" src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/memenu.js"></script>
 	<script src="../js/jquery-3.1.1.min.js">
-<script>
+
 	
 </script>
 </head>

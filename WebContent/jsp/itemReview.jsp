@@ -9,13 +9,20 @@
 	int i = 1;
 	Order o;
 %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查看商品评价</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="../css/itemReview.css" rel="stylesheet">
+<link href="css/itemReview.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
 	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
@@ -67,7 +74,7 @@
 								<%
 									String contentReduced;
 										if (com.getContent().length() > 10)
-											contentReduced = com.getContent().substring(0, 9);
+											contentReduced = com.getContent().substring(0, 9)+"...";
 										else
 											contentReduced = com.getContent();
 								%>

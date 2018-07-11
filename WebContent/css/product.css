@@ -2068,8 +2068,8 @@ a.meanmenu-reveal i {
   font-size: 12px;
   height: 31px;
   line-height: 29px;
-  margin-left: 5px;
-margin-top: 5px;
+  margin-right: 11px;
+  margin-top: 5px;
   text-transform: uppercase;
   width: 31px;
   
@@ -2089,7 +2089,7 @@ margin-top: 5px;
 }
 .quantity-cart .product-quantity span i {
   display: block;
-  font-size: 30px;
+  font-size: 16px;
   line-height: 38px;
 }
 .quantity-cart .product-quantity span.inc {

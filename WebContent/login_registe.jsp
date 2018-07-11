@@ -95,7 +95,7 @@
 </head>
 <body >
 
-<jsp:include page="head.jsp"/>
+<jsp:include page="jsp/head.jsp"/>
 	
 
 <div style="width: 100%;height:130px"></div>
