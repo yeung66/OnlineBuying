@@ -21,6 +21,7 @@
 	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
 	crossorigin="anonymous">
 </head>
+<script src="js/jquery-3.1.1.min.js"></script>
 <script src='js/jquery.min.js'></script>
 <script>
 	document.getElementsByTagName('body').height = window.innerHeight;

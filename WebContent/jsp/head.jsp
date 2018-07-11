@@ -7,6 +7,7 @@
 			+ path + "/";
 %>
 <%String uid =(String)session.getAttribute("uid"); %>
+<%String type =(String)session.getAttribute("type"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -63,16 +64,7 @@
 							<div class="header-logo float-left">
 								<a href="index.jsp"><img src="images/logo.png" alt="main logo"></a>
 							</div >
-							<div class="header-logo float-left" id="sachCon" style="display: none;position: relative;
-								margin-top: 20px;">
-											<form action="SearchServlet" method="post" style="display:inline;">
-			<input type="text" id="search" name="search" placeholder="搜索你感兴趣的" 
-				style="width: 250px; height: 40px" /> 
-				<input type="image" src="images/search.jpg" id="searchbtn"
-				 style="width: 35px; height: 35px" id="go" 
-				title="Search" />
-</form>
-										</div>
+							
 
 							<!-- header-search & total-cart -->
 							
@@ -155,7 +147,7 @@
 											<li class="active">
                                         <a href="login_registe.jsp">登陆/注册</a>
                                         </li>
-                                        <%}else if(uid=="0"){%>
+                                        <%}else if(type=="0"){%>
 										<li class="active">
 											<a href="index.jsp">首页</a>
 						
@@ -166,6 +158,10 @@
 										</li>
 										<li class="active">
 											<a href="jsp/alreadyBuy.jsp">查询订单</a>
+						
+										</li>
+										<li class="active">
+											<a href="login">退出</a>
 						
 										</li>
 										<%}else{%>
@@ -191,6 +187,10 @@
 										</li>
 										<li class="active">
 											<a href="jsp/ordersForShop.jsp">修改订单</a>
+						
+										</li>
+										<li class="active">
+											<a href="#">退出</a>
 						
 										</li>
 										<%}%>
@@ -224,7 +224,16 @@
 							<div class="mobile-menu"></div>
 						</div>
 					</div>
-					
+					<div class="header-logo float-left row" id="sachCon" style="display: none;position: relative;
+								margin-left: 80%;">
+											<form action="SearchServlet" method="post" style="display:inline;">
+			<input type="text" id="search" name="search" placeholder="搜索你感兴趣的" 
+				style="width: 250px; height: 40px" /> 
+				<input type="image" src="images/search.jpg" id="searchbtn"
+				 style="width: 35px; height: 35px" id="go" 
+				title="Search" />
+</form>
+										</div>
 				</div>
 			
 			</header>
