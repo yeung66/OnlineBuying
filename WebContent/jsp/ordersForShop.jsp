@@ -57,11 +57,11 @@
 			<div class="popup__text">
 			    <h1>可用操作</h1>
 				<div class="radioCon">
-					<div class="radioText">执行操作：</div>
-					<div class="radioBlock">
 						<%
 							if (status.equals("未发货")) {
 						%>
+						<div class="radioText">执行操作：</div>
+				    	<div class="radioBlock">
 						<div class="radio">
 							<label><input type="radio" name="op" id="state-0"
 								value="fa" checked>发货</label>
@@ -70,20 +70,22 @@
 							<label><input type="radio" name="op" id="state-2"
 								value="qv">取消订单</label>
 						</div>
+				    	</div>
 						<%
 							} else if (status.equals("退货中")) {
 						%>
+						<div class="radioText">执行操作：</div>
+				    	<div class="radioBlock">
 						<div class="radio">
 							<label><input type="radio" name="op" id="state-1"
 								value="yi">确认退货</label>
 						</div>
+				    	</div>
 						<%
 							} else {
 									op = false;
 								}
 						%>
-					</div>
-
 				</div>
 			</div>
 			<a class="popup__close" href="jsp/ordersForShop.jsp#">X</a>
