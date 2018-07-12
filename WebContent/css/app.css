@@ -454,6 +454,7 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   margin-bottom: 20px;
   border-radius: 0;
   position: relative;
+  
 }
 .widget-head {
   width: 100%;
@@ -461,6 +462,7 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
 }
 .widget-title {
   font-size: 14px;
+  text-align: center;
 }
 .widget-fluctuation-period-text {
   display: inline-block;
@@ -867,6 +869,11 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
 }
 .theme-white .tpl-form-border-form .am-form-group {
   /*padding: 20px 0;*/
+ margin-left: 20%;
+ margin-right: 20%;
+}
+.am-form-group-img{
+	
 }
 .theme-white .tpl-form-border-form .am-form-label .tpl-form-line-small-title {
   color: #999;
@@ -1075,6 +1082,7 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
 }
 .theme-white .widget-title {
   font-size: 16px;
+  text-align: center;
 }
 .theme-white .widget-primary {
   min-height: 174px;
