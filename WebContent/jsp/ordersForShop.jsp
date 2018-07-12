@@ -54,9 +54,9 @@
 	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
 			<div class="popup__text">
-				<!-- h1>修改订单状态</h1 -->
+				<h1>可用操作</h1>
 				<div class="radioCon">
-					<!-- div class="radioText">状态修改为：</div -->
+					<div class="radioText">执行操作：</div>
 					<div class="radioBlock">
 						<%
 							if (status.equals("未发货")) {
@@ -87,8 +87,9 @@
 			<div class="submitChoice">
 				<form action="/MerchantAlterOrder" id="myform">
 					<input type="hidden" name="operation" value="" id="operation">
-					<input type="hidden" name="id" value="<%=id%>"> <input
-						type="button" value="提交修改" class="blackButton" onclick="tijiao()"></input>
+					<input type="hidden" name="id" value="<%=id%>">
+					<input type="text" value="无可用操作" 
+					class="blackButton singleInput" onclick="location.href=('ordersForShop.jsp')"></input>
 				</form>
 			</div>
 		</div>
