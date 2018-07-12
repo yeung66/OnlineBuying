@@ -209,17 +209,17 @@
 		<!-- Placed JS at the end of the document so the pages load faster -->
 
 		<!-- jQuery latest version -->
-		<%--<script src="js/jquery-3.1.1.min.js"></script>--%>
-		<%--<!-- Bootstrap js -->--%>
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<!-- Bootstrap js -->
 		<%--<script src="js/bootstrap.min.js"></script>--%>
-		<%--<!-- Plugins js -->--%>
-		<%--<script src="js/plugins.js"></script>--%>
-		<%--<!-- Main js -->--%>
-		<%--<script src="js/main.js"></script>--%>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+		<!-- Plugins js -->
+		<script src="js/plugins.js"></script>
+		<!-- Main js -->
+		<script src="js/main.js"></script>
+<%--<script src="js/bootstrap.js"></script>--%>
+<%--<script src="js/jquery.easing.1.3.js"></script>--%>
+<%--<script src="js/jquery-3.2.1.min.js"></script>--%>
+<%--<script src="bootstrap/js/bootstrap.min.js"></script>--%>
 	</body>
 
 </html>

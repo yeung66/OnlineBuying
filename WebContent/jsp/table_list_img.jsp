@@ -183,7 +183,7 @@
 													<%}else{ %>
 													<tr class="even gradeC">
 												<%}%>
-												<td><img src="../<%=p.getPath() %>" class="tpl-table-line-img"
+												<td><img src="<%=p.getPath() %>" class="tpl-table-line-img"
 													alt=""></td>
 												<td class="am-text-middle"><%=p.getName() %></td>
 												<td class="am-text-middle"><%=p.getPrice() %></td>
@@ -193,7 +193,7 @@
 													<div class="tpl-table-black-operation">
 														<a href="javascript:;"> <i class="am-icon-pencil"></i>
 															编辑
-														</a> <a href="../DeleteProductServlet?id=<%=p.getId()%>"
+														</a> <a href="DeleteProductServlet?id=<%=p.getId()%>"
 															class="tpl-table-black-operation-del"> <i
 															class="am-icon-trash"></i> 删除
 														</a>

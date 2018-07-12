@@ -20,23 +20,23 @@
         <title>Head</title>
         <base href="<%=basePath%>">
         <!-- Bootstrap css -->
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- Icon Font -->
-		<link rel="stylesheet" href="../css/font-awesome.min.css">
-		<link rel="stylesheet" href="../css/pe-icon-7-stroke.css">
-        <link rel="stylesheet" href="../css/style_for_index.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/pe-icon-7-stroke.css">
+        <link rel="stylesheet" href="css/style_for_index.css">
         <!-- Responsive css -->
-		<link rel="stylesheet" href="../css/responsive.css">
+		<link rel="stylesheet" href="css/responsive.css">
 		<!-- Modernizr JS -->
-		<script src="../js/modernizr-2.8.3.min.js"></script>
+		<script src="js/modernizr-2.8.3.min.js"></script>
 			<!-- jQuery latest version -->
-		<script src="../js/jquery-3.1.1.min.js"></script>
+		<script src="js/jquery-3.1.1.min.js"></script>
 		<!-- Bootstrap js -->
-		<script src="../js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 		<!-- Plugins js -->
-		<script src="../js/plugins.js"></script>
+		<script src="js/plugins.js"></script>
 		<!-- Main js -->
-		<script src="../js/main.js"></script>
+		<script src="js/main.js"></script>
 		<style>#sachCon {
 	margin-left: 100px;
 }
@@ -54,7 +54,7 @@
 							
 							<!-- 左上角logo -->
 							<div class="header-logo float-left">
-								<a href="../index.jsp"><img src="images/logo.png" alt="main logo"></a>
+								<a href="index.jsp"><img src="images/logo.png" alt="main logo"></a>
 							</div >
 
 
@@ -151,11 +151,11 @@
 									<ul>
 										<%if(uid==null){%>
 											<li class="active">
-                                        <a href="../login_registe.jsp">登陆/注册</a>
+                                        <a href="login_registe.jsp">登陆/注册</a>
                                         </li>
                                         <%}else if(type.equals("0")){%>
 										<li class="active">
-											<a href="../index.jsp">首页</a>
+											<a href="index.jsp">首页</a>
 						
 										</li>
 										<li class="active">
@@ -172,7 +172,7 @@
 										</li>
 										<%}else{%>
 											<li class="active">
-											<a href="../index.jsp">首页</a>
+											<a href="index.jsp">首页</a>
 						
 										</li>
 										<li class="active">

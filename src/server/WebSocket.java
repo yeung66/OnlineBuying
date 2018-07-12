@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * @ author: 杨浩麟
@@ -21,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @ServerEndpoint("/websocket/{id}")
 public class WebSocket {
-    private static ConcurrentHashMap<String,WebSocket> websocketMap = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String,CopyOnWriteArraySet<WebSocket>> websocketMap = new ConcurrentHashMap<>();
 
     private Session session;
     private String uid;
@@ -30,7 +31,13 @@ public class WebSocket {
     public void onOpen(@PathParam("id") String id, Session session){
         this.session = session;
         this.uid = id;
-        websocketMap.put(uid,this);
+        if(websocketMap.get(uid)!=null)
+            websocketMap.get(uid).add(this);
+        else {
+            CopyOnWriteArraySet<WebSocket> set = new CopyOnWriteArraySet<>();
+            set.add(this);
+            websocketMap.put(uid,set);
+        }
         System.out.println("新连接建立");
     }
 
@@ -43,11 +50,11 @@ public class WebSocket {
     @OnMessage
     public void onMeassage(String mes){
         JSONObject data = JSON.parseObject(mes);
-        WebSocket toWebsocket = websocketMap.get(data.getString("to"));
+        CopyOnWriteArraySet<WebSocket> toWebsocket = websocketMap.get(data.getString("to"));
         if(toWebsocket!=null){
-            toWebsocket.sendMessage(data.getString("content"),uid);
-            Message.insertMessage(uid,data.getString("to"),data.getString("content"),1);
-            return;
+            for(WebSocket ws:toWebsocket)
+                ws.sendMessage(data.getString("content"),uid);
+
         }
         Message.insertMessage(uid,data.getString("to"),data.getString("content"),0);
 
@@ -66,13 +73,13 @@ public class WebSocket {
 
     }
 
-    public static void sendSystemMessage(String mes,String to){
-        WebSocket toWebsocket = websocketMap.get(to);
-        if(toWebsocket!=null){
-            toWebsocket.sendMessage(mes,"System");
-        }
-        Message.insertMessage("System",to,mes,0);
-    }
+//    public static void sendSystemMessage(String mes,String to){
+//        WebSocket toWebsocket = websocketMap.get(to);
+//        if(toWebsocket!=null){
+//            toWebsocket.sendMessage(mes,"System");
+//        }
+//        Message.insertMessage("System",to,mes,0);
+//    }
 
 
 

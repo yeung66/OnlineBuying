@@ -126,4 +126,17 @@ public class Message {
             return null;
         }
     }
+
+    public static void setMessageChecked(String from,String to){
+        Connection conn = Database.getConnect();
+        try{
+            PreparedStatement st = conn.prepareStatement("update message set state=1 where send=? and receive=?");
+            st.setString(1,from);
+            st.setString(2,to);
+            st.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

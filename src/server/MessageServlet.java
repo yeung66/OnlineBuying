@@ -26,10 +26,12 @@ public class MessageServlet extends HttpServlet {
         String uid = (String)request.getSession().getAttribute("uid");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/text");
+        String from = request.getParameter("from");
         if(type.equals("0")){
-            String from = request.getParameter("from");
             List<Message> m = Message.getUncheckedMessage(from,uid);
             response.getWriter().write(JSON.toJSONString(m));
+        }else if(type.equals("1")){
+            Message.setMessageChecked(from,uid);
         }
     }
 }

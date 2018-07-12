@@ -82,7 +82,7 @@
 
 								for(String c: contacter){
 							%>
-                            <li name="contacter" id="<%=c%>" onclick="changeMain(this)">
+                            <li name="contacter" id="<%=c%>" onclick="changeMain(this)" contact="<%=c%>">
                              
                                 <a href="javascript:;">
                                     <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name"><%=c%></a>
@@ -130,10 +130,13 @@
                 if (http.readyState == 4) {// 4 = "loaded"
                     if (http.status == 200) {// 200 = OK
                         // ...our code here...
+						localMessage[chooseCont.id]=[]
 						var data = JSON.parse(http.responseText)
 						data.forEach(function (t) {
 						    appendMessage(t)
+							localMessage[chooseCont.id].push(t)
 						})
+						changeState(chooseCont.id)
                     }
                 }
             }
@@ -169,6 +172,7 @@
 
         var ws;
 		var uid = ${sessionScope.uid}
+		var localMessage = {}
         function createWebsocket() {
 			ws = new WebSocket('ws://localhost:8080/shixun/websocket/'+uid)
             ws.onopen = function () {
@@ -177,9 +181,13 @@
             ws.onmessage = function (data) {
                 mes = data.data
                 mes = JSON.parse(mes)
-                if(mes.send==document.querySelector('.choosed').id)
+                if(mes.send==document.querySelector('.choosed').id) {
                     appendMessage(mes)
-				else if(contacterList.querySelector('#'+mes.send)==null){
+                    localMessage[mes.send].push(mes)
+					changeState(document.querySelector('.choosed').id)
+                }
+
+				else if(contacterList.querySelector('[contact='+mes.send+']')==null){
                     var html = '<li name="contacter" >\n' +
                         '                             \n' +
                         '                                <a href="javascript:;">\n' +
@@ -206,6 +214,7 @@
 			r.content = content
 			r.send=uid
 			appendMessage(r)
+            localMessage[r.to].push(r)
 			r = JSON.stringify(r)
 			ws.send(r)
         }
@@ -213,24 +222,40 @@
         function changeMain(e) {
 			if(e.id!=document.querySelector('#head-title').innerText){
 			    document.querySelector('#head-title').innerText = e.id
-				document.querySelector('.choosed').removeAttribute('class')
-				e.className='choosed'
-                document.querySelector('#msgs').innerHTML=''
-                var http = new XMLHttpRequest()
-                http.onreadystatechange = function (data) {
-                    if (http.readyState == 4) {// 4 = "loaded"
-                        if (http.status == 200) {// 200 = OK
-                            // ...our code here...
-                            var data = JSON.parse(http.responseText)
-                            data.forEach(function (t) {
-                                appendMessage(t)
-                            })
+                document.querySelector('.choosed').removeAttribute('class')
+                e.className = 'choosed'
+                document.querySelector('#msgs').innerHTML = ''
+			    if(!(e.id in localMessage)) {
+			        localMessage[e.id] = []
+                    var http = new XMLHttpRequest()
+                    http.onreadystatechange = function (data) {
+                        if (http.readyState == 4) {// 4 = "loaded"
+                            if (http.status == 200) {// 200 = OK
+                                // ...our code here...
+                                var data = JSON.parse(http.responseText)
+                                data.forEach(function (t) {
+                                    appendMessage(t)
+									localMessage[e.id].push(t)
+
+                                })
+                            }
                         }
                     }
-                }
-                http.open('get', 'message'+'?from=' + e.id + '&type=0')
-                http.send()
+                    http.open('get', 'message' + '?from=' + e.id + '&type=0')
+                    http.send()
+                }else {
+			        localMessage[e.id].forEach(function (t) {
+                        appendMessage(t)
+					})
+				}
+				changeState(e.id)
 			}
+        }
+        function changeState(from) {
+            var http = new XMLHttpRequest()
+            var from = document.querySelector('#head-title').innerText
+            http.open('get', 'message' + '?from=' + from + '&type=1')
+            http.send()
         }
 	</script>
 	</body>

@@ -22,12 +22,12 @@ public class SearchServlet extends HttpServlet {
       //  System.out.println("1");
 
         String search = request.getParameter("search");
-        String str = new String(search.getBytes("ISO-8859-1"),"UTF-8");
+     //   String str = new String(search.getBytes("ISO-8859-1"),"UTF-8");
      // System.out.print(str);
     //  segmenter se = new segmenter();
       //List<String> list_=se.seg(str);
 
-            List<Product> list = Database.searchProduct(str);
+            List<Product> list = Database.searchProduct(search);
         HttpSession session=request.getSession();
 
 
