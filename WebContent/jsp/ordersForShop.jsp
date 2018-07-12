@@ -99,7 +99,7 @@
 					<%
 						} else {
 					%>
-					<input type="text" value="无可用操作" class="radio"></input>
+					<input type="text" value="无可用操作" ></input>
 					<%
 						}
 					%>
