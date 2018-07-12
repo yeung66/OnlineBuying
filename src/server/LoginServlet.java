@@ -26,7 +26,10 @@ public class LoginServlet extends HttpServlet {
         if(rights!=null){
             request.getSession().setAttribute("uid",username);
             request.getSession().setAttribute("type",rights);
-            response.getWriter().print("success");
+            if(rights.equals("2"))
+            	response.getWriter().print("admin");
+            else
+            	response.getWriter().print("success");
         }else {
             response.getWriter().print("fail");
         }
