@@ -20,9 +20,10 @@
 <link href="css/another_style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/cartTable.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<%--<script type="text/javascript" src="js/jquery.min.js"></script>--%>
 <script type="text/javascript" src="js/responsiveslides.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<%--<script type="text/javascript" src="js/bootstrap.min.js"></script>--%>
+	<%--<script src="js/jquery-3.1.1.min.js"></script>--%>
 <script type="text/javascript">
 	function confirmBuy() {
 		return confirm("确定支付吗？");
@@ -74,9 +75,8 @@
 </script>
 </head>
 <body>
-	<!--插入head-->
-	<jsp:include page="head.jsp"></jsp:include>
-	<!--购物车-->
+<!--插入head-->
+<jsp:include page="head.jsp"></jsp:include>
 	<div class="content">
 			<center><table cellspacing="0" >
 				<thead>

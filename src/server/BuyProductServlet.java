@@ -48,7 +48,12 @@ public class BuyProductServlet extends HttpServlet {
 		Double money=0.0;
 		int product = Integer.parseInt(request.getParameter("pid"));
 		Double price = Product.getProductInfo(product).getPrice();
-		int quantity = Integer.parseInt(request.getParameter("buyNumber"));
+		int quantity;
+		if(request.getParameter("buyNumber") == null)
+			quantity = 1;
+		else
+			quantity = Integer.parseInt(request.getParameter("buyNumber"));
+
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
 		Connection connect=Database.getConnect();
@@ -78,7 +83,7 @@ public class BuyProductServlet extends HttpServlet {
 		sql = "INSERT INTO orders (purchaser, product, states, quantity, starttime) VALUES ('" + purchaser + "','" + product + "','" 
 				+ states + "','" + quantity + "','" + starttime + "');";
 		Database.update(sql);
-		sql = "UPDATE product SET num=" + (Product.getProductInfo(product).getNum() - 1) + " WHERE id=" + product;
+		sql = "UPDATE product SET num=" + (Product.getProductInfo(product).getNum() - quantity) + " WHERE id=" + product;
 		Database.update(sql);
 		out.print("<script>");
 		out.print("alert('购买成功!');");

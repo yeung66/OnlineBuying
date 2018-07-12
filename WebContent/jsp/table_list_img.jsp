@@ -26,83 +26,85 @@
 <link rel="stylesheet" href="../css/amazeui.min.css" />
 <link rel="stylesheet" href="../css/amazeui.datatables.min.css" />
 <link rel="stylesheet" href="../css/app.css">
-<script src="../js/jquery.min.js"></script>
+<%--<script src="../js/jquery.min.js"></script>--%>
 
 </head>
 
 <body data-type="widgets">
 	<script src="../js/theme.js"></script>
-	<div class="am-g tpl-g">
+	<!--插入head-->
+	<jsp:include page="head.jsp"></jsp:include>
+	<%--<div class="am-g tpl-g">--%>
 		<!-- 头部 -->
-		<header>
-			<!-- 商家logo -->
-			<!--<div class="am-fl tpl-header-logo">
-                <a href="javascript:;"><img src="img/logo.png" alt=""></a>
-            </div>-->
-			<!-- 右侧内容 -->
-			<div class="tpl-header-fluid">
-				<!-- 侧边切换 -->
-				<!--<div class="am-fl tpl-header-switch-button am-icon-list">
-                    <span>
+		<%--<header>--%>
+			<%--<!-- 商家logo -->--%>
+			<%--<!--<div class="am-fl tpl-header-logo">--%>
+                <%--<a href="javascript:;"><img src="img/logo.png" alt=""></a>--%>
+            <%--</div>-->--%>
+			<%--<!-- 右侧内容 -->--%>
+			<%--<div class="tpl-header-fluid">--%>
+				<%--<!-- 侧边切换 -->--%>
+				<%--<!--<div class="am-fl tpl-header-switch-button am-icon-list">--%>
+                    <%--<span>--%>
 
-                </span>
-                </div>-->
-				<!-- 搜索 -->
-				<!--<div class="am-fl tpl-header-search">
-                    <form class="tpl-header-search-form" action="javascript:;">
-                        <button class="tpl-header-search-btn am-icon-search"></button>
-                        <input class="tpl-header-search-box" type="text" placeholder="搜索内容...">
-                    </form>
-                </div>-->
-				<!-- 其它功能-->
-				<div class="am-fr tpl-header-navbar">
-					<ul>
-						<!-- 账号设置-->
-						<li><a href="javascript:;" class="tpl-user-panel-action-link">
-								<!--<span class="am-icon-pencil"></span>--> 账号设置
-						</a></li>
-
-
-
-
-						<!--<li class="tpl-dropdown-menu-messages">
-                                    <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
-                                        <div class="menu-messages-ico">
-                                            <img src="img/user02.png" alt="">
-                                        </div>
-                                        <div class="menu-messages-time">
-                                            5天前
-                                        </div>
-                                        <div class="menu-messages-content">
-                                            <div class="menu-messages-content-title">
-                                                <i class="am-icon-circle-o am-text-warning"></i>
-                                                <span>禁言小张</span>
-                                            </div>
-                                            <div class="am-text-truncate"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </div>
-                                            <div class="menu-messages-content-time">2016-09-16 上午 09:23</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="tpl-dropdown-menu-messages">
-                                    <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
-                                        <i class="am-icon-circle-o"></i> 进入列表…
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>-->
+                <%--</span>--%>
+                <%--</div>-->--%>
+				<%--<!-- 搜索 -->--%>
+				<%--<!--<div class="am-fl tpl-header-search">--%>
+                    <%--<form class="tpl-header-search-form" action="javascript:;">--%>
+                        <%--<button class="tpl-header-search-btn am-icon-search"></button>--%>
+                        <%--<input class="tpl-header-search-box" type="text" placeholder="搜索内容...">--%>
+                    <%--</form>--%>
+                <%--</div>-->--%>
+				<%--<!-- 其它功能-->--%>
+				<%--<div class="am-fr tpl-header-navbar">--%>
+					<%--<ul>--%>
+						<%--<!-- 账号设置-->--%>
+						<%--<li><a href="javascript:;" class="tpl-user-panel-action-link">--%>
+								<%--<!--<span class="am-icon-pencil"></span>--> 账号设置--%>
+						<%--</a></li>--%>
 
 
 
 
-						<!-- 退出登陆 -->
-						<li class="am-text-sm"><a href="javascript:;"> <span
-								class="am-icon-sign-out"></span> 退出
-						</a></li>
-					</ul>
-				</div>
-			</div>
+						<%--<!--<li class="tpl-dropdown-menu-messages">--%>
+                                    <%--<a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">--%>
+                                        <%--<div class="menu-messages-ico">--%>
+                                            <%--<img src="img/user02.png" alt="">--%>
+                                        <%--</div>--%>
+                                        <%--<div class="menu-messages-time">--%>
+                                            <%--5天前--%>
+                                        <%--</div>--%>
+                                        <%--<div class="menu-messages-content">--%>
+                                            <%--<div class="menu-messages-content-title">--%>
+                                                <%--<i class="am-icon-circle-o am-text-warning"></i>--%>
+                                                <%--<span>禁言小张</span>--%>
+                                            <%--</div>--%>
+                                            <%--<div class="am-text-truncate"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </div>--%>
+                                            <%--<div class="menu-messages-content-time">2016-09-16 上午 09:23</div>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                <%--</li>--%>
+                                <%--<li class="tpl-dropdown-menu-messages">--%>
+                                    <%--<a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">--%>
+                                        <%--<i class="am-icon-circle-o"></i> 进入列表…--%>
+                                    <%--</a>--%>
+                                <%--</li>--%>
+                            <%--</ul>--%>
+                        <%--</li>-->--%>
 
-		</header>
+
+
+
+						<%--<!-- 退出登陆 -->--%>
+						<%--<li class="am-text-sm"><a href="javascript:;"> <span--%>
+								<%--class="am-icon-sign-out"></span> 退出--%>
+						<%--</a></li>--%>
+					<%--</ul>--%>
+				<%--</div>--%>
+			<%--</div>--%>
+
+		<%--</header>--%>
 
 		<!-- 侧边导航栏 -->
 		<!--<div class="left-sidebar">-->
@@ -224,8 +226,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
+	<%--</div>--%>
+	<%--</div>--%>
 	<script src="../js/amazeui.min.js"></script>
 	<script src="../js/app.js"></script>
 

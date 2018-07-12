@@ -33,14 +33,14 @@
 	media="all" />
 <link rel="stylesheet"
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-<script
-	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
+<%--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>--%>
+<%--<script--%>
+<%--src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
+<%--<script type="text/javascript" src="../js/jquery.min.js"></script>--%>
 <script type="text/javascript" src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/memenu.js"></script>
-<script src="../js/jquery-3.1.1.min.js">
-	
+<%--<script src="../js/jquery-3.1.1.min.js">--%>
+
 </script>
 </head>
 <body>
@@ -66,6 +66,7 @@
 				</tr>
 
 				<%
+					int i = 1;
 					List<Order> orderList = Order.getOrderList((String) request.getSession().getAttribute("uid"));
 					if (orderList != null) {
 						for (Order o : orderList) {
@@ -78,8 +79,7 @@
 					<td><%=p.getPrice()%></td>
 					<td><%=p.getPrice() * o.getQuantity()%></td>
 					<td><%=o.getStartTime()%></td>
-					<td><a
-						href="jsp/alreadyBuy.jsp#popup?status=<%=o.getStatus()%>"
+					<td><a href="jsp/alreadyBuy.jsp#popup-<%=i%>"
 						class="stateButton"><%=o.getStatus()%></a></td>
 					<!--需要代码根据order的id是否已签收和是否已进行过评价判断，如果状态是已签收+未评价才能进行跳转到comment.jsp-->
 					<%--暂未实现--%>
@@ -97,7 +97,8 @@
 					%>
 				</tr>
 				<%
-					}
+					i++;
+						}
 					} else {
 
 					}
@@ -105,7 +106,13 @@
 			</table>
 		</div>
 	</center>
-	<div class="popup" id="popup">
+	<%
+		i = 1;
+		for (Order o : orderList) {
+			String status = o.getStatus();
+			int id = o.getId();
+	%>
+	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
 			<div class="popup__text">
 				<!--h1>修改订单状态</h1 -->
@@ -113,8 +120,7 @@
 					<!-- div class="radioText">状态修改为：</div -->
 					<div class="radioBlock">
 						<%
-							String status = request.getParameter("status");
-							if (status.equals("已发货")) {
+								if (status.equals("已发货")) {
 						%>
 						<div class="radio">
 							<label><input type="radio" name="optionsRadios"
@@ -142,17 +148,25 @@
 			</div>
 			<a class="popup__close" href="jsp/alreadyBuy.jsp#">X</a>
 			<div class="submitChoice">
-					<input type="button" value="提交修改" class="blackButton"
-						onclick="tijiao()"></input>
+				<form action="/CustomerAlterOrderServlet" id="myform">
+					<input type="hidden" name="operation" value="" id="operation">
+					<input type="hidden" name="id" value="<%=id%>"> <input
+						type="button" value="提交修改" class="blackButton" onclick="tijiao()"></input>
+				</form>
 			</div>
 
 		</div>
 	</div>
+	<%
+		i++;
+		}
+	%>
 	<script>
 		function tijiao() {
-			var operation = $('input:radio[name="optionsRadios"]:checked').val();
+			var operation = $('input:radio[name="op"]:checked').val();
+			var form = document.getElementById('myform');
 			$("#operation").val(operation);
-			window.location.href="../CustomerAlterOrderServlet?operation="+operation+"&"+window.location.search;
+			form.submit();
 		}
 	</script>
 </body>
