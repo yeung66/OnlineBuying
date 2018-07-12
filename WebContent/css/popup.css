@@ -50,19 +50,20 @@
 .popup__text {
   display:block;
   width: 100%;
+  margin-bottom: 20px;
 }
 .popup__text h1 {
   font-size: 20px;
   font-weight: 600;
-  margin:15px auto 10px auto;
+  margin:50px auto 20px auto;
   text-transform: uppercase;
   text-align: center;
   color: #0A0A0A;
 }
-.popup__text p {
-  font-size: .875rem;
+.popup__text label {
+  font-size: 13px;
   color: #686868;
-  line-height: 1.5;
+  line-height: 20px;
 }
 .popup:target {
   visibility: visible;
@@ -99,12 +100,12 @@
 	padding-top: 5px;
 }
 .radioText{
-	width: 34%;
+	width: 40%;
 	text-align: right;
 	margin: 0;
 }
 .radioBlock{
-	width: 66%;
+	width: 60%;
 	margin: 0;
 }
 .radioBlock .radio{
@@ -135,4 +136,7 @@
 }
 .blackButton:hover{
   background: #414141;
+}
+.singleInput{
+	margin-top: 50px ;
 }
