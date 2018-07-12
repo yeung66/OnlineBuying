@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -204,14 +204,17 @@
 					if (data.toString() == 'fail') {
 						alert('登陆失败');
 						window.location.reload();
+					} else if (data.toString() == 'admin') {
+
+					    alert('登录成功')
+						window.location = 'jsp/admin_product.jsp';
+
 					} else if (data.toString() == 'success') {
 
 					    alert('登录成功')
-
 						window.location = 'index.jsp';
 
 					}
-
 				},
 				error : function() {
 					alert('请重试！');
@@ -258,6 +261,7 @@
 			if (aim_test.length > 12 || aim_test.length < 3) {
 				$("#alert-list").show();
 				$("#for-uid-illegal").show();
+				$("#regist_btn").attr("disabled", true); 
 			} else {
 				$("#for-uid-illegal").hide();
 				$("#alert-list").hide();
@@ -273,6 +277,7 @@
 					if (data.toString() == 'fail_4') {
 						$("#alert-list").show();
 						$("#for-uid-dup").show();
+						$("#regist_btn").attr("disabled", true); 
 					} else if (data.toString() == 'success_2') {
 						$("#for-uid-dup").hide();
 						$("#alert-list").hide();
@@ -285,6 +290,7 @@
 			if (aim_test.length > 12 || aim_test.length < 3) {
 				$("#alert-list").show();
 				$("#for-pwd").show();
+				$("#regist_btn").attr("disabled", true); 
 			} else {
 				$("#alert-list").hide();
 				$("#for-pwd").hide();
@@ -297,6 +303,7 @@
 			if (!myreg.test(aim_test)) {
 				$("#alert-list").show();
 				$("#for-tel").show();
+				$("#regist_btn").attr("disabled", true); 
 			} else {
 				$("#alert-list").hide();
 				$("#for-tel").hide();
