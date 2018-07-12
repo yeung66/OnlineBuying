@@ -50,6 +50,7 @@
 		for (Order o : olist) {
 			String status = o.getStatus();
 			int id = o.getId();
+			boolean op = true;
 	%>
 	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
@@ -77,7 +78,9 @@
 								value="yi">确认退货</label>
 						</div>
 						<%
-							}
+							} else {
+									op = false;
+								}
 						%>
 					</div>
 
@@ -87,8 +90,19 @@
 			<div class="submitChoice">
 				<form action="/MerchantAlterOrder" id="myform">
 					<input type="hidden" name="operation" value="" id="operation">
-					<input type="hidden" name="id" value="<%=id%>"> <input
-						type="button" value="提交修改" class="blackButton" onclick="tijiao()"></input>
+					<input type="hidden" name="id" value="<%=id%>">
+					<%
+						if (op == true) {
+					%>
+					<input type="button" value="提交修改" class="blackButton"
+						onclick="tijiao()"></input>
+					<%
+						} else {
+					%>
+					<input type="text" value="无可用操作" class="radio"></input>
+					<%
+						}
+					%>
 				</form>
 			</div>
 		</div>
