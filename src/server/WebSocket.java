@@ -46,6 +46,8 @@ public class WebSocket {
         WebSocket toWebsocket = websocketMap.get(data.getString("to"));
         if(toWebsocket!=null){
             toWebsocket.sendMessage(data.getString("content"),uid);
+            Message.insertMessage(uid,data.getString("to"),data.getString("content"),1);
+            return;
         }
         Message.insertMessage(uid,data.getString("to"),data.getString("content"),0);
 
@@ -54,7 +56,7 @@ public class WebSocket {
     public void sendMessage(String mes,String from){
         try {
             Map<String,String> map = new HashMap<>();
-            map.put("from",from);
+            map.put("send",from);
             map.put("content",mes);
             String m = JSON.toJSONString(map);
             this.session.getBasicRemote().sendText(m);

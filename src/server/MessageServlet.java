@@ -25,6 +25,7 @@ public class MessageServlet extends HttpServlet {
         String type= request.getParameter("type");
         String uid = (String)request.getSession().getAttribute("uid");
         response.setCharacterEncoding("utf-8");
+        response.setContentType("text/text");
         if(type.equals("0")){
             String from = request.getParameter("from");
             List<Message> m = Message.getUncheckedMessage(from,uid);
