@@ -116,9 +116,9 @@
 	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
 			<div class="popup__text">
-				<!--h1>修改订单状态</h1 -->
+				<h1>可用操作</h1>
 				<div class="radioCon">
-					<!-- div class="radioText">状态修改为：</div -->
+					<div class="radioText">执行操作：</div>
 					<div class="radioBlock">
 						<%
 							if (status.equals("已发货")) {
@@ -151,7 +151,7 @@
 			</div>
 			<a class="popup__close" href="jsp/alreadyBuy.jsp#">X</a>
 			<div class="submitChoice">
-				<form action="/CustomerAlterOrderServlet" id="myform">
+				<form action="CustomerAlterOrderServlet" id="myform">
 					<input type="hidden" name="operation" value="" id="operation">
 					<input type="hidden" name="id" value="<%=id%>">
 					<%
@@ -177,7 +177,7 @@
 	%>
 	<script>
 		function tijiao() {
-			var operation = $('input:radio[name="op"]:checked').val();
+			var operation = $('input:radio[name="optionsRadios"]:checked').val();
 			var form = document.getElementById('myform');
 			$("#operation").val(operation);
 			form.submit();

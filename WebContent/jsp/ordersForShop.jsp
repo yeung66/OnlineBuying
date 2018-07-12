@@ -43,10 +43,63 @@
 <script type="text/javascript" src="../js/memenu.js"></script>
 
 </head>
-<body>
+<body>	<!--显示订单-->
+
 	<!--插入head-->
 	<jsp:include page="head.jsp"></jsp:include>
+
+<center>
+	<div class="content">
+		<table cellspacing="0">
+			<tr>
+				<th style="padding: 20px; font-size: 14px; font-weight: 600;"
+					colspan="8">显示订单</th>
+			</tr>
+			<tr>
+				<th>商品图片</th>
+				<th>商品名</th>
+				<th>购买用户</th>
+				<th>数量</th>
+				<th>价格</th>
+				<th>总价</th>
+				<th>购买时间</th>
+				<th>订单状态</th>
+			</tr>
+			<%
+				i = 1;
+				for (Order o : olist) {
+					int pid = o.getProduct();
+					Product p = Product.getProductInfo(pid);
+					String imgPath = p.getPath();
+					String name = p.getName();
+					String purchaser = o.getPurchaser();
+					int num = o.getQuantity();
+					Double price = p.getPrice();
+					Date date = o.getStartTime();
+					String statu = o.getStatus();
+			%>
+			<tr>
+				<td><img src="<%=imgPath%>" width="70px" height="70px"></td>
+				<!--这里添加一下商品详情页的链接 href-->
+				<td><a href="goodsDescribed.jsp?gid=<%=pid%>"><%=name%></a></td>
+				<td><%=purchaser%></td>
+				<td><%=num%></td>
+				<td><%=price%></td>
+				<td><%=num * price%></td>
+				<td><%=date%></td>
+				<td><a href="jsp/ordersForShop.jsp#popup-<%=i%>"
+					   class="stateButton"><%=statu%></a></td>
+			</tr>
+			<%
+					i++;
+				}
+			%>
+		</table>
+	</div>
+</center>
+
 	<%
+		i = 1;
 		for (Order o : olist) {
 			String status = o.getStatus();
 			int id = o.getId();
@@ -55,8 +108,11 @@
 	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
 			<div class="popup__text">
-			    <h1>可用操作</h1>
+
+				<h1>可用操作</h1>
 				<div class="radioCon">
+					<div class="radioText">执行操作：</div>
+					<div class="radioBlock">
 						<%
 							if (status.equals("未发货")) {
 						%>
@@ -90,7 +146,7 @@
 			</div>
 			<a class="popup__close" href="jsp/ordersForShop.jsp#">X</a>
 			<div class="submitChoice">
-				<form action="/MerchantAlterOrder" id="myform">
+				<form action="MerchantAlterOrder" id="myform">
 					<input type="hidden" name="operation" value="" id="operation">
 					<input type="hidden" name="id" value="<%=id%>">
 					<%
@@ -105,6 +161,7 @@
 					<%
 						}
 					%>
+
 				</form>
 			</div>
 		</div>
@@ -121,56 +178,7 @@
 			form.submit();
 		}
 	</script>
-	<!--显示订单-->
-	<center>
-		<div class="content">
-			<table cellspacing="0">
-				<tr>
-					<th style="padding: 20px; font-size: 14px; font-weight: 600;"
-						colspan="8">显示订单</th>
-				</tr>
-				<tr>
-					<th>商品图片</th>
-					<th>商品名</th>
-					<th>购买用户</th>
-					<th>数量</th>
-					<th>价格</th>
-					<th>总价</th>
-					<th>购买时间</th>
-					<th>订单状态</th>
-				</tr>
-				<%
-					i = 1;
-					for (Order o : olist) {
-						int pid = o.getProduct();
-						Product p = Product.getProductInfo(pid);
-						String imgPath = p.getPath();
-						String name = p.getName();
-						String purchaser = o.getPurchaser();
-						int num = o.getQuantity();
-						Double price = p.getPrice();
-						Date date = o.getStartTime();
-						String statu = o.getStatus();
-				%>
-				<tr>
-					<td><img src="<%=imgPath%>" width="70px" height="70px"></td>
-					<!--这里添加一下商品详情页的链接 href-->
-					<td><a href="goodsDescribed.jsp?gid=<%=pid%>"><%=name%></a></td>
-					<td><%=purchaser%></td>
-					<td><%=num%></td>
-					<td><%=price%></td>
-					<td><%=num * price%></td>
-					<td><%=date%></td>
-					<td><a href="jsp/ordersForShop.jsp#popup-<%=i%>"
-						class="stateButton"><%=statu%></a></td>
-				</tr>
-				<%
-					i++;
-					}
-				%>
-			</table>
-		</div>
-	</center>
+
 
 </body>
 </html>

@@ -78,13 +78,15 @@
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称 <span class="tpl-form-line-small-title">Name</span></label>
                                         <div class="am-u-sm-9">
                                             <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品名称"name="name">                                           
+
                                         </div>
                                     </div>
                                     
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品价格 <span class="tpl-form-line-small-title">Price</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品价格" name="price">                                           
+                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品价格" name="price">
+
                                         </div>
                                     </div>
 
@@ -94,6 +96,7 @@
                                         <label class="am-u-sm-3 am-form-label">库存 <span class="tpl-form-line-small-title">Number</span></label>
                                         <div class="am-u-sm-9">
                                             <input type="text" placeholder="请输入库存" name="num">
+
                                         </div>
                                     </div>
 
@@ -106,6 +109,7 @@
                                                 </div>
                                                 <button type="button" class="am-btn am-btn-danger am-btn-sm"><i class="am-icon-cloud-upload"></i> 添加商品图片</button>
                                                 <input id="doc-form-file" type="file" multiple="" name="path">
+
                                             </div>
 
                                         </div>
@@ -117,6 +121,7 @@
                                         <label for="user-intro" class="am-u-sm-3 am-form-label">商品描述</label>
                                         <div class="am-u-sm-9">
                                             <textarea class="" rows="10" id="user-intro" placeholder="请输入商品描述内容" name="info"></textarea>
+
                                         </div>
                                     </div>
 
