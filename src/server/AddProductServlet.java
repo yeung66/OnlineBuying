@@ -27,7 +27,7 @@ public class AddProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         String owner = (String)request.getSession().getAttribute("uid");
         double price = Double.valueOf(request.getParameter("price"));
-
+        String info = request.getParameter("info");
 
         String num = request.getParameter("num");
         Part p =request.getPart("path");
@@ -50,7 +50,7 @@ public class AddProductServlet extends HttpServlet {
         fos.close();
         is.close();
         p.delete();
-        Product.insertProduct(new Product(0,price,Integer.valueOf(num),0,0,name,owner,"images/upload/"+picName));
+        Product.insertProduct(new Product(0,price,Integer.valueOf(num),0,0,name,owner,"images/upload/"+picName, info));
         response.getWriter().write("success");
 
     }
