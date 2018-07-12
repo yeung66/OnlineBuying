@@ -41,7 +41,7 @@
 <script type="text/javascript" src="../js/memenu.js"></script>
 <%--<script src="../js/jquery-3.1.1.min.js">--%>
 
-</script>
+
 </head>
 <body>
 	<!--插入head-->
@@ -158,11 +158,11 @@
 						if (op == true) {
 					%>
 					<input type="button" value="提交修改" class="blackButton"
-						onclick="tijiao()"></input>
+						onclick="tijiao()"/>
 					<%
 						} else {
 					%>
-					<input type="text" value="无可用操作"></input>
+					<input type="text" value="无可用操作"/>
 					<%
 						}
 					%>
