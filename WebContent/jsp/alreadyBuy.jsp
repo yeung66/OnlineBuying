@@ -111,6 +111,7 @@
 		for (Order o : orderList) {
 			String status = o.getStatus();
 			int id = o.getId();
+			boolean op = true;
 	%>
 	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
@@ -120,7 +121,7 @@
 					<!-- div class="radioText">状态修改为：</div -->
 					<div class="radioBlock">
 						<%
-								if (status.equals("已发货")) {
+							if (status.equals("已发货")) {
 						%>
 						<div class="radio">
 							<label><input type="radio" name="optionsRadios"
@@ -141,7 +142,9 @@
 								id="state-3" value="qv">取消订单</label>
 						</div>
 						<%
-							}
+							} else {
+									op = false;
+								}
 						%>
 					</div>
 				</div>
@@ -150,8 +153,19 @@
 			<div class="submitChoice">
 				<form action="/CustomerAlterOrderServlet" id="myform">
 					<input type="hidden" name="operation" value="" id="operation">
-					<input type="hidden" name="id" value="<%=id%>"> <input
-						type="button" value="提交修改" class="blackButton" onclick="tijiao()"></input>
+					<input type="hidden" name="id" value="<%=id%>">
+					<%
+						if (op == true) {
+					%>
+					<input type="button" value="提交修改" class="blackButton"
+						onclick="tijiao()"></input>
+					<%
+						} else {
+					%>
+					<input type="text" value="无可用操作"></input>
+					<%
+						}
+					%>
 				</form>
 			</div>
 
