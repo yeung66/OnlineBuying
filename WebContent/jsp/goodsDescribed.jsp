@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <!-- Modernizr JS -->
-<script src="js/modernizr-2.8.3.min.js"></script>
+<%--<script src="js/modernizr-2.8.3.min.js"></script>--%>
 
 </head>
 
@@ -142,14 +142,14 @@
 					document.product_form.submit();
 				}
 			</script>
-			<!-- jQuery latest version -->
-			<script src="js/jquery-3.1.1.min.js"></script>
-			<!-- Bootstrap js -->
-			<script src="js/bootstrap.min.js"></script>
-			<!-- Plugins js -->
-			<script src="js/plugins.js"></script>
-			<!-- Main js -->
-			<script src="js/main.js"></script>
+			<%--<!-- jQuery latest version -->--%>
+			<%--<script src="js/jquery-3.1.1.min.js"></script>--%>
+			<%--<!-- Bootstrap js -->--%>
+			<%--<script src="js/bootstrap.min.js"></script>--%>
+			<%--<!-- Plugins js -->--%>
+			<%--<script src="js/plugins.js"></script>--%>
+			<%--<!-- Main js -->--%>
+			<%--<script src="js/main.js"></script>--%>
 </body>
 
 </html>
