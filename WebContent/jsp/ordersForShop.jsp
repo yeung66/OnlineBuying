@@ -146,7 +146,7 @@
 			</div>
 			<a class="popup__close" href="jsp/ordersForShop.jsp#">X</a>
 			<div class="submitChoice">
-				<form action="MerchantAlterOrder" id="myform">
+				<form action="MerchantAlterOrder" id="myform"  class="popupForm">
 					<input type="hidden" name="operation" value="" id="operation">
 					<input type="hidden" name="id" value="<%=id%>">
 					<%
@@ -157,7 +157,7 @@
 					<%
 						} else {
 					%>
-					<input type="text" value="无可用操作" class="blackButton singleInput" onclick="location.href=('ordersForShop.jsp')"></input>
+					<div class="singleInput" ><input type="text" value="无可用操作" readonly="readonly" ></input></div>
 					<%
 						}
 					%>
