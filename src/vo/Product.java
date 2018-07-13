@@ -264,10 +264,10 @@ public class Product {
 			return false;
 		}
 	}
-	public static int alterProduct(int pid, String name, String owner, double price, String path, int num,
+	public static int alterProduct(int pid, String name, String owner, double price, int num,
 			String info) {
-		String sql = "UPDATE product SET name='" + name + "',owner='" + owner + "',price=" + price + ",path='" + path
-				+ "',num=" + num + ",information='" + info + "' WHERE id=" + pid + ";";
+		String sql = "UPDATE product SET name='" + name + "',owner='" + owner + "',price=" + price + 
+				",num=" + num + ",information='" + info + "' WHERE id=" + pid + ";";
 		return Database.update(sql);
 	}
 
