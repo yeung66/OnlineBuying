@@ -78,7 +78,7 @@
 									<div class="header-account float-left">
 										<ul>
 											<li>
-												<a href="#" data-toggle="dropdown"><i class="pe-7s-mail"></i></a>
+												<a href="jsp/chat.jsp" ><i class="pe-7s-mail"></i></a>
 												<!--<ul class="dropdown-menu">
 													<li>
 														<a href="login.html">Log in</a>

@@ -209,7 +209,7 @@ public class Product {
 						rs.getString("information"));
 				return p;
 			}
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
