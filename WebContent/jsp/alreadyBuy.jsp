@@ -41,7 +41,7 @@
 <script type="text/javascript" src="../js/memenu.js"></script>
 <%--<script src="../js/jquery-3.1.1.min.js">--%>
 
-
+</script>
 </head>
 <body>
 	<!--插入head-->
@@ -73,7 +73,7 @@
 							Product p = Product.getProductInfo(o.getProduct());
 				%>
 				<tr>
-					<td><img src="<%=p.getPath()%>" width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;"></td>
+					<td><img src="<%=p.getPath()%>" width="70px" height="70px"></td>
 					<td><a href="jsp/goodsDescribe.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
 					<td><%=o.getQuantity()%></td>
 					<td><%=p.getPrice()%></td>
@@ -100,7 +100,12 @@
 					i++;
 						}
 					} else {
+				%>
+				<tr>
+					<td style="padding: 20px" colspan="8">暂无购买商品</td>
+				</tr>
 
+				<%
 					}
 				%>
 			</table>
@@ -116,9 +121,9 @@
 	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
 			<div class="popup__text">
-				<h1>可用操作</h1>
+				<!--h1>修改订单状态</h1 -->
 				<div class="radioCon">
-					<div class="radioText">执行操作：</div>
+					<!-- div class="radioText">状态修改为：</div -->
 					<div class="radioBlock">
 						<%
 							if (status.equals("已发货")) {
@@ -151,18 +156,18 @@
 			</div>
 			<a class="popup__close" href="jsp/alreadyBuy.jsp#">X</a>
 			<div class="submitChoice">
-				<form action="CustomerAlterOrderServlet" id="myform" class="popupForm">
+				<form action="/CustomerAlterOrderServlet" id="myform">
 					<input type="hidden" name="operation" value="" id="operation">
 					<input type="hidden" name="id" value="<%=id%>">
 					<%
 						if (op == true) {
 					%>
 					<input type="button" value="提交修改" class="blackButton"
-						onclick="tijiao()"/>
+						onclick="tijiao()"></input>
 					<%
 						} else {
 					%>
-					<div  class="singleInput" ><input type="text" value="无可用操作" readonly="readonly"/></div>
+					<input type="text" value="无可用操作"></input>
 					<%
 						}
 					%>
@@ -177,7 +182,7 @@
 	%>
 	<script>
 		function tijiao() {
-			var operation = $('input:radio[name="optionsRadios"]:checked').val();
+			var operation = $('input:radio[name="op"]:checked').val();
 			var form = document.getElementById('myform');
 			$("#operation").val(operation);
 			form.submit();
