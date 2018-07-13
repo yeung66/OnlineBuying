@@ -228,10 +228,12 @@
 					</div>
 					
 				</div>
-			<%--<div id="block" style="width: 100%;">--%>
+
+			
+			</header>
+			<div id="block" style="width: 100%;">
 
 			</div>
-			</header>
 			<!-- END HEADER SECTION -->
 			<script>
 				$("#searchBtn1").click(function(){
