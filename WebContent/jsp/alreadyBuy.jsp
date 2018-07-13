@@ -73,7 +73,7 @@
 							Product p = Product.getProductInfo(o.getProduct());
 				%>
 				<tr>
-					<td><img src="<%=p.getPath()%>" width="70px" height="70px"></td>
+					<td><img src="<%=p.getPath()%>" width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;"></td>
 					<td><a href="jsp/goodsDescribe.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
 					<td><%=o.getQuantity()%></td>
 					<td><%=p.getPrice()%></td>
