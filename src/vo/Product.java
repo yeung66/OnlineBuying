@@ -157,7 +157,7 @@ public class Product {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id,price,name,path from product");
+			ResultSet rs = st.executeQuery("SELECT id,price,name,path from product where status='pass';");
 			List<Product> result = new ArrayList<>();
 			while (rs.next()) {
 				Product p = new Product();
