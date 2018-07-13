@@ -2,6 +2,20 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 -->
+
+<%@ page import="util.*"%>
+<%@ page import="vo.Product"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	int pid = Integer.parseInt(request.getParameter("pid"));
+	Product p = Product.getProductInfo(pid);
+	int number = p.getNum();
+	String name = p.getName();
+	String described = p.getInformation();
+	Double price = p.getPrice();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -72,18 +86,21 @@
                             </div>
                             <div class="widget-body am-fr">
 
-                                <form class="am-form tpl-form-border-form tpl-form-border-br">
+
+                                <form class="am-form tpl-form-border-form tpl-form-border-br" action="AlterProductServlet">
+                                	<input type="hidden" name="pid" value="<%=pid%>">
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称 <span class="tpl-form-line-small-title">Name</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品名称">                                           
+                                            <input type="text" class="tpl-form-input" id="user-name" value="<%=name %>" name="name">                                           
                                         </div>
                                     </div>
                                     
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品价格 <span class="tpl-form-line-small-title">Price</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品价格">                                           
+
+                                            <input type="text" class="tpl-form-input" id="user-name" value="<%=price %>" name="price">                                           
                                         </div>
                                     </div>
 
@@ -92,7 +109,8 @@
                                     <div class="am-form-group">
                                         <label class="am-u-sm-3 am-form-label">库存 <span class="tpl-form-line-small-title">Number</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" placeholder="请输入库存">
+
+                                            <input type="text" value="<%=number %>" name="num">
                                         </div>
                                     </div>
 
@@ -102,13 +120,15 @@
                                     <div class="am-form-group">
                                         <label for="user-intro" class="am-u-sm-3 am-form-label">商品描述</label>
                                         <div class="am-u-sm-9">
-                                            <textarea class="" rows="10" id="user-intro" placeholder="请输入商品描述内容"></textarea>
+
+                                            <textarea class="" rows="10" id="user-intro" value="<%=described %>" name="info"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="am-form-group">
                                         <div class="am-u-sm-9 am-u-sm-push-3">
-                                            <button type="button" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+
+                                            <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
                                         </div>
                                     </div>
                                 </form>

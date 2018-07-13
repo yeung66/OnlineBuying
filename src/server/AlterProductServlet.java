@@ -1,6 +1,8 @@
 package server;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,14 +33,20 @@ public class AlterProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter  out = response.getWriter();
+		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");   
 		int pid = Integer.parseInt(request.getParameter("pid"));
 		String name = request.getParameter("name");
 		String owner = (String) request.getSession().getAttribute("uid");
 		double price = Double.valueOf(request.getParameter("price"));
-		String path = request.getParameter("path");
 		int num = Integer.parseInt(request.getParameter("num"));
 		String info = request.getParameter("info");
-		Product.alterProduct(pid, name, owner, price, path, num, info);
+		Product.alterProduct(pid, name, owner, price, num, info);
+		out.print("<script>");
+		out.print("alert('修改成功!');");
+		out.print("window.location.href='jsp/table_list_img.jsp'");
+		out.print("</script>");
 	}
 
 	/**
