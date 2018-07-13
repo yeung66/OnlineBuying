@@ -209,9 +209,9 @@ public class Product {
 						rs.getString("information"));
 				return p;
 			}
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-
 		}
 		return null;
 	}

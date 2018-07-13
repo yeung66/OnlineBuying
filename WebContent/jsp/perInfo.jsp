@@ -75,7 +75,8 @@
 </head>
 <jsp:include page="head.jsp" />
 <body>
-
+<a href="recharge.jsp"><button class="btn btn-danger" style="width: 80px">充值</button></a>
+<a href="withdraw.jsp"><button class="btn btn-success" style="width: 80px;">提现</button></a>
 	<div class="well" style="padding-top: 180px;">
 		<div align="center">
 <table id="update" class="table table-striped table-bordered table-hover  table-condensed" style="text-align: center;">
@@ -101,8 +102,7 @@
 				
   </tbody>
 </table>
-			<a href="recharge.jsp"><button class="btn btn-danger" style="width: 80px">充值</button></a>
-			<a href="withdraw.jsp"><button class="btn btn-success" style="width: 80px;">提现</button></a>
+
 <input style="display: none;" type="button" id="submit" value="确认修改" onclick="updateInfo()" />
 
 		</div>
