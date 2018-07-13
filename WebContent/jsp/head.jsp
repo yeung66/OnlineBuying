@@ -233,10 +233,11 @@
 					</div>
 					
 				</div>
+			
+			</header>
 			<div id="block" style="width: 100%;">
 
 			</div>
-			</header>
 			<!-- END HEADER SECTION -->
 			<script>
 				$("#searchBtn1").click(function(){
