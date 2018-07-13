@@ -44,12 +44,7 @@
 </style>
     </head>
     <body>
-    <script>
-    		$(document).ready(function() {
-    			
-    		document.getElementById("block").style.height=window.outerHeight*0.2+"px"
-    		})
-    	</script>	
+
 
     	<!-- START HEADER SECTION -->
 			<header class="header-section section sticker">
@@ -233,7 +228,7 @@
 					</div>
 					
 				</div>
-			<div id="block" style="width: 100%;">
+			<%--<div id="block" style="width: 100%;">--%>
 
 			</div>
 			</header>

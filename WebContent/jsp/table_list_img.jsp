@@ -133,18 +133,12 @@
         	描述：tpl-content-wrapper调整左右margin
         -->
 
-		<div class="tpl-content-wrapper">
+		<div class="tpl-content-wrapper" style="padding-top: 180px">
 			<div class="row-content am-cf">
 				<div class="row">
 					<div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
 						<div class="widget am-cf">
-							<div class="widget-head am-cf">
-								<div class="widget-title  am-cf">商品列表</div>
-
-
-							</div>
 							<div class="widget-body  am-fr">
-
 								<div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
 									<div class="am-form-group">
 										<div class="am-btn-toolbar">
@@ -183,7 +177,7 @@
 													<%}else{ %>
 													<tr class="even gradeC">
 												<%}%>
-												<td><img src="../<%=p.getPath() %>" class="tpl-table-line-img"
+												<td><img src="<%=p.getPath() %>" class="tpl-table-line-img"
 													alt=""></td>
 												<td class="am-text-middle"><%=p.getName() %></td>
 												<td class="am-text-middle"><%=p.getPrice() %></td>
@@ -193,7 +187,7 @@
 													<div class="tpl-table-black-operation">
 														<a href="modifyProduct.jsp?pid=<%=p.getId()%>"> <i class="am-icon-pencil"></i>
 															编辑
-														</a> <a href="../DeleteProductServlet?id=<%=p.getId()%>"
+														</a> <a href="DeleteProductServlet?id=<%=p.getId()%>"
 															class="tpl-table-black-operation-del"> <i
 															class="am-icon-trash"></i> 删除
 														</a>
@@ -228,8 +222,8 @@
 		</div>
 	<%--</div>--%>
 	<%--</div>--%>
-	<script src="../js/amazeui.min.js"></script>
-	<script src="../js/app.js"></script>
+	<script src="js/amazeui.min.js"></script>
+	<script src="js/app.js"></script>
 
 </body>
 </html>
