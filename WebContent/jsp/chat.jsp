@@ -188,7 +188,7 @@
 		var uid = ${sessionScope.uid}
 		var localMessage = {}
         function createWebsocket() {
-			ws = new WebSocket('ws://localhost:8080/shixun/websocket/'+uid)
+			ws = new WebSocket('ws://<%=request.getServerName()%>:<%=request.getServerPort()%>/shixun/websocket/'+uid)
             ws.onopen = function () {
                 console.log("WebSocket连接发生成功");
             }
