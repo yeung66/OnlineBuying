@@ -53,6 +53,13 @@ public class BuyProductServlet extends HttpServlet {
 			quantity = 1;
 		else
 			quantity = Integer.parseInt(request.getParameter("buyNumber"));
+		if(quantity > Product.getProductInfo(product).getNum()){
+			out.print("<script>");
+    		out.print("alert('购买数量超出库存!');");
+    		out.print("</script>");
+    		out.close();
+        	return;
+		}
 
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
