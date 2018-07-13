@@ -85,11 +85,10 @@
 			</div>
 			<a class="popup__close" href="jsp/ordersForShop.jsp#">X</a>
 			<div class="submitChoice">
-				<form action="/MerchantAlterOrder" id="myform">
+				<form action="/MerchantAlterOrder" id="myform" class="popupForm">
 					<input type="hidden" name="operation" value="" id="operation">
 					<input type="hidden" name="id" value="<%=id%>">
-					<input type="text" value="无可用操作" 
-					class="blackButton singleInput" onclick="location.href=('ordersForShop.jsp')"></input>
+					<div  class="singleInput" ><input type="text" value="无可用操作" readonly="readonly" unselectable="on"></input></div>
 				</form>
 			</div>
 		</div>
@@ -138,7 +137,7 @@
 						String statu = o.getStatus();
 				%>
 				<tr>
-					<td><img src="<%=imgPath%>" width="70px" height="70px" style="padding-top:10px;padding-bottom: 10px;"></td>
+					<td><img src="<%=imgPath%>" width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;"></td>
 					<!--这里添加一下商品详情页的链接 href-->
 					<td><a href="goodsDescribed.jsp?gid=<%=pid%>"><%=name%></a></td>
 					<td><%=purchaser%></td>
