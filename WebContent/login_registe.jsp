@@ -113,14 +113,14 @@
 			</span>
 		</div>
 		<div id='_start' style="position:relative;
-	margin-left:1050px;background-color: gray;margin-top: -250px;">
+	margin-left:50%;background-color: gray;margin-top: -250px;">
 		<div id='_close' style="display: none;">
 			<span class="glyphicon glyphicon-remove"></span>
 		</div>
 		<br />
 		<!--登录框-->
 		<form action="LoginServlet?method=login" method="post">
-			<div id="login_container" style="background-color: #FFFFFF;">
+			<div id="login_container" style="background-color: #FFFFFF;position: relative;margin-left: 20px;">
 				<div id="lab1">
 					<span id="lab_login">用户登录</span> <span id="lab_toRegist">
 						&emsp;还没有账号&nbsp; <span id='toRegist'
@@ -143,7 +143,7 @@
 		<form action="LoginServlet?method=register" method="post"
 			name="register">
 			<div id='regist_container'
-				style=" background-color: #FFFFFF">
+				style=" background-color: #FFFFFF;position: relative;margin-left: 20px;">
 				<div id="lab1">
 					<span id="lab_login">用户注册</span> <span id="lab_toLogin">
 						&emsp;已有账号&nbsp; <span id='toLogin'
@@ -265,6 +265,7 @@
 			} else {
 				$("#for-uid-illegal").hide();
 				$("#alert-list").hide();
+				$("#regist_btn").attr("disabled", false); 
 			}
 			$.ajax({
 				url : 'checkUid',
@@ -281,6 +282,7 @@
 					} else if (data.toString() == 'success_2') {
 						$("#for-uid-dup").hide();
 						$("#alert-list").hide();
+						$("#regist_btn").attr("disabled", false); 
 					}
 				}
 			})
@@ -294,6 +296,7 @@
 			} else {
 				$("#alert-list").hide();
 				$("#for-pwd").hide();
+				$("#regist_btn").attr("disabled", false); 
 
 			}
 		}
@@ -307,6 +310,7 @@
 			} else {
 				$("#alert-list").hide();
 				$("#for-tel").hide();
+				$("#regist_btn").attr("disabled", false); 
 			}
 		}
 	</script>

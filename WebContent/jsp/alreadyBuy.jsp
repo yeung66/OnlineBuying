@@ -162,7 +162,7 @@
 					<%
 						} else {
 					%>
-					<input type="text" value="无可用操作"/>
+					<input type="text" value="无可用操作" class="blackButton singleInput" onclick="location.href=('alreadyBuy.jsp')"/>
 					<%
 						}
 					%>
