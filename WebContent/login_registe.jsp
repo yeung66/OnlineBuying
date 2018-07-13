@@ -265,6 +265,7 @@
 			} else {
 				$("#for-uid-illegal").hide();
 				$("#alert-list").hide();
+				$("#regist_btn").attr("disabled", false); 
 			}
 			$.ajax({
 				url : 'checkUid',
@@ -281,6 +282,7 @@
 					} else if (data.toString() == 'success_2') {
 						$("#for-uid-dup").hide();
 						$("#alert-list").hide();
+						$("#regist_btn").attr("disabled", false); 
 					}
 				}
 			})
@@ -294,6 +296,7 @@
 			} else {
 				$("#alert-list").hide();
 				$("#for-pwd").hide();
+				$("#regist_btn").attr("disabled", false); 
 
 			}
 		}
@@ -307,6 +310,7 @@
 			} else {
 				$("#alert-list").hide();
 				$("#for-tel").hide();
+				$("#regist_btn").attr("disabled", false); 
 			}
 		}
 	</script>
