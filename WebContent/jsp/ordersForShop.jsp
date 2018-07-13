@@ -67,6 +67,13 @@
 			</tr>
 			<%
 				i = 1;
+				if(olist == null){
+			%>
+					<tr>
+					<td style="padding:20px" colspan="8">暂无购买商品</td>
+					</tr>
+			<%
+				}
 				for (Order o : olist) {
 					int pid = o.getProduct();
 					Product p = Product.getProductInfo(pid);
