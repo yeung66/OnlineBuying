@@ -978,7 +978,7 @@ a.at-in {
   margin: 0 0px 1em;
   text-align: center;
 }
-a.to-buy{
+input.to-buy{
 	border-radius:2px;
 	padding: 0.4em 0.7em;
 	background-color: black;
@@ -998,7 +998,7 @@ a.to-buy{
     text-align: center;
     text-decoration: none;
 }
-a.to-buy:hover{
+input.to-buy:hover{
   background: #414141;
 }
 /*--//checkout--*/
