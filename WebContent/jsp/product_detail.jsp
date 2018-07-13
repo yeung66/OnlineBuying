@@ -1,4 +1,4 @@
-<0%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ page import="util.*"%>
 <%@ page import="vo.Product" %>

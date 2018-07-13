@@ -54,10 +54,8 @@ public class WebSocket {
         if(toWebsocket!=null){
             for(WebSocket ws:toWebsocket)
                 ws.sendMessage(data.getString("content"),uid);
-
         }
         Message.insertMessage(uid,data.getString("to"),data.getString("content"),0);
-
     }
 
     public void sendMessage(String mes,String from){
@@ -73,13 +71,14 @@ public class WebSocket {
 
     }
 
-//    public static void sendSystemMessage(String mes,String to){
-//        WebSocket toWebsocket = websocketMap.get(to);
-//        if(toWebsocket!=null){
-//            toWebsocket.sendMessage(mes,"System");
-//        }
-//        Message.insertMessage("System",to,mes,0);
-//    }
+    public static void sendSystemMessage(String mes,String to){
+        CopyOnWriteArraySet<WebSocket> toWebsocket = websocketMap.get(to);
+        if(toWebsocket!=null){
+            for(WebSocket ws:toWebsocket)
+                ws.sendMessage(mes,"System");
+        }
+        Message.insertMessage("System",to,mes,0);
+    }
 
 
 

@@ -74,7 +74,7 @@
 					<div class="abs right pnl-right">
 								<div class="chat03">
                     <div class="chat03_title">
-                        <label class="chat03_title_t">商家列表</label>
+                        <label class="chat03_title_t">最近联系</label>
                     </div>
                     <div class="chat03_content">
                         <ul>
@@ -119,9 +119,23 @@
 			</div>
 		</div>
 	<script>
+		var toContacter
+		<%if(request.getParameter("to")!=null){ %>
+        	toContacter = '${param.to}'
+		<%}%>
+
 		var contacterList = document.querySelector('.chat03_content > ul')
 		window.onload=function () {
 		    createWebsocket()
+			if(toContacter!=null) {
+                var html = '<li name="contacter" id={id} name={id} onclick="changeMain(this)">\n' +
+                    '                             \n' +
+                    '                                <a href="javascript:;">\n' +
+                    '                                    <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name">{id}</a>\n' +
+                    '                            </li>'
+				html = html.replace(/{id}/g,toContacter)
+                contacterList.innerHTML = html+contacterList.innerHTML
+			}
             var chooseCont = contacterList.firstElementChild
             chooseCont.className = 'choosed'
 			document.querySelector('#head-title').innerText = chooseCont.id
