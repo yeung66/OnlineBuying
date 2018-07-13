@@ -129,14 +129,42 @@
 	height: 35px;
 	letter-spacing: 0.5px;
 	line-height: 15px;
-    font-size: 1em;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
 }
 .blackButton:hover{
   background: #414141;
 }
+.popupForm{
+	width: 100%;
+}
 .singleInput{
-	margin-top: 50px ;
+	width: 200px;
+	margin:50px auto 0px auto;
+}
+.singleInput input[type="text"]{
+  box-sizing: border-box;
+  text-align:center;
+  font-size:13px;
+  height:2.7em;
+  border-radius:4px;
+  border:1px solid #c8cccf;
+  color:#6a6f77;
+  -web-kit-appearance:none;
+  -moz-appearance: none;
+  display:block;
+  outline:0;
+  padding:0 1em;
+  text-decoration:none;
+  width:100%;
+}
+::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #6a6f77;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #6a6f77;
+}
+.singleInput input::-webkit-input-placeholder{
+  color: #6a6f77;
 }
