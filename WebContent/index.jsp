@@ -48,6 +48,11 @@
 		<link rel="stylesheet" href="css/style_for_index.css">
 		<!-- Responsive css -->
 		<link rel="stylesheet" href="css/responsive.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
 
 		<!-- Modernizr JS -->
 
@@ -98,17 +103,18 @@
 			<!-- END SLIDER SECTION -->
 
 			<!-- PRODUCT SECTION START -->
-			<div class="product-section section pt-120 pb-120">
+			<!--<div class="product-section section pt-120 pb-120">
 				<div class="container">
 
-					<div class="isotope-grid row">
+					<div class="isotope-grid row">-->
 						<!-- Product Item Start -->
+						<div  style="width: 80%;margin-left: 10%;" align="center">
 						<%
 						List<Product> goodsList=Product.getAllGoodList();
 						if (num<goodsList.size()){
-						for(int i=0;i<num;i++){
+						for(int i=0;i<goodsList.size();i++){if(i<8){
 					    %>
-						<div class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50">
+						<div id=<%=i%> class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50" >
 							<div class="product-item text-center">
 								<!-- Product Image -->
 								<div class="product-img">
@@ -141,19 +147,14 @@
 								</div>
 							</div>
 						</div>
-						<!-- Product Item End -->
-
-						<%
-							}
-							}else{ for(int i=0;i<goodsList.size();i++){
-						%>
-						<div class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50">
+						<%}else{%>
+							<div id=<%=i%> class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50" style="display:none" >
 							<div class="product-item text-center">
 								<!-- Product Image -->
 								<div class="product-img">
 									<!-- Image -->
 									<a class="image" href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>">
-										<img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
+									<img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
 									<!-- Wishlist Button -->
 									<!--<a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>-->
 									<!-- Action Button -->
@@ -180,30 +181,28 @@
 								</div>
 							</div>
 						</div>
-						<!-- Product Item End -->
-						<%
-							}bool=false;
-                            }
-						%>
-				
-
-					</div>
-
-					<div class="row">
-						<%
-							if (bool){
-						%>
-            <div class="text-center col-xs-12 mt-30">
-                <a href="index.jsp?num=<%=num+8%>" class="btn load-more-product">load more</a>
-            </div>
 						<%}%>
+						
+						<!-- Product Item End -->
+
+						<%
+							}
+							}
+						%>
+					</div>
+					<div class="row">						
+            <div class="text-center col-xs-12 mt-30">
+                <button id="loadmore" class="btn load-more-product">load more</button>
+            </div>
+						
         </div>
-
-				</div>
+</div>
+				<!--</div>
 			</div>
-			<!-- PRODUCT SECTION END -->
+			
 
-		</div>
+		</div>-->
+		
 		<!-- Body main wrapper end -->
 
 		<!-- Placed JS at the end of the document so the pages load faster -->
@@ -216,10 +215,28 @@
 		<script src="js/plugins.js"></script>
 		<!-- Main js -->
 		<script src="js/main.js"></script>
-<%--<script src="js/bootstrap.js"></script>--%>
-<%--<script src="js/jquery.easing.1.3.js"></script>--%>
-<%--<script src="js/jquery-3.2.1.min.js"></script>--%>
-<%--<script src="bootstrap/js/bootstrap.min.js"></script>--%>
+
+<script> 
+	var j=8;
+$("#loadmore").click(function(){
+//	$("#"+j).show();
+//	if(j%3==2){
+//		var header1 = document.getElementById(j); 
+//var p = document.createElement("a");// 创建一个元素节点
+//var para =document.createTextNode("???????");
+//p.appendChild(para);
+//insertAfter(p,header1);
+//	}
+//	j+=1;
+	var m=j;
+	for (j;j<m+8;j++) {
+		
+$("#"+j).show(500);	
+	}
+	
+	
+});
+</script>
 	</body>
 
 </html>
