@@ -38,7 +38,7 @@ public class AddCartServlet extends HttpServlet {
        }else{ PrintWriter out = response.getWriter();
            out.print("<script>");
            out.print("alert('失败');");
-           out.print("window.location.reload()");
+           out.print("window.location.href='index.jsp'");
            out.print("</script>");
            out.close();}
     }
