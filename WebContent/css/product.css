@@ -1918,6 +1918,25 @@ a.meanmenu-reveal i {
   font-weight: 600;
   margin-bottom: 27px;
   font-family: "微软雅黑";
+  margin-bottom: 20px;
+}
+#pd_title{
+	color: pink;
+  display: block;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 27px;
+  font-family: "微软雅黑";
+  margin-bottom: 20px;
+}
+.product-details .title h1{
+	  color: pink;
+  display: block;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 27px;
+  font-family: "微软雅黑";
+  margin-bottom: 20px;
 }
 /*-- Product Price & Ratting --*/
 .price-ratting {
