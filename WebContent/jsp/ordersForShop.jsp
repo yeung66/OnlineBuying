@@ -138,7 +138,7 @@
 						String statu = o.getStatus();
 				%>
 				<tr>
-					<td><img src="<%=imgPath%>" width="70px" height="70px"></td>
+					<td><img src="<%=imgPath%>" width="70px" height="70px" style="padding-top:10px;padding-bottom: 10px;"></td>
 					<!--这里添加一下商品详情页的链接 href-->
 					<td><a href="goodsDescribed.jsp?gid=<%=pid%>"><%=name%></a></td>
 					<td><%=purchaser%></td>
