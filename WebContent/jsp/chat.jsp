@@ -9,8 +9,17 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	if(session.getAttribute("uid")==null){
-	    out.print("<alert>请先登录</alert>");
+	    out.println("<body><script>");
+	    out.println("alert('请先登录！')");
+	    out.println("window.location.href='../login_registe.jsp'");
+		out.println("</script></body>");
 	    return;
+	}else if (((String)session.getAttribute("uid")).equals(request.getParameter("to"))){
+		out.println("<body><script>");
+		out.println("alert('请不要跟自己通信！')");
+		out.println("window.history.back(-1)");
+		out.println("</script></body>");
+		return;
 	}
 %>
 <%

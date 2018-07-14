@@ -121,7 +121,7 @@
                                         <label for="user-intro" class="am-u-sm-3 am-form-label">商品描述</label>
                                         <div class="am-u-sm-9">
 
-                                            <textarea class="" rows="10" id="user-intro" value="" name="info"><%=described %></textarea>
+                                            <textarea class="" rows="10" id="user-intro" value="" name="info">${p.information}</textarea>
                                         </div>
                                     </div>
 

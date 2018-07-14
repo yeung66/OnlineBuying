@@ -105,7 +105,7 @@
                             <i class="fa fa-star active"></i>
                             <i class="fa fa-star active"></i>
                             <i class="fa fa-star active"></i>
-                            <span> (01 Customer Review)</span>
+                            <span> (<%=p.getComnum()%> Customer Review)</span>
                         </span>
                     </div>
                     <!-- Short Description -->

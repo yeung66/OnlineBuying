@@ -51,17 +51,16 @@ public class AddProductServlet extends HttpServlet {
         is.close();
         p.delete();
         Product.insertProduct(new Product(0,price,Integer.valueOf(num),0,0,name,owner,"images/upload/"+picName, info));
-        response.getWriter().write("success");
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().println("<body><script>alert('添加商品成功!')");
+        response.getWriter().println("window.location.href='jsp/table_list_img.jsp'");
+        response.getWriter().println("</script></body>");
+
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String owner = (String)request.getSession().getAttribute("uid");
-        double price = Double.valueOf(request.getParameter("price"));
-        String path = request.getParameter("path");
-        String num = request.getParameter("num");
-        Product.insertProduct(new Product(0,price,Integer.valueOf(num),0,0,name,owner,path));
+
     }
 
     public static String getRealName(String path) {
