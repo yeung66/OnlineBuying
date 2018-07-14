@@ -28,7 +28,14 @@
 		<link rel="stylesheet" href="css/chat.css">
 		<link rel="stylesheet" href="css/chat1.css">
 		<script src="js/jquery-3.1.1.min.js"></script>
-		
+		<style>
+			[newMessage=true]::after{
+				content: 'new';
+				position: absolute;
+				right: 0;
+				top: 40%;
+			}
+		</style>
 	</head>
 
 	<body lang="zh">
@@ -82,7 +89,7 @@
 
 								for(String c: contacter){
 							%>
-                            <li name="contacter" id="<%=c%>" onclick="changeMain(this)" contact="<%=c%>">
+                            <li name="contacter" id="<%=c%>" onclick="changeMain(this)" contact="c<%=c%>" >
                              
                                 <a href="javascript:;">
                                     <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name"><%=c%></a>
@@ -127,7 +134,8 @@
 		var contacterList = document.querySelector('.chat03_content > ul')
 		window.onload=function () {
 		    createWebsocket()
-			if(toContacter!=null) {
+			var chooseCont
+			if(toContacter!=null && contacterList.querySelector('[contact=c'+toContacter+']')==null) {
                 var html = '<li name="contacter" id={id} name={id} onclick="changeMain(this)">\n' +
                     '                             \n' +
                     '                                <a href="javascript:;">\n' +
@@ -135,8 +143,13 @@
                     '                            </li>'
 				html = html.replace(/{id}/g,toContacter)
                 contacterList.innerHTML = html+contacterList.innerHTML
+                chooseCont = contacterList.firstElementChild
+			}else if(toContacter==null) {
+		        chooseCont = contacterList.firstElementChild
+			}else {
+		        chooseCont = contacterList.querySelector('[contact=c'+toContacter+']')
 			}
-            var chooseCont = contacterList.firstElementChild
+
             chooseCont.className = 'choosed'
 			document.querySelector('#head-title').innerText = chooseCont.id
             var http = new XMLHttpRequest()
@@ -188,7 +201,7 @@
 		var uid = ${sessionScope.uid}
 		var localMessage = {}
         function createWebsocket() {
-			ws = new WebSocket('ws://<%=request.getServerName()%>:<%=request.getServerPort()%>/shixun/websocket/'+uid)
+			ws = new WebSocket('ws://<%=request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/websocket/'+uid)
             ws.onopen = function () {
                 console.log("WebSocket连接发生成功");
             }
@@ -201,7 +214,7 @@
 					changeState(document.querySelector('.choosed').id)
                 }
 
-				else if(contacterList.querySelector('[contact='+mes.send+']')==null){
+				else if(contacterList.querySelector('[contact=c'+mes.send+']')==null){
                     var html = '<li name="contacter" >\n' +
                         '                             \n' +
                         '                                <a href="javascript:;">\n' +
@@ -210,9 +223,12 @@
 					contacterList.innerHTML = html+contacterList.innerHTML
 					var newCont = contacterList.firstElementChild
 					newCont.id = mes.send
+					newCont.setAttribute('contact','c'+mes.send)
+					newCont.setAttribute('newMessage','true')
 					newCont.querySelector('.chat03_name').innerText = mes.send
                 }else {
-
+					localMessage[mes.send].push(mes)
+                    contacterList.querySelector('[contact=c'+mes.send+']').setAttribute('newMessage','true')
                 }
             }
             window.onbeforeunload = function () {
@@ -262,6 +278,7 @@
                         appendMessage(t)
 					})
 				}
+				e.removeAttribute('newMessage')
 				changeState(e.id)
 			}
         }
