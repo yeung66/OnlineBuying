@@ -17,9 +17,9 @@ String path = request.getContextPath();
 <html>
 <head>
 <title>查看订单</title>
-<!--
-	<base href="<%=basePath%>">
--->
+<%--<!----%>
+	<%--<base href="<%=basePath%>">--%>
+<%---->--%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"
