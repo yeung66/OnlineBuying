@@ -74,7 +74,7 @@
 				%>
 				<tr>
 					<td><img src="<%=p.getPath()%>" width="70px" height="70px"></td>
-					<td><a href="jsp/goodsDescribe.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
+					<td><a href="jsp/product_detail.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
 					<td><%=o.getQuantity()%></td>
 					<td><%=p.getPrice()%></td>
 					<td><%=p.getPrice() * o.getQuantity()%></td>
@@ -121,9 +121,9 @@
 	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
 			<div class="popup__text">
-				<!--h1>修改订单状态</h1 -->
+				<h1>修改订单状态</h1>
 				<div class="radioCon">
-					<!-- div class="radioText">状态修改为：</div -->
+					<div class="radioText">状态修改为：</div>
 					<div class="radioBlock">
 						<%
 							if (status.equals("已发货")) {

@@ -111,14 +111,9 @@
                         <p><%=described%>
                         	
                         </p>
-                        <a herf="#">商家:<%=producer%></a><br>库存:<%=number%>
-       
-                        
-                        
-                        	
-                        	
-                       
-                    </div>
+                        <a href="ShowStoreServlet?pid=<%=gid%>">商家:<%=producer%></a>
+                        <br>库存:<%=number%>
+         </div>
                    
                     <!-- Quantity Cart -->
                     <div class="quantity-cart section">
@@ -130,7 +125,8 @@
                         </div>
                         
     <!--                    <input type="hidden" name="pid" value=<%=gid %> >-->
-                        <input type="submit" class="add-to-cart" value="加入购物车"><input type="submit" class="add-to-cart" value="购买"> 
+                        <input type="submit" class="add-to-cart" value="加入购物车">
+                        <input type="submit" class="add-to-cart" value="购买">
 					
 						
                        
@@ -163,7 +159,7 @@
 <!-- jQuery latest version -->
 <script src="../js/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap js -->
-<script src="../js/bootstrap.min.js"></script>
+<%--<script src="../js/bootstrap.min.js"></script>--%>
 <!-- Plugins js -->
 <script src="../js/plugins.js"></script>
 <!-- Main js -->
