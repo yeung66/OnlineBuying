@@ -122,7 +122,7 @@
 													
 													<!--放入购物车中的商品-->
 													<div class="cart-image">
-														<a href="jsp/goodsDescribed.jsp?gid=<%=list.get(i).getProduct().getId()%>"><img src="<%=list.get(i).getProduct().getPath()%>" alt=""></a>
+														<a href="jsp/product_detail.jsp?gid=<%=list.get(i).getProduct().getId()%>"><img src="<%=list.get(i).getProduct().getPath()%>" alt=""></a>
 													</div>
 													<div class="cart-info">
 														<h5><a href="jsp/goodsDescribed.jsp?gid=<%=list.get(i).getProduct().getId()%>"><%=list.get(i).getProduct().getName()%></a></h5>
