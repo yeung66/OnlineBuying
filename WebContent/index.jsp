@@ -82,7 +82,7 @@
 								<h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s"><%=Products.get(k).getName()%></h1>
 								<p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s"><%=Products.get(k).getInformation()%>
 								</p>
-								<a href="jsp/goodsDescribed.jsp?gid=<%=Products.get(k).getId()%>" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">shop now</a>
+								<a href="jsp/product_detail.jsp?gid=<%=Products.get(k).getId()%>" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">shop now</a>
 							</div>
 						</div>
 					</div>
@@ -94,7 +94,7 @@
 							<div class="hero-slider-content col-sm-8 col-xs-12">
 								<h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s"><%=Products.get(j).getName()%></h1>
 								<p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s"><%=Products.get(j).getInformation()%> </p>
-								<a href="jsp/goodsDescribed.jsp?gid=<%=Products.get(j).getId()%>" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">shop now</a>
+								<a href="jsp/product_detail.jsp?gid=<%=Products.get(j).getId()%>" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.5s">shop now</a>
 							</div>
 						</div>
 					</div>
@@ -119,7 +119,7 @@
 								<!-- Product Image -->
 								<div class="product-img">
 									<!-- Image -->
-									<a class="image" href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>">
+									<a class="image" href="jsp/product_detail.jsp?gid=<%=goodsList.get(i).getId()%>">
 									<img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
 									<!-- Wishlist Button -->
 									<!--<a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>-->
@@ -132,7 +132,7 @@
 								<!-- Portfolio Info -->
 								<div class="product-info text-left">
 									<!-- Title -->
-									<h5 class="title"><a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
+									<h5 class="title"><a href="jsp/product_detail.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
 									<!-- Price Ratting -->
 									<div class="price-ratting fix">
 										<span class="price float-left"><span class="new">RMB <%=goodsList.get(i).getPrice()%></span></span>
@@ -153,7 +153,7 @@
 								<!-- Product Image -->
 								<div class="product-img">
 									<!-- Image -->
-									<a class="image" href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>">
+									<a class="image" href="jsp/product_detail.jsp?gid=<%=goodsList.get(i).getId()%>">
 									<img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
 									<!-- Wishlist Button -->
 									<!--<a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>-->
@@ -166,7 +166,7 @@
 								<!-- Portfolio Info -->
 								<div class="product-info text-left">
 									<!-- Title -->
-									<h5 class="title"><a href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
+									<h5 class="title"><a href="jsp/product_detail.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
 									<!-- Price Ratting -->
 									<div class="price-ratting fix">
 										<span class="price float-left"><span class="new">RMB <%=goodsList.get(i).getPrice()%></span></span>
