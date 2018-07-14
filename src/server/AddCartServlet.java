@@ -22,25 +22,44 @@ public class AddCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String Pid = request.getParameter("pid");
-        String Uid = (String)request.getSession().getAttribute("uid");
+        String Uid = (String) request.getSession().getAttribute("uid");
+        if (Uid == null){
+            PrintWriter out = response.getWriter();
+            out.print("<script>");
+            out.print("alert('请先登录');");
+            out.print("window.location.href='login_registe.jsp'");
+            out.print("</script>");
+            out.close();
+        }
         User user = User.getUser(Uid);
-        String s =request.getParameter("buyNumber");
+        String s = request.getParameter("buyNumber");
         int num = Integer.parseInt(s);
-        Date starttime = new Date(System.currentTimeMillis());
-        ShoppingCart cart = new ShoppingCart(Uid,Pid,num,starttime);
-       if (ShoppingCart.AddinSQL(cart)) {
-           PrintWriter out = response.getWriter();
-           out.print("<script>");
-           out.print("alert('添加成功');");
-           out.print("window.location.href='jsp/shoppingCart.jsp'");
-           out.print("</script>");
-           out.close();
-       }else{ PrintWriter out = response.getWriter();
-           out.print("<script>");
-           out.print("alert('失败');");
-           out.print("window.location.href='index.jsp'");
-           out.print("</script>");
-           out.close();}
+        if (num == 0) {PrintWriter out = response.getWriter();
+            out.print("<script>");
+            out.print("alert('添加失败，购买数为0！！');");
+            out.print("window.location.href='index.jsp'");
+            out.print("</script>");
+            out.close();
+        }
+        else {
+            Date starttime = new Date(System.currentTimeMillis());
+            ShoppingCart cart = new ShoppingCart(Uid, Pid, num, starttime);
+            if (ShoppingCart.AddinSQL(cart)) {
+                PrintWriter out = response.getWriter();
+                out.print("<script>");
+                out.print("alert('添加成功');");
+                out.print("window.location.href='jsp/shoppingCart.jsp'");
+                out.print("</script>");
+                out.close();
+            } else {
+                PrintWriter out = response.getWriter();
+                out.print("<script>");
+                out.print("alert('失败');");
+                out.print("window.location.href='index.jsp'");
+                out.print("</script>");
+                out.close();
+            }
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
