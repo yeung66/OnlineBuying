@@ -101,7 +101,7 @@
 						    total+= cart.getNum()*cart.getProduct().getPrice();
 					%>
                 	<tr>
-                		<td><img width="70px" height="70px" 
+                		<td><img width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;"
                 			src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/35dfe830251251.561b6b94f2125.jpg"></td>
                 		<!--点击名字跳转到商品详情页，在a里面添加链接-->
                 		<td class="cartName"><a><%=cart.getProduct().getName()%></a></td>
