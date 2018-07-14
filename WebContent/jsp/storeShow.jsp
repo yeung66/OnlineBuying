@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="js/jquery.min.js"></script>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="../js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
+<title>商家店铺</title>
 <style>
 #storeInfo {
-	background-image: url(images/storeBac.jpg);
+	background-image: url(../images/storeBac.png);
 	width: 70%;
 	height: 350px;
 	font-size: larger;
@@ -75,14 +75,14 @@
 		<div align="center">
 			<div align="center" id="storeInfo">
 				<br />
-				<br /> <img src="images/perPto.jpg" class="img-circle"
+				<br /> <img src="../images/storePto1.jpg" class="img-circle"
 					style="height: 150px; width: 150px;"><br />
 				<%
 					int pid = Integer.parseInt(request.getParameter("pid"));
 					String id = Product.getProductInfo(pid).getOwner();
 					String tel = User.getUser(id).getTel();
 				%>
-				<span class="text-primary"><h1><%=id%></h1></span> <span
+				<span class="text-primary"><h1><%=pid%></h1></span> <span
 					class="text-primary"><h2><%=tel%></h2></span>
 			</div>
 		</div>
