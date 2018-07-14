@@ -51,7 +51,7 @@ String path = request.getContextPath();
 		<table cellspacing="0">
 			<tr>
 				<th style="padding: 20px; font-size: 14px; font-weight: 600;"
-					colspan="8">显示订单</th>
+					colspan="8">测试：显示订单</th>
 			</tr>
 			<tr>
 				<th>商品图片</th>
