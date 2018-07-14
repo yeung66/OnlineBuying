@@ -44,6 +44,8 @@
     <!-- Responsive css -->
     <link rel="stylesheet" href="css/responsive.css">
 
+    <!--<link rel="stylesheet" href="../css/product_chat.css">-->
+
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.8.3.min.js"></script>
  
@@ -89,21 +91,22 @@
             <!-- Single Product Details -->
             <div class="col-md-7 col-sm-6 col-xs-12 mb-40">
                 <div class="product-details section">
+                	
                     <!-- Title -->
                     <h1 class="title"><%=name%></h1>
-                    <!-- Price Ratting -->
+                        <!-- Price Ratting -->
                     <div class="price-ratting section">
                         <!-- Price -->
                         <span class="price float-left"><span class="new">RMB <%=price%></span></span>
-                        <!-- Ratting -->
-                        <!--<span class="ratting float-right">
+                        <!-- 评分 -->
+                        <span class="ratting float-right">
                             <i class="fa fa-star active"></i>
                             <i class="fa fa-star active"></i>
                             <i class="fa fa-star active"></i>
                             <i class="fa fa-star active"></i>
                             <i class="fa fa-star active"></i>
                             <span> (01 Customer Review)</span>
-                        </span>-->
+                        </span>
                     </div>
                     <!-- Short Description -->
                     <div class="short-desc section">
@@ -111,10 +114,24 @@
                         <p><%=described%>
                         	
                         </p>
-                        <a href="ShowStoreServlet?pid=<%=gid%>">商家:<%=producer%></a>
+
+                        <!--商家-->
+                    <div class="shop section">
+                        <h5 class="pd-sub-title">商家</h5>
+                        <a href="ShowStoreServlet?pid=<%=gid%>"><%=producer%></a>
+                    </div>
+                    
+                        
                         <br>库存:<%=number%>
-         </div>
-                   
+                      
+       
+                        
+                        
+                        	
+                        	
+                       
+                    </div>
+
                     <!-- Quantity Cart -->
                     <div class="quantity-cart section">
      
@@ -148,8 +165,13 @@
 
 
 
-   
 
+</div>
+
+<div class="g-sidetab">
+	<div>
+	<a href="jsp/chat.jsp?to=<%=p.getOwner()%>">联系客服</a>
+	</div>
 </div>
 <!-- Body main wrapper end -->
 

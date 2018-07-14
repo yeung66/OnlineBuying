@@ -8,6 +8,10 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	if(session.getAttribute("uid")==null){
+	    out.print("<alert>请先登录</alert>");
+	    return;
+	}
 %>
 <%
 	List<String> contacter = Message.getRelatedUser((String)session.getAttribute("uid"));

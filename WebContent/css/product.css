@@ -42,6 +42,13 @@ body {
   font-style: normal;
   font-size: 14px;
   line-height: 24px;
+  /*background-image: url(../images/black.jpg);*/
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size:cover;
+	
+	
+
 }
 img{
   max-width: 100%;
@@ -2009,30 +2016,37 @@ a.meanmenu-reveal i {
   line-height: 24px;
   margin-bottom:50px;
 }
-/*-- Size --*/
-.product-size {
+.product-details .short-desc a {
+  color: pink;
+  font-family: "微软雅黑";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 20px;
+  margin-bottom:10px;
+}
+.product-details .short-desc img {
+  width: 20px;
+  height: 20px;
+}
+/*-- Shop --*/
+.shop {
   margin-bottom: 40px;
 }
-.product-size button {
+.shop a {
   background-color: transparent;
-  border: 1px solid #b6b6b6;
-  border-radius: 50%;
   color: #8d8d8d;
   display: block;
-  float: left;
-  font-size: 12px;
-  height: 31px;
-  line-height: 29px;
+
+  font-size: 100px;
   margin-right: 11px;
   margin-top: 5px;
-  text-transform: uppercase;
-  width: 31px;
+
 }
-.product-size button:hover {
+.shop button:hover {
   border: 1px solid #3f3f3f;
   color: #3f3f3f;
 }
-.product-size button.active {
+.shop button.active {
   background-color: #3f3f3f;
   border: 1px solid #3f3f3f;
   color: #fff;
@@ -3393,4 +3407,143 @@ a.meanmenu-reveal i {
 }
 .login-reg-form form a {
   color: #3f3f3f;
+}
+#moquu_top,#moquu_wxin,#moquu_wshare {
+	z-index:2;
+	width:30px;
+	height:30px;
+	right:10px;
+	position:fixed;
+	cursor:pointer;
+	_position:absolute;
+	_bottom:auto;
+	_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))
+}
+
+#moquu_wxin { bottom:130px; right:10px;
+}
+#moquu_wxin a {
+	background:url(../images/sbtn.png) 0 0px;
+	right:0;
+	float:left;
+	width:30px;
+	height:30px;
+	text-indent:-9999px
+}
+#moquu_wxin a:hover {
+	background:url(../images/sbtn.png) -30px -0px
+}
+#moquu_wshare {bottom:100px; right:10px;
+}
+#moquu_wshare a {
+	background:url(../images/sbtn.png) 0 -30px;
+	width:30px;
+	height:30px;
+	right:0;
+	float:left;
+	text-indent:-9999px
+}
+#moquu_wshare a:hover {
+	background:url(../images/sbtn.png) -30px -30px
+}
+
+.moquu_wxin,.moquu_wshare {
+	position:relative;
+	z-index:2
+}
+.moquu_wxin a:hover .moquu_wxinh,.moquu_wshare a:hover .moquu_wshareh {
+	display:block
+}
+.moquu_wxin .moquu_wxinh {
+	position:absolute;
+	display:none;
+	right:30px;
+	bottom:0px;
+	width:70px;
+	height:30px;
+	background:url(../images/fankui.png) 0 0 no-repeat #ff6060;
+	color:#FFF; border-radius:4px 0 0 4px;
+}
+.moquu_wshare .moquu_wshareh {
+	position:absolute;
+	display:none;
+	right:36px;
+	bottom:-85px;
+	width:100px;
+	height:120px;
+	background:url(../images/weixin.png) no-repeat
+}
+
+.g-sidetab {
+	position: fixed;
+	top: 25%;
+	right: 0;
+	cursor: pointer;
+	z-index: 9999;
+	-webkit-transform: translate(5px, 0);
+	-moz-transform: translate(5px, 0);
+	-ms-transform: translate(5px, 0);
+	-o-transform: translate(5px, 0);
+	transform: translate(5px, 0);
+	-webkit-transition: -webkit-transform .2s linear;
+	-moz-transition: -moz-transform .2s linear;
+	-ms-transition: -ms-transform .2s linear;
+	-o-transition: -o-transform .2s linear;
+	transition: transform .2s linear;
+}
+
+.g-sidetab:hover {
+	-webkit-transform: translate(0, 0);
+	-moz-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	-o-transform: translate(0, 0);
+	transform: translate(0, 0)
+}
+
+.g-sidetab div {
+	position: relative;
+	border-radius: 14px 0 0 14px;
+	background: #3c3c3c url("//cdn04.pinkoichina.com/pinkoi.site/modules/icon_contact_sidetab.png") 17px 22px no-repeat;
+	padding: 53px 17px 22px 17px;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: hidden
+}
+
+.g-sidetab a {
+	line-height: 1.2;
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+	width: 16px;
+	display: block
+}
+
+.s-en .g-sidetab {
+	width: 50px;
+}
+
+.s-en .g-sidetab div {
+	height: 184px;
+	padding: 53px 17px 22px 14px
+}
+
+.s-en .g-sidetab a {
+	font-size: 13px;
+	line-height: 1.6em;
+	width: 120px;
+}
+
+.csstransforms.s-en .g-sidetab a {
+	-webkit-transform: rotate(90deg) translate(0, -21px);
+	-moz-transform: rotate(90deg) translate(0, -21px);
+	-ms-transform: rotate(90deg) translate(0, -21px);
+	-o-transform: rotate(90deg) translate(0, -21px);
+	transform: rotate(90deg) translate(0, -21px);
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	-o-transform-origin: 0 0;
+	transform-origin: 0 0
 }
