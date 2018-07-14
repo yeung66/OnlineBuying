@@ -29,7 +29,7 @@
             var result= JSON.parse(str+"");
             var para0=document.createElement("td");
             var para2=document.createElement("a");
-            para2.href="goodsDescribed.jsp?gid="+result[i].id;
+            para2.href="product_detail.jsp?gid="+result[i].id;
             var node0=document.createTextNode(result[i].name);
             para2.appendChild(node0);
             para0.appendChild(para2); 
@@ -47,7 +47,7 @@
             element.appendChild(para0);
             var para0=document.createElement("td");
             var img=new Image();
-            img.src="result[i].path";
+            img.src=result[i].path;
             img.width=200;
             img.height=100;
             para0.appendChild(img);
@@ -82,7 +82,7 @@
      <th>图片</th>
      <th>评分</th>
   </thead>
-  <tbody id="goodTab">
+  <tbody id="goodsTab">
      
   </tbody>
 </table>
