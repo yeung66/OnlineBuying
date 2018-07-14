@@ -227,7 +227,9 @@
 					newCont.setAttribute('newMessage','true')
 					newCont.querySelector('.chat03_name').innerText = mes.send
                 }else {
-					localMessage[mes.send].push(mes)
+				    if(localMessage[mes.send]!=undefined) {
+                        localMessage[mes.send].push(mes)
+					}
                     contacterList.querySelector('[contact=c'+mes.send+']').setAttribute('newMessage','true')
                 }
             }
