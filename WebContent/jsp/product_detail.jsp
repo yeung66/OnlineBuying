@@ -123,35 +123,39 @@
                     
                         
                         <br>库存:<%=number%>
-                      
-       
-                        
-                        
-                        	
-                        	
-                       
-                    </div>
 
+                    </div>
+                   <form action="AddCartServlet" method="post" name = "productbuying">
                     <!-- Quantity Cart -->
                     <div class="quantity-cart section">
-     
+
                         <div class="product-quantity">
                         	
-                            <input type="text" value="0">
+                            <input type="text" value="0" name = "buyNumber">
 								
                         </div>
                         
-    <!--                    <input type="hidden" name="pid" value=<%=gid %> >-->
+                      <input type="hidden" name="pid" value=<%=gid %> >
                         <input type="submit" class="add-to-cart" value="加入购物车">
-                        <input type="submit" class="add-to-cart" value="购买">
+                        <input type="button" class="add-to-cart" value="购买" onclick="buy()">
 					
 						
                        
-                        <a href="jsp/itemReview.jsp?pid=<%=p.getId()%>"><button class="add-to-cart">查看评论</button></a>
-                   
+
+                        <input type="button" class="add-to-cart" value="查看评论" onclick="comment()">
+
                     </div>
-                    
-                     
+                    </form>
+                    <script>
+                        function buy() {
+                            document.productbuying.action = "BuyProductServlet";
+                            document.productbuying.submit();
+                        }
+                        function comment() {
+                            document.productbuying.action = "jsp/itemreview.jsp?pid=<%=gid%>";
+                            document.productbuying.submit();
+                        }
+                    </script>
                         
                         
                     
