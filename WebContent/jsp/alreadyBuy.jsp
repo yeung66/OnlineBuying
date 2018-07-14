@@ -74,7 +74,7 @@
 				%>
 				<tr>
 					<td><img src="<%=p.getPath()%>" width="70px" height="70px"></td>
-					<td><a href="jsp/goodsDescribe.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
+					<td><a href="jsp/product_detail.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
 					<td><%=o.getQuantity()%></td>
 					<td><%=p.getPrice()%></td>
 					<td><%=p.getPrice() * o.getQuantity()%></td>
