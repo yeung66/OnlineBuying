@@ -48,9 +48,16 @@ public class BuyProductServlet extends HttpServlet {
 		Double money=0.0;
 		int product = Integer.parseInt(request.getParameter("pid"));
 		Double price = Product.getProductInfo(product).getPrice();
-		int quantity;
+		int quantity = 1;
 		if(request.getParameter("buyNumber") == null)
 			quantity = 1;
+		else if(Integer.parseInt(request.getParameter("buyNumber")) <= 0) {
+			out.print("<script>");
+			out.print("alert('购买数量非法!');");
+			out.print("</script>");
+			out.close();
+			return;
+		}
 		else
 			quantity = Integer.parseInt(request.getParameter("buyNumber"));
 		if(quantity > Product.getProductInfo(product).getNum()){
@@ -60,7 +67,13 @@ public class BuyProductServlet extends HttpServlet {
     		out.close();
         	return;
 		}
-
+		if(request.getSession().getAttribute("uid") == null) {
+			out.print("<script>");
+			out.print("alert('请登录!');");
+			out.print("window.location.href='login_registe.jsp'");
+			out.print("</script>");
+			out.close();
+		}
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
 		Connection connect=Database.getConnect();

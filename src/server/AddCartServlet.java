@@ -33,10 +33,11 @@ public class AddCartServlet extends HttpServlet {
         }
         User user = User.getUser(Uid);
         String s = request.getParameter("buyNumber");
-        int num = Integer.parseInt(s);
-        if (num == 0) {PrintWriter out = response.getWriter();
+        int num=0;
+        if (s == null){num = 1;}else{ num= Integer.parseInt(s);}
+        if (num<= 0) {PrintWriter out = response.getWriter();
             out.print("<script>");
-            out.print("alert('添加失败，购买数为0！！');");
+            out.print("alert('添加失败，购买数小于为0！！');");
             out.print("window.location.href='index.jsp'");
             out.print("</script>");
             out.close();
