@@ -1311,7 +1311,9 @@ a.meanmenu-reveal i {
   position: relative;
 }
 /*-- Home Slider --*/
-#home-slider {}
+#home-slider {
+  margin-bottom: 60px;
+}
 #home-slider img {}
 /*-- Nivo Slider Caption --*/
 .nivo-caption, .hero-static-caption {
