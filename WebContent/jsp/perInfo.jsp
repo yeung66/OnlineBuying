@@ -32,7 +32,7 @@
 <script src="../js/jquery.min.js"></script>
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="../js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>修改个人信息</title>
 
 <style>
 #update input {

@@ -41,7 +41,7 @@
 <script type="text/javascript" src="../js/memenu.js"></script>
 <%--<script src="../js/jquery-3.1.1.min.js">--%>
 
-</script>
+
 </head>
 <body>
 	<!--插入head-->
@@ -122,7 +122,7 @@
 		<div class="popup-inner">
 			<div class="popup__text">
 				<h1>修改订单状态</h1>
-				<div class="radioCon">
+				<div class="radioCon" id='i<%=o.getId()%>'>
 					<div class="radioText">状态修改为：</div>
 					<div class="radioBlock">
 						<%
@@ -156,18 +156,18 @@
 			</div>
 			<a class="popup__close" href="jsp/alreadyBuy.jsp#">X</a>
 			<div class="submitChoice">
-				<form action="/CustomerAlterOrderServlet" id="myform" class="popupForm">
+				<form action="CustomerAlterOrderServlet" class="popupForm" id='f<%=o.getId()%>'>
 					<input type="hidden" name="operation" value="" id="operation">
 					<input type="hidden" name="id-<%=i %>" value="<%=id%>">
 					<%
 						if (op == true) {
 					%>
-					<input type="button" value="提交修改" class="blackButton"
-						onclick="tijiao()"></input>
+					<input type="button" value="提交修改" class="blackButton" id='<%=o.getId()%>'
+						onclick="tijiao(this)"/>
 					<%
 						} else {
 					%>
-					<div class="singleInput" ><input type="text" value="无可用操作" readonly="readonly" ></input></div>
+					<div class="singleInput" ><input type="text" value="无可用操作" readonly="readonly" /></div>
 					<%
 						}
 					%>
@@ -181,10 +181,11 @@
 		}
 	%>
 	<script>
-		function tijiao() {
-			var operation = $('input:radio[name="optionsRadios"]:checked').val();
-			var form = document.getElementById('myform');
-			$("#operation").val(operation);
+		function tijiao(e) {
+			var id = e.id;
+			var operation = $('#i'+id+' [name=optionsRadios]:checked').val();
+			var form = document.getElementById('f'+id);
+			form.querySelector('#operation').value=operation;
 			form.submit();
 		}
 	</script>

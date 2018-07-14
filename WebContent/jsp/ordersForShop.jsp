@@ -115,7 +115,7 @@ String path = request.getContextPath();
 			<div class="popup__text">
 
 				<h1>可用操作</h1>
-				<div class="radioCon">
+				<div class="radioCon" id="i<%=o.getId()%>">
 					<div class="radioText">执行操作：</div>
 					<div class="radioBlock">
 						<%
@@ -145,14 +145,14 @@ String path = request.getContextPath();
 			</div>
 			<a class="popup__close" href="jsp/ordersForShop.jsp#">X</a>
 			<div class="submitChoice">
-				<form action="MerchantAlterOrder" id="myform"  class="popupForm">
+				<form action="MerchantAlterOrder" class="popupForm" id='f<%=o.getId()%>'>
 					<input type="hidden" name="operation" value="" id="operation">
 					<input type="hidden" name="id-<%=i %>" value="<%=id%>">
 					<%
 						if (op == true) {
 					%>
-					<input type="button" value="提交修改" class="blackButton"
-						onclick="tijiao()"></input>
+					<input type="button" value="提交修改" class="blackButton" id="<%=o.getId()%>"
+						onclick="tijiao(this)"></input>
 					<%
 						} else {
 					%>
@@ -170,11 +170,12 @@ String path = request.getContextPath();
 		}
 	%>
 	<script>
-		function tijiao() {
-			var operation = $('input:radio[name="op"]:checked').val();
-			var form = document.getElementById('myform');
-			$("#operation").val(operation);
-			form.submit();
+		function tijiao(e) {
+            var id = e.id;
+            var operation = $('#i'+id+' [name=op]:checked').val();
+            var form = document.getElementById('f'+id);
+            form.querySelector('#operation').value=operation;
+            form.submit();
 		}
 	</script>
 
