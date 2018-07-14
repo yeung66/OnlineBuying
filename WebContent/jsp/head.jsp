@@ -125,7 +125,7 @@
 														<a href="jsp/product_detail.jsp?gid=<%=list.get(i).getProduct().getId()%>"><img src="<%=list.get(i).getProduct().getPath()%>" alt=""></a>
 													</div>
 													<div class="cart-info">
-														<h5><a href="jsp/goodsDescribed.jsp?gid=<%=list.get(i).getProduct().getId()%>"><%=list.get(i).getProduct().getName()%></a></h5>
+														<h5><a href="jsp/product_detail.jsp?gid=<%=list.get(i).getProduct().getId()%>"><%=list.get(i).getProduct().getName()%></a></h5>
 														<p><%=list.get(i).getNum()%> x RMB <%=list.get(i).getProduct().getPrice()%></p>
 														<!--<a href="#" class="cart-delete" title="Remove this item"><i class="pe-7s-trash"></i></a>-->
 													</div>

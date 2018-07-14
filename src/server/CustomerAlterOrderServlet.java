@@ -50,8 +50,14 @@ public class CustomerAlterOrderServlet extends HttpServlet {
 		PrintWriter  out = response.getWriter();
 		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");   
 		String operation = request.getParameter("operation");
-		int i = Integer.parseInt(request.getParameter("i"));
-		int id = Integer.parseInt(request.getParameter("id-"+i));
+		int i = 1, id = -1;
+		while(true) {
+			if(request.getParameter("id-"+i) != null) {
+				id = Integer.parseInt(request.getParameter("id-"+i));
+				break;
+			}
+			i++;
+		}
 		String sql;
 		if (operation.equals("qv")) {
 			sql = "DELETE FROM orders WHERE id= " + id + ";";
@@ -67,6 +73,7 @@ public class CustomerAlterOrderServlet extends HttpServlet {
     		out.print("alert('失败!');");
     		out.print("</script>");
     		out.close();
+    		response.sendRedirect(request.getHeader("Referer"));
         	return;
 		}
 		out.print("<script>");

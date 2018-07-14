@@ -148,7 +148,6 @@ String path = request.getContextPath();
 				<form action="MerchantAlterOrder" id="myform"  class="popupForm">
 					<input type="hidden" name="operation" value="" id="operation">
 					<input type="hidden" name="id-<%=i %>" value="<%=id%>">
-					<input type="hidden" name="i" value="<%=i %>" id="id">
 					<%
 						if (op == true) {
 					%>
