@@ -73,7 +73,7 @@
 		Database.update(sql);
 		out.print("<script>");
 		out.print("alert('购买成功!');");
-		out.print("window.location.href='jsp/perInfo.jsp'");
+		out.print("window.location.href='perInfo.jsp'");
 		out.print("</script>");
 		out.close();
 	}else {
