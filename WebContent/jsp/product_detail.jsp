@@ -33,19 +33,19 @@
     
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- Icon Font -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/pe-icon-7-stroke.css">
     <!-- Plugins css file -->
-    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="../css/plugins.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="../css/product.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.8.3.min.js"></script>
+    <script src="../js/modernizr-2.8.3.min.js"></script>
  
     
 </head>
@@ -114,27 +114,36 @@
                         <a href="ShowStoreServlet?pid=<%=gid%>">商家:<%=producer%></a>
                         <br>库存:<%=number%>
          </div>
-                   
+                   <form action="AddCartServlet" method="post" name = "productbuying">
                     <!-- Quantity Cart -->
                     <div class="quantity-cart section">
-     
+
                         <div class="product-quantity">
                         	
-                            <input type="text" value="0">
+                            <input type="text" value="0" name = "buyNumber">
 								
                         </div>
                         
-    <!--                    <input type="hidden" name="pid" value=<%=gid %> >-->
+                      <input type="hidden" name="pid" value=<%=gid %> >
                         <input type="submit" class="add-to-cart" value="加入购物车">
-                        <input type="submit" class="add-to-cart" value="购买">
+                        <input type="button" class="add-to-cart" value="购买" onclick="buy()">
 					
 						
                        
-                        <a href="itemReview.jsp"><button class="add-to-cart">查看评论</button></a>
+                        <input type="button" class="add-to-cart" value="查看评论" onclick="comment()">
                    
                     </div>
-                    
-                     
+                    </form>
+                    <script>
+                        function buy() {
+                            document.productbuying.action = "BuyProductServlet";
+                            document.productbuying.submit();
+                        }
+                        function comment() {
+                            document.productbuying.action = "jsp/itemreview.jsp?pid=<%=gid%>";
+                            document.productbuying.submit();
+                        }
+                    </script>
                         
                         
                     
@@ -157,13 +166,13 @@
 <!-- Placed JS at the end of the document so the pages load faster -->
 
 <!-- jQuery latest version -->
-<script src="js/jquery-3.1.1.min.js"></script>
+<script src="../js/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap js -->
 <%--<script src="../js/bootstrap.min.js"></script>--%>
 <!-- Plugins js -->
-<script src="js/plugins.js"></script>
+<script src="../js/plugins.js"></script>
 <!-- Main js -->
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
 
 </body>
 
