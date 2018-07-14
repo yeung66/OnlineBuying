@@ -5,14 +5,13 @@
 <%@ page import="java.sql.*"%>
 <!--
 下面这段代码是用来统一路径的，使用后要改下面的link和script引用包的地址，把每个路径前面的../去掉
-<%String path = request.getContextPath();
+String path = request.getContextPath();
 			String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 					+ path + "/";
-
-			String shopID = (String) request.getSession().getAttribute("uid");
+-->
+			<%String shopID = (String) request.getSession().getAttribute("uid");
 			List<Order> olist = Order.getShopOrderList(shopID);
 			int i = 1;%>
--->
 
 <!DOCTYPE html>
 <html>
@@ -43,11 +42,10 @@
 <script type="text/javascript" src="../js/memenu.js"></script>
 
 </head>
-<body>	<!--显示订单-->
-
+<body>
 	<!--插入head-->
 	<jsp:include page="head.jsp"></jsp:include>
-
+	<!--显示表格-->
 <center>
 	<div class="content">
 		<table cellspacing="0">
