@@ -182,7 +182,7 @@
 	%>
 	<script>
 		function tijiao() {
-			var operation = $('input:radio[name="op"]:checked').val();
+			var operation = $('input:radio[name="optionsRadios"]:checked').val();
 			var form = document.getElementById('myform');
 			$("#operation").val(operation);
 			form.submit();
