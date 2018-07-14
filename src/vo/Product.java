@@ -165,6 +165,7 @@ public class Product {
 				p.setPrice(rs.getDouble("price"));
 				p.setName(rs.getString("name"));
 				p.setPath(rs.getString("path"));
+				p.setInformation(rs.getString("information"));
 				result.add(p);
 			}
 			return result;
