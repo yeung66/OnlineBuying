@@ -145,7 +145,7 @@
 											<div class="am-btn-group am-btn-group-xs">
 												<button type="button"
 													class="am-btn am-btn-default am-btn-success">
-													<span class="am-icon-plus"></span> 新增
+													<span class="am-icon-plus" onclick="javascrtpt:window.location.href='jsp/addProduct.jsp'"></span> 新增
 												</button>
 												<!--<button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
                                                 <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button>
@@ -187,7 +187,7 @@
 													<div class="tpl-table-black-operation">
 														<a href="jsp/modifyProduct.jsp?pid=<%=p.getId()%>"> <i class="am-icon-pencil"></i>
 															编辑
-														</a> <a href="jsp/DeleteProductServlet?id=<%=p.getId()%>"
+														</a> <a href="DeleteProductServlet?id=<%=p.getId()%>"
 															class="tpl-table-black-operation-del"> <i
 															class="am-icon-trash"></i> 删除
 														</a>
