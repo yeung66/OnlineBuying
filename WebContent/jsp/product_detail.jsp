@@ -33,19 +33,19 @@
     
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Icon Font -->
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/pe-icon-7-stroke.css">
     <!-- Plugins css file -->
-    <link rel="stylesheet" href="../css/plugins.css">
+    <link rel="stylesheet" href="css/plugins.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="css/product.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
     <!-- Modernizr JS -->
-    <script src="../js/modernizr-2.8.3.min.js"></script>
+    <script src="js/modernizr-2.8.3.min.js"></script>
  
     
 </head>
@@ -157,13 +157,13 @@
 <!-- Placed JS at the end of the document so the pages load faster -->
 
 <!-- jQuery latest version -->
-<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap js -->
 <%--<script src="../js/bootstrap.min.js"></script>--%>
 <!-- Plugins js -->
-<script src="../js/plugins.js"></script>
+<script src="js/plugins.js"></script>
 <!-- Main js -->
-<script src="../js/main.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 
