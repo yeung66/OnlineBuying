@@ -103,7 +103,7 @@
 					%>
                 	<tr>
 						<td><input type="checkbox" name="checkItem" value="<%=cart.getProduct().getId()%>"/></td>
-                		<td><img width="70px" height="70px" 
+                		<td><img width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;" 
                 			src="<%=cart.getProduct().getPath()%>"></td>
                 		<!--点击名字跳转到商品详情页，在a里面添加链接-->
                 		<td class="cartName"><a href="jsp/product_detail.jsp?gid=<%=cart.getProduct().getId()%>"><%=cart.getProduct().getName()%></a></td>
