@@ -27,10 +27,10 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlOeT5KUCvGz9MutNqCHb7h3g2O1axjI/SN/oLJ8iW8lczjSEEwNsrZ07FOJh+983oDL5p5ZLPM4AGj7pj9H79GcrDRMJ+qOUTr1aa0fnkp2WglH3wL1rzFtGvGdpgtbL3nentkqmTUkKjHcrWQRn7on7eGuRvSjiUemowuQcTwpbcY91d0eTPueUfSrCKTrV/lYx8mWVn5OkOdwxzEN1j3XNkpHvbsrAcQKTJPaVefaPC99YdJqwd2o3GMXXPr2tNvkXFYS6E5vP+pkI5wPWRQgoyAHXKmikY6/+ioXE3AWtGWN48JS8AeqMWyKNCiS6qbLh+7EPoRfdOAgP7FKIuQIDAQAB";
 
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://localhost:8080/shixun/jsp/notify_url.jsp";
+	public static String notify_url = "http://120.78.150.152:8080/shixun/jsp/notify_url.jsp";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://localhost:8080/shixun/jsp/return_url.jsp";
+	public static String return_url = "http://120.78.150.152:8080/shixun/jsp/return_url.jsp";
 
 	// 签名方式
 	public static String sign_type = "RSA2";
