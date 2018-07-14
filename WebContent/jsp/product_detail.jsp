@@ -140,7 +140,7 @@
                             document.productbuying.submit();
                         }
                         function comment() {
-                            document.productbuying.action = "jsp/itemreview.jsp?pid=<%=gid%>";
+                            document.productbuying.action = "jsp/itemReview.jsp?pid=<%=gid%>";
                             document.productbuying.submit();
                         }
                     </script>
