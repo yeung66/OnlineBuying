@@ -9,7 +9,10 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	if(session.getAttribute("uid")==null){
-	    out.print("<alert>请先登录</alert>");
+	    out.print("<script>");
+		out.print("alert('请登录!');");
+		out.print("window.location.href='login_registe.jsp'");
+		out.print("</script>");
 	    return;
 	}
 %>
