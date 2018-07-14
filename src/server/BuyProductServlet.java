@@ -44,9 +44,24 @@ public class BuyProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter  out = response.getWriter();
-		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");   
+		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");
+		if(request.getSession().getAttribute("uid") == null) {
+			out.print("<script>");
+			out.print("alert('请登录!');");
+			out.print("window.location.href='login_registe.jsp'");
+			out.print("</script>");
+			out.close();
+		}
+		String purchaser = (String) request.getSession().getAttribute("uid");
 		Double money=0.0;
 		int product = Integer.parseInt(request.getParameter("pid"));
+		if(purchaser.equals(Product.getProductInfo(product).getOwner())) {
+			out.print("<script>");
+			out.print("alert('不可购买自己发布的商品!');");
+			out.print("</script>");
+			out.close();
+			response.sendRedirect(request.getHeader("Referer"));
+		}
 		Double price = Product.getProductInfo(product).getPrice();
 		int quantity = 1;
 		if(request.getParameter("buyNumber") == null)
@@ -56,6 +71,7 @@ public class BuyProductServlet extends HttpServlet {
 			out.print("alert('购买数量非法!');");
 			out.print("</script>");
 			out.close();
+			response.sendRedirect(request.getHeader("Referer"));
 			return;
 		}
 		else
@@ -65,16 +81,9 @@ public class BuyProductServlet extends HttpServlet {
     		out.print("alert('购买数量超出库存!');");
     		out.print("</script>");
     		out.close();
+    		response.sendRedirect(request.getHeader("Referer"));
         	return;
 		}
-		if(request.getSession().getAttribute("uid") == null) {
-			out.print("<script>");
-			out.print("alert('请登录!');");
-			out.print("window.location.href='login_registe.jsp'");
-			out.print("</script>");
-			out.close();
-		}
-		String purchaser = (String) request.getSession().getAttribute("uid");
 		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
 		Connection connect=Database.getConnect();
         try {
@@ -92,6 +101,7 @@ public class BuyProductServlet extends HttpServlet {
     		out.print("alert('购买失败!');");
     		out.print("</script>");
     		out.close();
+    		response.sendRedirect(request.getHeader("Referer"));
         	return;
         }else {
         	money -= price * quantity;

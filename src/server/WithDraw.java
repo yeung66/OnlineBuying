@@ -84,11 +84,13 @@ public class WithDraw extends HttpServlet {
 				Database.update(sql);
 				out.print("<script>");
 	    		out.print("alert('提现成功!');");
+	    		out.print("window.location.href='jsp/perInfo.jsp'");
 	    		out.print("</script>");
 	    		out.close();
 			} else {
 				out.print("<script>");
 	    		out.print("alert('提现失败!');");
+	    		out.print("window.location.href='jsp/perInfo.jsp'");
 	    		out.print("</script>");
 	    		out.close();
 			}

@@ -158,7 +158,8 @@
 			<div class="submitChoice">
 				<form action="/CustomerAlterOrderServlet" id="myform" class="popupForm">
 					<input type="hidden" name="operation" value="" id="operation">
-					<input type="hidden" name="id" value="<%=id%>">
+					<input type="hidden" name="id-<%=i %>" value="<%=id%>">
+					<input type="hidden" name="i" value="<%=i %>" id="id">
 					<%
 						if (op == true) {
 					%>
@@ -182,7 +183,7 @@
 	%>
 	<script>
 		function tijiao() {
-			var operation = $('input:radio[name="op"]:checked').val();
+			var operation = $('input:radio[name="optionsRadios"]:checked').val();
 			var form = document.getElementById('myform');
 			$("#operation").val(operation);
 			form.submit();

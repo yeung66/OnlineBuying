@@ -71,6 +71,11 @@
         money += Double.valueOf(total_amount);
 		sql = "UPDATE users SET money=" + money + " WHERE id='" + uid + "';";
 		Database.update(sql);
+		out.print("<script>");
+		out.print("alert('购买成功!');");
+		out.print("window.location.href='jsp/perInfo.jsp'");
+		out.print("</script>");
+		out.close();
 	}else {
 		out.println("验签失败");
 	}

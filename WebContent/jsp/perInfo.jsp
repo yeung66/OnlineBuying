@@ -77,8 +77,10 @@
 <body>
 
 	<div class="well" style="padding-top: 180px;">
-		<a href="jsp/recharge.jsp"><button class="btn btn-danger" style="width: 80px">充值</button></a>
-			<a href="jsp/withdraw.jsp"><button class="btn btn-success" style="width: 80px;">提现</button></a>
+		<div align="center">
+		<a href="jsp/recharge.jsp"><button class="btn btn-success" style="width: 80px">充值</button></a>
+			<a href="jsp/withdraw.jsp"><button class="btn btn-primary" style="width: 80px;">提现</button></a>
+			</div>
 		<div align="center">
 <table id="update" class="table table-striped table-bordered table-hover  table-condensed" style="text-align: center;">
   <tbody id="goodTab">
@@ -92,7 +94,7 @@
 						for="tel">手机号 </label></td><td> <input data-toggle="tooltip" title="点击修改" id="tel" onkeyup="showSubmit()" name="tel" type="text"
 						value="<%=tel %>" /></td></tr>
     <tr><td><label for="sex">性别&nbsp;&nbsp;&nbsp;
-				</label> </td><td><select data-toggle="tooltip" title="点击修改" name="sex" id="sex">
+				</label> </td><td><select data-toggle="tooltip" title="点击修改" name="sex" id="sex" onchange="showSubmit()">
 							<option value="<%=sex %>" selected="selected"><%=sex_str1 %></option>
 							<option value="<%=sex2%>"><%=sex_str2 %></option>
 
