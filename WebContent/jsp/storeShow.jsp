@@ -29,7 +29,7 @@
             var result= JSON.parse(str+"");
             var para0=document.createElement("td");
             var para2=document.createElement("a");
-            para2.href="product_detail.jsp?gid="+result[i].id;
+            para2.href="jsp/product_detail.jsp?gid="+result[i].id;
             var node0=document.createTextNode(result[i].name);
             para2.appendChild(node0);
             para0.appendChild(para2); 
