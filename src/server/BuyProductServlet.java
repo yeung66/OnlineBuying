@@ -44,7 +44,14 @@ public class BuyProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter  out = response.getWriter();
-		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");   
+		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");
+		if(request.getSession().getAttribute("uid") == null) {
+			out.print("<script>");
+			out.print("alert('请登录!');");
+			out.print("window.location.href='login_registe.jsp'");
+			out.print("</script>");
+			out.close();
+		}
 		Double money=0.0;
 		int product = Integer.parseInt(request.getParameter("pid"));
 		Double price = Product.getProductInfo(product).getPrice();
@@ -66,13 +73,6 @@ public class BuyProductServlet extends HttpServlet {
     		out.print("</script>");
     		out.close();
         	return;
-		}
-		if(request.getSession().getAttribute("uid") == null) {
-			out.print("<script>");
-			out.print("alert('请登录!');");
-			out.print("window.location.href='login_registe.jsp'");
-			out.print("</script>");
-			out.close();
 		}
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
