@@ -19,6 +19,7 @@
 </style>
 </head>
 <body>
+	<jsp:include page="jsp/head.jsp"/>
 	<script type="text/javascript">
 		window.onload = function() {
 			var e = $
