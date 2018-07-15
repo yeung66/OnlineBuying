@@ -19,7 +19,7 @@
 			$("#regist_container").hide();
 			$("#_close").show();
 			$("#_start").animate({
-				left : '350px',
+			
 				height : '520px',
 				width : '400px'
 			}, 500, function() {
@@ -112,8 +112,8 @@
 				<p style="font-size: larger;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一位顾客</p>
 			</span>
 		</div>
-		<div id='_start' style="position:relative;
-	margin-left:50%;background-color: gray;margin-top: -250px;">
+		<div id='_start' style="position:relative;bottom: 25%;left: 25%;
+	background-color: gray;">
 		<div id='_close' style="display: none;">
 			<span class="glyphicon glyphicon-remove"></span>
 		</div>
