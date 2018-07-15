@@ -34,6 +34,7 @@ public class AlterProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		PrintWriter  out = response.getWriter();
 		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");   
 		int pid = Integer.parseInt(request.getParameter("pid"));

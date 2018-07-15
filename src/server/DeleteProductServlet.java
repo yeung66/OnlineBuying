@@ -18,6 +18,7 @@ public class DeleteProductServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pID = request.getParameter("id");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         if ( Product.deleteProduct(pID)){
             out.print("<script>");
