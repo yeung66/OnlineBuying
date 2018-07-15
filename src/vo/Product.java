@@ -219,13 +219,17 @@ public class Product {
 
 	public static boolean deleteProduct(String pID) {
 		Connection conn = Database.getConnect();
-		try {
-			PreparedStatement pstmt = conn.prepareStatement("delete from product where id = " + pID);
-			pstmt.execute();
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
+		String sql = "delete from orders where product = " + pID;
 
+		Database.update(sql);
+		sql = "delete from comment where product = " + pID;
+		Database.update(sql);
+		sql = "delete from shoppingcart where pid = " + pID;
+		Database.update(sql);
+		sql = "delete from product where id = " + pID;
+		if(	Database.update(sql)!=-1) {
+
+			return true;
 		}
 		return false;
 	}
