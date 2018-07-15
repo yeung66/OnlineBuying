@@ -28,7 +28,7 @@ public class DeleteProductServlet extends HttpServlet {
             out.close();
         }
         else {   out.print("<script>");
-            out.print("alert('删除成功');");
+            out.print("alert('删除失败');");
             out.print("window.location.href='jsp/table_list_img.jsp'");
             out.print("</script>");
             out.close();}
