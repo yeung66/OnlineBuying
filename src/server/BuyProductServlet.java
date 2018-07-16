@@ -58,9 +58,9 @@ public class BuyProductServlet extends HttpServlet {
 		if(purchaser.equals(Product.getProductInfo(product).getOwner())) {
 			out.print("<script>");
 			out.print("alert('不可购买自己发布的商品!');");
+			out.print("window.history.go(-1)");
 			out.print("</script>");
 			out.close();
-			response.sendRedirect(request.getHeader("Referer"));
 		}
 		Double price = Product.getProductInfo(product).getPrice();
 		int quantity = 1;
@@ -69,9 +69,9 @@ public class BuyProductServlet extends HttpServlet {
 		else if(Integer.parseInt(request.getParameter("buyNumber")) <= 0) {
 			out.print("<script>");
 			out.print("alert('购买数量非法!');");
+			out.print("window.history.go(-1)");
 			out.print("</script>");
 			out.close();
-			response.sendRedirect(request.getHeader("Referer"));
 			return;
 		}
 		else
@@ -79,9 +79,9 @@ public class BuyProductServlet extends HttpServlet {
 		if(quantity > Product.getProductInfo(product).getNum()){
 			out.print("<script>");
     		out.print("alert('购买数量超出库存!');");
+			out.print("window.history.go(-1)");
     		out.print("</script>");
     		out.close();
-    		response.sendRedirect(request.getHeader("Referer"));
         	return;
 		}
 		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
@@ -99,9 +99,9 @@ public class BuyProductServlet extends HttpServlet {
         if(money < price * quantity) {
     		out.print("<script>");
     		out.print("alert('购买失败!');");
+			out.print("window.history.go(-1)");
     		out.print("</script>");
     		out.close();
-    		response.sendRedirect(request.getHeader("Referer"));
         	return;
         }else {
         	money -= price * quantity;

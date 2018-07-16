@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
 			response.getWriter().print("fail");
 			return;
 		}
-		sql = "INSERT INTO `shixun`.`users` (`id`, `pwd`, `tel`, `add`, `sex`, `rights`) VALUES ('" + id + "','"
+		sql = "INSERT INTO `shixun`.`users` (`id`, `pwd`, `tel`, `addr`, `sex`, `rights`) VALUES ('" + id + "','"
 				+ pwd + "'" + ",'" + tel + "','" + add + "'," + sex + "," + right + "" + ");";
 		if(Database.update(sql) > 0)
 			response.getWriter().print("success");
