@@ -86,7 +86,7 @@ String path = request.getContextPath();
 			<tr>
 				<td><img src="<%=imgPath%>" width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;"></td>
 				<!--这里添加一下商品详情页的链接 href-->
-				<td><a href="product_detail.jsp?gid=<%=pid%>"><%=name%></a></td>
+				<td><a href="jsp/product_detail.jsp?gid=<%=pid%>"><%=name%></a></td>
 				<td><%=purchaser%></td>
 				<td><%=num%></td>
 				<td><%=price%></td>

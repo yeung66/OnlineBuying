@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/jquery.min.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="js/bootstrap.min.js"></script>
+<%--<script src="js/bootstrap.min.js"></script>--%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商家店铺</title>
 <style>
@@ -77,7 +77,7 @@
 					String id = Product.getProductInfo(pid).getOwner();
 					String tel = User.getUser(id).getTel();
 				%>
-				<span class="text-primary"><h1><%=pid%></h1></span> <span
+				<span class="text-primary"><h1><%=id%></h1></span> <span
 					class="text-primary"><h2>Tel:<%=tel%></h2></span>
 			</div>
 		</div>

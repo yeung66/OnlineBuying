@@ -74,6 +74,7 @@ public class CommentServlet extends HttpServlet {
 		Database.update(sql);
 		sql = "UPDATE orders SET states='" + 5 + "' WHERE id=" + Integer.parseInt(request.getParameter("oid"));
 		Database.update(sql);
+		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print("<script>");
 		out.print("alert('评论成功');");
