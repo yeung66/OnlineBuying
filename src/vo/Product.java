@@ -12,7 +12,22 @@ public class Product {
 	private double score, price;
 	private String name, path;
 	private String owner, information;
-	private String status;
+	private String status, type;
+	
+	public Product(int id, double price, int num, double score, int comnum, String name, String owner, String path,
+			String information, String type) {
+		super();
+		this.id = id;
+		this.num = num;
+		this.comnum = comnum;
+		this.score = score;
+		this.price = price;
+		this.name = name;
+		this.path = path;
+		this.owner = owner;
+		this.information = information;
+		this.type = type;
+	}
 
 	public Product() {
 	}
@@ -42,6 +57,14 @@ public class Product {
 		this.owner = owner;
 		this.path = path;
 		this.information = "";
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getStatus() {
@@ -132,8 +155,8 @@ public class Product {
 		Connection conn = Database.getConnect();
 		try {
 			PreparedStatement pst = conn.prepareStatement(
-					"INSERT INTO `shixun`.`product` ( `price`, `num`, `name`, `owner`, `path`, `score`,comnum,information) "
-							+ "VALUES (?,?,?,?,?,?,?,?);");
+					"INSERT INTO product ( price, num, name, owner, path, score,comnum,information,ptype) "
+							+ "VALUES (?,?,?,?,?,?,?,?,?);");
 
 			// pst.setInt(1,p.getId());
 			pst.setDouble(1, p.getPrice());
@@ -144,6 +167,7 @@ public class Product {
 			pst.setDouble(6, p.getScore());
 			pst.setInt(7, p.getComnum());
 			pst.setString(8, p.getInformation());
+			pst.setString(9, p.getType());
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
@@ -157,7 +181,7 @@ public class Product {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id,price,name,path,information from product where status='pass';");
+			ResultSet rs = st.executeQuery("SELECT * from product where status='pass';");
 			List<Product> result = new ArrayList<>();
 			while (rs.next()) {
 				Product p = new Product();
@@ -165,7 +189,7 @@ public class Product {
 				p.setPrice(rs.getDouble("price"));
 				p.setName(rs.getString("name"));
 				p.setPath(rs.getString("path"));
-				p.setInformation(rs.getString("information"));
+				p.setType(rs.getString("type"));
 				result.add(p);
 			}
 			return result;
@@ -190,6 +214,7 @@ public class Product {
 				p.setPath(rs.getString("path"));
 				p.setNum(rs.getInt("num"));
 				p.setScore(rs.getDouble("score"));
+				p.setType(rs.getString("type"));
 				result.add(p);
 			}
 			return result;
@@ -207,7 +232,7 @@ public class Product {
 			if (rs.next()) {
 				Product p = new Product(rs.getInt("id"), rs.getDouble("price"), rs.getInt("num"), rs.getDouble("score"),
 						rs.getInt("comnum"), rs.getString("name"), rs.getString("owner"), rs.getString("path"),
-						rs.getString("information"));
+						rs.getString("information"),rs.getString("ptype"));
 				return p;
 			}
 			//conn.close();
@@ -219,17 +244,13 @@ public class Product {
 
 	public static boolean deleteProduct(String pID) {
 		Connection conn = Database.getConnect();
-		String sql = "delete from orders where product = " + pID;
-
-		Database.update(sql);
-		sql = "delete from comment where product = " + pID;
-		Database.update(sql);
-		sql = "delete from shoppingcart where pid = " + pID;
-		Database.update(sql);
-		sql = "delete from product where id = " + pID;
-		if(	Database.update(sql)!=-1) {
-
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("delete from product where id = " + pID);
+			pstmt.execute();
 			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
 		}
 		return false;
 	}
@@ -248,6 +269,7 @@ public class Product {
 				p.setPath(rs.getString("path"));
 				p.setNum(rs.getInt("num"));
 				p.setScore(rs.getDouble("score"));
+				p.setType(rs.getString("type"));
 				result.add(p);
 			}
 			return result;
@@ -270,9 +292,9 @@ public class Product {
 		}
 	}
 	public static int alterProduct(int pid, String name, String owner, double price, int num,
-			String info) {
+			String info, String type) {
 		String sql = "UPDATE product SET name='" + name + "',owner='" + owner + "',price=" + price + 
-				",num=" + num + ",information='" + info + "' WHERE id=" + pid + ";";
+				",num=" + num + ",information='" + info + "' type='" + type + "' WHERE id=" + pid + ";";
 		return Database.update(sql);
 	}
 
