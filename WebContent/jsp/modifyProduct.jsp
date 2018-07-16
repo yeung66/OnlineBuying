@@ -15,6 +15,7 @@
 	String name = p.getName();
 	String described = p.getInformation();
 	Double price = p.getPrice();
+	String type = p.getType();
 %>
 <!DOCTYPE html>
 <html>
@@ -87,7 +88,7 @@
                             <div class="widget-body am-fr">
 
 
-                                <form class="am-form tpl-form-border-form tpl-form-border-br" action="<%=basePath%>/AlterProductServlet" method="post">
+                                <form class="am-form tpl-form-border-form tpl-form-border-br" action="AlterProductServlet">
                                 	<input type="hidden" name="pid" value="<%=pid%>">
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称 <span class="tpl-form-line-small-title">Name</span></label>
@@ -101,6 +102,14 @@
                                         <div class="am-u-sm-9">
 
                                             <input type="text" class="tpl-form-input" id="user-name" value="<%=price %>" name="price">                                           
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
+                                        <div class="am-u-sm-9">
+
+                                            <input type="text" class="tpl-form-input" id="user-name" value="<%=type %>" name="type">                                           
                                         </div>
                                     </div>
 
@@ -121,7 +130,7 @@
                                         <label for="user-intro" class="am-u-sm-3 am-form-label">商品描述</label>
                                         <div class="am-u-sm-9">
 
-                                            <textarea class="" rows="10" id="user-intro" value="" name="info"><%if(p.getInformation()!=null) out.println(p.getInformation());%></textarea>
+                                            <textarea class="" rows="10" id="user-intro" value="<%=described %>" name="info"></textarea>
                                         </div>
                                     </div>
 
