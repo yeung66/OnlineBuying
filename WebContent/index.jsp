@@ -111,7 +111,6 @@
 						<div  style="width: 80%;margin-left: 10%;" align="center">
 						<%
 						List<Product> goodsList=Product.getAllGoodList();
-						if (num<goodsList.size()){
 						for(int i=0;i<goodsList.size();i++){if(i<8){
 					    %>
 						<div id=<%=i%> class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50" >
@@ -186,7 +185,6 @@
 						<!-- Product Item End -->
 
 						<%
-							}
 							}
 						%>
 					</div>
