@@ -180,10 +180,6 @@
 						
 										</li>
 										<li class="active">
-											<a href="jsp/alreadyBuy.jsp">查询订单</a>
-						
-										</li>
-										<li class="active">
 											<a href="jsp/table_list_img.jsp">查看商品</a>
 
 										</li>
