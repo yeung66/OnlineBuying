@@ -133,6 +133,7 @@
 												<th>商品图片</th>
 												<th>商品名称</th>
 												<th>商品价格</th>
+												<th>商品类型</th>
 												<th>商品库存</th>
 												<th>商家名称</th>
 												<th>操作</th>
@@ -149,6 +150,7 @@
 													alt=""></td>
 												<td class="am-text-middle"><%=p.getName() %></td>
 												<td class="am-text-middle"><%=p.getPrice() %></td>
+												<td class="am-text-middle"><%=p.getType() %></td>
 												<td class="am-text-middle"><%=p.getNum() %></td>
 												<td class="am-text-middle"><%=p.getScore() %></td>
 												<td class="am-text-middle">

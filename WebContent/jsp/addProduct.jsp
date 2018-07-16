@@ -74,6 +74,8 @@
                             <div class="widget-body am-fr">
 
                                 <form class="am-form tpl-form-border-form tpl-form-border-br" action="../addProduct" method="post" enctype='multipart/form-data'>
+
+
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称 <span class="tpl-form-line-small-title">Name</span></label>
                                         <div class="am-u-sm-9">
@@ -86,6 +88,15 @@
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品价格 <span class="tpl-form-line-small-title">Price</span></label>
                                         <div class="am-u-sm-9">
                                             <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品价格" name="price">
+
+
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
+                                        <div class="am-u-sm-9">
+                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品类型" name="type">
 
                                         </div>
                                     </div>
