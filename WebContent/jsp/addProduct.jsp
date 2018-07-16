@@ -73,18 +73,28 @@
                             </div>
                             <div class="widget-body am-fr">
 
-                                <form class="am-form tpl-form-border-form tpl-form-border-br">
+                                <form class="am-form tpl-form-border-form tpl-form-border-br" action="addProduct">
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称 <span class="tpl-form-line-small-title">Name</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品名称">                                           
+                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品名称"name="name">                                           
+
                                         </div>
                                     </div>
                                     
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品价格 <span class="tpl-form-line-small-title">Price</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品价格">                                           
+                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品价格" name="price">
+
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="am-form-group">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
+                                        <div class="am-u-sm-9">
+                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品类型" name="type">
+
                                         </div>
                                     </div>
 
@@ -93,7 +103,8 @@
                                     <div class="am-form-group">
                                         <label class="am-u-sm-3 am-form-label">库存 <span class="tpl-form-line-small-title">Number</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" placeholder="请输入库存">
+                                            <input type="text" placeholder="请输入库存" name="num">
+
                                         </div>
                                     </div>
 
@@ -105,7 +116,8 @@
                                                     <img src="images/" alt="">
                                                 </div>
                                                 <button type="button" class="am-btn am-btn-danger am-btn-sm"><i class="am-icon-cloud-upload"></i> 添加商品图片</button>
-                                                <input id="doc-form-file" type="file" multiple="">
+                                                <input id="doc-form-file" type="file" multiple="" name="path">
+
                                             </div>
 
                                         </div>
@@ -116,7 +128,8 @@
                                     <div class="am-form-group">
                                         <label for="user-intro" class="am-u-sm-3 am-form-label">商品描述</label>
                                         <div class="am-u-sm-9">
-                                            <textarea class="" rows="10" id="user-intro" placeholder="请输入商品描述内容"></textarea>
+                                            <textarea class="" rows="10" id="user-intro" placeholder="请输入商品描述内容" name="info"></textarea>
+
                                         </div>
                                     </div>
 
