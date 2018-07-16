@@ -8,6 +8,9 @@
 <link href="../css/alipay.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body text=#000000 bgColor="#ffffff" leftMargin=0 topMargin=4>
+	<!--插入head-->
+    <jsp:include page="head.jsp"></jsp:include>
+    <!--充值-->
 	<div id="main">
 	<div class="center">
 			<h2 id="tab1" class="selected">充  值</h2>
