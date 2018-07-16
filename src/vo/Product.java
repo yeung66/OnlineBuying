@@ -189,7 +189,7 @@ public class Product {
 				p.setPrice(rs.getDouble("price"));
 				p.setName(rs.getString("name"));
 				p.setPath(rs.getString("path"));
-				p.setType(rs.getString("type"));
+				p.setType(rs.getString("ptype"));
 				result.add(p);
 			}
 			return result;
@@ -214,7 +214,7 @@ public class Product {
 				p.setPath(rs.getString("path"));
 				p.setNum(rs.getInt("num"));
 				p.setScore(rs.getDouble("score"));
-				p.setType(rs.getString("type"));
+				p.setType(rs.getString("ptype"));
 				result.add(p);
 			}
 			return result;
@@ -269,7 +269,7 @@ public class Product {
 				p.setPath(rs.getString("path"));
 				p.setNum(rs.getInt("num"));
 				p.setScore(rs.getDouble("score"));
-				p.setType(rs.getString("type"));
+				p.setType(rs.getString("ptype"));
 				result.add(p);
 			}
 			return result;
@@ -294,7 +294,7 @@ public class Product {
 	public static int alterProduct(int pid, String name, String owner, double price, int num,
 			String info, String type) {
 		String sql = "UPDATE product SET name='" + name + "',owner='" + owner + "',price=" + price + 
-				",num=" + num + ",information='" + info + "' type='" + type + "' WHERE id=" + pid + ";";
+				",num=" + num + ",information='" + info + "' ptype='" + type + "' WHERE id=" + pid + ";";
 		return Database.update(sql);
 	}
 
