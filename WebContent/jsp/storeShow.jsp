@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/jquery.min.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="js/bootstrap.min.js"></script>
+<!--script src="js/bootstrap.min.js"></script-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商家店铺</title>
 <style>
