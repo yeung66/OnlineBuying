@@ -43,7 +43,8 @@ public class AlterProductServlet extends HttpServlet {
 		double price = Double.valueOf(request.getParameter("price"));
 		int num = Integer.parseInt(request.getParameter("num"));
 		String info = request.getParameter("info");
-		Product.alterProduct(pid, name, owner, price, num, info);
+		String type = request.getParameter("type");
+		Product.alterProduct(pid, name, owner, price, num, info, type);
 		out.print("<script>");
 		out.print("alert('修改成功!');");
 		out.print("window.location.href='jsp/table_list_img.jsp'");
