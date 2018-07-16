@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
 
 		id = request.getParameter("id");
 		pwd = request.getParameter("password");
-		add = request.getParameter("addr");
+		add = request.getParameter("add");
 		tel = request.getParameter("tel");
 		sex = request.getParameter("sex");
 		right = request.getParameter("right");
