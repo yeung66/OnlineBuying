@@ -53,7 +53,7 @@
 
 	<title>商品详情页面</title>
 
-	<base href="<%=basePath%>">
+	<%--<base href="<%=basePath%>">--%>
 
 	<meta name="description" content="">
 
@@ -527,7 +527,7 @@
 
 	<div>
 
-		<a herf="jsp/chat.jsp?to=<%=p.getOwner()%>">联系客服</a>
+		<a href="jsp/chat.jsp?to=<%=p.getOwner()%>">联系客服</a>
 
 	</div>
 
@@ -559,7 +559,7 @@
 
 <!-- jQuery latest version -->
 
-<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
 
 <!-- Bootstrap js -->
 
@@ -567,11 +567,11 @@
 
 <!-- Plugins js -->
 
-<script src="../js/plugins.js"></script>
+<script src="js/plugins.js"></script>
 
 <!-- Main js -->
 
-<script src="../js/main.js"></script>
+<script src="js/main.js"></script>
 
 
 

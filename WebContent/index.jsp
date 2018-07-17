@@ -54,7 +54,7 @@
 <script src="js/jquery.easing.1.3.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
 
-		<script type="text/javascript" src="/js/startScore.js"></script>
+		<script type="text/javascript" src="js/startScore.js"></script>
 
 		<!-- Modernizr JS -->
 <style>
@@ -150,7 +150,7 @@
                                 
                             
                             <div class="atar_Show">
-                            <p tip="<%=p.getScore()%>"></p>
+                            <p tip="<%=goodsList.get(i).getScore()%>"></p>
                             </div>
                             
                             
@@ -195,7 +195,7 @@
                                 <ul class="show_number clearfix">
                             <li>
                             <div class="atar_Show">
-                            <p tip="<%=p.getScore()%>"></p>
+                            <p tip="<%=goodsList.get(i).getScore()%>"></p>
                             </div>
                             
                             </li>

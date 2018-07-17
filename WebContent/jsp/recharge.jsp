@@ -14,7 +14,7 @@
 	<div id="main">
 	<div class="center">
 			<h2 id="tab1" class="selected">充  值</h2>
-		<form name=alipayment action=dealRecharge.jsp method=post
+		<form name=alipayment action=jsp/dealRecharge.jsp method=post
 			target="_blank">
 			<div id="body1" class="show" name="divcontent">
 				<dl class="content">
