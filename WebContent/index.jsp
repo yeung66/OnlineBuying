@@ -61,7 +61,7 @@
 
 	<body>
 
-<jsp:include page="jsp/head.jsp"></jsp:include>
+<jsp:include page="jsp/head.jsp"/>
 		<!-- Body main wrapper start -->
 		<div class="wrapper">
 
@@ -148,7 +148,7 @@
 							</div>
 						</div>
 						<%}else{%>
-							<div id='<%=i%>' class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50"  >
+							<div id='<%=i%>' class="isotope-item chair home-decor col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-50"  style="display: none">
 							<div class="product-item text-center">
 								<!-- Product Image -->
 								<div class="product-img">
