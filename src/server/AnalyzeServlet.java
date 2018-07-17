@@ -35,15 +35,15 @@ public class AnalyzeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String uid = (String) request.getSession().getAttribute("uid");
 		String utype = (String) request.getSession().getAttribute("type");
-		if (utype.equals("1")) {
+		if (utype.equals("0")) {
 			List<CustomerData> clist = CustomerData.getCustomerDataList(uid);
 			String Jsonproduct = JSON.toJSONString(clist);
-			request.getSession().setAttribute("analyzeMerchant", Jsonproduct);
+			request.getSession().setAttribute("analyzeCustomer", Jsonproduct);
 			request.getRequestDispatcher("jsp/test.jsp").forward(request, response);
 		} else {
 			List<MerchantData> mlist = MerchantData.getMerchantDataList(uid);
 			String Jsonproduct = JSON.toJSONString(mlist);
-			request.getSession().setAttribute("analyzeCustomer", Jsonproduct);
+			request.getSession().setAttribute("analyzeMerchant", Jsonproduct);
 			request.getRequestDispatcher("jsp/test.jsp").forward(request, response);
 		}
 	}
