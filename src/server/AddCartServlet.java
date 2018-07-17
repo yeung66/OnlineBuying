@@ -31,6 +31,15 @@ public class AddCartServlet extends HttpServlet {
             out.print("</script>");
             out.close();
         }
+        String type = (String) request.getSession().getAttribute("type");
+        if(type.equals("1")) {
+        	 PrintWriter out = response.getWriter();
+             out.print("<script>");
+             out.print("alert('商家无权限购买！');");
+             out.print("window.history.go(-1)");
+             out.print("</script>");
+             out.close();
+        }
         User user = User.getUser(Uid);
         String s = request.getParameter("buyNumber");
         int num=0;
