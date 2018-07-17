@@ -158,10 +158,19 @@
 									<!-- Wishlist Button -->
 									<!--<a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>-->
 									<!-- Action Button -->
+									<%
+									String type = (String) request.getSession().getAttribute("type");
+									if (type != null && type.equals("0")) {
+									%>
 									<div class="action-btn fix">
-										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
-										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
+									<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1"
+									title="Buy"><i class="pe-7s-like"></i>购买</a>
+									 <a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1"
+									title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
 									</div>
+									<%
+										}
+									%>
 								</div>
 								<!-- Portfolio Info -->
 								<div class="product-info text-left">
