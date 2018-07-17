@@ -823,7 +823,7 @@ textarea:focus {
 	opacity: 0;
 	padding: 0;
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	width: 40px;
 	z-index: 9;
 }
@@ -2502,7 +2502,7 @@ a.meanmenu-reveal i {
 }
 
 .atar_Show p {
-	background: url(../images/stars2-橙色.png);
+	background: url(../images/stars2-随便试一下黄.png);
 	left: 0;
 	height: 21px;
 	width: 134px;
