@@ -190,6 +190,7 @@ public class Product {
 				p.setName(rs.getString("name"));
 				p.setPath(rs.getString("path"));
 				p.setType(rs.getString("ptype"));
+				p.setInformation(rs.getString("information"));
 				result.add(p);
 			}
 			return result;

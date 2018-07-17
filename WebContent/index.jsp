@@ -57,7 +57,7 @@
 		<!-- Modernizr JS -->
 <style>
     body{
-        overflow: hidden;
+        overflow-x: hidden;
     }
 </style>
 

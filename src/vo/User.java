@@ -106,11 +106,11 @@ public class User {
 		this.right = right;
 	}
 
-	public static String getRight(String id){
+	public static String getRight(String id,String pwd){
 		Connection conn = Database.getConnect();
 		try{
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("select rights from users where id='"+id+"'");
+			ResultSet rs = st.executeQuery("select rights from users where id='"+id+"' and pwd='"+pwd+"'");
 			if(rs.next()) return rs.getString("rights");
 		}catch (SQLException e){
 			e.printStackTrace();

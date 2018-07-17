@@ -54,7 +54,7 @@ public class BuyProductServlet extends HttpServlet {
 		}
 		String type = (String) request.getSession().getAttribute("type");
         if(type.equals("1")) {
-        	 PrintWriter out = response.getWriter();
+        	 out = response.getWriter();
              out.print("<script>");
              out.print("alert('商家无权限购买！');");
              out.print("window.history.go(-1)");

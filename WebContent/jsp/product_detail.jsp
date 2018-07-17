@@ -167,7 +167,7 @@
 
 				<div class="g-sidetab">
 					<div>
-						<a herf="jsp/chat.jsp?to=<%=p.getOwner()%>">联系客服</a>
+						<a href="jsp/chat.jsp?to=<%=p.getOwner()%>">联系客服</a>
 					</div>
 				</div>
 				<!-- Body main wrapper end -->
