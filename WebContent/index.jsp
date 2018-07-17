@@ -54,6 +54,8 @@
 <script src="js/jquery.easing.1.3.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
 
+		<script type="text/javascript" src="/js/startScore.js"></script>
+
 		<!-- Modernizr JS -->
 <style>
     body{
@@ -127,11 +129,15 @@
 									<img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
 									<!-- Wishlist Button -->
 									<!--<a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>-->
+									
+										
 									<!-- Action Button -->
+									
 									<div class="action-btn fix">
 										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
 										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
 									</div>
+									
 								</div>
 								<!-- Portfolio Info -->
 								<div class="product-info text-left">
@@ -141,11 +147,13 @@
 									<div class="price-ratting fix">
 										<span class="price float-left"><span class="new">RMB <%=goodsList.get(i).getPrice()%></span></span>
 										<span class="ratting float-right">
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
+                                
+                            
+                            <div class="atar_Show">
+                            <p tip="<%=p.getScore()%>"></p>
+                            </div>
+                            
+                            
                             </span>
 									</div>
 								</div>
@@ -184,11 +192,15 @@
 									<div class="price-ratting fix">
 										<span class="price float-left"><span class="new">RMB <%=goodsList.get(i).getPrice()%></span></span>
 										<span class="ratting float-right">
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
-                                <i class="fa fa-star active"></i>
+                                <ul class="show_number clearfix">
+                            <li>
+                            <div class="atar_Show">
+                            <p tip="<%=p.getScore()%>"></p>
+                            </div>
+                            
+                            </li>
+      
+                            </ul>
                             </span>
 									</div>
 								</div>
