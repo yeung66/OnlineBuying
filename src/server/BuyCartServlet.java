@@ -21,6 +21,15 @@ public class BuyCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String uid = (String)request.getSession().getAttribute("uid");
+        String type = (String) request.getSession().getAttribute("type");
+        if(type.equals("1")) {
+        	 PrintWriter out = response.getWriter();
+             out.print("<script>");
+             out.print("alert('商家无权限购买！');");
+             out.print("window.history.go(-1)");
+             out.print("</script>");
+             out.close();
+        }
         String[] pid =request.getParameterValues("checkItem");
         PrintWriter out = response.getWriter();
         if (pid!=null) {

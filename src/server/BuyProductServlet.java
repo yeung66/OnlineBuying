@@ -52,6 +52,15 @@ public class BuyProductServlet extends HttpServlet {
 			out.print("</script>");
 			out.close();
 		}
+		String type = (String) request.getSession().getAttribute("type");
+        if(type.equals("1")) {
+        	 PrintWriter out = response.getWriter();
+             out.print("<script>");
+             out.print("alert('商家无权限购买！');");
+             out.print("window.history.go(-1)");
+             out.print("</script>");
+             out.close();
+        }
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		Double money=0.0;
 		int product = Integer.parseInt(request.getParameter("pid"));
