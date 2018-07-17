@@ -97,9 +97,7 @@ public class Message {
                 m.setId(rs.getInt("id"));
                 result.add(m);
             }
-            for(Message m:result){
-                st.executeUpdate("update message set state='1' where id="+m.getId());
-            }
+
             return result;
         }catch (SQLException e){
             e.printStackTrace();
