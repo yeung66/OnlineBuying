@@ -31,22 +31,22 @@
 		<!-- All CSS Files -->
 
 		<!-- Bootstrap css -->
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<!-- Icon Font -->
-		<link rel="stylesheet" href="../css/font-awesome.min.css">
-		<link rel="stylesheet" href="../css/pe-icon-7-stroke.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/pe-icon-7-stroke.css">
 		<!-- Plugins css file -->
-		<link rel="stylesheet" href="../css/plugins.css">
+		<link rel="stylesheet" href="css/plugins.css">
 		<!-- Theme main style -->
-		<link rel="stylesheet" href="../css/product.css">
+		<link rel="stylesheet" href="css/product.css">
 		<!-- Responsive css -->
-		<link rel="stylesheet" href="../css/responsive.css">
+		<link rel="stylesheet" href="css/responsive.css">
 		<!--<link rel="stylesheet" href="../css/product_chat.css">-->
 
 		<!-- Modernizr JS -->
-		<script src="../js/modernizr-2.8.3.min.js"></script>
-		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-		<script type="text/javascript" src="../js/startScore.js"></script>
+		<script src="js/modernizr-2.8.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/startScore.js"></script>
 
 	</head>
 
@@ -138,9 +138,15 @@
 										</div>
 
 										<input type="hidden" name="pid" value=<%=gid %> >
+										<%
+											String type = (String) request.getSession().getAttribute("type");
+											if (type != null && type.equals("0")) {
+										%>
 										<input type="submit" class="add-to-cart" value="加入购物车">
 										<input type="button" class="add-to-cart" value="购买" onclick="buy()">
-
+										<%
+											}
+										%>
 
 
 
@@ -161,202 +167,13 @@
 
 							</div>
 						</div>
-						
-						<!--商品推荐栏-->
-
-						<div class="row">
-							<!-- Nav tabs -->
-							<div class="col-xs-12">
-								<ul class="pro-info-tab-list section">
-									<li class="active">
-										<a href="#more-info" data-toggle="tab">Related Products</a>
-									</li>
-									<!--<li>
-										<a href="#data-sheet" data-toggle="tab">Data sheet</a>
-									</li>-->
-									<!--<li>
-										<a href="#reviews" data-toggle="tab">Reviews</a>
-									</li>-->
-								</ul>
-							</div>
-							<!-- Tab panes -->
-							<div class="tab-content col-xs-12">
-								<div class="pro-info-tab tab-pane active" id="more-info">
-									<p> </p>
-								</div>
-							
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- PAGE SECTION END -->
-				
-				
-				
-				<!-- PRODUCT SECTION START -->
-				
-				<div class="product-section section pb-120">
-					<div class="container">
-						<!--<div class="row">
-							<div class="section-title text-center col-xs-12 mb-60">
-								<h2></h2>
-							</div>
-						</div>-->
-						<div class="row">
-							<div class="product-slider product-slider-4">
-								
-								<!--商品推荐的图放下面-->
-								<!-- Product Item Start -->
-								<div class="col-xs-12">
-									<div class="product-item text-center">
-										<div class="product-img">
-											<a class="image" href="product-details.jsp"><img src="../images/1.jpg" alt="" /></a>
-											
-											<div class="action-btn fix">
-										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
-										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
-									</div>
-										</div>
-										<div class="product-info text-left">
-											<h5 class="title"><a href="product-details.html">Le Parc Minotti Chair</a></h5>
-											<div class="price-ratting fix">
-												<span class="price float-left"><span class="new">RMB 120</span></span>
-												<span class="ratting float-right">
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product Item End -->
-								<!-- Product Item Start -->
-								<div class="col-xs-12">
-									<div class="product-item text-center">
-										<div class="product-img">
-											<a class="image" href="product-details.jsp"><img src="../images/autoLight.jpg" alt="" /></a>
-											
-											<div class="action-btn fix">
-										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
-										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
-									</div>
-										</div>
-										<div class="product-info text-left">
-											<h5 class="title"><a href="product-details.html">Le Parc Minotti Chair</a></h5>
-											<div class="price-ratting fix">
-												<span class="price float-left"><span class="new">RMB 120</span></span>
-												<span class="ratting float-right">
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product Item End -->
-								<!-- Product Item Start -->
-								<div class="col-xs-12">
-									<div class="product-item text-center">
-										<div class="product-img">
-											<a class="image" href="product-details.jsp"><img src="../images/badge.jpg" alt="" /></a>
-											
-											<div class="action-btn fix">
-										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
-										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
-									</div>
-										</div>
-										<div class="product-info text-left">
-											<h5 class="title"><a href="product-details.html">Le Parc Minotti Chair</a></h5>
-											<div class="price-ratting fix">
-												<span class="price float-left"><span class="new">RMB 120</span></span>
-												<span class="ratting float-right">
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product Item End -->
-									
-								<!-- Product Item Start -->
-								<div class="col-xs-12">
-									<div class="product-item text-center">
-										<div class="product-img">
-											<a class="image" href="product-details.jsp"><img src="../images/bookmark.jpg" alt="" /></a>
-											
-											<div class="action-btn fix">
-										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
-										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
-									</div>
-										</div>
-										<div class="product-info text-left">
-											<h5 class="title"><a href="product-details.html">Le Parc Minotti Chair</a></h5>
-											<div class="price-ratting fix">
-												<span class="price float-left"><span class="new">RMB 120</span></span>
-												<span class="ratting float-right">
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product Item End -->
-								<!-- Product Item Start -->
-								<div class="col-xs-12">
-									<div class="product-item text-center">
-										<div class="product-img">
-											<a class="image" href="product-details.jsp"><img src="../images/sticky.jpg" alt="" /></a>
-											
-											<div class="action-btn fix">
-										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
-										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
-									</div>
-										</div>
-										<div class="product-info text-left">
-											<h5 class="title"><a href="product-details.html">Le Parc Minotti Chair</a></h5>
-											<div class="price-ratting fix">
-												<span class="price float-left"><span class="new">RMB 120</span></span>
-												<span class="ratting float-right">
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                    <i class="fa fa-star active"></i>
-                                </span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product Item End -->
-								
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- PRODUCT SECTION END -->
-						
-						
 					</div>
 
 				</div>
 
 				<div class="g-sidetab">
 					<div>
-						<a href="jsp/chat.jsp?to=<%=p.getOwner()%>">联系客服</a>
+						<a herf="jsp/chat.jsp?to=<%=p.getOwner()%>">联系客服</a>
 					</div>
 				</div>
 				<!-- Body main wrapper end -->
@@ -372,13 +189,13 @@
                    });
                 </script>
 				<!-- jQuery latest version -->
-				<script src="../js/jquery-3.1.1.min.js"></script>
+				<script src="js/jquery-3.1.1.min.js"></script>
 				<!-- Bootstrap js -->
 				<%--<script src="js/bootstrap.min.js"></script>--%>
 				<!-- Plugins js -->
-				<script src="../js/plugins.js"></script>
+				<script src="js/plugins.js"></script>
 				<!-- Main js -->
-				<script src="../js/main.js"></script>
+				<script src="js/main.js"></script>
 
 	</body>
 
