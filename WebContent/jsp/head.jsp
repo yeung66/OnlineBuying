@@ -100,6 +100,7 @@
 										</ul>
 									</div>
 									<!-- Header Cart -->
+									<%if(type.equals("0")){%>
 									<div class="header-cart float-left">
 										<!-- Cart Toggle -->
 										<a class="cart-toggle" href="#" data-toggle="dropdown">
@@ -145,6 +146,7 @@
 											</div>
 										</div>
 									</div>
+									<%}%>
 								<%}%>
 								</div>
 								<nav class="main-menu menu-right float-right">
