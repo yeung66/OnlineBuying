@@ -55,7 +55,11 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 
 		<!-- Modernizr JS -->
-
+<style>
+    body{
+        overflow: hidden;
+    }
+</style>
 
 	</head>
 
