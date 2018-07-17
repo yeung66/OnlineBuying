@@ -42,6 +42,8 @@ body {
   font-style: normal;
   font-size: 14px;
   line-height: 24px;
+ 
+
 }
 img{
   max-width: 100%;
@@ -1311,7 +1313,9 @@ a.meanmenu-reveal i {
   position: relative;
 }
 /*-- Home Slider --*/
-#home-slider {margin-bottom: 60px;}
+#home-slider {
+  margin-bottom: 60px;
+}
 #home-slider img {}
 /*-- Nivo Slider Caption --*/
 .nivo-caption, .hero-static-caption {
@@ -1915,7 +1919,7 @@ a.meanmenu-reveal i {
   padding-top: 45px;
 }
 .product-details .title {
-  color: pink;
+  color: #565656;
   display: block;
   font-size: 40px;
   font-weight: 600;
@@ -1960,6 +1964,39 @@ a.meanmenu-reveal i {
   color: #b0b0b0;
   display: inline-block;
   margin-left: 4px;
+}
+
+.show_number {
+	padding-left: 50px;
+	padding-top: 20px;
+}
+
+.show_number li {
+	width: 240px;
+	border: 0px solid #ccc;
+	padding: 10px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+}
+
+.atar_Show {
+	background: url(../images/stark2.png);
+	width: 160px;
+	height: 21px;
+	position: relative;
+	float: left;
+}
+
+.atar_Show p {
+	background: url(../images/stars2-橙色.png);
+	left: 0;
+	height: 21px;
+	width: 134px;
+}
+
+.show_number li span {
+	display: inline-block;
+	line-height: 21px;
 }
 /*-- Product Details SubTitle --*/
 .pd-sub-title {
@@ -2051,7 +2088,7 @@ a.meanmenu-reveal i {
 }
 /*-- Quantity --*/
 .quantity-cart .product-quantity {
-  border: 0px solid #ddd;
+  border: 1px solid #ddd;
   display: block;
   float: left;
   margin-bottom: 10px;
@@ -2060,24 +2097,11 @@ a.meanmenu-reveal i {
   position: relative;
   width: 100px;
 }
-.quantity-cart .product-quantity input  {
-  
-  background-color: transparent;
-  border: 1px solid #b6b6b6;
-  color: #8d8d8d;
-  display: block;
-  float: left;
-  font-size: 12px;
-  height: 31px;
-  line-height: 29px;
-  margin-right: 11px;
-  margin-top: 5px;
-  text-transform: uppercase;
-  width: 31px;
-  
+.quantity-cart .product-quantity input {
+  border: medium none;
+  height: 38px;
   text-align: center;
-  
-  
+  width: 40px;
 }
 .quantity-cart .product-quantity span {
   cursor: pointer;
@@ -2101,26 +2125,21 @@ a.meanmenu-reveal i {
   left: 0;
 }
 /*-- Add to Cart Button --*/
- 
 .product-details .quantity-cart .add-to-cart {
-	width: 120px;
- position: relative;
   background-color: #414141;
   border: 1px solid #414141;
   color: #fff;
+  display: block;
   font-family: "Lato",sans-serif;
   font-size: 12px;
   font-weight: 400;
   height: 40px;
   letter-spacing: 0.5px;
   line-height: 24px;
-  margin-top:7px;
-  margin-bottom: 5px;
-  margin-left: 10px;
-  padding: 6px 20px 6px 20px;
+  margin-bottom: 10px;
+  padding: 6px 40px;
   text-align: center;
   text-transform: uppercase;
-
 }
 .product-details .quantity-cart .add-to-cart:hover {
   background-color: transparent;
