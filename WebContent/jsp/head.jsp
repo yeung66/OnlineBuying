@@ -37,9 +37,26 @@
 		<script src="js/plugins.js"></script>
 		<!-- Main js -->
 		<script src="js/main.js"></script>
-		<style>#sachCon {
+		<style>
+			#sachCon {
 	margin-left: 100px;
 }
+			.new-info{
+				display: none;
+				background-color: red;
+				border-radius: 50%;
+				color: #fff;
+				font-size: 10px;
+				font-weight: 500;
+				height: 16px;
+				line-height: 16px;
+				padding-left: 1px;
+				position: absolute;
+				right: -4px;
+				text-align: center;
+				top: 0;
+				width: 16px;
+			}
 
 </style>
     </head>
@@ -78,7 +95,7 @@
 									<div class="header-account float-left">
 										<ul>
 											<li>
-												<a href="jsp/chat.jsp" ><i class="pe-7s-mail"></i></a>
+												<a href="jsp/chat.jsp" style="position: relative" target="_blank"><i class="pe-7s-mail"></i><span class="new-info">1</span></a>
 												<!--<ul class="dropdown-menu">
 													<li>
 														<a href="login.html">Log in</a>
@@ -245,6 +262,46 @@
 				});
 			</script>
 
+	<script>
+		<%
+			if(uid!=null){
+		%>
+			var notice = document.querySelector('.new-info')
+			var count = 0
+			var uid = ${sessionScope.uid}
+			var ws = new WebSocket('ws://<%=request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/websocket/'+uid+'/1')
+			ws.onopen = function (event) { console.log('连接建立成功') }
+			window.onbeforeunload = function () {
+				ws.close()
+            }
+            ws.onmessage = function (mes) {
+				mes = mes.data
+				mes = JSON.parse(mes)
+				if(mes.reduce==undefined) count = count + 1
+				else count = count - mes.reduce
+				updateCount()
+			}
+			$.ajax({
+				url:'message',
+				data:{
+					type:2,
+				},
+				method:'get',
+				success:function (response) {
+					count = Number(response)
+					updateCount()
+                }
+			})
+
+			function updateCount() {
+				notice.innerText = count
+				if(count==0) notice.style.display='none'
+				else notice.style.display='block'
+            }
+
+
+		<% }  %>
+	</script>
 			
  	</body>
 </html>

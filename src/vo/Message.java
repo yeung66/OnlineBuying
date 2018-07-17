@@ -1,5 +1,6 @@
 package vo;
 
+import com.alipay.api.domain.Data;
 import util.Database;
 
 import java.sql.*;
@@ -106,6 +107,19 @@ public class Message {
         }
     }
 
+    public static int getAllUncheckedMessageNum(String uid){
+        Connection conn = Database.getConnect();
+        try{
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select count(*) from message where receive='"+uid+"' and state='0'");
+            if(rs.next()) return rs.getInt(1);
+        }catch (SQLException e){
+            e.printStackTrace();
+
+        }
+        return 0;
+    }
+
     public static List<String> getRelatedUser(String id){
         Connection conn = Database.getConnect();
         try{
@@ -127,9 +141,13 @@ public class Message {
         }
     }
 
-    public static void setMessageChecked(String from,String to){
+    public static int setMessageChecked(String from,String to){
         Connection conn = Database.getConnect();
+        int count = 0;
         try{
+            Statement countSt = conn.createStatement();
+            ResultSet rs = countSt.executeQuery("select COUNT(*) from message where send='"+from+"' and receive='"+to+"' and state='0'");
+            if(rs.next()) count=rs.getInt(1);
             PreparedStatement st = conn.prepareStatement("update message set state=1 where send=? and receive=?");
             st.setString(1,from);
             st.setString(2,to);
@@ -138,5 +156,6 @@ public class Message {
         }catch (SQLException e){
             e.printStackTrace();
         }
+        return count;
     }
 }

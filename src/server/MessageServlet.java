@@ -31,7 +31,10 @@ public class MessageServlet extends HttpServlet {
             List<Message> m = Message.getUncheckedMessage(from,uid);
             response.getWriter().write(JSON.toJSONString(m));
         }else if(type.equals("1")){
-            Message.setMessageChecked(from,uid);
+            int count = Message.setMessageChecked(from,uid);
+            WebSocket.sendMes2Head(uid,count);
+        }else if(type.equals("2")){
+           response.getWriter().print(Message.getAllUncheckedMessageNum(uid));
         }
     }
 }

@@ -214,7 +214,7 @@
 		var uid = ${sessionScope.uid}
 		var localMessage = {}
         function createWebsocket() {
-			ws = new WebSocket('ws://<%=request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/websocket/'+uid)
+			ws = new WebSocket('ws://<%=request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/websocket/'+uid+'/0')
             ws.onopen = function () {
                 console.log("WebSocket连接发生成功");
             }
