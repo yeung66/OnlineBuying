@@ -286,12 +286,17 @@
 
 
 								<input type="hidden" name="pid" value=<%=gid %> >
-
+								<%
+									String type = (String) request.getSession().getAttribute("type");
+									if (type != null && type.equals("0")) {
+								%>
 								<input type="submit" class="add-to-cart" value="加入购物车">
 
 								<input type="button" class="add-to-cart" value="购买" onclick="buy()">
 
-
+								<%
+									}
+								%>
 
 
 
