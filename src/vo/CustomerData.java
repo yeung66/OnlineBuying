@@ -70,22 +70,22 @@ public class CustomerData {
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
-			double totMoney = 0;
 			if (!rs.next()) {
 				return clist;
 			}
 			while (rs.next()) {
 				CustomerData cd = new CustomerData();
+				cd.setMonth(rs.getString("month"));
 				String ptype = rs.getString("ptype");
-				if(ptype.equals("0"))
+				if (ptype.equals("0"))
 					cd.setType("文具卡片");
-				else if(ptype.equals("1"))
+				else if (ptype.equals("1"))
 					cd.setType("特色美食");
-				else if(ptype.equals("2"))
+				else if (ptype.equals("2"))
 					cd.setType("服饰箱包");
-				else if(ptype.equals("3"))
+				else if (ptype.equals("3"))
 					cd.setType("居家生活");
-				else if(ptype.equals("4"))
+				else if (ptype.equals("4"))
 					cd.setType("数码电器");
 				// int num = rs.getInt("quantity");
 				double money = rs.getDouble("price") * rs.getInt("quantity");
@@ -98,11 +98,28 @@ public class CustomerData {
 				clist.add(cd);
 				rs.previous();
 			}
+			double[] totMoney = { 0, 0, 0 };
+			String month = clist.get(0).getMonth();
+			int i = 0;
 			for (CustomerData c : clist) {
-				totMoney += c.getMoney();
+				if (c.getMonth().equals(month))
+					totMoney[i] += c.getMoney();
+				else {
+					i++;
+					month = c.getMonth();
+					totMoney[i] += c.getMoney();
+				}
 			}
+			month = clist.get(0).getMonth();
+			i = 0;
 			for (CustomerData c : clist) {
-				c.setTotMoney(totMoney);
+				if (c.getMonth().equals(month))
+					c.setTotMoney(totMoney[i]);
+				else {
+					i++;
+					month = c.getMonth();
+					c.setTotMoney(totMoney[i]);
+				}
 			}
 			return clist;
 		} catch (SQLException e) {
