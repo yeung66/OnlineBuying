@@ -59,8 +59,22 @@ public class Product {
 		this.information = "";
 	}
 	
-	public String getType() {
+	public String getpType() {
 		return type;
+	}
+	
+	public String getType() {
+		if(type.equals("0"))
+			return "文具卡片";
+		else if(type.equals("1"))
+			return "特色美食";
+		else if(type.equals("2"))
+			return "服饰箱包";
+		else if(type.equals("3"))
+			return "居家生活";
+		else if(type.equals("4"))
+			return "数码电器";
+		return "";
 	}
 
 	public void setType(String type) {
