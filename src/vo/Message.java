@@ -137,7 +137,6 @@ public class Message {
                 String receive = rs.getString("receive");
                 if(!temp.containsKey(receive)) result.add(new Pair<>(receive,"1"));
             }
-
             return result;
         }catch (SQLException e){
             e.printStackTrace();
@@ -156,7 +155,6 @@ public class Message {
             st.setString(1,from);
             st.setString(2,to);
             st.executeUpdate();
-
         }catch (SQLException e){
             e.printStackTrace();
         }

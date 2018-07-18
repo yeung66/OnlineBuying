@@ -1918,14 +1918,7 @@ a.meanmenu-reveal i {
   padding-left: 45px;
   padding-top: 45px;
 }
-.product-details .title {
-  color: #565656;
-  display: block;
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 27px;
-  text-transform: capitalize;
-}
+
 /*-- Product Price & Ratting --*/
 .price-ratting {
   margin-bottom: 38px;
@@ -2124,27 +2117,7 @@ a.meanmenu-reveal i {
 .quantity-cart .product-quantity span.dec {
   left: 0;
 }
-/*-- Add to Cart Button --*/
-.product-details .quantity-cart .add-to-cart {
-  background-color: #414141;
-  border: 1px solid #414141;
-  color: #fff;
-  display: block;
-  font-family: "Lato",sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  height: 40px;
-  letter-spacing: 0.5px;
-  line-height: 24px;
-  margin-bottom: 10px;
-  padding: 6px 40px;
-  text-align: center;
-  text-transform: uppercase;
-}
-.product-details .quantity-cart .add-to-cart:hover {
-  background-color: transparent;
-  color: #3f3f3f;
-}
+
 /*-- Usefull Links --*/
 .product-details .usefull-link {
   margin-bottom: 20px;
