@@ -47,6 +47,7 @@
 
 <body>
 <jsp:include page="head.jsp" />
+
 <div align="center">
     <br /><br /><br />
     <div class="panel-footer" align="center" style="width: 80%;height: 800px;">
@@ -63,7 +64,7 @@
 </div>
 <script type="text/javascript">
     //买家
-    var s=${analyzeCustomer};
+  var s=${analyzeCustomer};
     var str=JSON.stringify(s);
     var result= JSON.parse(str+"");
     var myChart = echarts.init(document.getElementById('main'));

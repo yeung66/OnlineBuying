@@ -6,19 +6,12 @@
     
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>server.LoginServlet</servlet-class>
+        <servlet-class>server.share.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>loginRegisterServ</servlet-name>
-        <jsp-file>/Page/login_registe.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>loginRegisterServ</servlet-name>
-        <url-pattern>/login_register.jsp</url-pattern>
-    </servlet-mapping>
+
 </web-app>

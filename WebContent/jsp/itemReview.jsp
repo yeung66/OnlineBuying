@@ -2,9 +2,10 @@
 <%@page pageEncoding="UTF-8"%>
 <%@page import="vo.*"%>
 <%@page import="java.util.*"%>
+<%@ page import="DAO.CommentDAO" %>
 <%
 	int pid = Integer.valueOf( request.getParameter("pid"));
-	List<Comment> comlist = Comment.getCommentList(pid);
+	List<Comment> comlist = CommentDAO.getCommentList(pid);
 	Product p = Product.getProductInfo(pid);
 	int i = 1;
 	Order o;

@@ -71,10 +71,10 @@ public class MerchantData {
 	}
 
 	public static List<MerchantData> getMerchantDataList(String uid) {
-		List<MerchantData> mlist = new ArrayList<MerchantData>();
+		MerchantData[] mlist = new MerchantData[15];
 		String sql = "select month(starttime) as month,product.price,product.ptype,orders.quantity\r\n"
 				+ "from orders inner join product on orders.product = product.id\r\n"
-				+ "where starttime > DATE_SUB(CURDATE(), INTERVAL 3 MONTH) and product.owner='" + uid + "'\r\n"
+				+ "where month(starttime) > month(date_SUB(CURDATE(), INTERVAL 3 MONTH)) and product.owner='" + uid + "'\r\n"
 				+ "order by month(starttime),product.ptype";
 		Connection conn = Database.getConnect();
 		try {
@@ -83,20 +83,12 @@ public class MerchantData {
 			if (!rs.next()) {
 				return mlist;
 			}
+
 			while (rs.next()) {
 				MerchantData md = new MerchantData();
 				md.setMonth(rs.getString("month"));
 				String ptype = rs.getString("ptype");
-				if(ptype.equals("0"))
-					md.setType("文具卡片");
-				else if(ptype.equals("1"))
-					md.setType("特色美食");
-				else if(ptype.equals("2"))
-					md.setType("服饰箱包");
-				else if(ptype.equals("3"))
-					md.setType("居家生活");
-				else if(ptype.equals("4"))
-					md.setType("数码电器");
+				md.setType(ptype);
 				int num = rs.getInt("quantity");
 				double money = rs.getDouble("price") * rs.getInt("quantity");
 				while (rs.next() && rs.getString("month").equals(md.getMonth())

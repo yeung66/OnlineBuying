@@ -47,7 +47,7 @@
 </head>
 
     <body>
-    	<jsp:include page="head.jsp" />
+
      <div align="center">
      	<br /><br /><br />
      	<div class="panel-footer" align="center" style="width: 80%;height: 800px;">

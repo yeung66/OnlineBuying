@@ -71,7 +71,7 @@
 							
 							<!-- 左上角logo -->
 							<div class="header-logo float-left">
-								<a href="index.jsp"><img src="images/logo.png" alt="main logo"></a>
+								<a href="index.jsp"><img src="images/logo2.png" alt="main logo"></a>
 							</div >
 
 

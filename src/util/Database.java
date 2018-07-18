@@ -18,7 +18,7 @@ import vo.Product;
  * @ date: 2018/7/3 11:16
  */
 public class Database {
-    //private Connection connect;
+    private static Connection connect=getConnect();
 
 
 
@@ -35,7 +35,6 @@ public class Database {
     }
 
     public static boolean checkExist(String sql) {
-        Connection connect=getConnect();
         try {
             Statement st = connect.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -47,7 +46,6 @@ public class Database {
     }
 
     public static int update(String sql) {
-        Connection connect=getConnect();
         try {
             Statement st = connect.createStatement();
             int rs = st.executeUpdate(sql);
