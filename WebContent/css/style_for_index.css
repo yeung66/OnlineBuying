@@ -1984,7 +1984,7 @@ a.meanmenu-reveal i {
 	width: 160px;
 	height: 21px;
 	position: relative;
-	float: left;
+	float: right;
 }
 
 .atar_Show p {
@@ -1995,7 +1995,7 @@ a.meanmenu-reveal i {
 }
 
 .show_number li span {
-	display: inline-block;
+	display:hidden;
 	line-height: 21px;
 }
 /*-- Product Details SubTitle --*/
