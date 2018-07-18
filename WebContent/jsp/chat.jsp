@@ -178,7 +178,7 @@
 						localMessage[chooseCont.id]=[]
 						var data = JSON.parse(http.responseText)
 						data.forEach(function (t) {
-						    appendMessage(t)
+						    appendMessage(t,'#msgs')
 							localMessage[chooseCont.id].push(t)
 						})
 						changeState(chooseCont.id)
@@ -189,10 +189,10 @@
             http.send()
         }
 
-        function appendMessage(mes) {
+        function appendMessage(mes,con) {
 			var chooseCont = document.querySelector('.choosed')
 			var contacter = chooseCont.id
-			var msgList = document.querySelector('#msgs')
+			var msgList = document.querySelector(con)
 			var msgContainer = document.createElement('div')
 			if(mes.send===contacter){
 			    msgContainer.class = 'msg robot'
@@ -227,7 +227,7 @@
                 mes = data.data
                 mes = JSON.parse(mes)
                 if(mes.send==document.querySelector('.choosed').id) {
-                    appendMessage(mes)
+                    appendMessage(mes,'#msgs')
                     localMessage[mes.send].push(mes)
 					changeState(document.querySelector('.choosed').id)
                 }
@@ -263,7 +263,7 @@
 			r.to = document.querySelector('#head-title').innerText
 			r.content = content
 			r.send=uid
-			appendMessage(r)
+			appendMessage(r,'#msgs')
             localMessage[r.to].push(r)
 			r = JSON.stringify(r)
 			ws.send(r)
@@ -284,7 +284,7 @@
                                 // ...our code here...
                                 var data = JSON.parse(http.responseText)
                                 data.forEach(function (t) {
-                                    appendMessage(t)
+                                    appendMessage(t,'#msgs')
 									localMessage[e.id].push(t)
 
                                 })
@@ -295,7 +295,7 @@
                     http.send()
                 }else {
 			        localMessage[e.id].forEach(function (t) {
-                        appendMessage(t)
+                        appendMessage(t,'#msgs')
 					})
 				}
 				e.removeAttribute('newMessage')
@@ -308,6 +308,30 @@
             http.open('get', 'message' + '?from=' + from + '&type=1')
             http.send()
         }
+
+        document.querySelector('#histStart').addEventListener('click',function () {
+			var to = document.querySelector('#head-title').innerText
+			$.ajax({
+				url:'message',
+				data:{
+				    type:3,
+					to:to
+				},
+				method:'get',
+				success:function (data) {
+					data = JSON.parse(data)
+					if(localMessage[to]===undefined){
+					    localMessage[to] = []
+					}
+					for(var i=Object.keys(data).length-1;i>=0;i--){
+					    localMessage[to].unshift(data[i])
+					}
+					localMessage[to].forEach(function (t) {
+					    appendMessage(t,'#msgs')
+					})
+                }
+			})
+        })
 	</script>
 	</body>
 

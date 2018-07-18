@@ -160,4 +160,29 @@ public class Message {
         }
         return count;
     }
+
+    public static List<Message> getHistoryMessage(String from,String to){
+        Connection conn = Database.getConnect();
+        List<Message> result = new ArrayList<>();
+        try{
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM message where send=? and receive=? or send=? and receive=? ORDER BY time");
+            st.setString(1,from);
+            st.setString(2,to);
+            st.setString(3,to);
+            st.setString(4,from);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()){
+                Message m = new Message();
+                m.setSend(rs.getString("send"));
+                m.setReceive(rs.getString("receive"));
+                m.setContent(rs.getString("content"));
+                m.setState(rs.getInt("state"));
+                result.add(m);
+            }
+            return result;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

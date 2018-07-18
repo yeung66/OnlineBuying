@@ -35,6 +35,9 @@ public class MessageServlet extends HttpServlet {
             WebSocket.sendMes2Head(uid,count);
         }else if(type.equals("2")){
            response.getWriter().print(Message.getAllUncheckedMessageNum(uid));
+        }else if(type.equals("3")){
+            List<Message> m = Message.getHistoryMessage(uid,request.getParameter("to"));
+            response.getWriter().write(JSON.toJSONString(m));
         }
     }
 }
