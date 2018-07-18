@@ -61,7 +61,7 @@
 
 	</head>
 
-	<body>
+	<body style="overflow-x: hidden">
 
 <jsp:include page="jsp/head.jsp"/>
 		<!-- Body main wrapper start -->

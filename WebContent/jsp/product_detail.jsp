@@ -201,7 +201,7 @@
 
                             <div class="atar_Show">
 
-                            <p tip="3.5"></p>
+                            <p tip="<%=p.getScore()%>"></p>
 
                             </div>
 
@@ -475,7 +475,7 @@
                                 <ul class="show_number clearfix">
                             <li>
         <div class="atar_Show">
-          <p tip="3"></p>
+          <p tip="<%=goodsList.get(i).getScore()%>"></p>
         </div>
         <!--<span></span>-->
        </li>
