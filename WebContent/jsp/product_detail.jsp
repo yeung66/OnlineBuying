@@ -201,7 +201,7 @@
 
                             <div class="atar_Show">
 
-                            <p tip="<%=p.getScore()%>"></p>
+                            <p tip="3.5"></p>
 
                             </div>
 
@@ -472,18 +472,16 @@
 										<span class="price float-left"><span class="new"><%=goodsList.get(i).getPrice()%></span></span>
 
 										<span class="ratting float-right">
-
-                                    <i class="fa fa-star active"></i>
-
-                                    <i class="fa fa-star active"></i>
-
-                                    <i class="fa fa-star active"></i>
-
-                                    <i class="fa fa-star active"></i>
-
-                                    <i class="fa fa-star active"></i>
-
-                                </span>
+                                <ul class="show_number clearfix">
+                            <li>
+        <div class="atar_Show">
+          <p tip="3"></p>
+        </div>
+        <!--<span></span>-->
+       </li>
+      
+                            </ul>
+                            </span>
 
 									</div>
 
@@ -559,7 +557,7 @@
 
 <!-- jQuery latest version -->
 
-<script src="js/jquery-3.1.1.min.js"></script>
+
 
 <!-- Bootstrap js -->
 
@@ -567,7 +565,7 @@
 
 <!-- Plugins js -->
 
-<script src="js/plugins.js"></script>
+
 
 <!-- Main js -->
 
