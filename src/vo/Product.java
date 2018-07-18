@@ -13,7 +13,7 @@ public class Product {
 	private String name, path;
 	private String owner, information;
 	private String status, type;
-	
+
 	public Product(int id, double price, int num, double score, int comnum, String name, String owner, String path,
 			String information, String type) {
 		super();
@@ -58,21 +58,21 @@ public class Product {
 		this.path = path;
 		this.information = "";
 	}
-	
+
 	public String getpType() {
 		return type;
 	}
-	
+
 	public String getType() {
-		if(type.equals("0"))
+		if (type.equals("0"))
 			return "文具卡片";
-		else if(type.equals("1"))
+		else if (type.equals("1"))
 			return "特色美食";
-		else if(type.equals("2"))
+		else if (type.equals("2"))
 			return "服饰箱包";
-		else if(type.equals("3"))
+		else if (type.equals("3"))
 			return "居家生活";
-		else if(type.equals("4"))
+		else if (type.equals("4"))
 			return "数码电器";
 		return "";
 	}
@@ -219,7 +219,8 @@ public class Product {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id,price,name,path,score,num,ptype from product where owner='"+uid+"'");
+			ResultSet rs = st
+					.executeQuery("SELECT id,price,name,path,score,num,ptype from product where owner='" + uid + "'");
 
 			List<Product> result = new ArrayList<>();
 			while (rs.next()) {
@@ -248,10 +249,10 @@ public class Product {
 			if (rs.next()) {
 				Product p = new Product(rs.getInt("id"), rs.getDouble("price"), rs.getInt("num"), rs.getDouble("score"),
 						rs.getInt("comnum"), rs.getString("name"), rs.getString("owner"), rs.getString("path"),
-						rs.getString("information"),rs.getString("ptype"));
+						rs.getString("information"), rs.getString("ptype"));
 				return p;
 			}
-			//conn.close();
+			// conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -271,13 +272,13 @@ public class Product {
 		return false;
 	}
 
-	public static List<Product> getNotExamineProducts(){
+	public static List<Product> getNotExamineProducts() {
 		Connection conn = Database.getConnect();
-		try{
+		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("select * from product where status='0'");
 			List<Product> result = new ArrayList<>();
-			while(rs.next()){
+			while (rs.next()) {
 				Product p = new Product();
 				p.setId(rs.getInt("id"));
 				p.setPrice(rs.getDouble("price"));
@@ -289,14 +290,14 @@ public class Product {
 				result.add(p);
 			}
 			return result;
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 
 	}
 
-	public static boolean confirmProduct(int id,String status) {
+	public static boolean confirmProduct(int id, String status) {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
@@ -307,11 +308,44 @@ public class Product {
 			return false;
 		}
 	}
-	public static int alterProduct(int pid, String name, String owner, double price, int num,
-			String info, String type) {
-		String sql = "UPDATE product SET name='" + name + "',owner='" + owner + "',price=" + price + 
-				",num=" + num + ",information='" + info + "' ptype='" + type + "' WHERE id=" + pid + ";";
+
+	public static int alterProduct(int pid, String name, String owner, double price, int num, String info,
+			String type) {
+		String sql = "UPDATE product SET name='" + name + "',owner='" + owner + "',price=" + price + ",num=" + num
+				+ ",information='" + info + "' ptype='" + type + "' WHERE id=" + pid + ";";
 		return Database.update(sql);
+	}
+
+	public static boolean buyProduct(String purchaser, double price, int quantity, int product) {
+		Double money = 0.0;
+		String sql = "SELECT money FROM users WHERE id = '" + purchaser + "';";
+		Connection connect = Database.getConnect();
+		try {
+			Statement st = connect.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				money = rs.getDouble("money");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		if (money < price * quantity) {
+			return false;
+		} else {
+			money -= price * quantity;
+			sql = "UPDATE users SET money = '" + money + "' WHERE id = '" + purchaser + "';";
+			Database.update(sql);
+		}
+		String states = "0";
+		Date starttime = new Date(System.currentTimeMillis());
+		sql = "INSERT INTO orders (purchaser, product, states, quantity, starttime) VALUES ('" + purchaser + "','"
+				+ product + "','" + states + "','" + quantity + "','" + starttime + "');";
+		Database.update(sql);
+		sql = "UPDATE product SET num=" + (Product.getProductInfo(product).getNum() - quantity) + " WHERE id="
+				+ product;
+		Database.update(sql);
+		return true;
 	}
 
 }
