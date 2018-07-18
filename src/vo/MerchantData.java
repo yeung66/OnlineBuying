@@ -87,7 +87,17 @@ public class MerchantData {
 			while (rs.next()) {
 				MerchantData md = new MerchantData();
 				md.setMonth(rs.getString("month"));
-				md.setType(rs.getString("ptype"));
+				String ptype = rs.getString("ptype");
+				if(ptype.equals("0"))
+					md.setType("文具卡片");
+				else if(ptype.equals("1"))
+					md.setType("特色美食");
+				else if(ptype.equals("2"))
+					md.setType("服饰箱包");
+				else if(ptype.equals("3"))
+					md.setType("居家生活");
+				else if(ptype.equals("4"))
+					md.setType("数码电器");
 				int num = rs.getInt("quantity");
 				double money = rs.getDouble("price") * rs.getInt("quantity");
 				while (rs.next() && rs.getString("month").equals(md.getMonth())
