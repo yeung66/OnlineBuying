@@ -76,8 +76,17 @@ public class CustomerData {
 			}
 			while (rs.next()) {
 				CustomerData cd = new CustomerData();
-				cd.setMonth(rs.getString("month"));
-				cd.setType(rs.getString("ptype"));
+				String ptype = rs.getString("ptype");
+				if(ptype.equals("0"))
+					cd.setType("文具卡片");
+				else if(ptype.equals("1"))
+					cd.setType("特色美食");
+				else if(ptype.equals("2"))
+					cd.setType("服饰箱包");
+				else if(ptype.equals("3"))
+					cd.setType("居家生活");
+				else if(ptype.equals("4"))
+					cd.setType("数码电器");
 				// int num = rs.getInt("quantity");
 				double money = rs.getDouble("price") * rs.getInt("quantity");
 				while (rs.next() && rs.getString("month").equals(cd.getMonth())
