@@ -73,7 +73,7 @@
         tooltip: {},
         dataset: {
             source: [
-                ['product', '6','7','8'],
+                ['product', '五月','六月','七月'],
                 ['文具卡片', result[0].money, result[5].money, result[10].money],
                 ['特色美食', result[1].money, result[6].money, result[11].money],
                 ['服饰箱包', result[2].money, result[7].money, result[12].money],
@@ -182,7 +182,7 @@
             data:['开销']
         },
         xAxis: {
-            data: ['六月', '七月', '八月']
+            data: ['五月', '六月', '七月']
         },
         yAxis: {},
         series: [{
