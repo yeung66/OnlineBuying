@@ -1,6 +1,7 @@
 <%@ page import="java.util.Set" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vo.Message" %>
+<%@ page import="javafx.util.Pair" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%
@@ -23,7 +24,7 @@
 	}
 %>
 <%
-	List<String> contacter = Message.getRelatedUser((String)session.getAttribute("uid"));
+	List<Pair<String,String>> contacter = Message.getRelatedUser((String)session.getAttribute("uid"));
 %>
 <!DOCTYPE html>
 <html>
@@ -100,12 +101,15 @@
                         <ul>
 							<%
 
-								for(String c: contacter){
+								for(Pair c: contacter){
 							%>
-                            <li name="contacter" id="<%=c%>" onclick="changeMain(this)" contact="c<%=c%>" >
+                            <li name="contacter" id="<%=c.getKey()%>" onclick="changeMain(this)" contact="c<%=c.getKey()%>"
+									<%if(c.getValue().equals("0")){
+									    out.print("newMessage='true' ");
+									}%>>
                              
                                 <a href="javascript:;">
-                                    <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name"><%=c%></a>
+                                    <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name"><%=c.getKey()%></a>
                             </li>
 
 							<%
@@ -164,6 +168,7 @@
 			}
 
             chooseCont.className = 'choosed'
+			chooseCont.removeAttribute('newMessage')
 			document.querySelector('#head-title').innerText = chooseCont.id
             var http = new XMLHttpRequest()
             http.onreadystatechange = function (data) {
@@ -211,7 +216,7 @@
         }
 
         var ws;
-		var uid = ${sessionScope.uid}
+		var uid = '${sessionScope.uid}'
 		var localMessage = {}
         function createWebsocket() {
 			ws = new WebSocket('ws://<%=request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/websocket/'+uid+'/0')

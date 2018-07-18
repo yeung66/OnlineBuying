@@ -1,13 +1,12 @@
 package vo;
 
 import com.alipay.api.domain.Data;
+import javafx.util.Pair;
 import util.Database;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.sql.Date;
+import java.util.*;
 
 
 /**
@@ -118,18 +117,25 @@ public class Message {
         return 0;
     }
 
-    public static List<String> getRelatedUser(String id){
+    public static List<Pair<String,String>> getRelatedUser(String id){
         Connection conn = Database.getConnect();
         try{
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select send from message where receive='"+id+"' ORDER BY state");
-            List<String> result=new ArrayList<>();
+            ResultSet rs = st.executeQuery("select DISTINCT send,state from message where receive='"+id+"' ORDER BY state");
+            Map<String,String> temp = new HashMap<>();
+            List<Pair<String,String>> result=new ArrayList<>();
             while (rs.next()){
-                if(!result.contains(rs.getString("send"))) result.add(rs.getString("send"));
+                String send = rs.getString("send");
+                String state = rs.getInt("state")==0?"0":"1";
+                if(!temp.containsKey(send)) {
+                    result.add(new Pair<>(send,state));
+                    temp.put(send,state);
+                }
             }
-            rs = st.executeQuery("select receive from message where send='"+id+"'");
+            rs = st.executeQuery("select DISTINCT receive from message where send='"+id+"'");
             while (rs.next()){
-                if(!result.contains(rs.getString("receive"))) result.add(rs.getString("receive"));
+                String receive = rs.getString("receive");
+                if(!temp.containsKey(receive)) result.add(new Pair<>(receive,"1"));
             }
 
             return result;

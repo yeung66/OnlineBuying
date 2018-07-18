@@ -76,7 +76,7 @@ public class Order {
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from orders where purchaser=" + buyerID);
+			ResultSet rs = st.executeQuery("select * from orders where purchaser='" + buyerID+"'");
 			List<Order> result = new ArrayList<>();
 			while (rs.next()) {
 

@@ -268,7 +268,7 @@
 		%>
 			var notice = document.querySelector('.new-info')
 			var count = 0
-			var uid = ${sessionScope.uid}
+			var uid = '${sessionScope.uid}'
 			var ws = new WebSocket('ws://<%=request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/websocket/'+uid+'/1')
 			ws.onopen = function (event) { console.log('连接建立成功') }
 			window.onbeforeunload = function () {
