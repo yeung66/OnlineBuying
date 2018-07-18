@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import util.Database;
+import vo.Order;
 
 /**
  * Servlet implementation class MerchantAlterOrder
@@ -44,28 +45,19 @@ public class MerchantAlterOrder extends HttpServlet {
 			}
 			i++;
 		}
-		String sql;
-		if (operation.equals("qv")) {
-			sql = "DELETE FROM orders WHERE id= " + id + ";";
-			Database.update(sql);
-		} else if (operation.equals("fa")) {
-			sql = "UPDATE orders SET states = '" + 1 + "' WHERE id = " + id + ";";
-			Database.update(sql);
-		} else if (operation.equals("yi")) {
-			sql = "UPDATE orders SET states = '" + 3 + "' WHERE id = " + id + ";";
-			Database.update(sql);
+		if (Order.merchantAlterOrder(operation, id) == false) {
+			out.print("<script>");
+			out.print("alert('失败!');");
+			out.print("window.history.go(-1)");
+			out.print("</script>");
+			out.close();
 		} else {
 			out.print("<script>");
-    		out.print("alert('失败!');");
-    		out.print("</script>");
-    		out.close();
-        	return;
+			out.print("alert('成功!');");
+			out.print("window.location.href='jsp/ordersForShop.jsp'");
+			out.print("</script>");
+			out.close();
 		}
-		out.print("<script>");
-		out.print("alert('成功!');");
-		out.print("window.location.href='jsp/ordersForShop.jsp'");
-		out.print("</script>");
-		out.close();
 	}
 
 	/**

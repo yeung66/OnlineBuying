@@ -90,4 +90,30 @@ public class Comment {
 			return null;
 		}
 	}
+	
+	public static void comment(double score, String content, int product, String purchaser, Date comDate, int pid) {
+		String sql = "INSERT INTO comment (content, product, purchaser, score, commentDate) VALUES ('" + content + "', '"
+				+ product + "', '" + purchaser + "', '" + score + "','" + comDate + "');";
+		Database.update(sql);
+		sql = "SELECT comnum, score FROM product WHERE id = '" + product + "';";
+		int comnum = 0;
+		double oldscore = 0;
+		Connection connect = Database.getConnect();
+		try {
+			Statement st = connect.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+			comnum = rs.getInt("comnum") + 1;
+			oldscore = rs.getDouble("score");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return;
+		}
+		score = (oldscore * (comnum - 1) + score) / comnum;
+		sql = "UPDATE product SET score='" + score + "', comnum='" + comnum + "' WHERE id='" + product + "';";
+		Database.update(sql);
+		sql = "UPDATE orders SET states='" + 5 + "' WHERE id=" + pid;
+		Database.update(sql);
+	}
 }

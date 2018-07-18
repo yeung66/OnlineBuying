@@ -159,5 +159,43 @@ public class Order {
 		else
 			return "";
 	}
+	
+	public static boolean customerAlterOrder(String operation, int id) {
+		String sql;
+		if (operation.equals("qv")) {
+			sql = "DELETE FROM orders WHERE id= " + id + ";";
+			Database.update(sql);
+			return true;
+		} else if (operation.equals("tui")) {
+			sql = "UPDATE orders SET states = '" + 2 + "' WHERE id = " + id + ";";
+			Database.update(sql);
+			return true;
+		} else if (operation.equals("shou")) {
+			sql = "UPDATE orders SET states = '" + 4 + "' WHERE id = " + id + ";";
+			Database.update(sql);
+			return true;
+		} else {
+        	return false;
+		}
+	}
+	
+	public static boolean merchantAlterOrder(String operation, int id) {
+		String sql;
+		if (operation.equals("qv")) {
+			sql = "DELETE FROM orders WHERE id= " + id + ";";
+			Database.update(sql);
+			return true;
+		} else if (operation.equals("fa")) {
+			sql = "UPDATE orders SET states = '" + 1 + "' WHERE id = " + id + ";";
+			Database.update(sql);
+			return true;
+		} else if (operation.equals("yi")) {
+			sql = "UPDATE orders SET states = '" + 3 + "' WHERE id = " + id + ";";
+			Database.update(sql);
+			return true;
+		} else {
+        	return false;
+		}
+	}
 
 }

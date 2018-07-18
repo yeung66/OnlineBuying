@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import util.Database;
+import vo.User;
 
 /**
  * Servlet implementation class SignUp
@@ -51,17 +52,11 @@ public class RegisterServlet extends HttpServlet {
 		sex = request.getParameter("sex");
 		right = request.getParameter("right");
 
-		String sql = "SELECT * FROM `shixun`.`users` WHERE `id` = '" + id+"'";
-		if (Database.checkExist(sql)) {
-			response.getWriter().print("fail");
-			return;
-		}
-		sql = "INSERT INTO `shixun`.`users` (`id`, `pwd`, `tel`, `addr`, `sex`, `rights`) VALUES ('" + id + "','"
-				+ pwd + "'" + ",'" + tel + "','" + add + "'," + sex + "," + right + "" + ");";
-		if(Database.update(sql) > 0)
+		if (User.register(id, pwd, info, add, tel, right, sex) == true) {
 			response.getWriter().print("success");
-		else
+		} else {
 			response.getWriter().print("fail");
+		}
 	}
 
 }

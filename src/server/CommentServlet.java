@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import util.Database;
+import vo.Comment;
 
 /**
  * Servlet implementation class CommentServlet
@@ -51,29 +52,8 @@ public class CommentServlet extends HttpServlet {
 		int product = Integer.parseInt(request.getParameter("pid"));
 		String purchaser = request.getSession().getAttribute("uid").toString();
 		Date comDate = new Date(System.currentTimeMillis());
-		String sql = "INSERT INTO comment (content, product, purchaser, score, commentDate) VALUES ('" + content + "', '"
-				+ product + "', '" + purchaser + "', '" + score + "','" + comDate + "');";
-		Database.update(sql);
-		sql = "SELECT comnum, score FROM product WHERE id = '" + product + "';";
-		int comnum = 0;
-		double oldscore = 0;
-		Connection connect = Database.getConnect();
-		try {
-			Statement st = connect.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			while(rs.next()) {
-			comnum = rs.getInt("comnum") + 1;
-			oldscore = rs.getDouble("score");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return;
-		}
-		score = (oldscore * (comnum - 1) + score) / comnum;
-		sql = "UPDATE product SET score='" + score + "', comnum='" + comnum + "' WHERE id='" + product + "';";
-		Database.update(sql);
-		sql = "UPDATE orders SET states='" + 5 + "' WHERE id=" + Integer.parseInt(request.getParameter("oid"));
-		Database.update(sql);
+		int pid = Integer.parseInt(request.getParameter("oid"));
+		Comment.comment(score, content, product, purchaser, comDate, pid);
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print("<script>");

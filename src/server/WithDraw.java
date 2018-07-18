@@ -20,6 +20,7 @@ import com.alipay.api.request.AlipayFundTransToaccountTransferRequest;
 import com.alipay.api.response.AlipayFundTransToaccountTransferResponse;
 
 import util.*;
+import vo.*;
 
 /**
  * Servlet implementation class WithDraw
@@ -27,83 +28,57 @@ import util.*;
 @WebServlet("/WithDraw")
 public class WithDraw extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public WithDraw() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public WithDraw() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		PrintWriter  out = response.getWriter();
+		PrintWriter out = response.getWriter();
 		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");
-		AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id,
-				AlipayConfig.merchant_private_key, "json", "GBK", AlipayConfig.alipay_public_key, "RSA2");
-		AlipayFundTransToaccountTransferRequest alireq = new AlipayFundTransToaccountTransferRequest();
 		String out_biz_no = request.getParameter("WIDout_trade_no");
 		String payee_account = request.getParameter("WIDaccount");
 		Double amount = Double.valueOf(request.getParameter("WIDtotal_amount"));
 		String payee_real_name = request.getParameter("WIDreal_name");
-		String uid = (String)request.getSession().getAttribute("uid");
-		String sql = "SELECT money FROM users WHERE id = '" + uid + "';";
-		Double money = 0.0;
-		Connection connect=Database.getConnect();
-		try {
-			Statement st = connect.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			while (rs.next()) {
-				money = rs.getDouble("money");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return;
-		}
-		if(money < amount){
+		String uid = (String) request.getSession().getAttribute("uid");
+		int i = User.withdraw(uid, out_biz_no, payee_account, amount, payee_real_name);
+		if (i == 1) {
 			out.print("<script>");
 			out.print("alert('账户余额不足!');");
 			out.print("</script>");
 			out.close();
-			return;
-		}
-		alireq.setBizContent("{" + "\"out_biz_no\":\""+out_biz_no+"\"," + "\"payee_type\":\"ALIPAY_LOGONID\","
-				+ "\"payee_account\":\""+payee_account+"\"," + "\"amount\":\""+amount+"\"," + "\"payer_show_name\":\"珞珈商城\","
-				+ "\"payee_real_name\":\""+payee_real_name+"\"," + "\"remark\":\"提现\"" + "}");
-		AlipayFundTransToaccountTransferResponse alires;
-		try {
-			alires = alipayClient.execute(alireq);
-			if (alires.isSuccess()) {
-		        money -= amount;
-				sql = "UPDATE users SET money=" + money + " WHERE id='" + uid + "';";
-				Database.update(sql);
-				out.print("<script>");
-	    		out.print("alert('提现成功!');");
-	    		out.print("window.location.href='jsp/perInfo.jsp'");
-	    		out.print("</script>");
-	    		out.close();
-			} else {
-				out.print("<script>");
-	    		out.print("alert('提现失败!');");
-	    		out.print("window.location.href='jsp/perInfo.jsp'");
-	    		out.print("</script>");
-	    		out.close();
-			}
-		} catch (AlipayApiException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} else if (i == 2) {
+			out.print("<script>");
+			out.print("alert('提现成功!');");
+			out.print("window.location.href='jsp/perInfo.jsp'");
+			out.print("</script>");
+			out.close();
+		} else {
+			out.print("<script>");
+			out.print("alert('提现失败!');");
+			out.print("window.location.href='jsp/perInfo.jsp'");
+			out.print("</script>");
+			out.close();
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

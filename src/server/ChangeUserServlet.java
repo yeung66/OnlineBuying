@@ -1,6 +1,7 @@
 package server;
 
 import util.Database;
+import vo.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,11 +27,7 @@ public class ChangeUserServlet extends HttpServlet {
 		String add = request.getParameter("add");
 		String sex = request.getParameter("sex");
 		String id = (String) request.getSession().getAttribute("uid");
-		int i = Database.update("update users set pwd =\"" + pwd + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update users set info =\"" + info + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update users set tel =\"" + tel + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update users set addr =\"" + add + "\" " + "where id = \"" + id + "\"");
-		i = Database.update("update users set sex =\"" + sex + "\" " + "where id = \"" + id + "\"");
+		User.changeUser(pwd, info, tel, add, sex, id);
 		response.getWriter().write("success");
 	}
 
