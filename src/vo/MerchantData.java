@@ -80,7 +80,6 @@ public class MerchantData {
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
-			double totMoney = 0;
 			if (!rs.next()) {
 				return mlist;
 			}
@@ -110,11 +109,28 @@ public class MerchantData {
 				mlist.add(md);
 				rs.previous();
 			}
+			double[] totMoney = { 0, 0, 0 };
+			String month = mlist.get(0).getMonth();
+			int i = 0;
 			for (MerchantData m : mlist) {
-				totMoney += m.getMoney();
+				if (m.getMonth().equals(month))
+					totMoney[i] += m.getMoney();
+				else {
+					i++;
+					month = m.getMonth();
+					totMoney[i] += m.getMoney();
+				}
 			}
+			month = mlist.get(0).getMonth();
+			i = 0;
 			for (MerchantData m : mlist) {
-				m.setTotMoney(totMoney);
+				if (m.getMonth().equals(month))
+					m.setTotMoney(totMoney[i]);
+				else {
+					i++;
+					month = m.getMonth();
+					m.setTotMoney(totMoney[i]);
+				}
 			}
 			return mlist;
 		} catch (SQLException e) {
