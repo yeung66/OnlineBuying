@@ -2,6 +2,7 @@
 <%@ page import="util.*" %>
 <%@ page import="vo.User" %>
 <% 
+    String type =(String)session.getAttribute("type");
 	String uid = (String)session.getAttribute("uid");
 	User u = User.getUser(uid);
 	String pwd = u.getPwd();
@@ -80,6 +81,15 @@
 		<div align="center">
 		<a href="jsp/recharge.jsp"><button class="btn btn-success" style="width: 80px">充值</button></a>
 			<a href="jsp/withdraw.jsp"><button class="btn btn-primary" style="width: 80px;">提现</button></a>
+			<%if(type.equals("0")){%>
+    <form action="AnalyzeServlet" method="post" style="display:inline;">	
+    	<input type="submit" class="btn btn-info" value="消费统计"/>
+    </form>	
+    <%}else{%>
+    <form action="AnalyzeServlet" method="post" style="display:inline;">
+    	<input type="submit" class="btn btn-info" value="销售统计"/>
+    </form>	
+    <%}%>
 			</div>
 		<div align="center">
 <table id="update" class="table table-striped table-bordered table-hover  table-condensed" style="text-align: center;">
