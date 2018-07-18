@@ -76,7 +76,7 @@
             },
             dataset: {
                 source: [
-                    ['product', '6', '7', '8', ],
+                    ['product', '五月', '六月', '七月', ],
                     ['文具卡片', result[0].money, result[5].money, result[10].money],
                     ['特色美食', result[1].money, result[6].money, result[11].money],
                     ['服饰箱包', result[2].money, result[7].money, result[12].money],
@@ -137,7 +137,7 @@
             tooltip: {},
             dataset: {
                 source: [
-                    ['product', '6','7','8'],
+                    ['product', '五月','六月','七月'],
                     ['文具卡片', result[0].num, result[5].num, result[10].num],
                     ['特色美食', result[1].num, result[6].num, result[11].num],
                     ['服饰箱包', result[2].num, result[7].num, result[12].num],
@@ -185,7 +185,7 @@
                 data:['总销售额']
             },
             xAxis: {
-                data: ["六月","七月","八月"]
+                data: ["五月","六月","七月"]
             },
             yAxis: {},
             series: [{
