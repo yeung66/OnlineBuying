@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import util.Database;
+import vo.Order;
 
 /**
  * Servlet implementation class AlterOrderServlet
@@ -47,40 +48,30 @@ public class CustomerAlterOrderServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter  out = response.getWriter();
-		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");   
+		PrintWriter out = response.getWriter();
+		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");
 		String operation = request.getParameter("operation");
 		int i = 1, id = -1;
-		while(true) {
-			if(request.getParameter("id-"+i) != null) {
-				id = Integer.parseInt(request.getParameter("id-"+i));
+		while (true) {
+			if (request.getParameter("id-" + i) != null) {
+				id = Integer.parseInt(request.getParameter("id-" + i));
 				break;
 			}
 			i++;
 		}
-		String sql;
-		if (operation.equals("qv")) {
-			sql = "DELETE FROM orders WHERE id= " + id + ";";
-			Database.update(sql);
-		} else if (operation.equals("tui")) {
-			sql = "UPDATE orders SET states = '" + 2 + "' WHERE id = " + id + ";";
-			Database.update(sql);
-		} else if (operation.equals("shou")) {
-			sql = "UPDATE orders SET states = '" + 4 + "' WHERE id = " + id + ";";
-			Database.update(sql);
+		if (Order.customerAlterOrder(operation, id) == false) {
+			out.print("<script>");
+			out.print("alert('失败!');");
+			out.print("window.history.go(-1)");
+			out.print("</script>");
+			out.close();
 		} else {
 			out.print("<script>");
-    		out.print("alert('失败!');");
-    		out.print("</script>");
-    		out.close();
-    		response.sendRedirect(request.getHeader("Referer"));
-        	return;
+			out.print("alert('成功!');");
+			out.print("window.location.href='jsp/alreadyBuy.jsp'");
+			out.print("</script>");
+			out.close();
 		}
-		out.print("<script>");
-		out.print("alert('成功!');");
-		out.print("window.location.href='jsp/alreadyBuy.jsp'");
-		out.print("</script>");
-		out.close();
 	}
 
 }
