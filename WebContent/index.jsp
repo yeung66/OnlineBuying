@@ -54,14 +54,10 @@
 <script src="js/jquery.easing.1.3.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
 
-		<script type="text/javascript" src="js/startScore.js"></script>
+		<script type="text/javascript" src="/js/startScore.js"></script>
 
 		<!-- Modernizr JS -->
-<style>
-    body{
-        overflow-x: hidden;
-    }
-</style>
+
 
 	</head>
 
@@ -149,9 +145,13 @@
 										<span class="ratting float-right">
                                 
                             
-                            <div class="atar_Show">
-                            <p tip="<%=goodsList.get(i).getScore()%>"></p>
-                            </div>
+                            <ul class="show_number clearfix">
+       <li>
+        <div class="atar_Show">
+          <p tip="3.2"></p>
+        </div>
+        <!--<span></span>-->
+       </li>
                             
                             
                             </span>
@@ -170,19 +170,10 @@
 									<!-- Wishlist Button -->
 									<!--<a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>-->
 									<!-- Action Button -->
-									<%
-									String type = (String) request.getSession().getAttribute("type");
-									if (type != null && type.equals("0")) {
-									%>
 									<div class="action-btn fix">
-									<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1"
-									title="Buy"><i class="pe-7s-like"></i>购买</a>
-									 <a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1"
-									title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
+										<a href="BuyProductServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Buy"><i class="pe-7s-like"></i>购买</a>
+										<a href="AddCartServlet?pid=<%=goodsList.get(i).getId()%>&buyNumber=1" title="Add to Cart"><i class="pe-7s-cart"></i>加入购物车</a>
 									</div>
-									<%
-										}
-									%>
 								</div>
 								<!-- Portfolio Info -->
 								<div class="product-info text-left">
@@ -194,11 +185,11 @@
 										<span class="ratting float-right">
                                 <ul class="show_number clearfix">
                             <li>
-                            <div class="atar_Show">
-                            <p tip="<%=goodsList.get(i).getScore()%>"></p>
-                            </div>
-                            
-                            </li>
+        <div class="atar_Show">
+          <p tip="3"></p>
+        </div>
+        <span></span>
+       </li>
       
                             </ul>
                             </span>
@@ -239,6 +230,15 @@
 		<script src="js/plugins.js"></script>
 		<!-- Main js -->
 		<script src="js/main.js"></script>
+		<script>
+    //显示分数
+      $(".show_number li p").each(function(index, element) {
+        var num=$(this).attr("tip");
+        var www=num*2*16;//
+        $(this).css("width",www);
+//      $(this).parent(".atar_Show").siblings("span").text(num+"分");
+    });
+    </script>
 
 <script> 
 	var j=8;
