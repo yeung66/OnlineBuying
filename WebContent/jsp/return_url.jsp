@@ -8,7 +8,6 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="util.*"%>
-<%@ page import="com.alipay.api.*"%>
 <%@ page import="com.alipay.api.internal.util.*"%>
 <%@ page import="java.sql.*" %>
 <%
@@ -54,7 +53,7 @@
 		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
 		
 		//out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
-		String uid = session.getAttribute("uid").toString();
+		String uid = (String)session.getAttribute("uid");
 		String sql = "SELECT money FROM users WHERE id = '" + uid + "';";
 		Double money = 0.0;
 		Connection connect=Database.getConnect();

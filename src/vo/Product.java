@@ -58,7 +58,9 @@ public class Product {
 	}
 
 	public String getType() {
-		if (type.equals("0"))
+		if(type==null)
+			return type;
+		else if (type.equals("0"))
 			return "文具卡片";
 		else if (type.equals("1"))
 			return "特色美食";

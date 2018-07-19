@@ -3,7 +3,6 @@ package server.customer;
 
 import DAO.ShoppingCartDAO;
 import server.util.Response;
-import vo.ShoppingCart;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

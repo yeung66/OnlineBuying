@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.UserDAO;
 
+import server.util.Response;
 import util.*;
 import vo.*;
 
@@ -51,17 +52,9 @@ public class WithDraw extends HttpServlet {
 			out.print("</script>");
 			out.close();
 		} else if (i == 2) {
-			out.print("<script>");
-			out.print("alert('提现成功!');");
-			out.print("window.location.href='jsp/perInfo.jsp'");
-			out.print("</script>");
-			out.close();
+			Response.replyAndRedirect("提现成功!","jsp/perInfo.jsp",response);
 		} else {
-			out.print("<script>");
-			out.print("alert('提现失败!');");
-			out.print("window.location.href='jsp/perInfo.jsp'");
-			out.print("</script>");
-			out.close();
+			Response.replyAndRedirect("提现失败!","jsp/perInfo.jsp",response);
 		}
 	}
 

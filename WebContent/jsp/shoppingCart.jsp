@@ -103,7 +103,7 @@
 						    total+= cart.getNum()*cart.getProduct().getPrice();
 					%>
                 	<tr>
-f						<td><input type="checkbox" name="checkItem" value="<%=cart.getProduct().getId()%>"/></td>
+						<td><input type="checkbox" name="checkItem" value="<%=cart.getProduct().getId()%>"/></td>
                 		<td><img width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;" 
                 			src="<%=cart.getProduct().getPath()%>"></td>
 

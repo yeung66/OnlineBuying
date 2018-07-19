@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.OrderDAO;
+import server.util.Response;
 
 
 /**
@@ -55,17 +56,9 @@ public class CustomerAlterOrderServlet extends HttpServlet {
 			i++;
 		}
 		if (!OrderDAO.customerAlterOrder(operation, id)) {
-			out.print("<script>");
-			out.print("alert('失败!');");
-			out.print("window.history.go(-1)");
-			out.print("</script>");
-			out.close();
+			Response.replyAndGoBack("失败",response);
 		} else {
-			out.print("<script>");
-			out.print("alert('成功!');");
-			out.print("window.location.href='jsp/alreadyBuy.jsp'");
-			out.print("</script>");
-			out.close();
+			Response.replyAndRedirect("成功","jsp/alreadyBuy.jsp",response);
 		}
 	}
 

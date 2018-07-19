@@ -1,7 +1,7 @@
 package server.customer;
 
 import DAO.ShoppingCartDAO;
-import vo.ShoppingCart;
+import server.util.Response;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "DeleteCartServlet" , urlPatterns = "/DeleteCartServlet")
 public class DeleteCartServlet extends HttpServlet {
@@ -21,19 +20,10 @@ public class DeleteCartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String uid = (String)request.getSession().getAttribute("uid");
         String pid =request.getParameter("gid");
-        PrintWriter out = response.getWriter();
         if (ShoppingCartDAO.deleteCart(uid,pid)) {
-            out.print("<script>");
-            out.print("alert('删除成功');");
-            out.print("window.location.href='jsp/shoppingCart.jsp'");
-            out.print("</script>");
-            out.close();
+            Response.replyAndRedirect("删除成功","jsp/shoppingCart.jsp",response);
         } else {
-            out.print("<script>");
-            out.print("alert('删除失败')");
-            out.print("window.location.href='jsp/shoppingCart.jsp'");
-            out.print("</script>");
-            out.close();
+            Response.replyAndRedirect("删除失败","jsp/shoppingCart.jsp",response);
         }
     }
 }
