@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import util.Database;
@@ -27,7 +27,10 @@ public class MerchantData {
 	}
 
 	public MerchantData() {
-
+		num = 0;
+		money = totMoney = 0;
+		type = "0";
+		month = "0";
 	}
 
 	public String getType() {
@@ -74,57 +77,44 @@ public class MerchantData {
 		MerchantData[] mlist = new MerchantData[15];
 		String sql = "select month(starttime) as month,product.price,product.ptype,orders.quantity\r\n"
 				+ "from orders inner join product on orders.product = product.id\r\n"
-				+ "where month(starttime) > month(date_SUB(CURDATE(), INTERVAL 3 MONTH)) and product.owner='" + uid + "'\r\n"
-				+ "order by month(starttime),product.ptype";
+				+ "where month(starttime) > month(date_SUB(CURDATE(), INTERVAL 3 MONTH)) and product.owner='" + uid
+				+ "'\r\n" + "order by month(starttime),product.ptype";
 		Connection conn = Database.getConnect();
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
+			int month;
 			if (!rs.next()) {
-				return mlist;
+				return Arrays.asList(mlist);
+			} else {
+				month = rs.getInt("month");
 			}
-
+			rs.previous();
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 5; j++) {
+					mlist[i * 5 + j].setMonth(month + i + "");
+					mlist[i * 5 + j].setType(j + "");
+				}
+			}
 			while (rs.next()) {
-				MerchantData md = new MerchantData();
-				md.setMonth(rs.getString("month"));
+				String mon = rs.getString("month");
 				String ptype = rs.getString("ptype");
-				md.setType(ptype);
-				int num = rs.getInt("quantity");
-				double money = rs.getDouble("price") * rs.getInt("quantity");
-				while (rs.next() && rs.getString("month").equals(md.getMonth())
-						&& rs.getString("ptype").equals(md.getType())) {
-					num += rs.getInt("quantity");
-					money += rs.getDouble("price") * rs.getInt("quantity");
-				}
-				md.setMoney(money);
-				md.setNum(num);
-				mlist.add(md);
-				rs.previous();
+				int num = rs.getInt("quantity") + mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].getNum();
+				double money = rs.getDouble("price") * rs.getInt("quantity")
+						+ mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].getMoney();
+				mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].setMoney(money);
+				mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].setNum(num);
 			}
-			double[] totMoney = { 0, 0, 0 };
-			String month = mlist.get(0).getMonth();
-			int i = 0;
-			for (MerchantData m : mlist) {
-				if (m.getMonth().equals(month))
-					totMoney[i] += m.getMoney();
-				else {
-					i++;
-					month = m.getMonth();
-					totMoney[i] += m.getMoney();
+			for (int i = 0; i < 3; i++) {
+				double tot = 0;
+				for (int j = 0; j < 5; j++) {
+					tot += mlist[i * 5 + j].getMoney();
+				}
+				for (int j = 0; j < 5; j++) {
+					mlist[i * 5 + j].setTotMoney(tot);
 				}
 			}
-			month = mlist.get(0).getMonth();
-			i = 0;
-			for (MerchantData m : mlist) {
-				if (m.getMonth().equals(month))
-					m.setTotMoney(totMoney[i]);
-				else {
-					i++;
-					month = m.getMonth();
-					m.setTotMoney(totMoney[i]);
-				}
-			}
-			return mlist;
+			return Arrays.asList(mlist);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
