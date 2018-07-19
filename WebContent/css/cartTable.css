@@ -60,6 +60,10 @@
 		font-family: "Times New Roman",Times,serif;
 		color: #666;
 	}
+	.content td p{
+		font-family: "Times New Roman",Times,serif;
+		color: #666;
+	}
 	.content tr:hover{
 		background-color: #F0F0F0;
 	}
