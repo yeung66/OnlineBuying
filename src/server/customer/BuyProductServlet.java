@@ -50,6 +50,7 @@ public class BuyProductServlet extends HttpServlet {
 			out.print("window.location.href='login_registe.jsp'");
 			out.print("</script>");
 			out.close();
+			return;
 		}
 		String type = (String) request.getSession().getAttribute("type");
 		if (type.equals("1")) {
@@ -59,6 +60,7 @@ public class BuyProductServlet extends HttpServlet {
 			out.print("window.history.go(-1)");
 			out.print("</script>");
 			out.close();
+			return;
 		}
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		int product = Integer.parseInt(request.getParameter("pid"));
@@ -68,6 +70,7 @@ public class BuyProductServlet extends HttpServlet {
 			out.print("window.history.go(-1)");
 			out.print("</script>");
 			out.close();
+			return;
 		}
 		Double price = ProductDAO.getProductInfo(product).getPrice();
 		int quantity = 1;
@@ -96,12 +99,14 @@ public class BuyProductServlet extends HttpServlet {
 			out.print("window.history.go(-1)");
 			out.print("</script>");
 			out.close();
+			return;
 		} else {
 			out.print("<script>");
 			out.print("alert('购买成功!');");
 			out.print("window.location.href='jsp/alreadyBuy.jsp'");
 			out.print("</script>");
 			out.close();
+			return;
 		}
 	}
 
