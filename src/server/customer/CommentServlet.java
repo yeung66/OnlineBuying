@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.CommentDAO;
+import server.util.Response;
 
 /**
  * Servlet implementation class CommentServlet
@@ -50,12 +51,7 @@ public class CommentServlet extends HttpServlet {
 		int pid = Integer.parseInt(request.getParameter("oid"));
 		CommentDAO.comment(score, content, product, purchaser, comDate, pid);
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.print("<script>");
-		out.print("alert('评论成功');");
-		out.print("window.location.href='jsp/alreadyBuy.jsp'");
-		out.print("</script>");
-		out.close();
+		Response.replyAndRedirect("评论成功","jsp/alreadyBuy.jsp",response);
 	}
 
 }

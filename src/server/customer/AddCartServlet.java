@@ -2,6 +2,7 @@ package server.customer;
 
 import DAO.ShoppingCartDAO;
 import DAO.UserDAO;
+import server.util.Response;
 import vo.ShoppingCart;
 import vo.User;
 
@@ -21,50 +22,26 @@ public class AddCartServlet extends HttpServlet {
         String Pid = request.getParameter("pid");
         String Uid = (String) request.getSession().getAttribute("uid");
         if (Uid == null){
-            PrintWriter out = response.getWriter();
-            out.print("<script>");
-            out.print("alert('请先登录');");
-            out.print("window.location.href='login_registe.jsp'");
-            out.print("</script>");
-            out.close();
+            Response.replyAndRedirect("请先登录","login_registe.jsp",response);
         }
         String type = (String) request.getSession().getAttribute("type");
         if(type.equals("1")) {
-        	 PrintWriter out = response.getWriter();
-             out.print("<script>");
-             out.print("alert('商家无权限购买！');");
-             out.print("window.history.go(-1)");
-             out.print("</script>");
-             out.close();
+             Response.replyAndGoBack("商家无权限购买！",response);
         }
         User user = UserDAO.getUser(Uid);
         String s = request.getParameter("buyNumber");
         int num=0;
         if (s == null){num = 1;}else{ num= Integer.parseInt(s);}
-        if (num<= 0) {PrintWriter out = response.getWriter();
-            out.print("<script>");
-            out.print("alert('添加失败，购买数小于为0！！');");
-            out.print("window.location.href='index.jsp'");
-            out.print("</script>");
-            out.close();
+        if (num<= 0) {
+            Response.replyAndGoBack("添加失败，购买数小于为0！",response);
         }
         else {
             Date starttime = new Date(System.currentTimeMillis());
             ShoppingCart cart = new ShoppingCart(Uid, Pid, num, starttime);
             if (ShoppingCartDAO.AddinSQL(cart)) {
-                PrintWriter out = response.getWriter();
-                out.print("<script>");
-                out.print("alert('添加成功');");
-                out.print("window.location.href='jsp/shoppingCart.jsp'");
-                out.print("</script>");
-                out.close();
+                Response.replyAndRedirect("添加成功","jsp/shoppingCart.jsp",response);
             } else {
-                PrintWriter out = response.getWriter();
-                out.print("<script>");
-                out.print("alert('失败');");
-                out.print("window.location.href='index.jsp'");
-                out.print("</script>");
-                out.close();
+                Response.replyAndGoBack("失败",response);
             }
         }
     }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.ProductDAO;
+import server.util.Response;
 
 
 /**
@@ -45,10 +46,7 @@ public class AlterProductServlet extends HttpServlet {
 		String info = request.getParameter("info");
 		String type = request.getParameter("type");
 		ProductDAO.alterProduct(pid, name, owner, price, num, info, type);
-		out.print("<script>");
-		out.print("alert('修改成功!');");
-		out.print("window.location.href='jsp/table_list_img.jsp'");
-		out.print("</script>");
+		Response.replyAndRedirect("修改成功!","jsp/table_list_img.jsp",response);
 	}
 
 	/**

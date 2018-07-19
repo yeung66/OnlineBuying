@@ -1,6 +1,7 @@
 package server.bussiness;
 
 import DAO.ProductDAO;
+import server.util.Response;
 
 
 import javax.servlet.ServletException;
@@ -19,19 +20,12 @@ public class DeleteProductServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pID = request.getParameter("id");
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         if ( ProductDAO.deleteProduct(pID)){
-            out.print("<script>");
-            out.print("alert('删除成功');");
-            out.print("window.location.href='jsp/table_list_img.jsp'");
-            out.print("</script>");
-            out.close();
+            Response.replyAndRedirect("删除成功","jsp/table_list_img.jsp",response);
         }
-        else {   out.print("<script>");
-            out.print("alert('删除失败');");
-            out.print("window.location.href='jsp/table_list_img.jsp'");
-            out.print("</script>");
-            out.close();}
+        else {
+            Response.replyAndRedirect("删除失败","jsp/table_list_img.jsp",response);
+        }
+
     }
 }

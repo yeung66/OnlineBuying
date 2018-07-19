@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.ProductDAO;
+import server.util.Response;
 
 /**
  * Servlet implementation class BuyProductServlet
@@ -45,63 +46,34 @@ public class BuyProductServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");
 		if (request.getSession().getAttribute("uid") == null) {
-			out.print("<script>");
-			out.print("alert('请登录!');");
-			out.print("window.location.href='login_registe.jsp'");
-			out.print("</script>");
-			out.close();
+			Response.replyAndRedirect("请登录!","login_registe.jsp",response);
 		}
 		String type = (String) request.getSession().getAttribute("type");
 		if (type.equals("1")) {
-			out = response.getWriter();
-			out.print("<script>");
-			out.print("alert('商家无权限购买！');");
-			out.print("window.history.go(-1)");
-			out.print("</script>");
-			out.close();
+			Response.replyAndGoBack("商家无权限购买！",response);
 		}
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		int product = Integer.parseInt(request.getParameter("pid"));
 		if (purchaser.equals(ProductDAO.getProductInfo(product).getOwner())) {
-			out.print("<script>");
-			out.print("alert('不可购买自己发布的商品!');");
-			out.print("window.history.go(-1)");
-			out.print("</script>");
-			out.close();
+			Response.replyAndGoBack("不可购买自己发布的商品!",response);
 		}
 		Double price = ProductDAO.getProductInfo(product).getPrice();
 		int quantity = 1;
 		if (request.getParameter("buyNumber") == null)
 			quantity = 1;
 		else if (Integer.parseInt(request.getParameter("buyNumber")) <= 0) {
-			out.print("<script>");
-			out.print("alert('购买数量非法!');");
-			out.print("window.history.go(-1)");
-			out.print("</script>");
-			out.close();
+			Response.replyAndGoBack("购买数量非法!",response);
 			return;
 		} else
 			quantity = Integer.parseInt(request.getParameter("buyNumber"));
 		if (quantity > ProductDAO.getProductInfo(product).getNum()) {
-			out.print("<script>");
-			out.print("alert('购买数量超出库存!');");
-			out.print("window.history.go(-1)");
-			out.print("</script>");
-			out.close();
+			Response.replyAndGoBack("购买数量超出库存!",response);
 			return;
 		}
-		if (ProductDAO.buyProduct(purchaser, price, quantity, product) == false) {
-			out.print("<script>");
-			out.print("alert('购买失败!');");
-			out.print("window.history.go(-1)");
-			out.print("</script>");
-			out.close();
+		if (!ProductDAO.buyProduct(purchaser, price, quantity, product)) {
+			Response.replyAndGoBack("购买失败!",response);
 		} else {
-			out.print("<script>");
-			out.print("alert('购买成功!');");
-			out.print("window.location.href='jsp/alreadyBuy.jsp'");
-			out.print("</script>");
-			out.close();
+			Response.replyAndRedirect("购买成功!","jsp/alreadyBuy.jsp",response);
 		}
 	}
 

@@ -2,6 +2,7 @@ package server.customer;
 
 
 import DAO.ShoppingCartDAO;
+import server.util.Response;
 import vo.ShoppingCart;
 
 import javax.servlet.ServletException;
@@ -23,36 +24,25 @@ public class BuyCartServlet extends HttpServlet {
         String uid = (String)request.getSession().getAttribute("uid");
         String type = (String) request.getSession().getAttribute("type");
         if(type.equals("1")) {
-        	 PrintWriter out = response.getWriter();
-             out.print("<script>");
-             out.print("alert('商家无权限购买！');");
-             out.print("window.history.go(-1)");
-             out.print("</script>");
-             out.close();
+            Response.replyAndGoBack("商家无权限购买！",response);
         }
         String[] pid =request.getParameterValues("checkItem");
         PrintWriter out = response.getWriter();
+        String mes,url;
         if (pid!=null) {
             if (ShoppingCartDAO.buyProduct(uid, pid)) {
-                out.print("<script>");
-                out.print("alert('购买成功');");
-                out.print("window.location.href='jsp/alreadyBuy.jsp'");
-                out.print("</script>");
-                out.close();
+                mes="购买成功";
+                url="jsp/alreadyBuy.jsp";
+
             } else {
-                out.print("<script>");
-                out.print("alert('购买失败')");
-                out.print("window.location.href='jsp/shoppingCart.jsp'");
-                out.print("</script>");
-                out.close();
+                mes="购买失败";
+                url="jsp/shoppingCart.jsp";
             }
         }
         else {
-            out.print("<script>");
-            out.print("alert('操作不能为空！')");
-            out.print("window.location.href='jsp/shoppingCart.jsp'");
-            out.print("</script>");
-            out.close();
+            mes="操作不能为空！";
+            url="jsp/shoppingCart.jsp";
         }
+        Response.replyAndRedirect(mes,url,response);
     }
 }

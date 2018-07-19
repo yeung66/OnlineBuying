@@ -1,6 +1,7 @@
 package server.bussiness;
 
 import DAO.ProductDAO;
+import server.util.Response;
 import vo.Product;
 
 import javax.servlet.ServletException;
@@ -52,10 +53,7 @@ public class AddProductServlet extends HttpServlet {
         is.close();
         p.delete();
         ProductDAO.insertProduct(new Product(0,price,Integer.valueOf(num),0,0,name,owner,"images/upload/"+picName, info,type));
-        response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().println("<body><script>alert('添加商品成功!')");
-        response.getWriter().println("window.location.href='jsp/table_list_img.jsp'");
-        response.getWriter().println("</script></body>");
+        Response.replyAndRedirect("添加商品成功","jsp/table_list_img.jsp",response);
 
     }
 
