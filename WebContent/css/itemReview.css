@@ -16,8 +16,7 @@
 
 .containerRe .chatbox {
 	margin:100px auto 0px auto;
-	height: 70%;
-	min-height: 400px;
+	height: 600px;
 	width: 80%;
 	max-width: 1200px;
 	transform: translateY(-10%);
