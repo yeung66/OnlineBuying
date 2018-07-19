@@ -27,6 +27,7 @@ public class AddCartServlet extends HttpServlet {
             out.print("window.location.href='login_registe.jsp'");
             out.print("</script>");
             out.close();
+            return;
         }
         String type = (String) request.getSession().getAttribute("type");
         if(type.equals("1")) {
@@ -36,6 +37,7 @@ public class AddCartServlet extends HttpServlet {
              out.print("window.history.go(-1)");
              out.print("</script>");
              out.close();
+             return;
         }
         User user = UserDAO.getUser(Uid);
         String s = request.getParameter("buyNumber");
@@ -47,6 +49,7 @@ public class AddCartServlet extends HttpServlet {
             out.print("window.location.href='index.jsp'");
             out.print("</script>");
             out.close();
+            return;
         }
         else {
             Date starttime = new Date(System.currentTimeMillis());
@@ -58,6 +61,7 @@ public class AddCartServlet extends HttpServlet {
                 out.print("window.location.href='jsp/shoppingCart.jsp'");
                 out.print("</script>");
                 out.close();
+                return;
             } else {
                 PrintWriter out = response.getWriter();
                 out.print("<script>");
@@ -65,6 +69,7 @@ public class AddCartServlet extends HttpServlet {
                 out.print("window.location.href='index.jsp'");
                 out.print("</script>");
                 out.close();
+                return;
             }
         }
     }
