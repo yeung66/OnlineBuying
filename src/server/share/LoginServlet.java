@@ -1,5 +1,6 @@
 package server.share;
 
+import DAO.UserDAO;
 import util.Database;
 import vo.User;
 
@@ -22,7 +23,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("id");
         String password = request.getParameter("password");
 
-        String rights = User.getRight(username,password);
+        String rights = UserDAO.getRight(username,password);
         if(rights!=null){
             request.getSession().setAttribute("uid",username);
             request.getSession().setAttribute("type",rights);

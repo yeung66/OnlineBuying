@@ -3,10 +3,12 @@
 <%@page import="vo.*"%>
 <%@page import="java.util.*"%>
 <%@ page import="DAO.CommentDAO" %>
+<%@ page import="DAO.OrderDAO" %>
+<%@ page import="DAO.ProductDAO" %>
 <%
 	int pid = Integer.valueOf( request.getParameter("pid"));
 	List<Comment> comlist = CommentDAO.getCommentList(pid);
-	Product p = Product.getProductInfo(pid);
+	Product p = ProductDAO.getProductInfo(pid);
 	int i = 1;
 	Order o;
 %>
@@ -57,7 +59,7 @@
     					-->
 					<%
 						for (Comment com : comlist) {
-							o = Order.getOrderDetail(pid, com.getPurchaser());
+							o = OrderDAO.getOrderDetail(pid, com.getPurchaser());
 					%>
 					<li class="score" onclick="javascript:openDetails('detail-<%=i%>')">
 					<img class="level" src="images/score-<%=com.getScore()%>.jpg">
@@ -89,7 +91,7 @@
 			<%
 				i = 1;
 				for (Comment com : comlist) {
-					o = Order.getOrderDetail(pid, com.getPurchaser());
+					o = OrderDAO.getOrderDetail(pid, com.getPurchaser());
 
 			%>
 			<div class="chatright" id="detail-<%=i%>">

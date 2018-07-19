@@ -1,10 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page import="util.*" %>
 <%@ page import="vo.User" %>
+<%@ page import="DAO.UserDAO" %>
 <% 
     String type =(String)session.getAttribute("type");
 	String uid = (String)session.getAttribute("uid");
-	User u = User.getUser(uid);
+	User u = UserDAO.getUser(uid);
 	String pwd = u.getPwd();
 	String info = u.getInfo();
 	String add = u.getAddr();

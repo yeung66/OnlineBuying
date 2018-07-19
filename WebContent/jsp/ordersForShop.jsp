@@ -1,8 +1,9 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="vo.*"%>
 <%@ page import="java.util.List"%>
-<%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="DAO.OrderDAO" %>
+<%@ page import="DAO.ProductDAO" %>
 <!--
 下面这段代码是用来统一路径的，使用后要改下面的link和script引用包的地址，把每个路径前面的../去掉
 String path = request.getContextPath();
@@ -10,7 +11,7 @@ String path = request.getContextPath();
 					+ path + "/";
 -->
 			<%String shopID = (String) request.getSession().getAttribute("uid");
-			List<Order> olist = Order.getShopOrderList(shopID);
+			List<Order> olist = OrderDAO.getShopOrderList(shopID);
 			int i = 1;%>
 
 <!DOCTYPE html>
@@ -74,7 +75,7 @@ String path = request.getContextPath();
 				}
 				for (Order o : olist) {
 					int pid = o.getProduct();
-					Product p = Product.getProductInfo(pid);
+					Product p = ProductDAO.getProductInfo(pid);
 					String imgPath = p.getPath();
 					String name = p.getName();
 					String purchaser = o.getPurchaser();

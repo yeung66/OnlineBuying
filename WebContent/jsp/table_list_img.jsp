@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
-<%@ page import="util.*"%>
 <%@ page import="vo.Product" %>
+<%@ page import="DAO.ProductDAO" %>
 <%
 	String uid = (String) session.getAttribute("uid");
-	List<Product> plist = Product.getProductList(uid);
+	List<Product> plist = ProductDAO.getProductList(uid);
 	int i = 0;
 %>
 

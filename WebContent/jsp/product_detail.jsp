@@ -6,6 +6,7 @@
 
 <%@ page import="vo.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="DAO.ProductDAO" %>
 
 <%
 
@@ -17,7 +18,7 @@
 
 	int gid = Integer.parseInt(request.getParameter("gid"));
 
-	Product p = Product.getProductInfo(gid);
+	Product p = ProductDAO.getProductInfo(gid);
 
 	int number = p.getNum();
 
@@ -31,7 +32,7 @@
 
 	List<Product> goodsList = Database.searchProduct(p.getName());
 
-	List<Product> products = Product.getAllGoodList();
+	List<Product> products = ProductDAO.getAllGoodList();
 
 	goodsList.addAll(products);
 

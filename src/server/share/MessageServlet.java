@@ -1,5 +1,6 @@
 package server.share;
 
+import DAO.MessageDAO;
 import com.alibaba.fastjson.JSON;
 import vo.Message;
 
@@ -28,15 +29,15 @@ public class MessageServlet extends HttpServlet {
         response.setContentType("text/text");
         String from = request.getParameter("from");
         if(type.equals("0")){
-            List<Message> m = Message.getUncheckedMessage(from,uid);
+            List<Message> m = MessageDAO.getUncheckedMessage(from,uid);
             response.getWriter().write(JSON.toJSONString(m));
         }else if(type.equals("1")){
-            int count = Message.setMessageChecked(from,uid);
+            int count = MessageDAO.setMessageChecked(from,uid);
             WebSocket.sendMes2Head(uid,count);
         }else if(type.equals("2")){
-           response.getWriter().print(Message.getAllUncheckedMessageNum(uid));
+           response.getWriter().print(MessageDAO.getAllUncheckedMessageNum(uid));
         }else if(type.equals("3")){
-            List<Message> m = Message.getHistoryMessage(uid,request.getParameter("to"));
+            List<Message> m = MessageDAO.getHistoryMessage(uid,request.getParameter("to"));
             response.getWriter().write(JSON.toJSONString(m));
         }
     }

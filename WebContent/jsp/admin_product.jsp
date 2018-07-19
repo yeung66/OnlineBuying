@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" import="java.util.*"%>
 <%@ page import="util.*"%>
 <%@ page import="vo.Product" %>
+<%@ page import="DAO.ProductDAO" %>
 <%
 	String uid = (String) session.getAttribute("uid");
 	String rights = (String) session.getAttribute("type");
@@ -10,7 +11,7 @@
 	    response.getWriter().write("请以管理员身份登录再操作！");
 	    return;
 	}
-	List<Product> plist = Product.getNotExamineProducts();
+	List<Product> plist = ProductDAO.getNotExamineProducts();
 	int i = 0;
 %>
 

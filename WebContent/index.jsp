@@ -3,13 +3,14 @@
 <%@ page import="vo.Product" %>
 <%@ page import="util.Database" %>
 <%@ page import="java.util.Random" %>
+<%@ page import="DAO.ProductDAO" %>
 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
-	List<Product> Products= Product.getAllGoodList();
+	List<Product> Products= ProductDAO.getAllGoodList();
 	Random ran = new Random();
 	int k = ran.nextInt(Products.size());
 	int j = ran.nextInt(Products.size());
@@ -112,7 +113,7 @@
 						<!-- Product Item Start -->
 						<div  style="width: 80%;margin-left: 10%;" align="center">
 						<%
-						List<Product> goodsList=Product.getAllGoodList();
+						List<Product> goodsList=ProductDAO.getAllGoodList();
 						for(int i=0;i<goodsList.size();i++){
 						    if(i<8){
 					    %>

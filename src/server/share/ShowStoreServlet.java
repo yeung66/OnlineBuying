@@ -1,5 +1,7 @@
 package server.share;
 
+import DAO.ProductDAO;
+import DAO.UserDAO;
 import com.alibaba.fastjson.JSON;
 import vo.Product;
 import vo.User;
@@ -16,12 +18,12 @@ import java.util.List;
 public class ShowStoreServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           int pid = Integer.parseInt(request.getParameter("pid"));
-          String sid = Product.getProductInfo(pid).getOwner();
-        List<Product> list = Product.getProductList(sid);
+          String sid = ProductDAO.getProductInfo(pid).getOwner();
+        List<Product> list = ProductDAO.getProductList(sid);
         String str = JSON.toJSONString(list);
         request.getSession().setAttribute("storeGoood",str);
         request.getSession().setAttribute("sid",sid);
-        request.getSession().setAttribute("stel", User.getUser(Product.getProductInfo(pid).getOwner()).getTel());
+        request.getSession().setAttribute("stel", UserDAO.getUser(ProductDAO.getProductInfo(pid).getOwner()).getTel());
         request.getRequestDispatcher("jsp/storeShow.jsp").forward(request,response);
     }
 

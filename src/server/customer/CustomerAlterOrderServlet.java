@@ -2,11 +2,6 @@ package server.customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.Database;
-import vo.Order;
+import DAO.OrderDAO;
+
 
 /**
  * Servlet implementation class AlterOrderServlet
@@ -59,7 +54,7 @@ public class CustomerAlterOrderServlet extends HttpServlet {
 			}
 			i++;
 		}
-		if (Order.customerAlterOrder(operation, id) == false) {
+		if (!OrderDAO.customerAlterOrder(operation, id)) {
 			out.print("<script>");
 			out.print("alert('失败!');");
 			out.print("window.history.go(-1)");

@@ -1,8 +1,8 @@
 package server.share;
 
+import DAO.MessageDAO;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import vo.Message;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -54,7 +54,7 @@ public class WebSocket {
     public void onMeassage(String mes){
         JSONObject data = JSON.parseObject(mes);
         CopyOnWriteArraySet<WebSocket> toWebsocket = websocketMap.get(data.getString("to"));
-        Message.insertMessage(uid,data.getString("to"),data.getString("content"),0);
+        MessageDAO.insertMessage(uid,data.getString("to"),data.getString("content"),0);
         if(toWebsocket!=null){
             for(WebSocket ws:toWebsocket)
                 ws.sendMessage(data.getString("content"),uid);
@@ -81,7 +81,7 @@ public class WebSocket {
             for(WebSocket ws:toWebsocket)
                 ws.sendMessage(mes,"System");
         }
-        Message.insertMessage("System",to,mes,0);
+        MessageDAO.insertMessage("System",to,mes,0);
     }
 
     public static void sendMes2Head(String uid,int reduce){

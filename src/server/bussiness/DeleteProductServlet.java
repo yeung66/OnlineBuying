@@ -1,5 +1,6 @@
 package server.bussiness;
 
+import DAO.ProductDAO;
 import vo.Product;
 
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ public class DeleteProductServlet extends HttpServlet {
         String pID = request.getParameter("id");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        if ( Product.deleteProduct(pID)){
+        if ( ProductDAO.deleteProduct(pID)){
             out.print("<script>");
             out.print("alert('删除成功');");
             out.print("window.location.href='jsp/table_list_img.jsp'");

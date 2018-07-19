@@ -1,5 +1,6 @@
 package server.admin;
 
+import DAO.ProductDAO;
 import vo.Product;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ public class AdminProductServlet extends HttpServlet {
         if(session.getAttribute("uid")!=null && ((String)session.getAttribute("type")).equals("2")){
             int pid = Integer.valueOf(request.getParameter("id"));
             String status=request.getParameter("status");
-            if(Product.confirmProduct(pid,status))
+            if(ProductDAO.confirmProduct(pid,status))
                 response.getWriter().write("success");
             return;
         }

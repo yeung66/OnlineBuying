@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.UserDAO;
 import util.Database;
 import vo.User;
 
@@ -52,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
 		sex = request.getParameter("sex");
 		right = request.getParameter("right");
 
-		if (User.register(id, pwd, info, add, tel, right, sex) == true) {
+		if (UserDAO.register(id, pwd, info, add, tel, right, sex) == true) {
 			response.getWriter().print("success");
 		} else {
 			response.getWriter().print("fail");

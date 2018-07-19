@@ -1,5 +1,6 @@
 package server.customer;
 
+import DAO.UserDAO;
 import com.alibaba.fastjson.JSON;
 import vo.Comment;
 import vo.Product;
@@ -40,7 +41,7 @@ public class AddCartServlet extends HttpServlet {
              out.print("</script>");
              out.close();
         }
-        User user = User.getUser(Uid);
+        User user = UserDAO.getUser(Uid);
         String s = request.getParameter("buyNumber");
         int num=0;
         if (s == null){num = 1;}else{ num= Integer.parseInt(s);}

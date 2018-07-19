@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import DAO.ProductDAO;
 import util.Database;
 import vo.Product;
 
@@ -67,14 +69,14 @@ public class BuyProductServlet extends HttpServlet {
 		}
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		int product = Integer.parseInt(request.getParameter("pid"));
-		if (purchaser.equals(Product.getProductInfo(product).getOwner())) {
+		if (purchaser.equals(ProductDAO.getProductInfo(product).getOwner())) {
 			out.print("<script>");
 			out.print("alert('不可购买自己发布的商品!');");
 			out.print("window.history.go(-1)");
 			out.print("</script>");
 			out.close();
 		}
-		Double price = Product.getProductInfo(product).getPrice();
+		Double price = ProductDAO.getProductInfo(product).getPrice();
 		int quantity = 1;
 		if (request.getParameter("buyNumber") == null)
 			quantity = 1;
@@ -87,7 +89,7 @@ public class BuyProductServlet extends HttpServlet {
 			return;
 		} else
 			quantity = Integer.parseInt(request.getParameter("buyNumber"));
-		if (quantity > Product.getProductInfo(product).getNum()) {
+		if (quantity > ProductDAO.getProductInfo(product).getNum()) {
 			out.print("<script>");
 			out.print("alert('购买数量超出库存!');");
 			out.print("window.history.go(-1)");
@@ -95,7 +97,7 @@ public class BuyProductServlet extends HttpServlet {
 			out.close();
 			return;
 		}
-		if (Product.buyProduct(purchaser, price, quantity, product) == false) {
+		if (ProductDAO.buyProduct(purchaser, price, quantity, product) == false) {
 			out.print("<script>");
 			out.print("alert('购买失败!');");
 			out.print("window.history.go(-1)");

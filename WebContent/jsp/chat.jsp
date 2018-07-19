@@ -1,7 +1,6 @@
-<%@ page import="java.util.Set" %>
 <%@ page import="java.util.List" %>
-<%@ page import="vo.Message" %>
 <%@ page import="javafx.util.Pair" %>
+<%@ page import="DAO.MessageDAO" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%
@@ -24,7 +23,7 @@
 	}
 %>
 <%
-	List<Pair<String,String>> contacter = Message.getRelatedUser((String)session.getAttribute("uid"));
+	List<Pair<String,String>> contacter = MessageDAO.getRelatedUser((String)session.getAttribute("uid"));
 %>
 <!DOCTYPE html>
 <html>

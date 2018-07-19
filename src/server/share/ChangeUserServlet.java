@@ -1,5 +1,6 @@
 package server.share;
 
+import DAO.UserDAO;
 import util.Database;
 import vo.User;
 
@@ -27,7 +28,7 @@ public class ChangeUserServlet extends HttpServlet {
 		String add = request.getParameter("add");
 		String sex = request.getParameter("sex");
 		String id = (String) request.getSession().getAttribute("uid");
-		User.changeUser(pwd, info, tel, add, sex, id);
+		UserDAO.changeUser(pwd, info, tel, add, sex, id);
 		response.getWriter().write("success");
 	}
 

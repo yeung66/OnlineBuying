@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.UserDAO;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
@@ -52,7 +53,7 @@ public class WithDraw extends HttpServlet {
 		Double amount = Double.valueOf(request.getParameter("WIDtotal_amount"));
 		String payee_real_name = request.getParameter("WIDreal_name");
 		String uid = (String) request.getSession().getAttribute("uid");
-		int i = User.withdraw(uid, out_biz_no, payee_account, amount, payee_real_name);
+		int i = UserDAO.withdraw(uid, out_biz_no, payee_account, amount, payee_real_name);
 		if (i == 1) {
 			out.print("<script>");
 			out.print("alert('账户余额不足!');");

@@ -2,12 +2,13 @@
 
 <%@ page import="util.*"%>
 <%@ page import="vo.Product"%>
+<%@ page import="DAO.ProductDAO" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	int gid = Integer.parseInt(request.getParameter("gid"));
-	Product p = Product.getProductInfo(gid);
+	Product p = ProductDAO.getProductInfo(gid);
 	int number = p.getNum();
 	String name = p.getName();
 	String described = p.getInformation();

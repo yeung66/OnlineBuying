@@ -1,5 +1,6 @@
 package vo;
 
+import DAO.ProductDAO;
 import util.Database;
 import vo.Product;
 import vo.User;
@@ -101,7 +102,7 @@ public class ShoppingCart {
                 e.printStackTrace();
                 return false;
             }
-            if (num + cart.num > Product.getProductInfo(cart.getProduct().getId()).getNum()) {
+            if (num + cart.num > ProductDAO.getProductInfo(cart.getProduct().getId()).getNum()) {
                 return false;
             } else {
                 sql = "update shoppingcart set num =" + Integer.toString(num + cart.num) + " where uid = '" + cart.user.getId() + "' and pid =" + cart.product.getId();
@@ -112,7 +113,7 @@ public class ShoppingCart {
                 }
             }
         }else {
-            if (cart.getNum()>Product.getProductInfo(cart.getProduct().getId()).getNum()){
+            if (cart.getNum()>ProductDAO.getProductInfo(cart.getProduct().getId()).getNum()){
                 return false;
             }else {
                 sql = "INSERT INTO `shixun`.`shoppingcart` (`uid`, `pid`, `num`, `starttime`) VALUES ('" + cart.user.getId() + "' , '" + cart.product.getId() + "' ,'"
@@ -198,7 +199,7 @@ public class ShoppingCart {
         } else {
             for (int i = 0; i < pid.length; i++) {
                 ShoppingCart cart = ShoppingCart.selectCart(uid, pid[i]);
-                if (cart.getNum()>Product.getProductInfo(cart.getProduct().getId()).getNum()){
+                if (cart.getNum()> ProductDAO.getProductInfo(cart.getProduct().getId()).getNum()){
                     return false;
                 }
             }
@@ -213,7 +214,7 @@ public class ShoppingCart {
                 sql = "INSERT INTO orders (purchaser, product, states, quantity, starttime) VALUES ('" + uid + "','" + pid[i] + "','"
                         + states + "','" + cart.getNum() + "','" + starttime + "');";
                 Database.update(sql);
-                sql = "UPDATE product SET num=" + (Product.getProductInfo(Integer.parseInt(pid[i])).getNum() - cart.getNum()) + " WHERE id=" + pid[i];
+                sql = "UPDATE product SET num=" + (ProductDAO.getProductInfo(Integer.parseInt(pid[i])).getNum() - cart.getNum()) + " WHERE id=" + pid[i];
                 Database.update(sql);
                 ShoppingCart.deleteCart(uid, pid[i]);
             }

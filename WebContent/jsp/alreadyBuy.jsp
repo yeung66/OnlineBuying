@@ -1,6 +1,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="vo.Order"%>
 <%@ page import="vo.Product"%>
+<%@ page import="DAO.OrderDAO" %>
+<%@ page import="DAO.ProductDAO" %>
 
 <%@ page language="java" pageEncoding="utf-8"%>
 
@@ -67,10 +69,10 @@
 
 				<%
 					int i = 1;
-					List<Order> orderList = Order.getOrderList((String) request.getSession().getAttribute("uid"));
+					List<Order> orderList = OrderDAO.getOrderList((String) request.getSession().getAttribute("uid"));
 					if (orderList != null) {
 						for (Order o : orderList) {
-							Product p = Product.getProductInfo(o.getProduct());
+							Product p = ProductDAO.getProductInfo(o.getProduct());
 				%>
 				<tr>
 					<td><img src="<%=p.getPath()%>" width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;"></td>

@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.Database;
-import vo.Order;
+import DAO.OrderDAO;
 
 /**
  * Servlet implementation class MerchantAlterOrder
@@ -45,7 +44,7 @@ public class MerchantAlterOrder extends HttpServlet {
 			}
 			i++;
 		}
-		if (Order.merchantAlterOrder(operation, id) == false) {
+		if (!OrderDAO.merchantAlterOrder(operation, id)) {
 			out.print("<script>");
 			out.print("alert('失败!');");
 			out.print("window.history.go(-1)");

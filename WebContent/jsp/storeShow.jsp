@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page import="vo.*"%>
+<%@ page import="DAO.ProductDAO" %>
+<%@ page import="DAO.UserDAO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -74,8 +76,8 @@
 					style="height: 150px; width: 150px;"><br />
 				<%
 					int pid = Integer.parseInt(request.getParameter("pid"));
-					String id = Product.getProductInfo(pid).getOwner();
-					String tel = User.getUser(id).getTel();
+					String id = ProductDAO.getProductInfo(pid).getOwner();
+					String tel = UserDAO.getUser(id).getTel();
 				%>
 				<span class="text-primary"><h1><%=id%></h1></span> <span
 					class="text-primary"><h2>Tel:<%=tel%></h2></span>
