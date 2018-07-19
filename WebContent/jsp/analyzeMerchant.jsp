@@ -7,19 +7,20 @@
 <title>销售情况</title>
 
 
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/jquery.easing.1.3.js"></script>
-<script src="../js/jquery-3.2.1.min.js"></script>
-<script src="../js/echarts.js"></script>
-<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="../js/bootstrap.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../js/jquery.min.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/echarts.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
 
 
 <script>
+
 	$(document).ready(function() {
 		$("#main2").show(500);
 		$("#main").hide();
@@ -47,18 +48,19 @@
 </head>
 
     <body>
+	<jsp:include page="head.jsp"></jsp:include>
 
-     <div align="center">
-     	<br /><br /><br />
+     <div align="center" style="padding-top: 180px;">
+
      	<div class="panel-footer" align="center" style="width: 80%;height: 800px;">
      	<button class="btn btn-default" title="按商品类型查看" id="show1">销售额</button>
      	<button class="btn btn-default" title="当月各类型商品销量" id="show2">销量</button>
      	<button class="btn btn-default" title="每月总销售额" id="show3">总销售额</button>	
      	
      	<br /><br />
-     	<div id="main2" style="width: 50%;height:400px;" class="well"></div>
-    <div id="main" style="width: 42%;height:400px;" class="well"></div>
-    <div id="main1" style="width: 42%;height:400px;" class="well"></div>
+     	<div id="main2" style="width: 60%;height:400px;" class="well"></div>
+    <div id="main" style="width: 60%;height:400px;" class="well"></div>
+    <div id="main1" style="width: 60%;height:400px;" class="well"></div>
     </div>
     </div>
 

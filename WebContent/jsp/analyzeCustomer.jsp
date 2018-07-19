@@ -7,16 +7,16 @@
     <title>消费情况</title>
 
 
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/jquery.easing.1.3.js"></script>
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/echarts.js"></script>
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -48,8 +48,8 @@
 <body>
 <jsp:include page="head.jsp" />
 
-<div align="center">
-    <br /><br /><br />
+<div align="center" style="padding-top: 180px;">
+
     <div class="panel-footer" align="center" style="width: 80%;height: 800px;">
 
         <button class="btn btn-default" title="近三月各类型花销详情" id="show2">花销详情</button>
@@ -57,9 +57,9 @@
         <button class="btn btn-default" title="近三月花销总额" id="show1">花销总额</button>
 
         <br /><br />
-        <div id="main2" style="width: 46%;height:400px;" class="well"></div>
-        <div id="main" style="width: 46%;height:400px;" class="well"></div>
-        <div id="main1" style="width: 46%;height:400px;" class="well"></div>
+        <div id="main2" style="width: 55%;height:400px;" class="well"></div>
+        <div id="main" style="width: 55%;height:400px;" class="well"></div>
+        <div id="main1" style="width: 55%;height:400px;" class="well"></div>
     </div>
 </div>
 <script type="text/javascript">
