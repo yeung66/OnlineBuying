@@ -269,6 +269,10 @@
                 document.querySelector('.choosed').removeAttribute('class')
                 e.className = 'choosed'
                 document.querySelector('#msgs').innerHTML = ''
+				if(e.getAttribute("history")=='true')
+				    document.querySelector('#histStart').style.display='none'
+				else
+                    document.querySelector('#histStart').style.display='block'
 			    if(!(e.id in localMessage)) {
 			        localMessage[e.id] = []
                     var http = new XMLHttpRequest()
@@ -303,7 +307,7 @@
             http.send()
         }
 
-        document.querySelector('#histStart').addEventListener('click',function () {
+        document.querySelector('#histStart').addEventListener('click',function (e) {
 			var to = document.querySelector('#head-title').innerText
 			$.ajax({
 				url:'message',
@@ -324,6 +328,8 @@
 					localMessage[to].forEach(function (t) {
 					    appendMessage(t,'#msgs')
 					})
+					e.target.style.display='none'
+					document.querySelector('[contact=c'+to+']').setAttribute("history","true")
                 }
 			})
         })
