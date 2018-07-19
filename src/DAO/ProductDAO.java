@@ -66,7 +66,7 @@ public class ProductDAO {
         try {
             Statement st = conn.createStatement();
             ResultSet rs = st
-                    .executeQuery("SELECT id,price,name,path,score,num,ptype from product where owner='" + uid + "'");
+                    .executeQuery("SELECT id,price,name,path,score,num,ptype,status from product where owner='" + uid + "'");
             List<Product> result = new ArrayList<>();
             while (rs.next()) {
                 Product p = new Product();
@@ -77,6 +77,7 @@ public class ProductDAO {
                 p.setNum(rs.getInt("num"));
                 p.setScore(rs.getDouble("score"));
                 p.setType(rs.getString("ptype"));
+                p.setStatus("status");
                 result.add(p);
             }
             return result;

@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="javafx.util.Pair" %>
 <%@ page import="DAO.MessageDAO" %>
+<%@ page import="server.util.Response" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%
@@ -9,16 +10,10 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	if(session.getAttribute("uid")==null){
-	    out.println("<body><script>");
-	    out.println("alert('请先登录！')");
-	    out.println("window.location.href='../login_registe.jsp'");
-		out.println("</script></body>");
+		Response.replyAndRedirect("请先登录！","../login_registe.jsp",response);
 	    return;
 	}else if (((String)session.getAttribute("uid")).equals(request.getParameter("to"))){
-		out.println("<body><script>");
-		out.println("alert('请不要跟自己通信！')");
-		out.println("window.history.back(-1)");
-		out.println("</script></body>");
+		Response.replyAndGoBack("请不要跟自己通信！",response);
 		return;
 	}
 %>
@@ -319,6 +314,7 @@
 				method:'get',
 				success:function (data) {
 					data = JSON.parse(data)
+					if(data===undefined) return;
 					if(localMessage[to]===undefined){
 					    localMessage[to] = []
 					}

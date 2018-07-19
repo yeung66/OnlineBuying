@@ -51,6 +51,7 @@ public class BuyProductServlet extends HttpServlet {
 		String type = (String) request.getSession().getAttribute("type");
 		if (type.equals("1")) {
 			Response.replyAndGoBack("商家无权限购买！",response);
+			return;
 		}
 		String purchaser = (String) request.getSession().getAttribute("uid");
 		int product = Integer.parseInt(request.getParameter("pid"));

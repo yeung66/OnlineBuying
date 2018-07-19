@@ -6,6 +6,10 @@
 	String uid = (String) session.getAttribute("uid");
 	List<Product> plist = ProductDAO.getProductList(uid);
 	int i = 0;
+	HashMap<String,String> map = new HashMap<>();
+	map.put("pass","已通过");
+	map.put("fail","未通过");
+	map.put("0","未审核");
 %>
 
 <!DOCTYPE html>
@@ -184,7 +188,7 @@
 												<td class="am-text-middle"><%=p.getName() %></td>
 												<td class="am-text-middle"><%=p.getPrice() %></td>
 												<td class="am-text-middle"><%=p.getNum() %></td>
-												<td class="am-text-middle"><%=p.getStatus() %></td>
+												<td class="am-text-middle"><%=map.get(p.getStatus())%></td>
 												<td class="am-text-middle"><%=p.getScore() %></td>
 												<td class="am-text-middle">
 													<div class="tpl-table-black-operation">
