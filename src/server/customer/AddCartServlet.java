@@ -22,26 +22,32 @@ public class AddCartServlet extends HttpServlet {
         String Uid = (String) request.getSession().getAttribute("uid");
         if (Uid == null){
             Response.replyAndRedirect("请先登录","login_registe.jsp",response);
+            return;
         }
         String type = (String) request.getSession().getAttribute("type");
         if(type.equals("1")) {
-             Response.replyAndGoBack("商家无权限购买！",response);
+            Response.replyAndGoBack("商家无权限购买！",response);
+            return;
         }
+
         User user = UserDAO.getUser(Uid);
         String s = request.getParameter("buyNumber");
         int num=0;
         if (s == null){num = 1;}else{ num= Integer.parseInt(s);}
         if (num<= 0) {
             Response.replyAndGoBack("添加失败，购买数小于为0！",response);
+            return;
         }
         else {
             Date starttime = new Date(System.currentTimeMillis());
             ShoppingCart cart = new ShoppingCart(Uid, Pid, num, starttime);
             if (ShoppingCartDAO.AddinSQL(cart)) {
                 Response.replyAndRedirect("添加成功","jsp/shoppingCart.jsp",response);
+                return;
             } else {
                 Response.replyAndGoBack("失败",response);
             }
+
         }
     }
 

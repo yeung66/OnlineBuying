@@ -47,6 +47,7 @@ public class BuyProductServlet extends HttpServlet {
 		out.print("<meta   http-equiv='Content-Type'   content='text/html;   charset=UTF-8'>");
 		if (request.getSession().getAttribute("uid") == null) {
 			Response.replyAndRedirect("请登录!","login_registe.jsp",response);
+			return;
 		}
 		String type = (String) request.getSession().getAttribute("type");
 		if (type.equals("1")) {
@@ -57,6 +58,7 @@ public class BuyProductServlet extends HttpServlet {
 		int product = Integer.parseInt(request.getParameter("pid"));
 		if (purchaser.equals(ProductDAO.getProductInfo(product).getOwner())) {
 			Response.replyAndGoBack("不可购买自己发布的商品!",response);
+			return;
 		}
 		Double price = ProductDAO.getProductInfo(product).getPrice();
 		int quantity = 1;
@@ -73,6 +75,7 @@ public class BuyProductServlet extends HttpServlet {
 		}
 		if (!ProductDAO.buyProduct(purchaser, price, quantity, product)) {
 			Response.replyAndGoBack("购买失败!",response);
+			return;
 		} else {
 			Response.replyAndRedirect("购买成功!","jsp/alreadyBuy.jsp",response);
 		}

@@ -24,6 +24,7 @@ public class BuyCartServlet extends HttpServlet {
         String type = (String) request.getSession().getAttribute("type");
         if(type.equals("1")) {
             Response.replyAndGoBack("商家无权限购买！",response);
+            return;
         }
         String[] pid =request.getParameterValues("checkItem");
         PrintWriter out = response.getWriter();
@@ -41,6 +42,7 @@ public class BuyCartServlet extends HttpServlet {
         else {
             mes="操作不能为空！";
             url="jsp/shoppingCart.jsp";
+
         }
         Response.replyAndRedirect(mes,url,response);
     }
