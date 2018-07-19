@@ -1,9 +1,7 @@
 package DAO;
 
 import util.Database;
-import vo.Product;
 import vo.ShoppingCart;
-import vo.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,39 +9,6 @@ import java.util.List;
 
 public class ShoppingCartDAO {
     private static Connection conn = Database.getConnect();
-
-    public static void setUser(User user,String uid) {
-        String sql = "select * from users where id='" + uid + "';";
-        try {
-            Statement st = conn.createStatement();
-            //System.out.println(sql);
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                user = new User(rs.getString("id"), rs.getString("pwd"), rs.getString("info"),
-                        rs.getString("addr"), rs.getString("tel"), rs.getString("sex"),
-                        rs.getString("rights"), rs.getDouble("money"));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void setProduct(Product product,String pid) {
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select * from product where id=" + pid);
-            if (rs.next()) {
-                product = new Product(rs.getInt("id"), rs.getDouble("price"), rs.getInt("num"), rs.getDouble("score"),
-                        rs.getInt("comnum"), rs.getString("name"), rs.getString("owner"), rs.getString("path"),
-                        rs.getString("information"));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-    }
 
     public static boolean AddinSQL(ShoppingCart cart) {
         String sql = "SELECT num FROM shoppingcart where uid = '" + cart.getUser().getId() + "' and pid =" + cart.getProduct().getId();
@@ -87,7 +52,6 @@ public class ShoppingCartDAO {
     }
 
     public static List<ShoppingCart> searchFromSQL(String uid) {
-        Connection conn = Database.getConnect();
         List<ShoppingCart> list = new ArrayList<>();
         String sql = "select * from shoppingcart where uid = '" + uid + "'";
         try {

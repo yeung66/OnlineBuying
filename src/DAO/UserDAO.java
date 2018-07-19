@@ -17,6 +17,25 @@ import java.sql.Statement;
 public class UserDAO {
     private static Connection conn = Database.getConnect();
 
+    public static User setUser(String uid) {
+        String sql = "select * from users where id='" + uid + "';";
+        User user=null;
+        try {
+            Statement st = conn.createStatement();
+            //System.out.println(sql);
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                user = new User(rs.getString("id"), rs.getString("pwd"), rs.getString("info"),
+                        rs.getString("addr"), rs.getString("tel"), rs.getString("sex"),
+                        rs.getString("rights"), rs.getDouble("money"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
     public static User getUser(String id) {
         String sql = "select * from users where id='" + id + "';";
         try {

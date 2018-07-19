@@ -1,7 +1,10 @@
 package vo;
 
 
-import DAO.ShoppingCartDAO;
+
+import DAO.ProductDAO;
+import DAO.UserDAO;
+
 import java.util.Date;
 
 
@@ -16,8 +19,8 @@ public class ShoppingCart {
     private Date startTime;
 
     public ShoppingCart(String uid, String pid, int num, Date startTime) {
-        ShoppingCartDAO.setUser(user,uid);
-        ShoppingCartDAO.setProduct(product,pid);
+        user = UserDAO.setUser(uid);
+        product = ProductDAO.setProduct(pid);
         this.num = num;
         this.startTime = startTime;
     }
