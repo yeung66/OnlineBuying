@@ -15,6 +15,9 @@ public class MerchantDataDAO {
 
     public static List<MerchantData> getMerchantDataList(String uid) {
         MerchantData[] mlist = new MerchantData[15];
+        for(int i= 0; i < 15; i++){
+            mlist[i] = new MerchantData();
+        }
         String sql = "select month(starttime) as month,product.price,product.ptype,orders.quantity\r\n"
                 + "from orders inner join product on orders.product = product.id\r\n"
                 + "where month(starttime) > month(date_SUB(CURDATE(), INTERVAL 3 MONTH)) and product.owner='" + uid
@@ -38,11 +41,11 @@ public class MerchantDataDAO {
             while (rs.next()) {
                 String mon = rs.getString("month");
                 String ptype = rs.getString("ptype");
-                int num = rs.getInt("quantity") + mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].getNum();
+                int num = rs.getInt("quantity") + mlist[(Integer.parseInt(mon)-month) * 5 + Integer.parseInt(ptype)].getNum();
                 double money = rs.getDouble("price") * rs.getInt("quantity")
-                        + mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].getMoney();
-                mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].setMoney(money);
-                mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].setNum(num);
+                        + mlist[(Integer.parseInt(mon)-month) * 5 + Integer.parseInt(ptype)].getMoney();
+                mlist[(Integer.parseInt(mon)-month) * 5 + Integer.parseInt(ptype)].setMoney(money);
+                mlist[(Integer.parseInt(mon)-month) * 5 + Integer.parseInt(ptype)].setNum(num);
             }
             for (int i = 0; i < 3; i++) {
                 double tot = 0;

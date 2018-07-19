@@ -19,6 +19,9 @@ public class CustomerDataDAO {
 
     public static List<CustomerData> getCustomerDataList(String uid) {
         CustomerData[] mlist = new CustomerData[15];
+        for(int i= 0; i < 15; i++){
+            mlist[i] = new CustomerData();
+        }
         String sql = "select month(starttime) as month,product.price,product.ptype,orders.quantity\r\n"
                 + "from orders inner join product on orders.product = product.id\r\n"
                 + "where month(starttime) > month(date_SUB(CURDATE(), INTERVAL 3 MONTH)) and orders.purchaser='" + uid
@@ -43,8 +46,8 @@ public class CustomerDataDAO {
                 String mon = rs.getString("month");
                 String ptype = rs.getString("ptype");
                 double money = rs.getDouble("price") * rs.getInt("quantity")
-                        + mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].getMoney();
-                mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].setMoney(money);
+                        + mlist[(Integer.parseInt(mon)-month) * 5 + Integer.parseInt(ptype)].getMoney();
+                mlist[(Integer.parseInt(mon)-month) * 5 + Integer.parseInt(ptype)].setMoney(money);
             }
             for (int i = 0; i < 3; i++) {
                 double tot = 0;
