@@ -12,7 +12,7 @@
 <script src="../js/bootstrap.js"></script>
 <script src="../js/jquery.easing.1.3.js"></script>
 <script src="../js/jquery-3.2.1.min.js"></script>
-<script src="../js/echarts.js"></script>   
+<script src="../js/echarts.js"></script>
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="../js/bootstrap.min.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -56,80 +56,19 @@
      	<button class="btn btn-default" title="每月总销售额" id="show3">总销售额</button>	
      	
      	<br /><br />
-     	<div id="main2" style="width: 38%;height:400px;" class="well"></div>
-    <div id="main" style="width: 38%;height:400px;" class="well"></div>
-    <div id="main1" style="width: 38%;height:400px;" class="well"></div>
+     	<div id="main2" style="width: 50%;height:400px;" class="well"></div>
+    <div id="main" style="width: 42%;height:400px;" class="well"></div>
+    <div id="main1" style="width: 42%;height:400px;" class="well"></div>
     </div>
     </div>
+
     <script>
 
         var s=${analyzeMerchant};
         var str=JSON.stringify(s);
         var result= JSON.parse(str+"");
-        //document.write(result[0].type);
-        var myChart=echarts.init(document.getElementById('main2'));
-        option = {
-            legend: {},
-            tooltip: {
-                trigger: 'axis',
-                showContent: false
-            },
-            dataset: {
-                source: [
-                    ['product', '五月', '六月', '七月', ],
-                    ['文具卡片', result[0].money, result[5].money, result[10].money],
-                    ['特色美食', result[1].money, result[6].money, result[11].money],
-                    ['服饰箱包', result[2].money, result[7].money, result[12].money],
-                    ['居家生活', result[3].money, result[8].money, result[13].money],
-                    ['数码电器', result[4].money, result[9].money, result[14].money]
-                ]
-            },
-            xAxis: {type: 'category'},
-            yAxis: {gridIndex: 0},
-            grid: {top: '55%'},
-            series: [
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
-                {
-                    type: 'pie',
-                    id: 'pie',
-                    radius: '30%',
-                    center: ['50%', '25%'],
-                    label: {
-                        formatter: '{b}: {@2012} ({d}%)'
-                    },
-                    encode: {
-                        itemName: 'product',
-                        value: '2012',
-                        tooltip: '2012'
-                    }
-                }
-            ]
-        };
 
-        myChart.on('updateAxisPointer', function (event) {
-            var xAxisInfo = event.axesInfo[0];
-            if (xAxisInfo) {
-                var dimension = xAxisInfo.value + 1;
-                myChart.setOption({
-                    series: {
-                        id: 'pie',
-                        label: {
-                            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
-                        },
-                        encode: {
-                            value: dimension,
-                            tooltip: dimension
-                        }
-                    }
-                });
-            }
-        });
 
-        myChart.setOption(option);
 
         var myChart = echarts.init(document.getElementById('main'));
         var option = {
@@ -192,10 +131,73 @@
                 name: '总销售额',
                 type: 'bar',
                 data: [result[0].totMoney, result[5].totMoney, result[10].totMoney,]
+                //data: [15,20,15]
             }]
         });
+        var myChart=echarts.init(document.getElementById('main2'));
+        option = {
+            legend: {},
+            tooltip: {
+                trigger: 'axis',
+                showContent: false
+            },
+            dataset: {
+                source: [
+                    ['product', '5', '6', '7', ],
+                    ['文具卡片', result[0].money, result[5].money, result[10].money],
+                    ['特色美食', result[1].money, result[6].money, result[11].money],
+                    ['服饰箱包', result[2].money, result[7].money, result[12].money],
+                    ['居家生活', result[3].money, result[8].money, result[13].money],
+                    ['数码电器', result[4].money, result[9].money, result[14].money]
 
+                ]
+            },
+            xAxis: {type: 'category'},
+            yAxis: {gridIndex: 0},
+            grid: {top: '55%'},
+            series: [
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                {
+                    type: 'pie',
+                    id: 'pie',
+                    radius: '30%',
+                    center: ['50%', '25%'],
+                    label: {
+                        formatter: '{b}: {@5} ({d}%)'
+                    },
+                    encode: {
+                        itemName: 'product',
+                        value: '5',
+                        tooltip: '5'
+                    }
+                }
+            ]
+        };
 
+        myChart.on('updateAxisPointer', function (event) {
+            var xAxisInfo = event.axesInfo[0];
+            if (xAxisInfo) {
+                var dimension = xAxisInfo.value + 1;
+                myChart.setOption({
+                    series: {
+                        id: 'pie',
+                        label: {
+                            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                        },
+                        encode: {
+                            value: dimension,
+                            tooltip: dimension
+                        }
+                    }
+                });
+            }
+        });
+        // setTimeout(trvlInAnalysis.trvlInMigrateShow.setOption(option), 500);
+        myChart.setOption(option);
     </script>
     	
  	</body>
