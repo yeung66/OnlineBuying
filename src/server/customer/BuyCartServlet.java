@@ -29,6 +29,7 @@ public class BuyCartServlet extends HttpServlet {
              out.print("window.history.go(-1)");
              out.print("</script>");
              out.close();
+             return;
         }
         String[] pid =request.getParameterValues("checkItem");
         PrintWriter out = response.getWriter();
@@ -39,12 +40,14 @@ public class BuyCartServlet extends HttpServlet {
                 out.print("window.location.href='jsp/alreadyBuy.jsp'");
                 out.print("</script>");
                 out.close();
+                return;
             } else {
                 out.print("<script>");
                 out.print("alert('购买失败')");
                 out.print("window.location.href='jsp/shoppingCart.jsp'");
                 out.print("</script>");
                 out.close();
+                return;
             }
         }
         else {
@@ -53,6 +56,7 @@ public class BuyCartServlet extends HttpServlet {
             out.print("window.location.href='jsp/shoppingCart.jsp'");
             out.print("</script>");
             out.close();
+            return;
         }
     }
 }
