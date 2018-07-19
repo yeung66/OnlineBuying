@@ -84,7 +84,7 @@
 						<th style="padding:20px;font-size: 14px;font-weight: 600;" colspan="8">购物车</th>
 					</tr>
 					<tr>
-						<th><input type="checkbox" id="checkAll" name="checkAll" /></th>
+						<th></th>
 						<th>商品图片</th>
 						<th>商品名</th>
 						<th>数量</th>
