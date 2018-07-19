@@ -57,9 +57,9 @@
         <button class="btn btn-default" title="近三月花销总额" id="show1">花销总额</button>
 
         <br /><br />
-        <div id="main2" style="width: 38%;height:400px;" class="well"></div>
-        <div id="main" style="width: 38%;height:400px;" class="well"></div>
-        <div id="main1" style="width: 38%;height:400px;" class="well"></div>
+        <div id="main2" style="width: 46%;height:400px;" class="well"></div>
+        <div id="main" style="width: 46%;height:400px;" class="well"></div>
+        <div id="main1" style="width: 46%;height:400px;" class="well"></div>
     </div>
 </div>
 <script type="text/javascript">
