@@ -96,6 +96,7 @@ public class Database {
                         list.add(pro);
                     }
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }}
                 if (!NotChinese.equals("")) {
                     segmenter se = new segmenter();

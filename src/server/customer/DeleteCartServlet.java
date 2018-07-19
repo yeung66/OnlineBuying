@@ -1,6 +1,6 @@
 package server.customer;
 
-import vo.Product;
+import DAO.ShoppingCartDAO;
 import vo.ShoppingCart;
 
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ public class DeleteCartServlet extends HttpServlet {
         String uid = (String)request.getSession().getAttribute("uid");
         String pid =request.getParameter("gid");
         PrintWriter out = response.getWriter();
-        if (ShoppingCart.deleteCart(uid,pid)) {
+        if (ShoppingCartDAO.deleteCart(uid,pid)) {
             out.print("<script>");
             out.print("alert('删除成功');");
             out.print("window.location.href='jsp/shoppingCart.jsp'");

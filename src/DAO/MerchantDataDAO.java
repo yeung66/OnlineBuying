@@ -1,7 +1,7 @@
 package DAO;
 
 import util.Database;
-import vo.CustomerData;
+import vo.MerchantData;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,18 +10,14 @@ import java.sql.Statement;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @ author: 杨浩麟
- * @ date: 2018/7/18 18:40
- */
-public class CustomerDataDAO {
-    private static Connection conn=Database.getConnect();
+public class MerchantDataDAO {
+    private static Connection conn = Database.getConnect();
 
-    public static List<CustomerData> getCustomerDataList(String uid) {
-        CustomerData[] mlist = new CustomerData[15];
+    public static List<MerchantData> getMerchantDataList(String uid) {
+        MerchantData[] mlist = new MerchantData[15];
         String sql = "select month(starttime) as month,product.price,product.ptype,orders.quantity\r\n"
                 + "from orders inner join product on orders.product = product.id\r\n"
-                + "where month(starttime) > month(date_SUB(CURDATE(), INTERVAL 3 MONTH)) and orders.purchaser='" + uid
+                + "where month(starttime) > month(date_SUB(CURDATE(), INTERVAL 3 MONTH)) and product.owner='" + uid
                 + "'\r\n" + "order by month(starttime),product.ptype";
         try {
             Statement st = conn.createStatement();
@@ -42,9 +38,11 @@ public class CustomerDataDAO {
             while (rs.next()) {
                 String mon = rs.getString("month");
                 String ptype = rs.getString("ptype");
+                int num = rs.getInt("quantity") + mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].getNum();
                 double money = rs.getDouble("price") * rs.getInt("quantity")
                         + mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].getMoney();
                 mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].setMoney(money);
+                mlist[Integer.parseInt(mon) * 5 + Integer.parseInt(ptype)].setNum(num);
             }
             for (int i = 0; i < 3; i++) {
                 double tot = 0;

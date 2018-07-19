@@ -1,19 +1,5 @@
 package vo;
 
-import util.AlipayConfig;
-import util.Database;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import com.alipay.api.AlipayApiException;
-import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.request.AlipayFundTransToaccountTransferRequest;
-import com.alipay.api.response.AlipayFundTransToaccountTransferResponse;
-
 public class User {
 	private String id, pwd, info, addr, tel, sex, right;
 	private Double money;

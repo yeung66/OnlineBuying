@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.UserDAO;
-import util.Database;
-import vo.User;
+
 
 /**
  * Servlet implementation class SignUp

@@ -1,7 +1,6 @@
 package server.admin;
 
 import DAO.ProductDAO;
-import vo.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

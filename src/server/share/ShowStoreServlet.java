@@ -4,7 +4,6 @@ import DAO.ProductDAO;
 import DAO.UserDAO;
 import com.alibaba.fastjson.JSON;
 import vo.Product;
-import vo.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

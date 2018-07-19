@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vo.ShoppingCart" %>
+<%@ page import="DAO.ShoppingCartDAO" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%
@@ -11,7 +12,7 @@
 <%
 	String uid =(String)session.getAttribute("uid");
 	String type =(String)session.getAttribute("type");
-	List<ShoppingCart> list = ShoppingCart.searchFromSQL(uid);
+	List<ShoppingCart> list = ShoppingCartDAO.searchFromSQL(uid);
 %>
 <!DOCTYPE html>
 <html>

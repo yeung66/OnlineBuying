@@ -1,6 +1,7 @@
 package server.customer;
 
-import vo.Product;
+
+import DAO.ShoppingCartDAO;
 import vo.ShoppingCart;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 @WebServlet(name = "BuyCartServlet" , urlPatterns = "/BuyCartServlet")
 public class BuyCartServlet extends HttpServlet {
@@ -33,7 +33,7 @@ public class BuyCartServlet extends HttpServlet {
         String[] pid =request.getParameterValues("checkItem");
         PrintWriter out = response.getWriter();
         if (pid!=null) {
-            if (ShoppingCart.buyProduct(uid, pid)) {
+            if (ShoppingCartDAO.buyProduct(uid, pid)) {
                 out.print("<script>");
                 out.print("alert('购买成功');");
                 out.print("window.location.href='jsp/alreadyBuy.jsp'");

@@ -8,7 +8,9 @@ public class CustomerData {
 	private String month;
 
 	public CustomerData() {
-
+		money = totMoney = 0;
+		type = "0";
+		month = "0";
 	}
 
 	public CustomerData(String type, double money, double totMoney, String month) {
@@ -50,6 +52,4 @@ public class CustomerData {
 	public void setMonth(String month) {
 		this.month = month;
 	}
-
-
 }

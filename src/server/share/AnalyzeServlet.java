@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.CustomerDataDAO;
+import DAO.MerchantDataDAO;
 import com.alibaba.fastjson.JSON;
 import vo.CustomerData;
 import vo.MerchantData;
@@ -43,7 +44,7 @@ public class AnalyzeServlet extends HttpServlet {
 			request.getSession().setAttribute("analyzeCustomer", Jsonproduct);
 			request.getRequestDispatcher("jsp/analyzeCustomer.jsp").forward(request, response);
 		} else {
-			List<MerchantData> mlist = MerchantData.getMerchantDataList(uid);
+			List<MerchantData> mlist = MerchantDataDAO.getMerchantDataList(uid);
 			String Jsonproduct = JSON.toJSONString(mlist);
 			request.getSession().setAttribute("analyzeMerchant", Jsonproduct);
 			request.getRequestDispatcher("jsp/analyzeMerchant.jsp").forward(request, response);

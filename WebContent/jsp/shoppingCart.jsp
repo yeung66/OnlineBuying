@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8" import="java.util.*"%>
 <%@ page import="vo.ShoppingCart" %>
-<%@ page import="java.util.List" %><%
+<%@ page import="java.util.List" %>
+<%@ page import="DAO.ShoppingCartDAO" %><%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
     String uid = (String)request.getSession().getAttribute("uid");
-	List<ShoppingCart> list = ShoppingCart.searchFromSQL(uid);
+	List<ShoppingCart> list = ShoppingCartDAO.searchFromSQL(uid);
 	double total=0.0;
 	int i=0;
  %>

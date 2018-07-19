@@ -1,6 +1,7 @@
 package vo;
 
-import java.sql.*;
+
+import java.sql.Date;
 
 public class Order {
 	private int id, product, quantity;
