@@ -1,8 +1,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="vo.Order"%>
 <%@ page import="vo.Product"%>
-<%@ page import="DAO.OrderDAO" %>
-<%@ page import="DAO.ProductDAO" %>
+<%@ page import="DAO.OrderDAO"%>
+<%@ page import="DAO.ProductDAO"%>
 
 <%@ page language="java" pageEncoding="utf-8"%>
 
@@ -75,7 +75,8 @@
 							Product p = ProductDAO.getProductInfo(o.getProduct());
 				%>
 				<tr>
-					<td><img src="<%=p.getPath()%>" width="50px" height="70px" style="padding-top:10px;padding-bottom: 10px;"></td>
+					<td><img src="<%=p.getPath()%>" width="50px" height="70px"
+						style="padding-top: 10px; padding-bottom: 10px;"></td>
 					<td><a href="jsp/product_detail.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
 					<td><%=o.getQuantity()%></td>
 					<td><%=p.getPrice()%></td>
@@ -115,10 +116,11 @@
 	</center>
 	<%
 		i = 1;
-		for (Order o : orderList) {
-			String status = o.getStatus();
-			int id = o.getId();
-			boolean op = true;
+		if (orderList != null) {
+			for (Order o : orderList) {
+				String status = o.getStatus();
+				int id = o.getId();
+				boolean op = true;
 	%>
 	<div class="popup" id="popup-<%=i%>">
 		<div class="popup-inner">
@@ -150,26 +152,29 @@
 						</div>
 						<%
 							} else {
-									op = false;
-								}
+										op = false;
+									}
 						%>
 					</div>
 				</div>
 			</div>
 			<a class="popup__close" href="jsp/alreadyBuy.jsp#">X</a>
 			<div class="submitChoice">
-				<form action="CustomerAlterOrderServlet" class="popupForm" id='f<%=o.getId()%>'>
+				<form action="CustomerAlterOrderServlet" class="popupForm"
+					id='f<%=o.getId()%>'>
 					<input type="hidden" name="operation" value="" id="operation">
-					<input type="hidden" name="id-<%=i %>" value="<%=id%>">
+					<input type="hidden" name="id-<%=i%>" value="<%=id%>">
 					<%
 						if (op == true) {
 					%>
-					<input type="button" value="提交修改" class="blackButton" id='<%=o.getId()%>'
-						onclick="tijiao(this)"/>
+					<input type="button" value="提交修改" class="blackButton"
+						id='<%=o.getId()%>' onclick="tijiao(this)" />
 					<%
 						} else {
 					%>
-					<div class="singleInput" ><input type="text" value="无可用操作" readonly="readonly" /></div>
+					<div class="singleInput">
+						<input type="text" value="无可用操作" readonly="readonly" />
+					</div>
 					<%
 						}
 					%>
@@ -180,14 +185,16 @@
 	</div>
 	<%
 		i++;
+			}
 		}
 	%>
 	<script>
 		function tijiao(e) {
 			var id = e.id;
-			var operation = $('#i'+id+' [name=optionsRadios]:checked').val();
-			var form = document.getElementById('f'+id);
-			form.querySelector('#operation').value=operation;
+			var operation = $('#i' + id + ' [name=optionsRadios]:checked')
+					.val();
+			var form = document.getElementById('f' + id);
+			form.querySelector('#operation').value = operation;
 			form.submit();
 		}
 	</script>
