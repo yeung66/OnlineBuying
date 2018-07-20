@@ -202,7 +202,7 @@
 
                             <div class="atar_Show">
 
-                            <p tip="3.5"></p>
+                            <p tip="<%=p.getScore()%>"></p>
 
                             </div>
 

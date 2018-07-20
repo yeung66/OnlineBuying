@@ -47,6 +47,8 @@
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.easing.1.3.js"></script>
+	<script src="../js/jquery-3.2.1.min.js"></script>
 
 </head>
 <body>
@@ -76,8 +78,9 @@
 					List<Order> orderList = OrderDAO.getOrderList((String) request.getSession().getAttribute("uid"));
 					if (orderList != null) {
 						for (Order o : orderList) {
+						    Product p = ProductDAO.getProductInfo(o.getProduct());
 							if(j<10){
-							Product p = ProductDAO.getProductInfo(o.getProduct());
+
 				%>
 				<tr id="<%=j%>">
 					<td><img src="<%=p.getPath()%>" width="50px" height="70px"
@@ -147,8 +150,8 @@
 			</table>
 			<nav>
   <ul class="pager">
-    <li><a href="#" onclick="last()">上一页</a></li>
-    <li><a href="#" onclick="next()">下一页</a></li>
+    <li><a onclick="last()" style="cursor:pointer">上一页</a></li>
+    <li><a  onclick="next()" style="cursor:pointer">下一页</a></li>
   </ul>
 </nav>
 		</div>
@@ -254,7 +257,8 @@
      }else{alert("当前页为首页")}
      }
      function next(){
-     if(j<=$("#coutnP").val()/10){
+     //if(j<=$("#coutnP").val()/10){
+		 if(j<=5){
      var k=j*10
      for(k;k<(j*10+10);k++){
      $("#"+k).show(500);

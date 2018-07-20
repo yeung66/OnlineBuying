@@ -65,8 +65,8 @@ public class OrderDAO {
             Statement st = conn.createStatement();
             List<Order> result = new ArrayList<>();
             ResultSet rs = st.executeQuery(
-                    "SELECT orders.id, purchaser, product, states, quantity, starttime FROM orders,product where orders.product=product.id and product.owner = "
-                            + shopID + "order by id DESC ;");
+                    "SELECT orders.id, purchaser, product, states, quantity, starttime FROM orders,product where orders.product=product.id and product.owner = '"
+                            + shopID + "' order by id DESC ;");
             while (rs.next()) {
                 Order o = new Order();
                 o.setId(rs.getInt("id"));

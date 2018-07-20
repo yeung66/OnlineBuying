@@ -124,15 +124,15 @@ String path = request.getContextPath();
 						class="stateButton"><%=statu%></a></td>
 					</tr>
 				<% 
-					j++;}
+					j++;}}
 					int m=olist.size()-1;
 				%>
 				<input id="coutnP" value="<%=m%>" style="display: none;"/>
 			</table>
 			<nav>
   <ul class="pager">
-    <li><a href="#" onclick="last()">上一页</a></li>
-    <li><a href="#" onclick="next()">下一页</a></li>
+    <li><a  onclick="last()" style="cursor:pointer">上一页</a></li>
+    <li><a  onclick="next()" style="cursor:pointer">下一页</a></li>
   </ul>
 </nav>
 		</div>
