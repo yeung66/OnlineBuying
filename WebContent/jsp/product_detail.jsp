@@ -466,7 +466,7 @@
 
 								<div class="product-info text-left">
 
-									<h5 class="title"><a href="product-details.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
+									<h5 class="title"><a href="jsp/product-details.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
 
 									<div class="price-ratting fix">
 

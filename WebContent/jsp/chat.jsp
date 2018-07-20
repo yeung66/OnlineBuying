@@ -50,7 +50,7 @@
 		<img style="width:100%;height:100%" src="images/聊天背景.JPG">
 		<div class="abs cover contaniner">
 			<div class="abs cover pnl">
-				<div class="top pnl-head"><p id="head-title">客服1号</p></div>
+				<div class="top pnl-head"><p id="head-title"></p></div>
 				<div class="abs cover pnl-body" id="pnlBody">
 					<div class="abs cover pnl-left">
 						<div class="abs cover pnl-msgs scroll" id="show">

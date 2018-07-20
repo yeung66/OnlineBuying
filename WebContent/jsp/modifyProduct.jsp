@@ -51,7 +51,7 @@
                
                         <!-- 退出 -->
                         <li class="am-text-sm">
-                            <a href="javascript:;">
+                            <a href="javascript:;" onclick="window.history.go(-1)">
                                 <span class="am-icon-sign-out"></span> 退出
                             </a>
                         </li>

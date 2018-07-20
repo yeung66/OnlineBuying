@@ -77,7 +77,7 @@
 
 
 						<!-- 退出登陆 -->
-						<li class="am-text-sm"><a href="javascript:;"> <span
+						<li class="am-text-sm"><a href="../login"> <span
 								class="am-icon-sign-out"></span> 退出
 						</a></li>
 					</ul>
