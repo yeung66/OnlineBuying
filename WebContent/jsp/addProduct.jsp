@@ -74,8 +74,6 @@
                             <div class="widget-body am-fr">
 
                                 <form class="am-form tpl-form-border-form tpl-form-border-br" action="../addProduct" method="post" enctype='multipart/form-data'>
-
-
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称 <span class="tpl-form-line-small-title">Name</span></label>
                                         <div class="am-u-sm-9">
@@ -89,14 +87,19 @@
                                         <div class="am-u-sm-9">
                                             <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品价格" name="price">
 
-
                                         </div>
                                     </div>
                                     
-                                     <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
+                                    <div class="am-form-group">
+                                        <label for="user-phone" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
                                         <div class="am-u-sm-9">
-                                            <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入商品类型" name="type">
+                                            <select data-am-selected="{searchBox: 1}" style="display: none;" name="typ">
+                                          <option value="0">文具卡片</option>
+                                          <option value="1">特色美食</option>
+                                          <option value="2">服饰箱包</option>
+                                          <option value="3">居家生活</option>
+                                          <option value="4">数码电器</option>
+                                             </select>
 
                                         </div>
                                     </div>

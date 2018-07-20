@@ -192,7 +192,7 @@
 												<td class="am-text-middle"><%=p.getScore() %></td>
 												<td class="am-text-middle">
 													<div class="tpl-table-black-operation">
-														<a href="jsp/modifyProduct.jsp?pid=<%=p.getId()%>" target="_blank"> <i class="am-icon-pencil"></i>
+														<a href="jsp/modifyProduct.jsp?pid=<%=p.getId()%>"> <i class="am-icon-pencil"></i>
 															编辑
 														</a> <a href="DeleteProductServlet?id=<%=p.getId()%>"
 

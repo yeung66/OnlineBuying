@@ -3,7 +3,6 @@
 <%@page pageEncoding="UTF-8"%>
 -->
 
-<%@ page import="util.*"%>
 <%@ page import="vo.Product"%>
 <%@ page import="DAO.ProductDAO" %>
 <%
@@ -16,7 +15,6 @@
 	String name = p.getName();
 	String described = p.getInformation();
 	Double price = p.getPrice();
-	String type = p.getType();
 %>
 <!DOCTYPE html>
 <html>
@@ -89,7 +87,7 @@
                             <div class="widget-body am-fr">
 
 
-                                <form class="am-form tpl-form-border-form tpl-form-border-br" action="<%=basePath%>/AlterProductServlet" method="post">
+                                <form class="am-form tpl-form-border-form tpl-form-border-br" action="../AlterProductServlet">
                                 	<input type="hidden" name="pid" value="<%=pid%>">
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称 <span class="tpl-form-line-small-title">Name</span></label>
@@ -102,16 +100,21 @@
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品价格 <span class="tpl-form-line-small-title">Price</span></label>
                                         <div class="am-u-sm-9">
 
-                                            <input type="text" class="tpl-form-input" id="user-name" value="<%=price %>" name="price">
+                                            <input type="text" class="tpl-form-input" id="user-name" value="<%=price %>" name="price">                                           
                                         </div>
                                     </div>
-
                                     
-                                    <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
+                                   <div class="am-form-group">
+                                        <label for="user-phone" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
                                         <div class="am-u-sm-9">
+                                            <select data-am-selected="{searchBox: 1}" style="display: none;" name="type" >
+                                          <option value="0" <%if(p.getpType().equals("0")) out.print("selected");%>>文具卡片</option>
+                                          <option value="1" <%if(p.getpType().equals("1")) out.print("selected");%>>特色美食</option>
+                                          <option value="2" <%if(p.getpType().equals("2")) out.print("selected");%>>服饰箱包</option>
+                                          <option value="3" <%if(p.getpType().equals("3")) out.print("selected");%>>居家生活</option>
+                                          <option value="4" <%if(p.getpType().equals("4")) out.print("selected");%>>数码电器</option>
+                                             </select>
 
-                                            <input type="text" class="tpl-form-input" id="user-name" value="<%=type %>" name="type">                                           
                                         </div>
                                     </div>
 
@@ -132,9 +135,7 @@
                                         <label for="user-intro" class="am-u-sm-3 am-form-label">商品描述</label>
                                         <div class="am-u-sm-9">
 
-                                            <textarea class="" rows="10" id="user-intro" value="" name="info"><%if(p.getInformation()!=null) out.println(p.getInformation());%></textarea>
-
-
+                                            <textarea class="" rows="10" id="user-intro" value="<%=described %>" name="info"></textarea>
                                         </div>
                                     </div>
 
