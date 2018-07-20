@@ -30,7 +30,7 @@
 
 	Double price = p.getPrice();
 
-	List<Product> goodsList = Database.searchProduct(p.getName());
+	List<Product> goodsList = ProductDAO.searchProduct(p.getName());
 
 	List<Product> products = ProductDAO.getAllGoodList();
 

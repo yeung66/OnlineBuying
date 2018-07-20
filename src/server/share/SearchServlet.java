@@ -1,5 +1,6 @@
 package server.share;
 
+import DAO.ProductDAO;
 import com.alibaba.fastjson.JSON;
 import util.Database;
 import vo.Product;
@@ -27,7 +28,7 @@ public class SearchServlet extends HttpServlet {
     //  segmenter se = new segmenter();
       //List<String> list_=se.seg(str);
 
-            List<Product> list = Database.searchProduct(search);
+            List<Product> list = ProductDAO.searchProduct(search);
         HttpSession session=request.getSession();
 
 
