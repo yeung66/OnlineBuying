@@ -979,8 +979,9 @@ a.at-in {
   text-align: center;
 }
 input.to-buy{
+  width: 80px;
 	border-radius:2px;
-	padding: 0.4em 0.7em;
+	padding: 0.6em 0.7em;
 	background-color: black;
 	border: 1px solid #414141;
 	color: #fff;
@@ -992,9 +993,7 @@ input.to-buy{
 	letter-spacing: 0.5px;
 	line-height: 15px;
     margin: 0.5em 0 20px;
-    font-size: 1em;
     display: inline-block;
-    line-height: 1.6em;
     text-align: center;
     text-decoration: none;
 }
