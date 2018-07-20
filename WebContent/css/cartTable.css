@@ -71,6 +71,8 @@
 	.content td p{
 		font-family: "Times New Roman",Times,serif;
 		color: #666;
+		font-size: 12px;
+		margin: 0;
 	}
 	.content tr:hover{
 		background-color: #F0F0F0;
