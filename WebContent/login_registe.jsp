@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page pageEncoding="utf-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/login.css" />
 
+
+<link rel="stylesheet" href="css/style_for_swing.css">
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
@@ -93,34 +95,78 @@
 </script>
 
 </head>
-<body >
+<body style="overflow-y: hidden">
 
-<jsp:include page="jsp/head.jsp"/>
+
+
+
+
+
+
+    <jsp:include page="jsp/head.jsp"/>
 	
 
 <div style="width: 100%;height:130px"></div>
 	<!-- 会员登录  -->
 	<!--<div id='Login_start' style="position: absolute;" >-->
 	
-	<div style="background-image:url(images/login_bac5.jpg) ;width:100%;height:850px;background-size: 100%;">
+	<div style="background-image:url(images/聊天背景.JPG);
+		width:100%;height:850px;background-size: 100%;">
 		
 		<br /><br /><br /><br /><br /><br /><br />
 		<div style="position: relative;margin-left: 200px;">
-			<span style="font-family:华文行楷;font-size: 48px;"><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br />
+			
+			<!--<span style="font-family:华文行楷;font-size: 48px;">
 				<p style="font-size: larger;">专注服务于</p>
-				<br />
+				
 				<p style="font-size: larger;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一位顾客</p>
-			</span>
+			</span>-->
 		</div>
-		<div id='_start' style="position:relative;bottom: 25%;left: 25%;
-	background-color: gray;">
-		<div id='_close' style="display: none;">
+		<div class="wrapper">
+  <div class="swing">
+    <div class="human">
+      <div class="top-part">
+        <div class="head">
+          <div class="hair"></div>
+          <div class="fringe"></div>
+          <div class="eye"></div>
+          <div class="mouth"></div>
+        </div>
+        <div class="body">
+          <div class="hand">
+            <div class="hand-one"></div>
+            <div class="hand-two"></div>
+          </div>
+        </div>
+      </div>
+      <div class="leg-one"></div>
+      <div class="leg-two"></div>
+    </div>
+    <div class="swing-rod"></div>
+    <div class="bottom"></div>
+  </div>
+  <div class="pole one"></div>
+  <div class="pole two"></div>
+</div>
+		<div id='_start' style="position: relative;
+    bottom: 23%;
+    left: 20%;
+    background-color: rgba(3,3,3,0.5);
+    height: 470px;
+    width: 400px;
+    border-radius: 5px;
+     box-shadow: 2px 2px 4px 2px rgba(3,3,3,0.8);
+	">
+	
+		<div id='_close' style="display: none;border: none;">
 			<span class="glyphicon glyphicon-remove"></span>
 		</div>
 		<br />
 		<!--登录框-->
 		<form action="LoginServlet?method=login" method="post">
-			<div id="login_container" style="background-color: #FFFFFF;position: relative;margin-left: 20px;">
+			<div id="login_container" style="background-color:whitesmoke;position: relative;margin-left: 20px;border: none;
+    border-radius: 3px;">
 				<div id="lab1">
 					<span id="lab_login">用户登录</span> <span id="lab_toRegist">
 						&emsp;还没有账号&nbsp; <span id='toRegist'

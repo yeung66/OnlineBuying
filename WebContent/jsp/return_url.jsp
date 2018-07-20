@@ -71,12 +71,12 @@
 		sql = "UPDATE users SET money=" + money + " WHERE id='" + uid + "';";
 		Database.update(sql);
 		out.print("<script>");
-		out.print("alert('购买成功!');");
+		out.print("alert('充值成功!');");
 		out.print("window.location.href='perInfo.jsp'");
 		out.print("</script>");
 		out.close();
 	}else {
-		out.println("验签失败");
+		out.println("充值失败");
 	}
 	//——请在这里编写您的程序（以上代码仅作参考）——
 %>
