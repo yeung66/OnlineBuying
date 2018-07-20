@@ -105,14 +105,7 @@
                                             <input type="text" class="tpl-form-input" id="user-name" value="<%=price %>" name="price">
                                         </div>
                                     </div>
-                                    
-                                    <div class="am-form-group">
-                                        <label for="user-name" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
-                                        <div class="am-u-sm-9">
 
-                                            <input type="text" class="tpl-form-input" id="user-name" value="<%=p %>" name="type">
-                                        </div>
-                                    </div>
                                     
                                     <div class="am-form-group">
                                         <label for="user-name" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>

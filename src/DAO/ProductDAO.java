@@ -77,7 +77,7 @@ public class ProductDAO {
                 p.setNum(rs.getInt("num"));
                 p.setScore(rs.getDouble("score"));
                 p.setType(rs.getString("ptype"));
-                p.setStatus("status");
+                p.setStatus(rs.getString("status"));
                 result.add(p);
             }
             return result;
@@ -153,7 +153,7 @@ public class ProductDAO {
     public static int alterProduct(int pid, String name, String owner, double price, int num, String info,
                                    String type) {
         String sql = "UPDATE product SET name='" + name + "',owner='" + owner + "',price=" + price + ",num=" + num
-                + ",information='" + info + "' ptype='" + type + "' WHERE id=" + pid + ";";
+                + ",information='" + info + "', ptype='" + type + "' WHERE id=" + pid + ";";
         return Database.update(sql);
     }
 

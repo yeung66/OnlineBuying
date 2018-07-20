@@ -526,7 +526,7 @@
 
 	<div>
 
-		<a href="jsp/chat.jsp?to=<%=p.getOwner()%>">联系客服</a>
+		<a href="jsp/chat.jsp?to=<%=p.getOwner()%>" target="_blank">联系客服</a>
 
 	</div>
 
