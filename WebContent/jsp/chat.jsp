@@ -13,7 +13,8 @@
 		Response.replyAndRedirect("请先登录！","../login_registe.jsp",response);
 	    return;
 	}else if (((String)session.getAttribute("uid")).equals(request.getParameter("to"))){
-		Response.replyAndGoBack("请不要跟自己通信！",response);
+		Response.replyAndClose("请不要跟自己通信！",response);
+
 		return;
 	}
 %>

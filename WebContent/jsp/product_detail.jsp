@@ -450,7 +450,7 @@
 
 								<div class="product-img">
 
-									<a class="image" href="jsp/product-details.jsp?gid=<%=goodsList.get(i).getId()%>"><img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
+									<a class="image" href="jsp/product_detail.jsp?gid=<%=goodsList.get(i).getId()%>"><img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
 
 
 
@@ -466,7 +466,7 @@
 
 								<div class="product-info text-left">
 
-									<h5 class="title"><a href="jsp/product-details.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
+									<h5 class="title"><a href="jsp/product_detail.jsp?gid=<%=goodsList.get(i).getId()%>"><%=goodsList.get(i).getName()%></a></h5>
 
 									<div class="price-ratting fix">
 
