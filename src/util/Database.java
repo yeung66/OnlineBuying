@@ -55,10 +55,6 @@ public class Database {
             return -1;
         }
     }
-    /**
-     * @ author: 叶晟柯
-     * @ date: 2018/7/3 16.24
-     */
     public static List<Product> searchProduct(String s) {
         Connection connect=getConnect();
 
@@ -90,14 +86,41 @@ public class Database {
                         Product pro = new Product(rs.getInt(1), rs.getDouble(4),
                                 rs.getInt(6), rs.getDouble(7),
                                 rs.getInt(8), rs.getString(2),
-                                rs.getString(3), rs.getString(5));
+                                rs.getString(3), rs.getString(5),rs.getString(9),
+                                rs.getString(11));
+                        pro.setStatus(rs.getString("status"));
+                        if (pro.getStatus().equals("pass")){
                         //Jsonproduct = JSON.toJSONString(pro);
                         // System.out.print(Jsonproduct);
-                        list.add(pro);
+                        list.add(pro);}
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                }}
+                }}else{
+                String sql = "select * from product where name like '%"+Chinese+"%'";
+                try {
+
+                    PreparedStatement stmt = connect.prepareStatement(sql);
+                    ResultSet rs = stmt.executeQuery();
+                    while (rs.next()) {
+                        //  System.out.print(rs.getString(3));
+                        Product pro = new Product(rs.getInt(1), rs.getDouble(4),
+                                rs.getInt(6), rs.getDouble(7),
+                                rs.getInt(8), rs.getString(2),
+                                rs.getString(3), rs.getString(5),rs.getString(9),
+                                rs.getString(11));
+                        pro.setStatus(rs.getString("status"));
+                        //Jsonproduct = JSON.toJSONString(pro);
+                        // System.out.print(Jsonproduct);
+                        if (pro.getStatus().equals("pass")){
+                            //Jsonproduct = JSON.toJSONString(pro);
+                            // System.out.print(Jsonproduct);
+                            list.add(pro);}
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
                 if (!NotChinese.equals("")) {
                     segmenter se = new segmenter();
                     String[] st = se.engSeg(NotChinese);
@@ -115,10 +138,13 @@ public class Database {
                             Product pro = new Product(rs.getInt(1), rs.getDouble(4),
                                     rs.getInt(6), rs.getDouble(7),
                                     rs.getInt(8), rs.getString(2),
-                                    rs.getString(3), rs.getString(5));
-                            //Jsonproduct = JSON.toJSONString(pro);
-                            // System.out.print(Jsonproduct);
-                            list.add(pro);
+                                    rs.getString(3), rs.getString(5),rs.getString(9),
+                                    rs.getString(11));
+                            pro.setStatus(rs.getString("status"));
+                            if (pro.getStatus().equals("pass")){
+                                //Jsonproduct = JSON.toJSONString(pro);
+                                // System.out.print(Jsonproduct);
+                                list.add(pro);}
                         }
                     } catch (Exception e) {
                     }
@@ -143,10 +169,13 @@ public class Database {
                         Product pro = new Product(rs.getInt(1), rs.getDouble(4),
                                 rs.getInt(6), rs.getDouble(7),
                                 rs.getInt(8), rs.getString(2),
-                                rs.getString(3), rs.getString(5));
-                        //Jsonproduct = JSON.toJSONString(pro);
-                        // System.out.print(Jsonproduct);
-                        list.add(pro);
+                                rs.getString(3), rs.getString(5),rs.getString(9),
+                                rs.getString(11));
+                        pro.setStatus(rs.getString("status"));
+                        if (pro.getStatus().equals("pass")){
+                            //Jsonproduct = JSON.toJSONString(pro);
+                            // System.out.print(Jsonproduct);
+                            list.add(pro);}
                     }
                 } catch (Exception e) {
                 }
