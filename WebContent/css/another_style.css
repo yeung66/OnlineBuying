@@ -979,7 +979,8 @@ a.at-in {
   text-align: center;
 }
 input.to-buy{
-  width: 80px;
+
+  width:80px;
 	border-radius:2px;
 	padding: 0.6em 0.7em;
 	background-color: black;
