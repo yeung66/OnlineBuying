@@ -128,7 +128,7 @@
 			</table></center>
 			<!--进行计算-->
 
-		<div class="payForCart"><a>购物车商品总价为<%=total%></a>
+		<div class="payForCart"><p>购物车商品总价为<%=total%></p>
 			<input type="submit" class="to-buy"
 				onclick="return confirmBuy()"value=" &nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;"></input>
 	    </div>

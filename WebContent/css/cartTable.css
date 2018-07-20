@@ -12,11 +12,11 @@
 		padding-left: 70% ;
 		
 	}
-	.payForCart a{
+	.payForCart input{
 		margin-left:20px;
-		font-size: 12px;
 	}
 	.payForCart p{
+		margin-left: 20px;
 		padding-top: 15px;
 		font-size:12px ;
 		color:#666;
@@ -71,6 +71,8 @@
 	.content td p{
 		font-family: "Times New Roman",Times,serif;
 		color: #666;
+		font-size: 12px;
+		margin: 0;
 	}
 	.content tr:hover{
 		background-color: #F0F0F0;
