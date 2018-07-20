@@ -36,7 +36,7 @@
                
                         <!-- 退出 -->
                         <li class="am-text-sm">
-                            <a href="" onclick="window,history.go(-1)">
+                            <a href="" onclick="window.history.go(-1)">
                                 <span class="am-icon-sign-out"></span> 退出
                             </a>
                         </li>
