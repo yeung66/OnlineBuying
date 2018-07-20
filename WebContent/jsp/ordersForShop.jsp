@@ -14,6 +14,7 @@ String path = request.getContextPath();
 	String shopID = (String) request.getSession().getAttribute("uid");
 	List<Order> olist = OrderDAO.getShopOrderList(shopID);
 	int i = 1;
+	int j=0;
 %>
 
 <!DOCTYPE html>
@@ -43,6 +44,10 @@ String path = request.getContextPath();
 <%--<script type="text/javascript" src="../js/jquery.min.js"></script>--%>
 <script type="text/javascript" src="../js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="../js/memenu.js"></script>
+
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.min.js"></script>
 
 </head>
 <body>
@@ -85,8 +90,9 @@ String path = request.getContextPath();
 							Double price = p.getPrice();
 							Date date = o.getStartTime();
 							String statu = o.getStatus();
+							if(j<10){
 				%>
-				<tr>
+				<tr id="<%=j%>">
 					<td><img src="<%=imgPath%>" width="50px" height="70px"
 						style="padding-top: 10px; padding-bottom: 10px;"></td>
 					<!--这里添加一下商品详情页的链接 href-->
@@ -101,9 +107,34 @@ String path = request.getContextPath();
 				</tr>
 				<%
 					i++;
-						}
+					j++;
+				}else{
 				%>
+				<tr id="<%=j%>" style="display: none;">
+					<td><img src="<%=imgPath%>" width="50px" height="70px"
+						style="padding-top: 10px; padding-bottom: 10px;"></td>
+					<!--这里添加一下商品详情页的链接 href-->
+					<td><a href="jsp/product_detail.jsp?gid=<%=pid%>"><%=name%></a></td>
+					<td><%=purchaser%></td>
+					<td><%=num%></td>
+					<td><%=price%></td>
+					<td><%=num * price%></td>
+					<td><%=date%></td>
+					<td><a href="jsp/ordersForShop.jsp#popup-<%=i%>"
+						class="stateButton"><%=statu%></a></td>
+					</tr>
+				<% 
+					j++;}
+					int m=olist.size()-1;
+				%>
+				<input id="coutnP" value="<%=m%>" style="display: none;"/>
 			</table>
+			<nav>
+  <ul class="pager">
+    <li><a href="#" onclick="last()">上一页</a></li>
+    <li><a href="#" onclick="next()">下一页</a></li>
+  </ul>
+</nav>
 		</div>
 	</center>
 
@@ -186,6 +217,37 @@ String path = request.getContextPath();
 			form.submit();
 		}
 	</script>
+
+	<script>
+     var j=1;
+     function last(){
+     if(j>1){
+     var k=j*10
+     for(k=k-11;k>=(j*10-20);k--){
+     $("#"+k).show(500);
+     }
+     var k=j*10
+     for(k;k>(j*10-10);k--){
+     $("#"+(k-1)).hide();
+     }
+     j--;
+     }else{alert("当前页为首页")}
+     }
+     function next(){
+     if(j<=$("#coutnP").val()/10){
+     var k=j*10
+     for(k;k<(j*10+10);k++){
+     $("#"+k).show(500);
+     }
+     var k=j*10
+     for(k;k>(j*10-10);k--){
+     $("#"+(k-1)).hide();
+     }
+     j++;
+     }else{alert("已经是最后一页")}
+     
+     }
+     </script>
 
 </body>
 </html>
