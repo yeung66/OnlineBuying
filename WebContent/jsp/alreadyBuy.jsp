@@ -11,6 +11,7 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+			int j=0;
 %>
 
 
@@ -43,6 +44,9 @@
 <script type="text/javascript" src="../js/memenu.js"></script>
 <%--<script src="../js/jquery-3.1.1.min.js">--%>
 
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.min.js"></script>
 
 </head>
 <body>
@@ -72,9 +76,10 @@
 					List<Order> orderList = OrderDAO.getOrderList((String) request.getSession().getAttribute("uid"));
 					if (orderList != null) {
 						for (Order o : orderList) {
+							if(j<10){
 							Product p = ProductDAO.getProductInfo(o.getProduct());
 				%>
-				<tr>
+				<tr id="<%=j%>">
 					<td><img src="<%=p.getPath()%>" width="50px" height="70px"
 						style="padding-top: 10px; padding-bottom: 10px;"></td>
 					<td><a href="jsp/product_detail.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
@@ -101,7 +106,34 @@
 				</tr>
 				<%
 					i++;
+					j++;
+						}else{%>
+							<tr id="<%=j%>" style="display:none">
+					<td><img src="<%=p.getPath()%>" width="50px" height="70px"
+						style="padding-top: 10px; padding-bottom: 10px;"></td>
+					<td><a href="jsp/product_detail.jsp?gid=<%=p.getId()%>"><%=p.getName()%></a></td>
+					<td><%=o.getQuantity()%></td>
+					<td><%=p.getPrice()%></td>
+					<td><%=p.getPrice() * o.getQuantity()%></td>
+					<td><%=o.getStartTime()%></td>
+					<td><a href="jsp/alreadyBuy.jsp#popup-<%=i%>"
+						class="stateButton"><%=o.getStatus()%></a></td>
+					<!--需要代码根据order的id是否已签收和是否已进行过评价判断，如果状态是已签收+未评价才能进行跳转到comment.jsp-->
+					<%--暂未实现--%>
+					<%
+						if (o.getStates().equals("4")) {
+					%>
+					<td><a
+						href="jsp/comment.jsp?oid=<%=o.getId()%>&pname=<%=p.getName()%>&path=<%=p.getPath()%>&pid=<%=p.getId()%>">评价</a></td>
+					<%
+						} else {
+					%>
+					<td>无可进行的操作</td>
+					<%
 						}
+					%>
+				</tr>														
+							<%j++;}}
 					} else {
 				%>
 				<tr>
@@ -110,8 +142,15 @@
 
 				<%
 					}
+					int m=orderList.size()-1;
 				%>
 			</table>
+			<nav>
+  <ul class="pager">
+    <li><a href="#" onclick="last()">上一页</a></li>
+    <li><a href="#" onclick="next()">下一页</a></li>
+  </ul>
+</nav>
 		</div>
 	</center>
 	<%
@@ -198,5 +237,37 @@
 			form.submit();
 		}
 	</script>
+	
+	<script>
+     var j=1;
+     function last(){
+     if(j>1){
+     var k=j*10
+     for(k=k-11;k>=(j*10-20);k--){
+     $("#"+k).show(500);
+     }
+     var k=j*10
+     for(k;k>(j*10-10);k--){
+     $("#"+(k-1)).hide();
+     }
+     j--;
+     }else{alert("当前页为首页")}
+     }
+     function next(){
+     if(j<=$("#coutnP").val()/10){
+     var k=j*10
+     for(k;k<(j*10+10);k++){
+     $("#"+k).show(500);
+     }
+     var k=j*10
+     for(k;k>(j*10-10);k--){
+     $("#"+(k-1)).hide();
+     }
+     j++;
+     }else{alert("已经是最后一页")}
+     
+     }
+     </script>
+	
 </body>
 </html>
