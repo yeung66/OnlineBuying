@@ -147,7 +147,7 @@
 		    createWebsocket()
 			var chooseCont
 			if(toContacter!=null && contacterList.querySelector('[contact=c'+toContacter+']')==null) {
-                var html = '<li name="contacter" id={id} name={id} onclick="changeMain(this)">\n' +
+                var html = '<li name="contacter" id="{id}" contact="c{id}" onclick="changeMain(this)" history="true">' +
                     '                             \n' +
                     '                                <a href="javascript:;">\n' +
                     '                                    <img src="images/4.JPG"></a><a href="javascript:;" class="chat03_name">{id}</a>\n' +
@@ -155,6 +155,7 @@
 				html = html.replace(/{id}/g,toContacter)
                 contacterList.innerHTML = html+contacterList.innerHTML
                 chooseCont = contacterList.firstElementChild
+                document.querySelector('#histStart').style.display='none'
 			}else if(toContacter==null) {
 		        chooseCont = contacterList.firstElementChild
 			}else {

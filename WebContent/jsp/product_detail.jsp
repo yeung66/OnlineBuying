@@ -450,7 +450,7 @@
 
 								<div class="product-img">
 
-									<a class="image" href="product-details.jsp?gid=<%=goodsList.get(i).getId()%>"><img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
+									<a class="image" href="jsp/product-details.jsp?gid=<%=goodsList.get(i).getId()%>"><img src="<%=goodsList.get(i).getPath()%>" alt="" /></a>
 
 
 
