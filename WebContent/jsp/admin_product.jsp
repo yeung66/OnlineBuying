@@ -153,7 +153,7 @@
 												<td class="am-text-middle"><%=p.getPrice() %></td>
 												<td class="am-text-middle"><%=p.getType() %></td>
 												<td class="am-text-middle"><%=p.getNum() %></td>
-												<td class="am-text-middle"><%=p.getScore() %></td>
+												<td class="am-text-middle"><%=p.getOwner() %></td>
 												<td class="am-text-middle">
 													<div class="tpl-table-black-operation">
 														

@@ -32,7 +32,7 @@ public class ProductDAO {
             pst.setDouble(6, p.getScore());
             pst.setInt(7, p.getComnum());
             pst.setString(8, p.getInformation());
-            pst.setString(9, p.getType());
+            pst.setString(9, p.getpType());
             pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -132,6 +132,7 @@ public class ProductDAO {
                 p.setNum(rs.getInt("num"));
                 p.setScore(rs.getDouble("score"));
                 p.setType(rs.getString("ptype"));
+                p.setOwner(rs.getString("owner"));
                 result.add(p);
             }
             return result;

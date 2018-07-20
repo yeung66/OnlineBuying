@@ -93,7 +93,7 @@
                                     <div class="am-form-group">
                                         <label for="user-phone" class="am-u-sm-3 am-form-label">商品类型 <span class="tpl-form-line-small-title">Type</span></label>
                                         <div class="am-u-sm-9">
-                                            <select data-am-selected="{searchBox: 1}" style="display: none;" name="typ">
+                                            <select data-am-selected="{searchBox: 1}" style="display: none;" name="type">
                                           <option value="0">文具卡片</option>
                                           <option value="1">特色美食</option>
                                           <option value="2">服饰箱包</option>
