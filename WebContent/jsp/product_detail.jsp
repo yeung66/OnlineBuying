@@ -10,11 +10,6 @@
 
 <%
 
-	String path = request.getContextPath();
-
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-
-			+ path + "/";
 
 	int gid = Integer.parseInt(request.getParameter("gid"));
 

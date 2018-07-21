@@ -205,7 +205,6 @@ public class ProductDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
         return product;
     }
@@ -223,7 +222,6 @@ public class ProductDAO {
         if (!Chinese.equals("")) {
             segmenter segmt = new segmenter();
             List<String> nouns = segmt.seg(Chinese);
-
             if ((nouns!=null)&&(!nouns.isEmpty())) {
                 String sql = "select * from product where name like '";
                 sql = sql + "%" + nouns.get(0) + "%'";
@@ -233,7 +231,6 @@ public class ProductDAO {
                 // System.out.print(sql);
 
                 try {
-
                     PreparedStatement stmt = connect.prepareStatement(sql);
                     ResultSet rs = stmt.executeQuery();
                     while (rs.next()) {
@@ -254,7 +251,6 @@ public class ProductDAO {
                 }}else{
                 String sql = "select * from product where name like '%"+Chinese+"%'";
                 try {
-
                     PreparedStatement stmt = connect.prepareStatement(sql);
                     ResultSet rs = stmt.executeQuery();
                     while (rs.next()) {
@@ -276,41 +272,11 @@ public class ProductDAO {
                     e.printStackTrace();
                 }
             }
-            if (!NotChinese.equals("")) {
-                segmenter se = new segmenter();
-                String[] st = se.engSeg(NotChinese);
-                String sql="select * from product where name like '%"+st[0]+"%'";
-
-                for (int i=1;i<st.length;i++) {
-                    sql = sql+"or name like '%"+st[i]+"%'";
-                }
-                try {
-
-                    PreparedStatement stmt = connect.prepareStatement(sql);
-                    ResultSet rs = stmt.executeQuery();
-                    while (rs.next()) {
-                        //  System.out.print(rs.getString(3));
-                        Product pro = new Product(rs.getInt(1), rs.getDouble(4),
-                                rs.getInt(6), rs.getDouble(7),
-                                rs.getInt(8), rs.getString(2),
-                                rs.getString(3), rs.getString(5),rs.getString(9),
-                                rs.getString(11));
-                        pro.setStatus(rs.getString("status"));
-                        if (pro.getStatus().equals("pass")){
-                            //Jsonproduct = JSON.toJSONString(pro);
-                            // System.out.print(Jsonproduct);
-                            list.add(pro);}
-                    }
-                } catch (Exception e) {
-                }
-            }
-
         }else {
             if (!NotChinese.equals("")) {
                 segmenter se = new segmenter();
                 String[] st = se.engSeg(NotChinese);
                 String sql="select * from product where name like '%"+st[0]+"%'";
-
                 for (int i=1;i<st.length;i++) {
                     sql = sql+"or name like '%"+st[i]+"%'";
                 }
@@ -333,8 +299,8 @@ public class ProductDAO {
                             list.add(pro);}
                     }
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
             }
         }
         return list;

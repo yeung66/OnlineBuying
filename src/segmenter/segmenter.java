@@ -30,7 +30,6 @@ public class segmenter {
         Pattern p = Pattern.compile("\\s+");
         Matcher m = p.matcher(s);
         w= m.replaceAll(" ");
-        String[] st = w.split(" ");
-        return st;
+        return w.split(" ");
     }
 }

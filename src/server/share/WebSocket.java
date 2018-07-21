@@ -62,7 +62,7 @@ public class WebSocket {
 
     }
 
-    public void sendMessage(String mes,String from){
+    private void sendMessage(String mes,String from){
         try {
             Map<String,String> map = new HashMap<>();
             map.put("send",from);
@@ -75,16 +75,7 @@ public class WebSocket {
 
     }
 
-    public static void sendSystemMessage(String mes,String to){
-        CopyOnWriteArraySet<WebSocket> toWebsocket = websocketMap.get(to);
-        if(toWebsocket!=null){
-            for(WebSocket ws:toWebsocket)
-                ws.sendMessage(mes,"System");
-        }
-        MessageDAO.insertMessage("System",to,mes,0);
-    }
-
-    public static void sendMes2Head(String uid,int reduce){
+    private static void sendMes2Head(String uid,int reduce){
         CopyOnWriteArraySet<WebSocket> toWebsocket = websocketMap.get(uid);
         for(WebSocket ws:toWebsocket){
             if(ws.type!=0){

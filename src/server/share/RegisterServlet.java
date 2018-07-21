@@ -52,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
 		sex = request.getParameter("sex");
 		right = request.getParameter("right");
 
-		if (UserDAO.register(id, pwd, info, add, tel, right, sex) == true) {
+		if (UserDAO.register(id, pwd, info, add, tel, right, sex)) {
 			response.getWriter().print("success");
 		} else {
 			response.getWriter().print("fail");

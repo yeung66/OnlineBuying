@@ -2,7 +2,6 @@ package server.share;
 
 import DAO.ProductDAO;
 import com.alibaba.fastjson.JSON;
-import util.Database;
 import vo.Product;
 
 import javax.servlet.ServletException;

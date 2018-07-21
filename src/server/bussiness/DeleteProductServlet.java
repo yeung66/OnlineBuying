@@ -13,9 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "DeleteProductServlet" , urlPatterns = "/DeleteProductServlet")
 public class DeleteProductServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pID = request.getParameter("id");

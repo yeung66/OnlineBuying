@@ -5,13 +5,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import segmenter.*;
-import vo.Product;
 
 /**
  * @ author: 杨浩麟
@@ -48,8 +42,7 @@ public class Database {
     public static int update(String sql) {
         try {
             Statement st = connect.createStatement();
-            int rs = st.executeUpdate(sql);
-            return rs;
+            return st.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
             return -1;

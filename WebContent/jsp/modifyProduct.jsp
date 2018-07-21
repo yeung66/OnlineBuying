@@ -6,9 +6,6 @@
 <%@ page import="vo.Product"%>
 <%@ page import="DAO.ProductDAO" %>
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
 	int pid = Integer.parseInt(request.getParameter("pid"));
 	Product p = ProductDAO.getProductInfo(pid);
 	int number = p.getNum();
